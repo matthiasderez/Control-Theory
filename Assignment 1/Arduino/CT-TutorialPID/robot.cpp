@@ -104,7 +104,7 @@ void Robot::control() {
     writeValue(0, getVoltageMotorA());
     writeValue(3, getSpeedMotorA());
     writeValue(4, getSpeedMotorB());
-    out = 6.0; 
+    out = voltage; 
     counter = 0;
     counterThousand = 0;
     sign = 1;

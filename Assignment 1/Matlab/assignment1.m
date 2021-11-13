@@ -1,3 +1,4 @@
+close all
 % csvfile = 'recording9.csv';
 % labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
 % labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
@@ -19,6 +20,9 @@ N = length(t);
 num_periods = 4;
 points_per_period = N/num_periods;
 Ts = 0.01;
+fs = 1/Ts;
+f = [0:N-1]'*(fs/N); % arrays of frequencies, 0 to f_s Hz
+
 
 
 
@@ -37,6 +41,12 @@ xlabel('t [s]')
 
 sgtitle('Motor velocity')
 print -depsc motor_velocity.eps
+
+figure
+plot(t,[va, vb])
+legend('va','vb')
+ylabel('Velocity motor[rad/s]')
+xlabel('t [s]')
 
 % motor voltage plot
 figure
@@ -64,7 +74,7 @@ dvb_matrix = vb_matrix - repmat(vb_mean,1,num_periods);
 dvoltageA_matrix = voltageA_matrix - repmat(voltageA_mean,1,num_periods);
 
 % plotting some interesting comparisons
-figure(3),hold on
+figure,hold on
 subplot(2,1,1),plot(t(1:points_per_period), va_matrix, 'LineWidth', 1) 
 grid on
 axis tight
@@ -77,7 +87,7 @@ xlabel('t  [s]')
 ylabel('\Delta va  [m/s]')
 hold off
 
-figure(4),hold on
+figure,hold on
 subplot(2,1,1),plot(t(1:points_per_period), vb_matrix, 'LineWidth', 1) 
 grid on
 axis tight
@@ -91,7 +101,7 @@ ylabel('\Delta vb  [m/s]')
 hold off
 
 
-figure(2),hold on
+figure,hold on
 subplot(2,1,1),plot(t(1:points_per_period), voltageA_matrix, 'LineWidth', 1) 
 grid on
 axis tight
@@ -104,7 +114,7 @@ xlabel('t  [s]')
 ylabel('\Delta voltageA  [V]')
 hold off
 
-%% Least square method, no filtering
+%% 2.b) Least square method, no filtering (on motor A)
 
 % H(z) = (b1*z+b2)/(z(z^2-a1z-a2))
 % 
@@ -115,8 +125,8 @@ phi1 = [va(2:end-2), va(1:end-3), voltageA(2:end-2), voltageA(1:end-3)];
 theta1 = phi1\b1;
 
 % build the identified model
-Num1 = [0, theta(3), theta(4)];
-Den1 = [1, -theta(1), -theta(2), 0];
+Num1 = [0, theta1(3), theta1(4)];
+Den1 = [1, -theta1(1), -theta1(2), 0];
 sys_d1 = tf(Num1, Den1, Ts);
 
 % compute the frequency response of the identified model
@@ -126,36 +136,139 @@ phs_1 = 180/pi*unwrap(angle(FRF1));
 phs_1 = 360*ceil(-phs_1(1)/360) + phs_1;
 
 % plot the results
-figure(4),hold on,
-subplot(2,2,1),semilogx(f,mag_m, f, mag_e, f, mag_1)
+figure,hold on,
+subplot(2,2,1),semilogx(f, mag_1)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
-ylabel('|FRF|  [m]')
-legend('actual system','empirical', 'estimated','Location','SouthWest')
-subplot(2,2,3),semilogx(f, phs_m, f, phs_e, f, phs_1)
+ylabel('|FRF|  [m/s]')
+legend('estimated','Location','SouthWest')
+subplot(2,2,3),semilogx(f, phs_1)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
 ylabel('\phi(FRF)  [^\circ]')
-legend('actual system','empirical', 'estimated','Location','SouthWest')
-x1 = lsim(sys_d1,F_t,t);
+legend('estimated','Location','SouthWest')
 
-subplot(2,2,2),plot(t,[x_t x1]);
+
+
+
+
+%% 2.d) Difference between respons of the simulated model and the real system
+
+%Voorlopig gedaan met al gemeten input, in opgave staat met step input
+x1 = lsim(sys_d1,voltageA,t);
+
+subplot(2,2,2),plot(t,[va x1]);
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
-ylabel('displacement [m]')
+ylabel('wheel speed [m/s]')
 axis tight
-subplot(2,2,4),plot(t,abs(x_t - x1))
+subplot(2,2,4),plot(t,abs(va - x1))
 legend('error')
 xlabel('time [s]')
-ylabel('displacement [m]')
+ylabel('displacement [m/s]')
 axis tight
 
-figure(5), hold on
+figure, hold on
 pzmap(sys_d1)
 
+%% %% 2.b) Least square method, no filtering (on motor A) DIFFERENT MODEL
+
+% suppose J = 0
+% H(z) = b1/(z(z-a1))
+% collect the signals appearing in the difference equation
+b2 = va(3:end); 
+phi2 = [va(2:end-1), voltageA(1:end-2)]; 
+% perform the fit to get the desired parameters
+theta2 = phi2\b2;
+
+% build the identified model
+Num2 = [theta2(2)];
+Den2 = [1, -theta2(1), 0];
+sys_d2 = tf(Num2, Den2, Ts);
+
+% compute the frequency response of the identified model
+FRF2 = squeeze(freqresp(sys_d2,2*pi*f));
+mag_2 = 20*log10(abs(FRF2));
+phs_2 = 180/pi*unwrap(angle(FRF2)); 
+phs_2 = 360*ceil(-phs_2(1)/360) + phs_2;
+
+% plot the results
+figure,hold on,
+subplot(2,2,1),semilogx(f, mag_2)
+grid on
+xlim([f(1) f(end)])
+xlabel('f  [Hz]')
+ylabel('|FRF|  [m/s] simple model')
+legend('estimated','Location','SouthWest')
+subplot(2,2,3),semilogx(f, phs_2)
+grid on
+xlim([f(1) f(end)])
+xlabel('f  [Hz]')
+ylabel('\phi(FRF)  [^\circ] simple model')
+legend('estimated','Location','SouthWest')
+
+%% 2.d) Difference between respons of the simulated model and the real system: SIMPLE MODEL
+
+%Voorlopig gedaan met al gemeten input, in opgave staat met step input
+x2 = lsim(sys_d2,voltageA,t);
+
+subplot(2,2,2),plot(t,[va x2]);
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('wheel speed [m/s]')
+axis tight
+subplot(2,2,4),plot(t,abs(va - x2))
+legend('error')
+xlabel('time [s]')
+ylabel('displacement [m/s]')
+axis tight
+
+figure, hold on
+pzmap(sys_d2)
+%% 2.c) Filtering
+
+%Butterworth
+% orde hoger dan orde systeem
+% cutoff freq via dynamica systeem?
+% VOORLOPIG GESKIPT
+%% 2.d) Superposition principle
+csvfile = 'recording10(4V).csv';
+labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+data10 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+
+save data10
+
+load data10.mat
 
 
+csvfile = 'recording11(10V).csv';
+labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+data11 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
 
+save data11
 
+load data11.mat
+
+va10  = data10(:, 6);
+vb10 = data10(:, 7);
+va11  = data11(:, 6);
+vb11 = data11(:, 7);
+
+figure
+subplot(121)
+plot(t, [va + va10, va11])
+ylabel('Velocity motor A [rad/s]')
+xlabel('t [s]')
+legend('va (6V) + va (4V)','va (10V)')
+
+subplot(122)
+plot(t, [vb + vb10, vb11])
+ylabel('Velocity motor B [rad/s]')
+xlabel('t [s]')
+legend('vb (6V) + vb (4V)','vb (10V)')
+
+% Clear difference
