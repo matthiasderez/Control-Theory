@@ -19,7 +19,13 @@ class Robot : public MECOtron {
     float e[2];
     float u[2];
     float out;
+    float counter;
+    float counterThousand;
+    float sign;
+    float voltage;
+    float time;
 
+    
   public:
   
     const unsigned long eventInterval = 3000;

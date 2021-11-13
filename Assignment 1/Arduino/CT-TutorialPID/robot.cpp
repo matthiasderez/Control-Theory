@@ -25,7 +25,11 @@ bool Robot::init() {
   }
   
   previousTime = 0;
-  out = 12.0; 
+  voltage = 6.0;
+  out = voltage; 
+  counter = 0;
+  counterThousand = 0;
+  sign = 1;
 
   return true;
 }
@@ -41,50 +45,44 @@ void Robot::control() {
     LED1(ON);
     LED2(OFF);
 
-    unsigned long currentTime = millis();
+//    unsigned long currentTime = millis();
 
-    if (currentTime - previousTime >= eventInterval) {
+//    if (currentTime - previousTime >= eventInterval) {
+//      /* Event code */
+//      LED1(OFF);
+//      out = -out;
+//      /* Update the timing for the next time around */
+//      previousTime = currentTime;
+//    }
+    
+    if (counter - counterThousand >= 300) {
       /* Event code */
       LED1(OFF);
-      out = -out;
-      /* Update the timing for the next time around */
-      previousTime = currentTime;
+      if (out != 0){
+        sign = -sign;
+      }
+      out = out + sign * voltage;
+      counterThousand = counter;
     }
+    
+    
+    counter = counter + 1;
+    
     
     setVoltageMotorA(out);
     setVoltageMotorB(out);
-    
+ 
+
 
 
 // ------------------------------------------------------------------------------------------------------
 
     
 
-    float vol_A = readValue(0);
-    float vol_B = readValue(1);
-    
-    //setVoltageMotorA(vol_A); // Apply 6.0 volts to motor A if the control is enabled
-    //setVoltageMotorB(vol_B); // Apply 2.0 volts to motor B if the control is enabled
 
-    float pa = getPositionMotorA();
-    writeValue(1, pa);
-    float pb = getPositionMotorB();
-    writeValue(2, pb);
   
-    float va = getSpeedMotorA();    // Get the wheel speed of motor A (in radians/second)
-    x[1] = x[0]; x[0] = va;         // Memorize the last two samples of the speed of motor A (in fact, a shift register)
-    writeValue(3, va);
-    float vb = getSpeedMotorB();  
-    writeValue(4, vb);
-  
-    float fd = getFrontDistance(); 
-    writeValue(5, fd);
-    float pangle = getPendulumAngle(); 
-    writeValue(6, pangle);
-  
-    float voltage_A = getVoltageMotorA();
-    writeValue(0, voltage_A);       
- 
+      
+
 //    float setpoint = pb;
 //    float error = setpoint - pa;
 //    
@@ -106,10 +104,40 @@ void Robot::control() {
     writeValue(0, getVoltageMotorA());
     writeValue(3, getSpeedMotorA());
     writeValue(4, getSpeedMotorB());
+    out = 6.0; 
+    counter = 0;
+    counterThousand = 0;
+    sign = 1;
     
   }
   
+    float vol_A = readValue(0);
+    float vol_B = readValue(1);
+    
+    //setVoltageMotorA(vol_A); // Apply 6.0 volts to motor A if the control is enabled
+    //setVoltageMotorB(vol_B); // Apply 2.0 volts to motor B if the control is enabled
+    float voltage_A = getVoltageMotorA();
+    writeValue(0, voltage_A); 
+    float voltage_B = getVoltageMotorB();
+    writeValue(1, voltage_B);
 
+    float pa = getPositionMotorA();
+    writeValue(2, pa);
+    float pb = getPositionMotorB();
+    writeValue(3, pb);
+  
+    float va = getSpeedMotorA();    // Get the wheel speed of motor A (in radians/second)
+    x[1] = x[0]; x[0] = va;         // Memorize the last two samples of the speed of motor A (in fact, a shift register)
+    writeValue(4, va);
+    float vb = getSpeedMotorB();  
+    writeValue(5, vb);
+  
+    float fd = getFrontDistance(); 
+    writeValue(6, fd);
+    float pangle = getPendulumAngle(); 
+    writeValue(7, pangle);
+    time = counter * 0.01;
+    writeValue(8,time);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
