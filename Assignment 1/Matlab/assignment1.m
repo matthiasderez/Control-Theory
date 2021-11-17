@@ -1,4 +1,4 @@
-close all
+% close all
 % csvfile = 'recording9.csv';
 % labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
 % labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
@@ -7,6 +7,44 @@ close all
 % save data
 % 
 % load data.mat
+% 
+% csvfile = 'recording10(4V).csv';
+% labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+% labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+% data10 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+% 
+% save data10
+% 
+% load data10.mat
+% 
+% 
+% csvfile = 'recording11(10V).csv';
+% labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+% labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+% data11 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+% 
+% save data11
+% 
+% load data11.mat
+% 
+% 
+% csvfile = 'ground_step.csv';
+% labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+% labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+% ground_step = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+% 
+% save ground_step
+% 
+% load ground_step.mat
+% 
+% csvfile = 'ground_blokfuncties.csv';
+% labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+% labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+% ground_blokfuncties = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+% 
+% save ground_blokfuncties
+% 
+% load ground_blokfuncties.mat
 
 %% Defining variables
 voltageA = data(:,2);
@@ -234,24 +272,6 @@ pzmap(sys_d2)
 % cutoff freq via dynamica systeem?
 % VOORLOPIG GESKIPT
 %% 2.d) Superposition principle
-csvfile = 'recording10(4V).csv';
-labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
-labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
-data10 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
-
-save data10
-
-load data10.mat
-
-
-csvfile = 'recording11(10V).csv';
-labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
-labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
-data11 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
-
-save data11
-
-load data11.mat
 
 va10  = data10(:, 6);
 vb10 = data10(:, 7);
@@ -272,3 +292,41 @@ xlabel('t [s]')
 legend('vb (6V) + vb (4V)','vb (10V)')
 
 % Clear difference
+
+%% 3.a) Step input to cart on ground
+
+
+
+va_gs  = ground_step(:, 6);
+vb_gs = ground_step(:, 7);
+va_gb  = ground_blokfuncties(:, 6);
+vb_gb = ground_blokfuncties(:, 7);
+t_gs = ground_step(:,10);
+
+figure
+subplot(121)
+plot(t_gs, va_gs)
+ylabel('Velocity motor A [rad/s]')
+xlabel('t [s]')
+
+subplot(122)
+plot(t_gs, vb_gs)
+ylabel('Velocity motor B [rad/s]')
+xlabel('t [s]')
+
+sgtitle('Motor velocity for step input with cart on the ground')
+print -depsc motor_velocity_groundstep.eps
+
+figure
+subplot(121)
+plot(t, va_gb)
+ylabel('Velocity motor A [rad/s]')
+xlabel('t [s]')
+
+subplot(122)
+plot(t, vb_gb)
+ylabel('Velocity motor B [rad/s]')
+xlabel('t [s]')
+
+sgtitle('Motor velocity for alternating input with cart on the ground')
+print -depsc motor_velocity_groundstep.eps
