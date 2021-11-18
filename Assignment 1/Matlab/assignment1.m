@@ -1,50 +1,50 @@
 % close all
-% csvfile = 'recording9.csv';
+% csvfile = '../Data/recording9.csv';
 % labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
 % labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
 % data = dlmread(csvfile, ',', 2, 0); % Data follows the labels
 % 
 % save data
-% 
-% load data.mat
-% 
-% csvfile = 'recording10(4V).csv';
+
+load data.mat
+
+% csvfile = '../Data/recording10(4V).csv';
 % labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
 % labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
 % data10 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
 % 
 % save data10
-% 
-% load data10.mat
-% 
-% 
-% csvfile = 'recording11(10V).csv';
+
+load data10.mat
+
+
+% csvfile = '../Data/recording11(10V).csv';
 % labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
 % labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
 % data11 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
 % 
 % save data11
-% 
-% load data11.mat
-% 
-% 
-% csvfile = 'ground_step.csv';
+
+load data11.mat
+
+
+% csvfile = '../Data/ground_step.csv';
 % labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
 % labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
 % ground_step = dlmread(csvfile, ',', 2, 0); % Data follows the labels
 % 
 % save ground_step
-% 
-% load ground_step.mat
-% 
-% csvfile = 'ground_blokfuncties.csv';
+
+load ground_step.mat
+
+% csvfile = '../Data/ground_blokfuncties.csv';
 % labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
 % labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
 % ground_blokfuncties = dlmread(csvfile, ',', 2, 0); % Data follows the labels
 % 
 % save ground_blokfuncties
-% 
-% load ground_blokfuncties.mat
+
+load ground_blokfuncties.mat
 
 %% Defining variables
 voltageA = data(:,2);
@@ -66,7 +66,7 @@ f = [0:N-1]'*(fs/N); % arrays of frequencies, 0 to f_s Hz
 
 %% Plotting data
 % motor velocity plots
-figure
+figure(1)
 subplot(121)
 plot(t, va)
 ylabel('Velocity motor A [rad/s]')
@@ -80,14 +80,14 @@ xlabel('t [s]')
 sgtitle('Motor velocity')
 print -depsc motor_velocity.eps
 
-figure
+figure(2)
 plot(t,[va, vb])
 legend('va','vb')
 ylabel('Velocity motor[rad/s]')
 xlabel('t [s]')
 
 % motor voltage plot
-figure
+figure(3)
 plot(t, voltageA);
 ylabel('Input voltage [V]')
 xlabel('t [s]')
@@ -112,7 +112,7 @@ dvb_matrix = vb_matrix - repmat(vb_mean,1,num_periods);
 dvoltageA_matrix = voltageA_matrix - repmat(voltageA_mean,1,num_periods);
 
 % plotting some interesting comparisons
-figure,hold on
+figure(4),hold on
 subplot(2,1,1),plot(t(1:points_per_period), va_matrix, 'LineWidth', 1) 
 grid on
 axis tight
@@ -125,7 +125,7 @@ xlabel('t  [s]')
 ylabel('\Delta va  [m/s]')
 hold off
 
-figure,hold on
+figure(5),hold on
 subplot(2,1,1),plot(t(1:points_per_period), vb_matrix, 'LineWidth', 1) 
 grid on
 axis tight
@@ -139,7 +139,7 @@ ylabel('\Delta vb  [m/s]')
 hold off
 
 
-figure,hold on
+figure(6),hold on
 subplot(2,1,1),plot(t(1:points_per_period), voltageA_matrix, 'LineWidth', 1) 
 grid on
 axis tight
@@ -174,7 +174,7 @@ phs_1 = 180/pi*unwrap(angle(FRF1));
 phs_1 = 360*ceil(-phs_1(1)/360) + phs_1;
 
 % plot the results
-figure,hold on,
+figure(7),hold on,
 subplot(2,2,1),semilogx(f, mag_1)
 grid on
 xlim([f(1) f(end)])
@@ -208,10 +208,12 @@ xlabel('time [s]')
 ylabel('displacement [m/s]')
 axis tight
 
-figure, hold on
+figure(8), hold on
 pzmap(sys_d1)
 
 %% %% 2.b) Least square method, no filtering (on motor A) DIFFERENT MODEL
+
+%**** ook ng voor motor B!!!!
 
 % suppose J = 0
 % H(z) = b1/(z(z-a1))
@@ -233,7 +235,7 @@ phs_2 = 180/pi*unwrap(angle(FRF2));
 phs_2 = 360*ceil(-phs_2(1)/360) + phs_2;
 
 % plot the results
-figure,hold on,
+figure(9),hold on,
 subplot(2,2,1),semilogx(f, mag_2)
 grid on
 xlim([f(1) f(end)])
@@ -250,27 +252,92 @@ legend('estimated','Location','SouthWest')
 %% 2.d) Difference between respons of the simulated model and the real system: SIMPLE MODEL
 
 %Voorlopig gedaan met al gemeten input, in opgave staat met step input
-x2 = lsim(sys_d2,voltageA,t);
+va_est = lsim(sys_d2,voltageA,t);
 
-subplot(2,2,2),plot(t,[va x2]);
+subplot(2,2,2),plot(t,[va va_est]);
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
 ylabel('wheel speed [m/s]')
 axis tight
-subplot(2,2,4),plot(t,abs(va - x2))
+subplot(2,2,4),plot(t,abs(va - va_est))
 legend('error')
 xlabel('time [s]')
 ylabel('displacement [m/s]')
 axis tight
 
-figure, hold on
+figure(10), hold on
 pzmap(sys_d2)
-%% 2.c) Filtering
+%% 2.c) Filtering (for 1st model)
 
 %Butterworth
 % orde hoger dan orde systeem
-% cutoff freq via dynamica systeem?
-% VOORLOPIG GESKIPT
+% cutoff freq = bandwith van ongefilterde LSE
+% te lage orde: te zwakke attenuation van hoge freq
+% te hoge orde: te grote delay
+% => kies 6e orde
+
+% ******* Motor A *******
+
+% define a low(band)-pass filter
+cutoff = bandwidth(sys_d1)/(2*pi);
+[B_filt,A_filt] = butter(6, cutoff*(2/fs));
+
+% apply the filter to both input and output
+va_filt = filter(B_filt, A_filt, va); 
+voltageA_filt = filter(B_filt, A_filt, voltageA);
+
+%repeat the identification
+b1_filt = va_filt(4:end); 
+phi1_filt = [va_filt(2:end-2), va_filt(1:end-3), voltageA_filt(2:end-2), voltageA_filt(1:end-3)]; 
+theta1_filt = phi1_filt\b1_filt;
+Num1_filt = [0, theta1_filt(3), theta1_filt(4)];
+Den1_filt = [1, -theta1_filt(1), -theta1_filt(2), 0];
+sys_d1_filt = tf(Num1_filt, Den1_filt, Ts);
+
+% compute the frequency response of the new identified model
+FRF1_filt = squeeze(freqresp(sys_d1_filt,2*pi*f));
+mag_1_filt = 20*log10(abs(FRF1_filt));
+phs_1_filt = 180/pi*unwrap(angle(FRF1_filt)); 
+phs_1_filt = 360*ceil(-phs_1_filt(1)/360) + phs_1_filt;
+
+% plot results
+figure(11), hold on
+sgtitle("LLS with low-pass filter applied to the input and output data")
+subplot(2,2,1),semilogx(f, mag_1_filt)
+grid on
+xlim([f(1) f(end)])
+xlabel('f  [Hz]')
+ylabel('|FRF|  [m]')
+legend('estimated','Location','SouthWest')
+axis tight
+subplot(2,2,3)
+semilogx(f, phs_1_filt)
+grid on
+xlim([f(1) f(end)])
+xlabel('f  [Hz]')
+ylabel('\phi(FRF)  [^\circ]')
+legend('estimated','Location','SouthWest')
+
+%empirical
+va_est_filt = lsim(sys_d1_filt, voltageA, t);
+
+subplot(2,2,2),plot(t,[va va_est_filt]);
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('wheel speed [m/s]')
+axis tight
+subplot(2,2,4),plot(t,abs(va - va_est_filt))
+legend('error')
+xlabel('time [s]')
+ylabel('displacement [m/s]')
+axis tight
+
+figure(12),hold on
+pzmap(sys_d1_filt)
+
+
+
+
 %% 2.d) Superposition principle
 
 va10  = data10(:, 6);
@@ -278,7 +345,7 @@ vb10 = data10(:, 7);
 va11  = data11(:, 6);
 vb11 = data11(:, 7);
 
-figure
+figure(13)
 subplot(121)
 plot(t, [va + va10, va11])
 ylabel('Velocity motor A [rad/s]')
@@ -303,7 +370,7 @@ va_gb  = ground_blokfuncties(:, 6);
 vb_gb = ground_blokfuncties(:, 7);
 t_gs = ground_step(:,10);
 
-figure
+figure(14)
 subplot(121)
 plot(t_gs, va_gs)
 ylabel('Velocity motor A [rad/s]')
@@ -317,7 +384,7 @@ xlabel('t [s]')
 sgtitle('Motor velocity for step input with cart on the ground')
 print -depsc motor_velocity_groundstep.eps
 
-figure
+figure(15)
 subplot(121)
 plot(t, va_gb)
 ylabel('Velocity motor A [rad/s]')
