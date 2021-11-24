@@ -216,7 +216,7 @@ subplot(2,1,1),semilogx(f, mag_1)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
-ylabel('|FRF|  [m/s]')
+ylabel('|FRF|  [rad/s]')
 legend('estimated','Location','SouthWest')
 subplot(2,1,2),semilogx(f, phs_1)
 grid on
@@ -331,7 +331,7 @@ subplot(2,1,1),semilogx(f, mag_2)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
-ylabel('|FRF|  [m/s] simple model')
+ylabel('|FRF|  [rad/s]')
 legend('estimated','Location','SouthWest')
 subplot(2,1,2),semilogx(f, phs_2)
 grid on
@@ -426,7 +426,7 @@ pzmap(sys_d2)
 % ******* Motor A *******
 
 % define a low(band)-pass filter
-cutoff = bandwidth(sys_d1)/(2*pi);
+cutoff = bandwidth(sys_d2)/(2*pi);
 [B_filt,A_filt] = butter(6, cutoff*(2/fs));
 h = fvtool(B_filt, A_filt);
 
@@ -480,8 +480,8 @@ legend('error')
 xlabel('time [s]')
 ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
 axis tight
-sgtitle('Step response simple model with low-pass filter')
-print -depsc step_response_simple_a_filter.eps
+sgtitle('Step response with low-pass filter')
+print -depsc step_response_filter_a.eps
 
 figure,hold on
 pzmap(sys_d1_filt)
@@ -551,8 +551,8 @@ legend('error')
 xlabel('time [s]')
 ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
 axis tight
-sgtitle('Step response motor a simple model cart on ground')
-print -depsc step_response_simple_a_ground.eps
+sgtitle('Step response motor a old model cart on ground')
+print -depsc step_response_ground_simple_a.eps
 
 % Motor B
 figure
@@ -567,7 +567,117 @@ legend('error')
 xlabel('time [s]')
 ylabel('\omega_b(empirical) - \omega_b(estimated) [rad/s]')
 axis tight
-sgtitle('Step response motor b simple model cart on ground')
-print -depsc step_response_simple_b_ground.eps
+sgtitle('Step response motor b old model cart on ground')
+print -depsc step_response_ground_simple_b.eps
 
 % Emperical reacts slower -> logic, inertia cart
+
+%%% Identify new model%%% 
+
+
+% suppose J = 0
+% H(z) = b1/(z(z-a1))
+% collect the signals appearing in the difference equation
+b_gs = va_gs(3:end); 
+phi_gs = [va_gs(2:end-1), voltageA_gs(1:end-2)]; 
+% perform the fit to get the desired parameters
+
+theta_gs = phi_gs\b_gs;
+
+% build the identified model
+Num_gs = [theta_gs(2)];
+Den_gs = [1, -theta_gs(1), 0];
+sys_gs = tf(Num_gs, Den_gs, Ts);
+
+% compute the frequency response of the identified model
+FRF_gs = squeeze(freqresp(sys_gs,2*pi*f));
+mag_gs = 20*log10(abs(FRF_gs));
+phs_gs = 180/pi*unwrap(angle(FRF_gs)); 
+phs_gs = 360*ceil(-phs_gs(1)/360) + phs_gs;
+
+% plot the results
+figure,hold on,
+subplot(2,1,1),semilogx(f, mag_gs)
+grid on
+xlim([f(1) f(end)])
+xlabel('f  [Hz]')
+ylabel('|FRF|  [rad/s]')
+legend('estimated','Location','SouthWest')
+subplot(2,1,2),semilogx(f, phs_gs)
+grid on
+xlim([f(1) f(end)])
+xlabel('f  [Hz]')
+ylabel('\phi(FRF)  [^\circ] ')
+legend('estimated','Location','SouthWest')
+sgtitle('FRF new estimated model for cart on ground without filter')
+print -depsc FRF_ground_newmodel_nofilter.eps
+
+% Motor A
+figure
+va_est = lsim(sys_gs,voltageA_gs(149:548),t_gs(149:548));
+subplot(2,1,1),plot(t(1:400),[va_gs(149:548) va_est]);
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('\omega_a [rad/s]')
+axis tight
+subplot(2,1,2),plot(t(1:400),abs(va_gs(149:548) - va_est))
+legend('error')
+xlabel('time [s]')
+ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
+axis tight
+sgtitle('Step response new model motor a for cart on ground without filter')
+print -depsc step_response_ground__newmodel_nofilter_a.eps
+
+
+% Filtering
+cutoff = bandwidth(sys_gs)/(2*pi);
+[B_filt,A_filt] = butter(6, cutoff*(2/fs));
+h = fvtool(B_filt, A_filt);
+
+% apply the filter to both input and output
+va_gs = filter(B_filt, A_filt, va_gs); 
+voltageA_gs = filter(B_filt, A_filt, voltageA_gs);
+
+% compute the frequency response of the identified model
+FRF_gs = squeeze(freqresp(sys_gs,2*pi*f));
+mag_gs = 20*log10(abs(FRF_gs));
+phs_gs = 180/pi*unwrap(angle(FRF_gs)); 
+phs_gs = 360*ceil(-phs_gs(1)/360) + phs_gs;
+
+% plot the results
+figure,hold on,
+subplot(2,1,1),semilogx(f, mag_gs)
+grid on
+xlim([f(1) f(end)])
+xlabel('f  [Hz]')
+ylabel('|FRF|  [rad/s]')
+legend('estimated','Location','SouthWest')
+subplot(2,1,2),semilogx(f, phs_gs)
+grid on
+xlim([f(1) f(end)])
+xlabel('f  [Hz]')
+ylabel('\phi(FRF)  [^\circ] simple model')
+legend('estimated','Location','SouthWest')
+sgtitle('FRF new estimated model for cart on ground with filter')
+print -depsc FRF_ground_newmodel_filter.eps
+
+% Motor A
+figure
+va_est = lsim(sys_gs,voltageA_gs(149:548),t_gs(149:548));
+subplot(2,1,1),plot(t(1:400),[va_gs(149:548) va_est]);
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('\omega_a [rad/s]')
+axis tight
+subplot(2,1,2),plot(t(1:400),abs(va_gs(149:548) - va_est))
+legend('error')
+xlabel('time [s]')
+ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
+axis tight
+sgtitle('Step response new estimated model motor a for cart on ground with filter')
+print -depsc step_response_ground__newmodel_filter_a.eps
+
+figure, hold on
+pzmap(sys_gs)
+
+
