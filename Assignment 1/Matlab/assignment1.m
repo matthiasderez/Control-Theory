@@ -1,4 +1,4 @@
-% close all
+close all
 % csvfile = '../Data/recording9.csv';
 % labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
 % labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
@@ -46,7 +46,17 @@ load ground_step.mat
 
 load ground_blokfuncties.mat
 
+% csvfile = '../Data/air_step_input.csv';
+% labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+% labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+% air_step = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+% 
+% save air_step
+
+load air_step.mat
+
 %% Defining variables
+% Data alternating input
 voltageA = data(:,2);
 voltageB = data(:,3);
 positionA = data(:,4);
@@ -61,33 +71,55 @@ Ts = 0.01;
 fs = 1/Ts;
 f = [0:N-1]'*(fs/N); % arrays of frequencies, 0 to f_s Hz
 
+% Data step input
+voltageA_step = air_step(:,2);
+voltageB_step = air_step(:,3);
+va_step  = air_step(:, 6);
+vb_step = air_step(:, 7);
+t_step = air_step(:,10);
+
+% Data cart on ground
+va_gs  = ground_step(:, 6);
+vb_gs = ground_step(:, 7);
+va_gb  = ground_blokfuncties(:, 6);
+vb_gb = ground_blokfuncties(:, 7);
+t_gs = ground_step(:,10);
+
 
 
 
 %% Plotting data
 % motor velocity plots
-figure(1)
+figure
 subplot(121)
 plot(t, va)
-ylabel('Velocity motor A [rad/s]')
+ylabel('\omega_a [rad/s]')
 xlabel('t [s]')
 
 subplot(122)
 plot(t, vb)
-ylabel('Velocity motor B [rad/s]')
+ylabel('\omega_b [rad/s]')
 xlabel('t [s]')
-
 sgtitle('Motor velocity')
 print -depsc motor_velocity.eps
 
-figure(2)
+figure
 plot(t,[va, vb])
-legend('va','vb')
-ylabel('Velocity motor[rad/s]')
+legend('Motor A','Motor B')
+ylabel('Motor velocity [rad/s]')
 xlabel('t [s]')
+print -depsc motor_velocities_1plot.eps
+
+
+figure
+plot(t, va-vb)
+ylabel('\omega_a - \omega_b [rad/s]')
+xlabel('t [s]')
+sgtitle('Difference between motor velocities')
+print -depsc difference_motor_velocities.eps
 
 % motor voltage plot
-figure(3)
+figure
 plot(t, voltageA);
 ylabel('Input voltage [V]')
 xlabel('t [s]')
@@ -112,34 +144,36 @@ dvb_matrix = vb_matrix - repmat(vb_mean,1,num_periods);
 dvoltageA_matrix = voltageA_matrix - repmat(voltageA_mean,1,num_periods);
 
 % plotting some interesting comparisons
-figure(4),hold on
+figure,hold on
 subplot(2,1,1),plot(t(1:points_per_period), va_matrix, 'LineWidth', 1) 
 grid on
 axis tight
 xlabel('t  [s]')
-ylabel('va  [m/s]')
+ylabel('\omega_a  [rad/s]')
 subplot(2,1,2),plot(t(1:points_per_period), dva_matrix, 'LineWidth', 1)
 grid on
 axis tight
 xlabel('t  [s]')
-ylabel('\Delta va  [m/s]')
+ylabel('\Delta \omega_a  [rad/s]')
 hold off
+print -depsc omegaA_deltaomegaA.eps
 
-figure(5),hold on
+figure,hold on
 subplot(2,1,1),plot(t(1:points_per_period), vb_matrix, 'LineWidth', 1) 
 grid on
 axis tight
 xlabel('t  [s]')
-ylabel('vb  [m/s]')
+ylabel('\omega_b  [rad/s]')
 subplot(2,1,2),plot(t(1:points_per_period), dvb_matrix, 'LineWidth', 1)
 grid on
 axis tight
 xlabel('t  [s]')
-ylabel('\Delta vb  [m/s]')
+ylabel('\Delta \omega_b  [rad/s]')
 hold off
+print -depsc omegaB_deltaomegaB.eps
 
 
-figure(6),hold on
+figure,hold on
 subplot(2,1,1),plot(t(1:points_per_period), voltageA_matrix, 'LineWidth', 1) 
 grid on
 axis tight
@@ -151,8 +185,9 @@ axis tight
 xlabel('t  [s]')
 ylabel('\Delta voltageA  [V]')
 hold off
+print -depsc V_deltaV.eps
 
-%% 2.b) Least square method, no filtering (on motor A)
+%% 2.b) Least square method, no filtering (on motor A) COMPLEX MODEL
 
 % H(z) = (b1*z+b2)/(z(z^2-a1z-a2))
 % 
@@ -174,46 +209,99 @@ phs_1 = 180/pi*unwrap(angle(FRF1));
 phs_1 = 360*ceil(-phs_1(1)/360) + phs_1;
 
 % plot the results
-figure(7),hold on,
-subplot(2,2,1),semilogx(f, mag_1)
+figure,hold on,
+subplot(2,1,1),semilogx(f, mag_1)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
 ylabel('|FRF|  [m/s]')
 legend('estimated','Location','SouthWest')
-subplot(2,2,3),semilogx(f, phs_1)
+subplot(2,1,2),semilogx(f, phs_1)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
 ylabel('\phi(FRF)  [^\circ]')
 legend('estimated','Location','SouthWest')
+sgtitle('FRF estimated model (complex)')
+print -depsc FRF_complex_model.eps
 
 
 
 
 
-%% 2.d) Difference between respons of the simulated model and the real system
 
-%Voorlopig gedaan met al gemeten input, in opgave staat met step input
-x1 = lsim(sys_d1,voltageA,t);
+%% 2.d) Difference between respons of the simulated model and the real system COMPLEX MODEL
 
-subplot(2,2,2),plot(t,[va x1]);
+
+% Motor A
+va_est = lsim(sys_d1,voltageA_step(134:433),t_step(134:433));               % start at 134, moment of step
+figure
+subplot(2,1,1),plot(t(1:300),[va_step(134:433) va_est]);
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
-ylabel('wheel speed [m/s]')
+ylabel('\omega_a [rad/s]')
 axis tight
-subplot(2,2,4),plot(t,abs(va - x1))
+subplot(2,1,2),plot(t(1:300),abs(va_step(134:433) - va_est))
 legend('error')
 xlabel('time [s]')
-ylabel('displacement [m/s]')
+ylabel('omega_{a empirical} - \omega_{a estimated} [rad/s]')
 axis tight
+sgtitle('Step respons complex model')
+print -depsc step_respons_complex_a.eps
 
-figure(8), hold on
+% Motor B
+vb_est = lsim(sys_d1,voltageA_step(134:433),t_step(134:433));
+figure
+subplot(2,1,1),plot(t(1:300),[vb_step(134:433) vb_est]);
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('\omega_b [rad/s]')
+axis tight
+subplot(2,1,2),plot(t(1:300),abs(vb_step(134:433) - vb_est))
+legend('error')
+xlabel('time [s]')
+ylabel('omega_{b empirical} - \omega_{b estimated} [rad/s]')
+axis tight
+sgtitle('Step respons complex model')
+print -depsc step_respons_complex_b.eps
+
+% Motor A
+x1 = lsim(sys_d1,voltageA,t);
+figure
+subplot(2,1,1),plot(t,[va x1]);
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('\omega_a [rad/s]')
+axis tight
+subplot(2,1,2),plot(t,abs(va - x1))
+legend('error')
+xlabel('time [s]')
+ylabel('omega_{a empirical} - \omega_{a estimated} [rad/s]')
+axis tight
+sgtitle('Respons complex model to wavefunction input')
+print -depsc wave_respons_complex_a.eps
+
+% Motor B
+x1 = lsim(sys_d1,voltageA,t);
+figure
+subplot(2,1,1),plot(t,[vb x1]);
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('\omega_b [rad/s]')
+axis tight
+subplot(2,1,2),plot(t,abs(vb - x1))
+legend('error')
+xlabel('time [s]')
+ylabel('omega_{b empirical} - \omega_{b estimated} [rad/s]')
+axis tight
+sgtitle('Respons complex model to wavefunction input')
+print -depsc wave_respons_complex_b.eps
+
+figure, hold on
 pzmap(sys_d1)
+print -depsc p&z_complex.eps
 
-%% %% 2.b) Least square method, no filtering (on motor A) DIFFERENT MODEL
-
-%**** ook ng voor motor B!!!!
+%% %% 2.b) Least square method, no filtering (on motor A) SIMPLE MODEL
 
 % suppose J = 0
 % H(z) = b1/(z(z-a1))
@@ -235,43 +323,95 @@ phs_2 = 180/pi*unwrap(angle(FRF2));
 phs_2 = 360*ceil(-phs_2(1)/360) + phs_2;
 
 % plot the results
-figure(9),hold on,
-subplot(2,2,1),semilogx(f, mag_2)
+figure,hold on,
+subplot(2,1,1),semilogx(f, mag_2)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
 ylabel('|FRF|  [m/s] simple model')
 legend('estimated','Location','SouthWest')
-subplot(2,2,3),semilogx(f, phs_2)
+subplot(2,1,2),semilogx(f, phs_2)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
 ylabel('\phi(FRF)  [^\circ] simple model')
 legend('estimated','Location','SouthWest')
-
-%% 2.d) Difference between respons of the simulated model and the real system: SIMPLE MODEL
-
-%Voorlopig gedaan met al gemeten input, in opgave staat met step input
-va_est = lsim(sys_d2,voltageA,t);
-
-subplot(2,2,2),plot(t,[va va_est]);
-legend('empirical','estimated','Location','SouthWest')
-xlabel('time [s]')
-ylabel('wheel speed [m/s]')
-axis tight
-subplot(2,2,4),plot(t,abs(va - va_est))
-legend('error')
-xlabel('time [s]')
-ylabel('displacement [m/s]')
-axis tight
-
-figure(10), hold on
-pzmap(sys_d2)
+sgtitle('FRF estimated model (simple)')
+print -depsc FRF_simple_model.eps
 
 % THIS IS THE MODEL WE USE FROM NOW ON
-%% 2.c) Filtering (for 1st model)
+%% 2.d) Difference between respons of the simulated model and the real system: SIMPLE MODEL
 
-%Butterworth
+% Motor A
+va_est = lsim(sys_d2,voltageA_step(134:433),t_step(134:433));
+subplot(2,1,2),plot(t(1:300),[va_step(134:433) va_est]);
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('\omega_a [rad/s]')
+axis tight
+subplot(2,1,2),plot(t(1:300),abs(va_step(134:433) - va_est))
+legend('error')
+xlabel('time [s]')
+ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
+axis tight
+sgtitle('Step respons simple model')
+print -depsc step_respons_simple_a.eps
+
+% Motor B
+va_est = lsim(sys_d2,voltageA_step(134:433),t_step(134:433));
+subplot(2,1,1),plot(t(1:300),[vb_step(134:433) va_est]);
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('\omega_b [rad/s]')
+axis tight
+subplot(2,1,2),plot(t(1:300),abs(vb_step(134:433) - va_est))
+legend('error')
+xlabel('time [s]')
+ylabel('\omega_b(empirical) - \omega_b(estimated) [rad/s]')
+axis tight
+sgtitle('Step respons simple model')
+print -depsc step_respons_simple_b.eps
+
+% Motor A
+va_est = lsim(sys_d2,voltageA,t);
+figure 
+subplot(2,1,1),plot(t,[va va_est]);
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('\omega_a [rad/s]')
+axis tight
+subplot(2,1,2),plot(t,abs(va - va_est))
+legend('error')
+xlabel('time [s]')
+ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
+axis tight
+sgtitle('Respons simple model to wavefunction input')
+print -depsc wave_respons_simple_a.eps
+
+% Motor B
+va_est = lsim(sys_d2,voltageA,t);
+figure 
+subplot(2,1,1),plot(t,[vb va_est]);
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('\omega_b [rad/s]')
+axis tight
+subplot(2,1,2),plot(t,abs(vb - va_est))
+legend('error')
+xlabel('time [s]')
+ylabel('\omega_b(empirical) - \omega_b(estimated) [rad/s]')
+axis tight
+sgtitle('Respons simple model to wavefunction input')
+print -depsc wave_respons_simple_b.eps
+
+
+figure, hold on
+pzmap(sys_d2)
+
+
+%% 2.c) Filtering (simple model)
+
+% Butterworth
 % orde hoger dan orde systeem
 % cutoff freq = bandwith van ongefilterde LSE
 % te lage orde: te zwakke attenuation van hoge freq
@@ -282,13 +422,9 @@ pzmap(sys_d2)
 
 % define a low(band)-pass filter
 cutoff = bandwidth(sys_d1)/(2*pi);
-<<<<<<< Updated upstream
+
 [B_filt,A_filt] = butter(4, cutoff*(2/fs));
 h = fvtool(B_filt, A_filt);
-=======
-%cutoff = 35;
-[B_filt,A_filt] = butter(6, cutoff*(2/fs));
->>>>>>> Stashed changes
 
 % apply the filter to both input and output
 va_filt = filter(B_filt, A_filt, va); 
@@ -309,42 +445,42 @@ phs_1_filt = 180/pi*unwrap(angle(FRF1_filt));
 phs_1_filt = 360*ceil(-phs_1_filt(1)/360) + phs_1_filt;
 
 % plot results
-figure(11), hold on
+figure, hold on
 sgtitle("LLS with low-pass filter applied to the input and output data")
-subplot(2,2,1),semilogx(f, mag_1_filt)
+subplot(2,1,1),semilogx(f, mag_1_filt)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
 ylabel('|FRF|  [m]')
 legend('estimated','Location','SouthWest')
 axis tight
-subplot(2,2,3)
+subplot(2,1,2)
 semilogx(f, phs_1_filt)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
 ylabel('\phi(FRF)  [^\circ]')
 legend('estimated','Location','SouthWest')
+print -depsc FRF_simple_filter.eps
 
 %empirical
-va_est_filt = lsim(sys_d1_filt, voltageA, t);
-
-subplot(2,2,2),plot(t,[va va_est_filt]);
+va_est_filt = lsim(sys_d1_filt, voltageA_step(134:433), t_step(134:433));
+figure
+subplot(2,1,1),plot(t(1:300),[va_step(134:433) va_est_filt]);
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
-ylabel('wheel speed [m/s]')
+ylabel('\omega_a [rad/s]')
 axis tight
-subplot(2,2,4),plot(t,abs(va - va_est_filt))
+subplot(2,1,2),plot(t(1:300),abs(va_step(134:433) - va_est_filt))
 legend('error')
 xlabel('time [s]')
-ylabel('displacement [m/s]')
+ylabel('\omega_a [rad/s]')
 axis tight
+sgtitle('Step respons simple model with low_pass filter')
+print -depsc step_respons_simple_a_filter.eps
 
-figure(12),hold on
+figure,hold on
 pzmap(sys_d1_filt)
-
-
-
 
 %% 2.d) Superposition principle
 
@@ -353,55 +489,47 @@ vb10 = data10(:, 7);
 va11  = data11(:, 6);
 vb11 = data11(:, 7);
 
-figure(13)
+figure
 subplot(121)
 plot(t, [va + va10, va11])
-ylabel('Velocity motor A [rad/s]')
+ylabel('\omega_a [rad/s]')
 xlabel('t [s]')
 legend('va (6V) + va (4V)','va (10V)')
 
 subplot(122)
 plot(t, [vb + vb10, vb11])
-ylabel('Velocity motor B [rad/s]')
+ylabel('\omega_b [rad/s]')
 xlabel('t [s]')
 legend('vb (6V) + vb (4V)','vb (10V)')
+sgtitle('Prove system is non-linear')
+print -depsc superposition.eps
 
-% Clear difference
 
 %% 3.a) Step input to cart on ground
 
-
-
-va_gs  = ground_step(:, 6);
-vb_gs = ground_step(:, 7);
-va_gb  = ground_blokfuncties(:, 6);
-vb_gb = ground_blokfuncties(:, 7);
-t_gs = ground_step(:,10);
-
-figure(14)
+figure
 subplot(121)
 plot(t_gs, va_gs)
-ylabel('Velocity motor A [rad/s]')
+ylabel('\omega_a [rad/s]')
 xlabel('t [s]')
 
 subplot(122)
 plot(t_gs, vb_gs)
-ylabel('Velocity motor B [rad/s]')
+ylabel('\omega_b [rad/s]')
 xlabel('t [s]')
-
 sgtitle('Motor velocity for step input with cart on the ground')
 print -depsc motor_velocity_groundstep.eps
 
-figure(15)
+figure
 subplot(121)
 plot(t, va_gb)
-ylabel('Velocity motor A [rad/s]')
+ylabel('\omega_a [rad/s]')
 xlabel('t [s]')
 
 subplot(122)
 plot(t, vb_gb)
-ylabel('Velocity motor B [rad/s]')
+ylabel('\omega_b [rad/s]')
 xlabel('t [s]')
 
-sgtitle('Motor velocity for alternating input with cart on the ground')
-print -depsc motor_velocity_groundstep.eps
+sgtitle('Motor velocity for wave input with cart on the ground')
+print -depsc motor_velocity_groundwave.eps
