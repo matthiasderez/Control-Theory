@@ -55,7 +55,7 @@ void Robot::control() {
 //      previousTime = currentTime;
 //    }
     
-    if (counter - counterThousand >= 300) {
+    if (counter - counterThousand >= 800) {
       /* Event code */
       LED1(OFF);
       if (out != 0){

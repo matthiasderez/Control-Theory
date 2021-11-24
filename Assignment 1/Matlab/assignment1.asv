@@ -81,8 +81,6 @@ t_step = air_step(:,10);
 % Data cart on ground
 va_gs  = ground_step(:, 6);
 vb_gs = ground_step(:, 7);
-voltageA_gs = ground_step(:,2);
-voltageB_gs = ground_step(:,3);
 va_gb  = ground_blokfuncties(:, 6);
 vb_gb = ground_blokfuncties(:, 7);
 t_gs = ground_step(:,10);
@@ -262,7 +260,7 @@ axis tight
 subplot(2,1,2),plot(t(1:400),abs(vb_step(106:505) - vb_est))
 legend('error')
 xlabel('time [s]')
-ylabel('\omega_{b empirical} - \omega_{b estimated} [rad/s]')
+ylabel('omega_{b empirical} - \omega_{b estimated} [rad/s]')
 axis tight
 sgtitle('Step response complex model')
 print -depsc step_response_complex_b.eps
@@ -358,7 +356,7 @@ legend('error')
 xlabel('time [s]')
 ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
 axis tight
-sgtitle('Step response simple model motor a')
+sgtitle('Step response simple model')
 print -depsc step_response_simple_a.eps
 
 % Motor B
@@ -374,7 +372,7 @@ legend('error')
 xlabel('time [s]')
 ylabel('\omega_b(empirical) - \omega_b(estimated) [rad/s]')
 axis tight
-sgtitle('Step response simple model motor b')
+sgtitle('Step response simple model')
 print -depsc step_response_simple_b.eps
 
 % Motor A
@@ -540,34 +538,16 @@ print -depsc motor_velocity_groundwave.eps
 
 % Motor A
 figure
-va_est = lsim(sys_d2,voltageA_gs(149:548),t_gs(149:548));
-subplot(2,1,1),plot(t(1:400),[va_gs(149:548) va_est]);
+va_est = lsim(sys_d2,voltageA_step(149:548),t_step(106:505));
+subplot(2,1,1),plot(t(1:400),[va_step(106:505) va_est]);
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
 ylabel('\omega_a [rad/s]')
 axis tight
-subplot(2,1,2),plot(t(1:400),abs(va_gs(149:548) - va_est))
+subplot(2,1,2),plot(t(1:400),abs(va_step(106:505) - va_est))
 legend('error')
 xlabel('time [s]')
 ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
 axis tight
-sgtitle('Step response motor a simple model cart on ground')
-print -depsc step_response_simple_a_ground.eps
-
-% Motor B
-figure
-va_est = lsim(sys_d2,voltageA_gs(149:548),t_gs(149:548));
-subplot(2,1,1),plot(t(1:400),[vb_gs(149:548) va_est]);
-legend('empirical','estimated','Location','SouthWest')
-xlabel('time [s]')
-ylabel('\omega_b [rad/s]')
-axis tight
-subplot(2,1,2),plot(t(1:400),abs(vb_gs(149:548) - va_est))
-legend('error')
-xlabel('time [s]')
-ylabel('\omega_b(empirical) - \omega_b(estimated) [rad/s]')
-axis tight
-sgtitle('Step response motor b simple model cart on ground')
-print -depsc step_response_simple_b_ground.eps
-
-% Emperical reacts slower -> logic, inertia cart
+sgtitle('Step response simple model')
+print -depsc step_response_simple_a.eps
