@@ -274,13 +274,14 @@ pzmap(sys_d2)
 % cutoff freq = bandwith van ongefilterde LSE
 % te lage orde: te zwakke attenuation van hoge freq
 % te hoge orde: te grote delay
-% => kies 6e orde
+% => kies 4e orde
 
 % ******* Motor A *******
 
 % define a low(band)-pass filter
 cutoff = bandwidth(sys_d1)/(2*pi);
-[B_filt,A_filt] = butter(6, cutoff*(2/fs));
+[B_filt,A_filt] = butter(4, cutoff*(2/fs));
+h = fvtool(B_filt, A_filt);
 
 % apply the filter to both input and output
 va_filt = filter(B_filt, A_filt, va); 
