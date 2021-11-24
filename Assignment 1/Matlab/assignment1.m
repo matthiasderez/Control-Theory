@@ -193,13 +193,13 @@ print -depsc V_deltaV.eps
 % 
 % collect the signals appearing in the difference equation
 b1 = va(4:end); 
-phi1 = [va(2:end-2), va(1:end-3), voltageA(2:end-2), voltageA(1:end-3)]; 
+phi1 = [-va(3:end-1), -va(2:end-2), voltageA(2:end-2), voltageA(1:end-3)]; 
 % perform the fit to get the desired parameters
 theta1 = phi1\b1;
 
 % build the identified model
 Num1 = [0, theta1(3), theta1(4)];
-Den1 = [1, -theta1(1), -theta1(2), 0];
+Den1 = [1, theta1(1), theta1(2), 0];
 sys_d1 = tf(Num1, Den1, Ts);
 
 % compute the frequency response of the identified model
@@ -309,6 +309,7 @@ print -depsc p&z_complex.eps
 b2 = va(3:end); 
 phi2 = [va(2:end-1), voltageA(1:end-2)]; 
 % perform the fit to get the desired parameters
+
 theta2 = phi2\b2;
 
 % build the identified model
@@ -476,7 +477,7 @@ legend('error')
 xlabel('time [s]')
 ylabel('\omega_a [rad/s]')
 axis tight
-sgtitle('Step respons simple model with low_pass filter')
+sgtitle('Step respons simple model with low-pass filter')
 print -depsc step_respons_simple_a_filter.eps
 
 figure,hold on
