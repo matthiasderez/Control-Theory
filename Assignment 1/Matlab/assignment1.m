@@ -267,6 +267,8 @@ axis tight
 
 figure(10), hold on
 pzmap(sys_d2)
+
+% THIS IS THE MODEL WE USE FROM NOW ON
 %% 2.c) Filtering (for 1st model)
 
 %Butterworth
@@ -280,19 +282,24 @@ pzmap(sys_d2)
 
 % define a low(band)-pass filter
 cutoff = bandwidth(sys_d1)/(2*pi);
+<<<<<<< Updated upstream
 [B_filt,A_filt] = butter(4, cutoff*(2/fs));
 h = fvtool(B_filt, A_filt);
+=======
+%cutoff = 35;
+[B_filt,A_filt] = butter(6, cutoff*(2/fs));
+>>>>>>> Stashed changes
 
 % apply the filter to both input and output
 va_filt = filter(B_filt, A_filt, va); 
 voltageA_filt = filter(B_filt, A_filt, voltageA);
 
 %repeat the identification
-b1_filt = va_filt(4:end); 
-phi1_filt = [va_filt(2:end-2), va_filt(1:end-3), voltageA_filt(2:end-2), voltageA_filt(1:end-3)]; 
+b1_filt = va_filt(3:end); 
+phi1_filt = [va_filt(2:end-1), voltageA_filt(1:end-2)]; 
 theta1_filt = phi1_filt\b1_filt;
-Num1_filt = [0, theta1_filt(3), theta1_filt(4)];
-Den1_filt = [1, -theta1_filt(1), -theta1_filt(2), 0];
+Num1_filt = [theta1_filt(2)];
+Den1_filt = [1, -theta1_filt(1), 0];
 sys_d1_filt = tf(Num1_filt, Den1_filt, Ts);
 
 % compute the frequency response of the new identified model
