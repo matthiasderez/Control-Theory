@@ -661,15 +661,6 @@ print -depsc superposition.eps
 
 %% 3.a) Step input to cart on ground
 
-% Data cart on ground
-va_gs  = ground_step(:, 6);
-vb_gs = ground_step(:, 7);
-voltageA_gs = ground_step(:,2);
-voltageB_gs = ground_step(:,3);
-va_gb  = ground_blokfuncties(:, 6);
-vb_gb = ground_blokfuncties(:, 7);
-t_gs = ground_step(:,10);
-
 figure
 subplot(121)
 plot(t_gs, va_gs)
@@ -839,56 +830,7 @@ print -depsc FRF_SK_filter.eps
 
 % Motor A
 figure
-va_est_gs_SK = lsim(sys_gs_SK,voltageA_gs(149:548),t_gs(149:548));
-subplot(2,1,1),plot(t(1:400),[va_gs(149:548) va_est_gs_SK]);
-legend('empirical','estimated','Location','SouthWest')
-xlabel('time [s]')
-ylabel('\omega_a [rad/s]')
-axis tight
-subplot(2,1,2),plot(t(1:400),abs(va_gs(149:548) - va_est_gs_SK))
-legend('error')
-xlabel('time [s]')
-ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
-axis tight
-sgtitle('Step response new estimated model motor a for cart on ground with SK filter')
-print -depsc step_response_ground__newmodel_SKfilter_a.eps
-
-% Filtering
-cutoff = bandwidth(sys_gs)/(2*pi);
-%cutoff = 10;
-[B_filtc,A_filtc] = butter(6, cutoff*(2/fs));
-h = fvtool(B_filtc, A_filtc);
-
-% apply the filter to both input and output
-va_gs = filter(B_filtc, A_filtc, va_gs); 
-voltageA_gs = filter(B_filtc, A_filtc, voltageA_gs);
-
-% compute the frequency response of the identified model
-FRF_gs = squeeze(freqresp(sys_gs,2*pi*f));
-mag_gs = 20*log10(abs(FRF_gs));
-phs_gs = 180/pi*unwrap(angle(FRF_gs)); 
-phs_gs = 360*ceil(-phs_gs(1)/360) + phs_gs;
-
-% plot the results
-figure,hold on,
-subplot(2,1,1),semilogx(f, mag_gs)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('|FRF|  [rad/s]')
-legend('estimated','Location','SouthWest')
-subplot(2,1,2),semilogx(f, phs_gs)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('\phi(FRF)  [^\circ]')
-legend('estimated','Location','SouthWest')
-sgtitle('FRF new estimated model for cart on ground with filter')
-print -depsc FRF_ground_newmodel_filter.eps
-
-% Motor A
-figure
-va_est = lsim(sys_gs,voltageA_gs(149:548),t_gs(149:548));
+va_est_ = lsim(sys_gs_SK,voltageA_gs(149:548),t_gs(149:548));
 subplot(2,1,1),plot(t(1:400),[va_gs(149:548) va_est]);
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
@@ -901,6 +843,54 @@ ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
 axis tight
 sgtitle('Step response new estimated model motor a for cart on ground with filter')
 print -depsc step_response_ground__newmodel_filter_a.eps
+
+% % Filtering
+% cutoff = bandwidth(sys_gs)/(2*pi);
+% [B_filtc,A_filtc] = butter(6, cutoff*(2/fs));
+% h = fvtool(B_filtc, A_filtc);
+% 
+% % apply the filter to both input and output
+% va_gs = filter(B_filtc, A_filtc, va_gs); 
+% voltageA_gs = filter(B_filtc, A_filtc, voltageA_gs);
+% 
+% % compute the frequency response of the identified model
+% FRF_gs = squeeze(freqresp(sys_gs,2*pi*f));
+% mag_gs = 20*log10(abs(FRF_gs));
+% phs_gs = 180/pi*unwrap(angle(FRF_gs)); 
+% phs_gs = 360*ceil(-phs_gs(1)/360) + phs_gs;
+% 
+% % plot the results
+% figure,hold on,
+% subplot(2,1,1),semilogx(f, mag_gs)
+% grid on
+% xlim([f(1) f(end)])
+% xlabel('f  [Hz]')
+% ylabel('|FRF|  [rad/s]')
+% legend('estimated','Location','SouthWest')
+% subplot(2,1,2),semilogx(f, phs_gs)
+% grid on
+% xlim([f(1) f(end)])
+% xlabel('f  [Hz]')
+% ylabel('\phi(FRF)  [^\circ]')
+% legend('estimated','Location','SouthWest')
+% sgtitle('FRF new estimated model for cart on ground with filter')
+% print -depsc FRF_ground_newmodel_filter.eps
+% 
+% % Motor A
+% figure
+% va_est = lsim(sys_gs,voltageA_gs(149:548),t_gs(149:548));
+% subplot(2,1,1),plot(t(1:400),[va_gs(149:548) va_est]);
+% legend('empirical','estimated','Location','SouthWest')
+% xlabel('time [s]')
+% ylabel('\omega_a [rad/s]')
+% axis tight
+% subplot(2,1,2),plot(t(1:400),abs(va_gs(149:548) - va_est))
+% legend('error')
+% xlabel('time [s]')
+% ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
+% axis tight
+% sgtitle('Step response new estimated model motor a for cart on ground with filter')
+% print -depsc step_response_ground__newmodel_filter_a.eps
 
 figure, hold on
 pzmap(sys_gs)
