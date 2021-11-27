@@ -567,6 +567,7 @@ ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
 axis tight
 sgtitle('Step response simple model motor a')
 print -depsc step_response_simple_a.eps
+error_1_tot= sum(abs(va_step(106:505) - va_estA));
 
 % Motor B
 figure
@@ -664,6 +665,7 @@ ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
 axis tight
 sgtitle('Step response of simple model with Butterworth filter')
 print -depsc step_response_simple_BW_a.eps
+error_BW2_tot= sum(abs(va_step(106:505) - va_est_BW2));
 
 figure,hold on
 pzmap(sys_BW2)
@@ -691,7 +693,7 @@ figure,hold on
 pzmap(sys_SK1)
 print -depsc p&z_complex_SK.eps
 
-error_SK1_tot= sum(abs(abs(va_step(106:505) - va_est_SK1)-abs(va_step(106:505) - va_estA)));
+error_SK1_tot= sum(abs(va_step(106:505) - va_est_SK1));
 
 
 
@@ -717,7 +719,7 @@ figure,hold on
 pzmap(sys_SK2)
 print -depsc p&z_simple_SK.eps
 
-error_SK2_tot= sum(abs(abs(va_step(106:505) - va_est_SK2)-abs(va_step(106:505) - va_estA)));
+error_SK2_tot= sum(abs(va_step(106:505) - va_est_SK2));
 
 
 
