@@ -6,7 +6,7 @@
 \usepackage{subcaption}
 \newlength{\twosubht}
 \newsavebox{\twosubbox}
-\graphicspath{{../Figures/}{/}}
+\graphicspath{{../Figures/}{../Matlab/}{/}}
 \usepackage[outdir=./]{epstopdf}
 
 \usepackage{amsmath}
@@ -125,11 +125,11 @@ Firstly, Equation (\ref{eq:TF2}) can be rewritten as follows:
 \end{equation}
 where $a = \zeta\omega_n$ and $b = \sqrt{\omega_n^2(1-\zeta^2)}$. Next, using transform pair no. 22 on page 4 of the course formulary leads to:
 \begin{equation}
-	\mathcal{Z} \left(\mathcal{L}^{-1}\left\{\frac{H(s)}{s}\right\} \times \delta_T(t)\right) = \frac{z(Az+B)}{(z-1)\left[z^2-2e^{-aT_s}\cos(bT_s)z+e^{-2aT_s}\right]}
+	\mathcal{Z} \left(\mathcal{L}^{-1}\left\{\frac{H(s)}{s}\right\} \times \delta_T(t)\right) = C \frac{z(Az+B)}{(z-1)\left[z^2-2e^{-aT_s}\cos(bT_s)z+e^{-2aT_s}\right]}
 \end{equation}
 where $A = 1-e^{-aT_s}\cos(bT_s) - \frac{a}{b}e^{-aT_s}\sin(bT_s)$ and $B = e^{-2aT_s}\cos(bT_s) + \frac{a}{b}e^{-aT_s}\sin(bT_s) - e^{-aT_s}\cos(bT_s)$. Finally, the zero-order hold equivalent is determined:
 \begin{equation}
-	H(z) = (1-z^{-1})\mathcal{Z} \left(\mathcal{L}^{-1}\left\{\frac{H(s)}{s}\right\} \times \delta_T(t)\right) = \frac{(Az+B)}{\left[z^2-2e^{-aT_s}\cos(bT_s)z+e^{-2aT_s}\right]}
+	H(z) = (1-z^{-1})\mathcal{Z} \left(\mathcal{L}^{-1}\left\{\frac{H(s)}{s}\right\} \times \delta_T(t)\right) = C \frac{(Az+B)}{\left[z^2-2e^{-aT_s}\cos(bT_s)z+e^{-2aT_s}\right]}
 \end{equation}
 More generally: 
 \begin{equation}
@@ -137,11 +137,46 @@ More generally:
 \end{equation}
 However, the MicroOS software on the Arduino stores the control command calculated during discrete-time interval $k$ in a memory buffer until discrete-time instance $k+1$. In this way, the delay between the measurement of the output and sending out of the control command is increased by one sampling period $T_s$. In the $z$-domain, this is equivalent to a multiplication of the transfer function by $z^{-1}$, leading to the final, generalised discrete-time transfer function of the system:
 \begin{equation}
+	\label{eq:TF3}
 	H(z) = \frac{b_0z + b_1}{z^3 + a_0 z^2 + a_1 z}
 \end{equation}
 The order of the numerator is 1, while the order of the denominator is 3. This is in line with the strict causality condition, which demands that the order of the numerator is strictly smaller than the denominator. 
 \\\\
-This is the transfer function that is used in the rest of the assignment. The unknown parameters $b_0$, $b_1$, $a_0$ and $a_1$ are determined in Section X using the least-squares method. This is done for each motor separately.
+Number of delays blablabla.
+
+% ---------------------------------------------------------------------------
+\subsection{Simplified Model}
+Another, simplified model is also examined. The reason for this is that equally accurate results may be achieved using simpler equations. This simplified model is achieved by neglecting the inductance term in Equation \ref{eq:TF}, because its effect is several times smaller in comparison with the mechanical terms. This leads to:
+\begin{equation}
+\label{eq:TF_simple}
+	\begin{split}
+	H_{\text{simple}}(s) &= \frac{K}{JRs + (bR + K^2)} \\
+	&= \frac{\frac{K}{JR}}{s + \frac{bR + K^2}{JR}} \\
+	&= \frac{1}{C}\frac{a}{s + a}
+	\end{split}
+\end{equation}
+where $C = \frac{K}{K^2 + bR}$, which is the same as in Equation \ref{eq:TF2}. Now, transform pair no. 12 leads to the zero-order hold equivalent of this simplified model:
+\begin{equation}
+	H_{\text{simple}}(z) = \frac{1}{C}\frac{1-e^{-aT_s}}{z-e^{-aT_s}}
+\end{equation}
+More generally:
+\begin{equation}
+	H_{\text{simple}}(z) = \frac{b_0}{z + a_0}
+\end{equation}
+Again, the delay is taken into account, resulting in the final, simplified, discrete-time transfer function of the system:
+\begin{equation}
+\label{eq:TF_simple2}
+	H_{\text{simple}}(z) = \frac{b_0}{z^2 + a_0 z}
+\end{equation}
+Order, number of delays blablabla. 
+\\\\
+Both the transfer functions of the complex model (\ref{eq:TF3}) and the simple model (\ref{eq:TF_simple2}) are used in the rest of the assignment. The unknown parameters $b_0$, $b_1$, $a_0$ and $a_1$ are determined in Section X using the least-squares method. This is done for each motor separately. Then, depending on which model gives the best results, either the complex or the simple model is chosen.
+
+
+
+
+
+% ---------------------------------------------------------------------------
 
 \subsection{Input and Output}
 As previously mentioned, the input of the model is the voltage source $V(s)$ applied to the motor's armature. This voltage is controlled by the Arduino and is expressed in Volts [V]. The output is the rotational velocity of the wheel  $\dot{\Theta}(s)$, expressed in [rad/s].
@@ -150,31 +185,55 @@ As previously mentioned, the input of the model is the voltage source $V(s)$ app
 
 \section{Identification of each 'DC Motor + Wheel'}
 \subsection{Excitation Signal}
-In order to identify the system 'DC motor + wheel', it is necessary to perform a dedicated experiment that actively excites the system, while the \textit{persistency of excitation} condition is satisfied. This means that the excitation should be suf
+In order to identify the system 'DC motor + wheel', it is necessary to perform a dedicated experiment that actively excites the system, while the \textit{persistency of excitation} condition is satisfied. This means that the excitation must be rich enough, i.e. so that all frequency modes of the system are excited and observable in the output. To this extent, a square wave is chosen, as displayed in Figure x.
 
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=.7\linewidth]{input_voltage.eps}
+	\caption{Input voltage}
+	\label{fig:input_voltage}
+\end{figure}
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=.7\linewidth]{motor_velocity.eps}
+	\caption{Motor velocity}
+	\label{fig:motor_velocity}
+\end{figure}	
+
+% ---------------------------------------------------------------------------
 
 \subsection{System Parameters}
 
+% ---------------------------------------------------------------------------
+
 \subsection{Filtering}
 
+% ---------------------------------------------------------------------------
+
+\subsection{Experimental Model Validation}
+
+% ---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+
+\section{Identification of the Cart on the Ground}
+
+% ---------------------------------------------------------------------------
+
+\subsection{Model Validation}
+
+% ---------------------------------------------------------------------------
+
+\subsection{Re-identification}
 
 
 
 
 
-\begin{figure}[htp!]
-    \centering
-    \includegraphics[width=.7\linewidth]{input_voltage.eps}
-    \caption{Input voltage}
-    \label{fig:input_voltage}
-\end{figure}
 
-\begin{figure}[htp!]
-    \centering
-    \includegraphics[width=.7\linewidth]{motor_velocity.eps}
-    \caption{Motor velocity}
-    \label{fig:motor_velocity}
-\end{figure}
+
+
+
 
 
 
