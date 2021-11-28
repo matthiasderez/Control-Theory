@@ -64,8 +64,8 @@ load air_step.mat
 %% Defining variables
 
 % Data alternating +6V, 0V, -6V, 0V, input
-voltageA = data(:,2);
-voltageB = data(:,3);
+% voltageA = data(:,2);
+% voltageB = data(:,3);
 positionA = data(:,4);
 positionB = data(:,5);
 va  = data(:, 6); % velocity motor a
@@ -79,8 +79,8 @@ fs = 1/Ts;
 f = [0:N-1]'*(fs/N); % arrays of frequencies, 0 to f_s Hz
 
 % Data step input 6V
-voltageA_step = air_step(:,2);
-voltageB_step = air_step(:,3);
+%voltageA_step = air_step(:,2);
+%voltageB_step = air_step(:,3);
 va_step  = air_step(:, 6);
 vb_step = air_step(:, 7);
 t_step = air_step(:,10);
@@ -88,13 +88,43 @@ t_step = air_step(:,10);
 % Data cart on ground (same input as before)
 va_gs  = ground_step(:, 6);
 vb_gs = ground_step(:, 7);
-voltageA_gs = ground_step(:,2);
-voltageB_gs = ground_step(:,3);
+%voltageA_gs = ground_step(:,2);
+%voltageB_gs = ground_step(:,3);
 va_gb  = ground_blokfuncties(:, 6);
 vb_gb = ground_blokfuncties(:, 7);
 t_gs = ground_step(:,10);
 
 
+% CONSTRUEREN VOLTAGES
+voltageA = zeros(4800,1);
+voltageB = zeros(4800,1);
+voltageA_step = zeros(600,1);
+voltageB_step = zeros(600,1);
+voltageA_gs = zeros(600,1);
+voltageB_gs = zeros(600,1);
+
+voltageA_step(107:600) = 6;
+voltageB_step(107:600) = 6;
+voltageA_gs(150:600) = 6;
+voltageB_gs(150:600) = 6;
+
+
+sign = -1;
+volt = 6;
+grens = 301;
+waarde = 6;
+for i = 2:4800
+    if i > grens
+        volt = volt + sign*waarde;
+        if volt ~= 0
+            sign = -sign;
+        end
+               
+        grens = i+299;
+    end
+    voltageA(i) = volt;
+    voltageB(i) = volt;
+end
 
 
 %% Plotting data
@@ -235,6 +265,8 @@ legend('estimated','Location','SouthWest')
 sgtitle('FRF complex model')
 print -depsc FRF_complex_model.eps
 
+figure
+bode(sys_1)
 %% 2.b) Least square method on data motor A, no filtering: SIMPLE MODEL
 
 % suppose L = 0
@@ -273,6 +305,9 @@ ylabel('\phi(FRF)  [^\circ] simple model')
 legend('estimated','Location','SouthWest')
 sgtitle('FRF simple model')
 print -depsc FRF_simple_model.eps
+
+figure 
+bode(sys_2)
 
 % THIS IS THE MODEL WE WILL USE
 
@@ -552,7 +587,7 @@ print -depsc p&z_complex.eps
 
 %% 2.d) Difference between response of the simulated model and the real system: SIMPLE MODEL, NO FILTER
 
-% Motor A
+% Motor A stepinput
 figure
 va_estA = lsim(sys_2,voltageA_step(106:505),t_step(106:505));
 subplot(2,1,1),plot(t(1:400),[va_step(106:505) va_estA]);
@@ -567,9 +602,15 @@ ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
 axis tight
 sgtitle('Step response simple model motor a')
 print -depsc step_response_simple_a.eps
-error_1_tot= sum(abs(va_step(106:505) - va_estA));
+error_2_tot= sum(abs(va_step(106:505) - va_estA));
 
-% Motor B
+figure
+plot(t(1:400),abs(va_step(106:505) - va_estA)-abs(va_step(106:505) - va_est1))
+xlabel('time [s]')
+ylabel('error_{simple} - error_{complex}[rad/s]')
+
+
+% Motor B stepinput
 figure
 va_estB = lsim(sys_2,voltageA_step(106:505),t_step(106:505));
 subplot(2,1,1),plot(t(1:400),[vb_step(106:505) va_estB]);
@@ -585,7 +626,7 @@ axis tight
 sgtitle('Step response simple model motor b')
 print -depsc step_response_simple_b.eps
 
-% Motor A
+% Motor A square wave input
 va_est1 = lsim(sys_2,voltageA,t);
 figure 
 subplot(2,1,1),plot(t,[va va_est1]);
@@ -601,7 +642,7 @@ axis tight
 sgtitle('response simple model to square wavefunction input motor a')
 print -depsc square_square_wave_response_simple_a.eps
 
-% Motor B
+% Motor B square wave input
 va_est1 = lsim(sys_2,voltageA,t);
 figure 
 subplot(2,1,1),plot(t,[vb va_est1]);
@@ -755,13 +796,13 @@ print -depsc superposition.eps
 
 % _gs --> Ground Stepinput
 % _gb --> Ground Blokfunctie input (square wave)
-va_gs  = ground_step(:, 6);
-vb_gs = ground_step(:, 7);
-voltageA_gs = ground_step(:,2);
-voltageB_gs = ground_step(:,3);
-va_gb  = ground_blokfuncties(:, 6);
-vb_gb = ground_blokfuncties(:, 7);
-t_gs = ground_step(:,10);
+% va_gs  = ground_step(:, 6);
+% vb_gs = ground_step(:, 7);
+% voltageA_gs = ground_step(:,2);
+% voltageB_gs = ground_step(:,3);
+% va_gb  = ground_blokfuncties(:, 6);
+% vb_gb = ground_blokfuncties(:, 7);
+% t_gs = ground_step(:,10);
 
 figure
 subplot(121)
@@ -832,32 +873,32 @@ print -depsc step_response_ground_simple_b.eps
 % suppose L = 0
 % H(z) = b1/(z(z-a1))
 % collect the signals appearing in the difference equation
-b_gs = va_gs(3:end); 
-phi_gs = [va_gs(2:end-1), voltageA_gs(1:end-2)]; 
+b_gb = va_gb(3:end); 
+phi_gb = [va_gb(2:end-1), voltageA(1:end-2)]; 
 % perform the fit to get the desired parameters
 
-theta_gs = phi_gs\b_gs;
+theta_gb = phi_gb\b_gb;
 
 % build the identified model
-Num_gs = [theta_gs(2)];
-Den_gs = [1, -theta_gs(1), 0];
-sys_gs = tf(Num_gs, Den_gs, Ts);
+Num_gb = [theta_gb(2)];
+Den_gb = [1, -theta_gb(1), 0];
+sys_g = tf(Num_gb, Den_gb, Ts);
 
 % compute the frequency response of the identified model
-FRF_gs = squeeze(freqresp(sys_gs,2*pi*f));
-mag_gs = 20*log10(abs(FRF_gs));
-phs_gs = 180/pi*unwrap(angle(FRF_gs)); 
-phs_gs = 360*ceil(-phs_gs(1)/360) + phs_gs;
+FRF_gb = squeeze(freqresp(sys_g,2*pi*f));
+mag_gb = 20*log10(abs(FRF_gb));
+phs_gb = 180/pi*unwrap(angle(FRF_gb)); 
+phs_gb = 360*ceil(-phs_gb(1)/360) + phs_gb;
 
 % plot the results
 figure,hold on,
-subplot(2,1,1),semilogx(f, mag_gs)
+subplot(2,1,1),semilogx(f, mag_gb)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
 ylabel('|FRF|  [rad/s]')
 legend('estimated','Location','SouthWest')
-subplot(2,1,2),semilogx(f, phs_gs)
+subplot(2,1,2),semilogx(f, phs_gb)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
@@ -868,7 +909,7 @@ print -depsc FRF_ground_newmodel_nofilter.eps
 
 % Motor A
 figure
-va_est_gs = lsim(sys_gs,voltageA_gs(149:548),t_gs(149:548));
+va_est_gs = lsim(sys_g,voltageA_gs(149:548),t_gs(149:548));
 subplot(2,1,1),plot(t(1:400),[va_gs(149:548) va_est_gs]);
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
@@ -888,38 +929,38 @@ error_ground_NF = sum(abs(va_gs(149:548) - va_est_gs));
 %%% Filtering the new model with SK filter %%%
 
 
-% Denumerator of simple model cart on ground without filter: Den_gs
-sys_gs_SK = sys_gs;
-error_gs_SK = [100 100 100];
-Den_gs_SK_2 = Den_gs;
-Den_gs_SK_1 = 0;
-va_gs_SK = va_gs;
-voltageA_gs_SK = voltageA_gs;
+% Denumerator of simple model cart on ground without filter: Den_gb
+sys_g_SK = sys_g;
+error_gb_SK = [100 100 100];
+Den_gb_SK_2 = Den_gb;
+Den_gb_SK_1 = 0;
+va_gb_SK = va_gb;
+voltageA_gb_SK = voltageA;
  
-while abs(error_gs_SK) > [eps eps eps]
-    Den_gs_SK_1 = Den_gs_SK_2;
-    va_gs_SK = filter(1, Den_gs_SK_2, va_gs_SK);
-    voltageA_gs_SK = filter(1, Den_gs_SK_2, voltageA_gs_SK);
-    b_gs_SK = va_gs_SK(3:end); 
-    phi_gs_SK = [va_gs_SK(2:end-1), voltageA_gs_SK(1:end-2)]; 
-    theta_gs_SK = phi_gs_SK\b_gs_SK;
-    Num_gs_SK = [0 theta_gs_SK(2)];
-    Den_gs_SK_2 = [1, -theta_gs_SK(1), 0];
-    sys_gs_SK= tf(Num_gs_SK, Den_gs_SK_2, Ts);
-    error_gs_SK = Den_gs_SK_2-Den_gs_SK_1;
+while abs(error_gb_SK) > [eps eps eps]
+    Den_gb_SK_1 = Den_gb_SK_2;
+    va_gb_SK = filter(1, Den_gb_SK_2, va_gb_SK);
+    voltageA_gb_SK = filter(1, Den_gb_SK_2, voltageA_gb_SK);
+    b_gb_SK = va_gb_SK(3:end); 
+    phi_gb_SK = [va_gb_SK(2:end-1), voltageA_gb_SK(1:end-2)]; 
+    theta_gb_SK = phi_gb_SK\b_gb_SK;
+    Num_gb_SK = [0 theta_gb_SK(2)];
+    Den_gb_SK_2 = [1, -theta_gb_SK(1), 0];
+    sys_g_SK= tf(Num_gb_SK, Den_gb_SK_2, Ts);
+    error_gb_SK = Den_gb_SK_2-Den_gb_SK_1;
 end
 
 
     
-FRF_gs_SK = squeeze(freqresp(sys_gs_SK,2*pi*f));
-mag_gs_SK = 20*log10(abs(FRF_gs_SK));
-phs_gs_SK = 180/pi*unwrap(angle(FRF_gs_SK)); 
-phs_gs_SK = 360*ceil(-phs_gs_SK(1)/360) + phs_gs_SK;
+FRF_gb_SK = squeeze(freqresp(sys_g_SK,2*pi*f));
+mag_gb_SK = 20*log10(abs(FRF_gb_SK));
+phs_gb_SK = 180/pi*unwrap(angle(FRF_gb_SK)); 
+phs_gb_SK = 360*ceil(-phs_gb_SK(1)/360) + phs_gb_SK;
 
 % plot results
 figure, hold on
 sgtitle("LLS of simple model with SK filter applied to the input and output data")
-subplot(2,1,1),semilogx(f, mag_gs_SK)
+subplot(2,1,1),semilogx(f, mag_gb_SK)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
@@ -927,7 +968,7 @@ ylabel('|FRF|  [m]')
 legend('estimated','Location','SouthWest')
 axis tight
 subplot(2,1,2)
-semilogx(f, phs_gs_SK)
+semilogx(f, phs_gb_SK)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
@@ -937,7 +978,7 @@ print -depsc FRF_SK_filter_ground.eps
 
 % Motor A
 figure
-va_est_gs_SK = lsim(sys_gs_SK,voltageA_gs(149:548),t_gs(149:548));
+va_est_gs_SK = lsim(sys_g_SK,voltageA_gs(149:548),t_gs(149:548));
 subplot(2,1,1),plot(t(1:400),[va_gs(149:548) va_est_gs_SK]);
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
@@ -955,38 +996,38 @@ error_ground_SK = sum(abs(va_gs(149:548) - va_est_gs_SK));
 
 %%% Filtering the new model with BW filter %%%
 
-%cutoff = bandwidth(sys_gs_BW)/(2*pi);
+%cutoff = bandwidth(sys_g_BW)/(2*pi);
 cutoff = 35;
-[B_gs_BW,A_gs_BW] = butter(6, cutoff*(2/fs));
-h = fvtool(B_gs_BW, A_gs_BW);
+[B_gb_BW,A_gb_BW] = butter(6, cutoff*(2/fs));
+h = fvtool(B_gb_BW, A_gb_BW);
 
 % apply the filter to both input and output
-va_gs_BW = filter(B_gs_BW, A_gs_BW, va_gs); 
-voltageA_gs_BW = filter(B_gs_BW, A_gs_BW, voltageA_gs);
+va_gb_BW = filter(B_gb_BW, A_gb_BW, va_gb); 
+voltageA_gb_BW = filter(B_gb_BW, A_gb_BW, voltageA);
 
 %repeat the identification
-b_gs_BW = va_gs_BW(3:end); 
-phi_gs_BW = [va_gs_BW(2:end-1), voltageA_gs_BW(1:end-2)]; 
-theta1_gs_BW = phi_gs_BW\b_gs_BW;
-Num_gs_BW = [theta1_gs_BW(2)];
-Den_gs_BW = [1, -theta1_gs_BW(1), 0];
-sys_gs_BW = tf(Num_gs_BW, Den_gs_BW, Ts);
+b_gb_BW = va_gb_BW(3:end); 
+phi_gb_BW = [va_gb_BW(2:end-1), voltageA_gb_BW(1:end-2)]; 
+theta1_gb_BW = phi_gb_BW\b_gb_BW;
+Num_gb_BW = [theta1_gb_BW(2)];
+Den_gb_BW = [1, -theta1_gb_BW(1), 0];
+sys_g_BW = tf(Num_gb_BW, Den_gb_BW, Ts);
 
 % compute the frequency response of the identified model
-FRF_gs_BW = squeeze(freqresp(sys_gs_BW,2*pi*f));
-mag_gs_BW = 20*log10(abs(FRF_gs_BW));
-phs_gs_BW = 180/pi*unwrap(angle(FRF_gs_BW)); 
-phs_gs_BW = 360*ceil(-phs_gs_BW(1)/360) + phs_gs_BW;
+FRF_gb_BW = squeeze(freqresp(sys_g_BW,2*pi*f));
+mag_gb_BW = 20*log10(abs(FRF_gb_BW));
+phs_gb_BW = 180/pi*unwrap(angle(FRF_gb_BW)); 
+phs_gb_BW = 360*ceil(-phs_gb_BW(1)/360) + phs_gb_BW;
 
 % plot the results
 figure,hold on,
-subplot(2,1,1),semilogx(f, mag_gs_BW)
+subplot(2,1,1),semilogx(f, mag_gb_BW)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
 ylabel('|FRF|  [rad/s]')
 legend('estimated','Location','SouthWest')
-subplot(2,1,2),semilogx(f, phs_gs_BW)
+subplot(2,1,2),semilogx(f, phs_gb_BW)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
@@ -997,13 +1038,13 @@ print -depsc FRF_ground_newmodel_filter.eps
 
 % Motor A
 figure
-va_est_gs_BW = lsim(sys_gs_BW,voltageA_gs_BW(149:548),t_gs(149:548));
-subplot(2,1,1),plot(t(1:400),[va_gs_BW(149:548) va_est_gs_BW]);
+va_est_gs_BW = lsim(sys_g_BW,voltageA_gs(149:548),t_gs(149:548));
+subplot(2,1,1),plot(t(1:400),[va_gs(149:548) va_est_gs_BW]);
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
 ylabel('\omega_a [rad/s]')
 axis tight
-subplot(2,1,2),plot(t(1:400),abs(va_gs_BW(149:548) - va_est_gs_BW))
+subplot(2,1,2),plot(t(1:400),abs(va_gs(149:548) - va_est_gs_BW))
 legend('error')
 xlabel('time [s]')
 ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
@@ -1012,6 +1053,6 @@ sgtitle('Step response new estimated model motor a for cart on ground with Butte
 print -depsc step_response_ground__newmodel_filter_a.eps
 
 figure, hold on
-pzmap(sys_gs_BW)
+pzmap(sys_g_BW)
 
 error_ground_BW = sum(abs(va_gs(149:548) - va_est_gs_BW));
