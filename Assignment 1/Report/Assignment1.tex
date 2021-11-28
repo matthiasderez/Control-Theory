@@ -185,21 +185,56 @@ As previously mentioned, the input of the model is the voltage source $V(s)$ app
 
 \section{Identification of each 'DC Motor + Wheel'}
 \subsection{Excitation Signal}
-In order to identify the system 'DC motor + wheel', it is necessary to perform a dedicated experiment that actively excites the system, while the \textit{persistency of excitation} condition is satisfied. This means that the excitation must be rich enough, i.e. so that all frequency modes of the system are excited and observable in the output. To this extent, a square wave is chosen, as displayed in Figure x.
+In order to identify the system 'DC motor + wheel', it is necessary to perform a dedicated experiment that actively excites the system, while the \textit{persistency of excitation} condition is satisfied. This means that the excitation must be rich enough, i.e. so that all frequency modes of the system are excited and observable in the output. To this extent, a square wave is chosen, as displayed in Figure \ref{fig:IO} on the left. Note that the input voltage also remains $0$ for some time, instead of jumping to $-6$ or $6$ instantaneously. 
+\\\\
+This step-up step-down pattern is repeated four times in order to appreciate the noise. 
 
-\begin{figure}[htp!]
-	\centering
-	\includegraphics[width=.7\linewidth]{input_voltage.eps}
-	\caption{Input voltage}
-	\label{fig:input_voltage}
-\end{figure}
 
-\begin{figure}[htp!]
+average out
+
+%\begin{figure}[htp!]
+%	\centering
+%	\includegraphics[width=.7\linewidth]{input_voltage.eps}
+%	\caption{Input voltage}
+%	\label{fig:input_voltage}
+%\end{figure}
+%
+%\begin{figure}[htp!]
+%	\centering
+%	\includegraphics[width=.7\linewidth]{motor_velocity.eps}
+%	\caption{Motor velocity}
+%	\label{fig:motor_velocity}
+%\end{figure}	
+
+\begin{figure*}[htp]
 	\centering
-	\includegraphics[width=.7\linewidth]{motor_velocity.eps}
-	\caption{Motor velocity}
-	\label{fig:motor_velocity}
-\end{figure}	
+	\begin{subfigure}[b]{0.485\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{input_voltage.eps}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.5\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{motor_velocity.eps}
+	\end{subfigure}
+	\caption{\textbf{Left}: Input voltage [V]. \textbf{Right}: Motor velocities, for motor A and B respectively.} 
+	\label{fig:IO}
+\end{figure*}
+
+\begin{figure*}[htp]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{omegaA_deltaomegaA.eps}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{omegaB_deltaomegaB.eps}
+	\end{subfigure}
+	\caption{\textbf{Top}: Motor velocities averaged out to one period of the square wave excitation. \textbf{Bottom}: Deviation of the motor velocities with regard to the averaged out velocities, for each of the periods.} 
+	\label{fig:omega_deltaomega}
+\end{figure*}
 
 % ---------------------------------------------------------------------------
 
