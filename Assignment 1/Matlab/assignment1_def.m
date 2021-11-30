@@ -71,6 +71,8 @@ load ground_blokfuncties.mat
 
 load air_step.mat
 
+load Excitation_BlockWave.mat
+
 %% Defining variables
 
 % Data alternating +6V, 0V, -6V, 0V, input
@@ -86,7 +88,7 @@ num_periods = 4;
 points_per_period = N/num_periods;
 Ts = 0.01;
 fs = 1/Ts;
-f = [0:N-1]'*(fs/N); % arrays of frequencies, 0 to f_s Hz
+f = [0:N-1]'*(fs/2/N); % arrays of frequencies, 0 to f_s Hz
 
 % Data step input 6V
 %voltageA_step = air_step(:,2);
@@ -532,6 +534,17 @@ xlabel('f  [Hz]')
 ylabel('\phi(FRF)  [^\circ]')
 legend('estimated','Location','SouthWest')
 print -depsc FRF_SK_filter_simpel.eps
+
+figure, hold on
+bode(sys_1)
+bode(sys_2)
+bode(sys_SK1)
+bode(sys_SK2)
+legend('complex model', 'simple model', 'complex model with SK', 'simple model with SK')
+hold off
+
+
+
 
 %% 2.d) Difference between response of the simulated model and the emperical values: NO FILTER, COMPLEX MODEL 
 
