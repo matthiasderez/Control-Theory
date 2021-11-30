@@ -44,18 +44,8 @@ void Robot::control() {
     // Fill your control law here to conditionally update the motor voltage...
     LED1(ON);
     LED2(OFF);
-
-//    unsigned long currentTime = millis();
-
-//    if (currentTime - previousTime >= eventInterval) {
-//      /* Event code */
-//      LED1(OFF);
-//      out = -out;
-//      /* Update the timing for the next time around */
-//      previousTime = currentTime;
-//    }
     
-    if (counter - counterThousand >= 800) {
+    if (counter - counterThousand >= 300) {
       /* Event code */
       LED1(OFF);
       if (out != 0){
@@ -67,30 +57,15 @@ void Robot::control() {
     
     
     counter = counter + 1;
-    
-    
+
+    writeValue(0, out);
     setVoltageMotorA(out);
+    writeValue(1, out);
     setVoltageMotorB(out);
- 
-
-
-
-// ------------------------------------------------------------------------------------------------------
-
     
+    writeValue(4, getSpeedMotorA());
+    writeValue(5, getSpeedMotorB());
 
-
-  
-      
-
-//    float setpoint = pb;
-//    float error = setpoint - pa;
-//    
-//    e[1] = e[0]; e[0] = error;
-//    float output = 2.05*e[0] - 1.95*e[1] + u[1];
-//    u[1] = u[0]; u[0] = output; 
-//  
-//    setVoltageMotorA(u[0]);
 
 // -----------------------------------------------------------------------------------------------------
     
@@ -98,12 +73,14 @@ void Robot::control() {
     // If the controller is disabled, you might want to do something else...
     LED1(OFF);
     LED2(ON);
-    setVoltageMotorA(0.0); // Apply 0.0 volts to motor A if the control is disabled
-    setVoltageMotorB(0.0); // Apply 0.0 volts to motor B if the control is disabled
     
-    writeValue(0, getVoltageMotorA());
-    writeValue(3, getSpeedMotorA());
-    writeValue(4, getSpeedMotorB());
+    writeValue(0, 0.0);
+    setVoltageMotorA(0.0); // Apply 0.0 volts to motor A if the control is disabled
+    writeValue(1, 0.0);
+    setVoltageMotorB(0.0); // Apply 0.0 volts to motor B if the control is disabled
+        
+    writeValue(4, getSpeedMotorA());
+    writeValue(5, getSpeedMotorB());
     out = voltage; 
     counter = 0;
     counterThousand = 0;
@@ -116,21 +93,20 @@ void Robot::control() {
     
     //setVoltageMotorA(vol_A); // Apply 6.0 volts to motor A if the control is enabled
     //setVoltageMotorB(vol_B); // Apply 2.0 volts to motor B if the control is enabled
-    float voltage_A = getVoltageMotorA();
-    writeValue(0, voltage_A); 
-    float voltage_B = getVoltageMotorB();
-    writeValue(1, voltage_B);
+    
+    //float voltage_A = getVoltageMotorA();
+    //float voltage_B = getVoltageMotorB();
 
     float pa = getPositionMotorA();
     writeValue(2, pa);
     float pb = getPositionMotorB();
     writeValue(3, pb);
   
-    float va = getSpeedMotorA();    // Get the wheel speed of motor A (in radians/second)
-    x[1] = x[0]; x[0] = va;         // Memorize the last two samples of the speed of motor A (in fact, a shift register)
-    writeValue(4, va);
-    float vb = getSpeedMotorB();  
-    writeValue(5, vb);
+//    float va = getSpeedMotorA();    // Get the wheel speed of motor A (in radians/second)
+//    x[1] = x[0]; x[0] = va;         // Memorize the last two samples of the speed of motor A (in fact, a shift register)
+//    writeValue(4, va);
+//    float vb = getSpeedMotorB();  
+//    writeValue(5, vb);
   
     float fd = getFrontDistance(); 
     writeValue(6, fd);

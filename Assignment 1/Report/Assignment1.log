@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.20)  27 NOV 2021 18:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.20)  28 NOV 2021 23:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -837,10 +837,10 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 <../Figures/DC_motors.png, id=83, 364.9635pt x 227.04825pt>
 File: ../Figures/DC_motors.png Graphic file (type png)
 <use ../Figures/DC_motors.png>
-Package pdftex.def Info: ../Figures/DC_motors.png  used on input line 112.
+Package pdftex.def Info: ../Figures/DC_motors.png  used on input line 113.
 (pdftex.def)             Requested size: 273.14922pt x 169.9393pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--123
+Underfull \hbox (badness 10000) in paragraph at lines 121--124
 
  []
 
@@ -849,14 +849,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 120--123
 {c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <c:/texlive/texm
 f-local/tex/latex/local/kulak/kuleuvenLogo.pdf> <c:/texlive/texmf-local/tex/lat
 ex/local/kulak/kuleuvenSedes.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 142--146
-
- []
-
+<../Figures/delay.png, id=121, 274.02374pt x 214.55156pt>
+File: ../Figures/delay.png Graphic file (type png)
+<use ../Figures/delay.png>
+Package pdftex.def Info: ../Figures/delay.png  used on input line 149.
+(pdftex.def)             Requested size: 227.62204pt x 178.22505pt.
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 150.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 152.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+
 
 Package Fancyhdr Warning: \headheight is too small (42.67912pt): 
  Make it at least 46.27914pt.
@@ -864,114 +866,117 @@ Package Fancyhdr Warning: \headheight is too small (42.67912pt):
  This may cause the page layout to be inconsistent, however.
 
 [2 <../Figures/DC_motors.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 170--174
+Underfull \hbox (badness 10000) in paragraph at lines 180--185
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--191
+Underfull \hbox (badness 10000) in paragraph at lines 180--185
+
+ []
+
+File: kuleuvenSedes.pdf Graphic file (type pdf)
+<use kuleuvenSedes.pdf>
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 185.
+(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+[3 <../Figures/delay.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 199--202
 
  []
 
 Package epstopdf Info: Source file: <../Matlab/input_voltage.eps>
-(epstopdf)                    date: 2021-11-27 18:26:01
-(epstopdf)                    size: 90183 bytes
+(epstopdf)                    date: 2021-11-28 16:49:04
+(epstopdf)                    size: 80583 bytes
 (epstopdf)             Output file: <./input_voltage-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-11-27 18:26:14
-(epstopdf)                    size: 21455 bytes
+(epstopdf)                    date: 2021-11-28 19:01:57
+(epstopdf)                    size: 20946 bytes
 (epstopdf)             Command: <repstopdf --outfile=./input_voltage-eps-conver
 ted-to.pdf ../Matlab/input_voltage.eps>
-(epstopdf)             \includegraphics on input line 213.
+(epstopdf)             \includegraphics on input line 207.
 Package epstopdf Info: Output file is already uptodate.
-<./input_voltage-eps-converted-to.pdf, id=139, 362.35374pt x 307.1475pt>
+<./input_voltage-eps-converted-to.pdf, id=156, 362.35374pt x 307.1475pt>
 File: ./input_voltage-eps-converted-to.pdf Graphic file (type pdf)
 <use ./input_voltage-eps-converted-to.pdf>
 Package pdftex.def Info: ./input_voltage-eps-converted-to.pdf  used on input li
-ne 213.
+ne 207.
 (pdftex.def)             Requested size: 220.79366pt x 187.15817pt.
 Package epstopdf Info: Source file: <../Matlab/motor_velocity.eps>
-(epstopdf)                    date: 2021-11-27 18:21:10
+(epstopdf)                    date: 2021-11-28 16:48:59
 (epstopdf)                    size: 171654 bytes
 (epstopdf)             Output file: <./motor_velocity-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-11-27 18:21:23
+(epstopdf)                    date: 2021-11-28 19:01:59
 (epstopdf)                    size: 45104 bytes
 (epstopdf)             Command: <repstopdf --outfile=./motor_velocity-eps-conve
 rted-to.pdf ../Matlab/motor_velocity.eps>
-(epstopdf)             \includegraphics on input line 218.
+(epstopdf)             \includegraphics on input line 212.
 Package epstopdf Info: Output file is already uptodate.
-<./motor_velocity-eps-converted-to.pdf, id=140, 361.35pt x 307.1475pt>
+<./motor_velocity-eps-converted-to.pdf, id=157, 361.35pt x 307.1475pt>
 File: ./motor_velocity-eps-converted-to.pdf Graphic file (type pdf)
 <use ./motor_velocity-eps-converted-to.pdf>
 Package pdftex.def Info: ./motor_velocity-eps-converted-to.pdf  used on input l
-ine 218.
+ine 212.
 (pdftex.def)             Requested size: 227.62204pt x 193.48051pt.
 Package epstopdf Info: Source file: <../Matlab/omegaA_deltaomegaA.eps>
-(epstopdf)                    date: 2021-11-27 18:34:25
+(epstopdf)                    date: 2021-11-28 16:49:05
 (epstopdf)                    size: 193339 bytes
 (epstopdf)             Output file: <./omegaA_deltaomegaA-eps-converted-to.pdf>
 
-(epstopdf)                    date: 2021-11-27 18:34:39
+(epstopdf)                    date: 2021-11-28 19:02:01
 (epstopdf)                    size: 37310 bytes
 (epstopdf)             Command: <repstopdf --outfile=./omegaA_deltaomegaA-eps-c
 onverted-to.pdf ../Matlab/omegaA_deltaomegaA.eps>
-(epstopdf)             \includegraphics on input line 228.
+(epstopdf)             \includegraphics on input line 222.
 Package epstopdf Info: Output file is already uptodate.
-<./omegaA_deltaomegaA-eps-converted-to.pdf, id=141, 372.39125pt x 299.1175pt>
+<./omegaA_deltaomegaA-eps-converted-to.pdf, id=158, 372.39125pt x 299.1175pt>
 File: ./omegaA_deltaomegaA-eps-converted-to.pdf Graphic file (type pdf)
 <use ./omegaA_deltaomegaA-eps-converted-to.pdf>
 Package pdftex.def Info: ./omegaA_deltaomegaA-eps-converted-to.pdf  used on inp
-ut line 228.
+ut line 222.
 (pdftex.def)             Requested size: 223.0721pt x 179.18433pt.
 Package epstopdf Info: Source file: <../Matlab/omegaB_deltaomegaB.eps>
-(epstopdf)                    date: 2021-11-27 18:34:27
+(epstopdf)                    date: 2021-11-28 16:49:07
 (epstopdf)                    size: 193254 bytes
 (epstopdf)             Output file: <./omegaB_deltaomegaB-eps-converted-to.pdf>
 
-(epstopdf)                    date: 2021-11-27 18:34:43
+(epstopdf)                    date: 2021-11-28 19:02:02
 (epstopdf)                    size: 38133 bytes
 (epstopdf)             Command: <repstopdf --outfile=./omegaB_deltaomegaB-eps-c
 onverted-to.pdf ../Matlab/omegaB_deltaomegaB.eps>
-(epstopdf)             \includegraphics on input line 233.
+(epstopdf)             \includegraphics on input line 227.
 Package epstopdf Info: Output file is already uptodate.
-<./omegaB_deltaomegaB-eps-converted-to.pdf, id=142, 372.39125pt x 299.1175pt>
+<./omegaB_deltaomegaB-eps-converted-to.pdf, id=159, 372.39125pt x 299.1175pt>
 File: ./omegaB_deltaomegaB-eps-converted-to.pdf Graphic file (type pdf)
 <use ./omegaB_deltaomegaB-eps-converted-to.pdf>
 Package pdftex.def Info: ./omegaB_deltaomegaB-eps-converted-to.pdf  used on inp
-ut line 233.
+ut line 227.
 (pdftex.def)             Requested size: 223.0721pt x 179.18433pt.
-
+File: kuleuvenSedes.pdf Graphic file (type pdf)
+<use kuleuvenSedes.pdf>
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 247.
+(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+[4 <./input_voltage-eps-converted-to.pdf> <./motor_velocity-eps-converted-to.pd
+f>] 
 AED: lastpage setting LastPage
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 277.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 300.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-[3]
-File: kuleuvenSedes.pdf Graphic file (type pdf)
-<use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 277.
-(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
- [4 <./input_voltage-eps-converted-to.pdf> <./motor_velocity-eps-converted-to.p
-df> <./omegaA_deltaomegaA-eps-converted-to.pdf> <./omegaB_deltaomegaB-eps-conve
-rted-to.pdf>]
-File: kuleuvenSedes.pdf Graphic file (type pdf)
-<use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 277.
-(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
- [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 277.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 277.
+[5 <./omegaA_deltaomegaA-eps-converted-to.pdf> <./omegaB_deltaomegaB-eps-conver
+ted-to.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 300.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 300.
  (./Assignment1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 277.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 277.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 300.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 300.
 Package rerunfilecheck Info: File `Assignment1.out' has not changed.
 (rerunfilecheck)             Checksum: 7C62AB54BF59FE922AEBC89C5CA8DFBC;811.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 277.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 300.
  ) 
 Here is how much of TeX's memory you used:
- 19698 strings out of 492639
- 373891 string characters out of 6133087
- 452810 words of memory out of 5000000
- 23162 multiletter control sequences out of 15000+600000
+ 19713 strings out of 492639
+ 374132 string characters out of 6133087
+ 454050 words of memory out of 5000000
+ 23169 multiletter control sequences out of 15000+600000
  16358 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,18n,80p,913b,1077s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -992,10 +997,10 @@ rm0800.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb
 ><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texli
 ve/2018/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2018/te
 xmf-dist/fonts/type1/public/cm-super/sftt0800.pfb>
-Output written on Assignment1.pdf (5 pages, 599274 bytes).
+Output written on Assignment1.pdf (5 pages, 613978 bytes).
 PDF statistics:
- 255 PDF objects out of 1000 (max. 8388607)
- 199 compressed objects within 2 object streams
- 37 named destinations out of 1000 (max. 500000)
- 240 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 273 PDF objects out of 1000 (max. 8388607)
+ 214 compressed objects within 3 object streams
+ 44 named destinations out of 1000 (max. 500000)
+ 245 words of extra memory for PDF output out of 10000 (max. 10000000)
 

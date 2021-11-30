@@ -50,7 +50,7 @@
   Faculty of Engineering Science \\
   Department of Mechanical Engineering \\
   Control theory \texttt{[H04X3a]}}
-\title{Report Assignment 1: identification of the motors}
+\title{Report Assignment 1: Identification of the Motors}
 \author{Toon Servaes, Matthias Derez}
 
 
@@ -60,7 +60,7 @@
 
 \section{Model Structure}
 \subsection{Discrete-time Model Structure} 
-
+\label{subsec:complex_model}
 In order to select the discrete-time model structure for the DC motors, the equivalent electric circuit in Figure \ref{fig:DCmotors} is used. By using Newton's second law and Kirchhoff's voltage law, following equations can be derived:
 
 \begin{equation}
@@ -74,6 +74,7 @@ The meaning of each parameter is:
 \begin{itemize}
     \item $J$ = moment of inertia of the rotor [kg $\cdot$ m$^2$]
     \item $\theta$ = angular position [rad]
+    \item $\omega = \dot{\theta}$ = angular velocity [rad/s]
     \item $b$ = motor viscous friction constant [N $\cdot$ m $\cdot$ s]
     \item $K_{e}$ = electromotive force constant [$\frac{\text{V}}{\text{rad } \cdot \text{ s}}$] = $K_{t}$ = motor torque constant [$\frac{\text{N } \cdot \text{ m}}{\text{A }}$] = $K$
     \item $R$ = electric resistance [$\ohm$]
@@ -92,7 +93,7 @@ Applying the Laplace transform to both equations in (\ref{eq:circuit}) leads to:
 assuming $\theta(0) = 0$, $\dot{\theta}(0) = 0 \text{ and } i(0) = 0$. After some calculations, the continuous-time transfer function describing the behaviour of this system can be derived:
 \begin{equation}
 	\label{eq:TF}
-    H(s) = \frac{\dot{\Theta}(s)}{V(s)} = \frac{s\Theta(s)}{V(s)} = \frac{K}{(Js + b)(Ls + R) + K^2}
+    H(s) = \frac{\Omega(s)}{V(s)} = \frac{\dot{\Theta}(s)}{V(s)} = \frac{s\Theta(s)}{V(s)} = \frac{K}{(Js + b)(Ls + R) + K^2}
 \end{equation}
 where the input is the voltage source $V(s)$ applied to the motor's armature and the output is the rotational velocity of the wheel  $\dot{\Theta}(s)$. One can rewrite this transfer function in order to obtain a more general and well-known form:
 \begin{equation}
@@ -140,9 +141,16 @@ However, the MicroOS software on the Arduino stores the control command calculat
 	\label{eq:TF3}
 	H(z) = \frac{b_0z + b_1}{z^3 + a_0 z^2 + a_1 z}
 \end{equation}
-The order of the numerator is 1, while the order of the denominator is 3. This is in line with the strict causality condition, which demands that the order of the numerator is strictly smaller than the denominator. 
-\\\\
-Number of delays blablabla.
+The ZOH discretization leads to an input delay of approximately $\frac{T_s}{2}$. Together with the delay introduced by the MicroOS software, the effective delay amounts to $\frac{3T_s}{2}$. Because the input and output data are observed at discrete time instances, a change in the input voltage is observed in the output $\lceil \frac{3}{2} \rceil T_s = 2T_s$ seconds, or equivalently, 2 time instances (samples) later. This is verified by Figure \ref{fig:delay}, where the input voltage sent to motor A changes at $t = 0.01$s, while the velocity changes at $t = 0.03$s. \\
+\noindent In the final transfer function (\ref{eq:TF3}), the order of the numerator is 1, while the order of the denominator is 3. This is in line with the strict causality condition, which demands that the order of the numerator is strictly smaller than the denominator. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\linewidth]{delay.png}
+	\caption{Snippet of the recorded data showing the delay between the input voltage and the motor velocity change.}
+	\label{fig:delay}
+\end{figure}
+
 
 % ---------------------------------------------------------------------------
 \subsection{Simplified Model}
@@ -168,9 +176,12 @@ Again, the delay is taken into account, resulting in the final, simplified, disc
 \label{eq:TF_simple2}
 	H_{\text{simple}}(z) = \frac{b_0}{z^2 + a_0 z}
 \end{equation}
-Order, number of delays blablabla. 
+
+\noindent Now, the order of the numerator is 0 and of the denominator 2. This means that the strict causality condition is again satisfied, while there is also a delay of 2 samples between input and output.
 \\\\
-Both the transfer functions of the complex model (\ref{eq:TF3}) and the simple model (\ref{eq:TF_simple2}) are used in the rest of the assignment. The unknown parameters $b_0$, $b_1$, $a_0$ and $a_1$ are determined in Section X using the least-squares method. This is done for each motor separately. Then, depending on which model gives the best results, either the complex or the simple model is chosen.
+Both the transfer functions of the complex model (\ref{eq:TF3}) and the simple model (\ref{eq:TF_simple2}) are used in the rest of the assignment. The unknown parameters $b_0$, $b_1$, $a_0$ and $a_1$ are determined in Section \ref{subsec:lse} using the least-squares method. This is done for each motor separately. Then, depending on which model gives the best results, either the complex or the simple model is chosen.
+\\\\
+From now on, the original model of Subsection \ref{subsec:complex_model} is referred to as the \textit{complex model} and this simplified model as \textit{simple model}.
 
 
 
@@ -187,26 +198,9 @@ As previously mentioned, the input of the model is the voltage source $V(s)$ app
 \subsection{Excitation Signal}
 In order to identify the system 'DC motor + wheel', it is necessary to perform a dedicated experiment that actively excites the system, while the \textit{persistency of excitation} condition is satisfied. This means that the excitation must be rich enough, i.e. so that all frequency modes of the system are excited and observable in the output. To this extent, a square wave is chosen, as displayed in Figure \ref{fig:IO} on the left. Note that the input voltage also remains $0$ for some time, instead of jumping to $-6$ or $6$ instantaneously. 
 \\\\
-This step-up step-down pattern is repeated four times in order to appreciate the noise. 
+This step-up step-down pattern is repeated four times in order to assess the noise. In Figure \ref{fig:omega_deltaomega}, the top plots show the motor velocities averaged out to one period of the square wave excitation. The bottom plots show the deviation of the motor velocities with regard to the averaged out velocities, for each of the periods (each with a different colour). The left plots are for motor A and the right ones for motor B. One can see that the motor velocities fluctuate not more than $\pm 3.5\%$, which is acceptable to work with for the rest of the assignment. There is no noise on the input voltage, as it is controlled by the user.
 
-
-average out
-
-%\begin{figure}[htp!]
-%	\centering
-%	\includegraphics[width=.7\linewidth]{input_voltage.eps}
-%	\caption{Input voltage}
-%	\label{fig:input_voltage}
-%\end{figure}
-%
-%\begin{figure}[htp!]
-%	\centering
-%	\includegraphics[width=.7\linewidth]{motor_velocity.eps}
-%	\caption{Motor velocity}
-%	\label{fig:motor_velocity}
-%\end{figure}	
-
-\begin{figure*}[htp]
+\begin{figure*}[htp!]
 	\centering
 	\begin{subfigure}[b]{0.485\textwidth}
 		\centering
@@ -221,7 +215,7 @@ average out
 	\label{fig:IO}
 \end{figure*}
 
-\begin{figure*}[htp]
+\begin{figure*}[htp!]
 	\centering
 	\begin{subfigure}[b]{0.49\textwidth}
 		\centering
@@ -239,6 +233,35 @@ average out
 % ---------------------------------------------------------------------------
 
 \subsection{System Parameters}
+\label{subsec:lse}
+
+In this subsection, the unknown parameters $b_0$, $b_1$, $a_0$ and $a_1$ of Equations \ref{eq:TF3} and \ref{eq:TF_simple2} are determined for each motor. First, the difference equation is determined: 
+\subsubsection*{Complex Model}
+\begin{equation}
+	content...
+\end{equation}
+
+\subsubsection*{Simple Model}
+\begin{equation}
+content...
+\end{equation}
+
+
+
+This is done using the least squares method where the \textit{least squares criterion} is minimized: 
+\begin{equation}
+	\text{min } V_N (\vec{\theta}, \vec{Z}^N) = \text{min }\sum_{t = 1}^{N}\frac{1}{2} \left[\omega[t] - \vec{\phi}^{\text{ }T}[t]\vec{\theta}\right]^2
+\end{equation}
+where $\vec{\theta}$ is \textbf{not} the angular position of the wheels, but a vector composed of the unknown coefficients, $\vec{Z}^N$ is the measured input and output data and $\vec{\phi}[t]$ is a vector containing the coefficients of the difference equation:
+
+\begin{equation}
+	\begin{split}
+	\vec{\theta} &= \left[a_0\text{ }a_1\text{ }b_0\text{ }b_1\right]^T \\
+	\vec{\phi}[t] &= \left[-\omega[t-1]\text{ }-\omega[t-2]\text{ }V[k-2]\text{ }V[k-3]\right]^T
+	\end{split}
+\end{equation}
+
+
 
 % ---------------------------------------------------------------------------
 

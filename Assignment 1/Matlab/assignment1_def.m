@@ -1,6 +1,6 @@
 %% Explanation naming
 % 2 different models are used in this script: 1 refers to the complex model, 2 refers to the simple model. 
-% Different filters are used: BW stands for Butterworth, SK stands for Sanathan Koerner
+% Different filters are used: BW stands for Butterworth, SK stands for Sanathanan Koerner
 
 %% Loading data
 close all
@@ -12,7 +12,17 @@ clear
 % 
 % save data
 
-load data.mat
+%load data.mat
+
+% csvfile = '../Data/new_data.csv';
+% labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+% labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+% new_data = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+ 
+%save new_data.mat
+
+load new_data.mat
+
 
 % csvfile = '../Data/recording10(4V).csv';
 % labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
@@ -64,13 +74,13 @@ load air_step.mat
 %% Defining variables
 
 % Data alternating +6V, 0V, -6V, 0V, input
-% voltageA = data(:,2);
-% voltageB = data(:,3);
-positionA = data(:,4);
-positionB = data(:,5);
-va  = data(:, 6); % velocity motor a
-vb = data(:, 7); % velocity motor b
-t = data(:,10);
+voltageA = new_data(:,2);
+voltageB = new_data(:,3);
+positionA = new_data(:,4);
+positionB = new_data(:,5);
+va  = new_data(:, 6); % velocity motor a
+vb = new_data(:, 7); % velocity motor b
+t = new_data(:,10);
 N = length(t);
 num_periods = 4;
 points_per_period = N/num_periods;
@@ -96,8 +106,8 @@ t_gs = ground_step(:,10);
 
 
 % CONSTRUEREN VOLTAGES
-voltageA = zeros(4800,1);
-voltageB = zeros(4800,1);
+% voltageA = zeros(4800,1);
+% voltageB = zeros(4800,1);
 voltageA_step = zeros(600,1);
 voltageB_step = zeros(600,1);
 voltageA_gs = zeros(600,1);
@@ -109,22 +119,22 @@ voltageA_gs(150:600) = 6;
 voltageB_gs(150:600) = 6;
 
 
-sign = -1;
-volt = 6;
-grens = 301;
-waarde = 6;
-for i = 2:4800
-    if i > grens
-        volt = volt + sign*waarde;
-        if volt ~= 0
-            sign = -sign;
-        end
-               
-        grens = i+299;
-    end
-    voltageA(i) = volt;
-    voltageB(i) = volt;
-end
+% sign = -1;
+% volt = 6;
+% grens = 301;
+% waarde = 6;
+% for i = 2:4800
+%     if i > grens
+%         volt = volt + sign*waarde;
+%         if volt ~= 0
+%             sign = -sign;
+%         end
+%                
+%         grens = i+299;
+%     end
+%     voltageA(i) = volt;
+%     voltageB(i) = volt;
+% end
 
 
 %% Plotting data
@@ -132,11 +142,13 @@ end
 figure
 subplot(121)
 plot(t, va)
+set(gca, 'FontSize', 11)
 ylabel('\omega_a [rad/s]')
 xlabel('t [s]')
 
 subplot(122)
 plot(t, vb)
+set(gca, 'FontSize', 11)
 ylabel('\omega_b [rad/s]')
 xlabel('t [s]')
 sgtitle('Motor velocity')
@@ -160,6 +172,7 @@ print -depsc difference_motor_velocities.eps
 % motor voltage plot
 figure
 plot(t, voltageA);
+set(gca, 'FontSize', 11)
 ylabel('Input voltage [V]')
 xlabel('t [s]')
 sgtitle('Input voltage')
@@ -186,30 +199,36 @@ dvoltageA_matrix = voltageA_matrix - repmat(voltageA_mean,1,num_periods);
 % plotting some interesting comparisons
 figure,hold on
 subplot(2,1,1),plot(t(1:points_per_period), va_matrix, 'LineWidth', 1) 
+set(gca, 'FontSize', 11)
 grid on
 axis tight
 xlabel('t  [s]')
 ylabel('\omega_a  [rad/s]')
 subplot(2,1,2),plot(t(1:points_per_period), dva_matrix, 'LineWidth', 1)
+set(gca, 'FontSize', 11)
 grid on
 axis tight
 xlabel('t  [s]')
 ylabel('\Delta \omega_a  [rad/s]')
 hold off
+sgtitle('Motor A')
 print -depsc omegaA_deltaomegaA.eps
 
 figure,hold on
 subplot(2,1,1),plot(t(1:points_per_period), vb_matrix, 'LineWidth', 1) 
+set(gca, 'FontSize', 11)
 grid on
 axis tight
 xlabel('t  [s]')
 ylabel('\omega_b  [rad/s]')
 subplot(2,1,2),plot(t(1:points_per_period), dvb_matrix, 'LineWidth', 1)
+set(gca, 'FontSize', 11)
 grid on
 axis tight
 xlabel('t  [s]')
 ylabel('\Delta \omega_b  [rad/s]')
 hold off
+sgtitle('Motor B')
 print -depsc omegaB_deltaomegaB.eps
 
 
@@ -229,7 +248,7 @@ print -depsc V_deltaV.eps
 
 %% 2.b) Least square method on data motor A, no filtering: COMPLEX MODEL
 
-% H(z) = (b1*z+b2)/(z(z^2-a1z-a2))
+% H(z) = (b0*z+b1)/(z(z^2+a0z+a1))
 % 
 % collect the signals appearing in the difference equation
 b1 = va(4:end); 
@@ -240,7 +259,7 @@ theta1 = phi1\b1;
 % build the identified model
 Num1 = [0, theta1(3), theta1(4)];
 Den1 = [1, theta1(1), theta1(2), 0];
-sys_1 = tf(Num1, Den1, Ts);
+sys_1 = tf(Num1, Den1, Ts)
 
 % compute the frequency response of the identified model
 FRF1 = squeeze(freqresp(sys_1,2*pi*f));
