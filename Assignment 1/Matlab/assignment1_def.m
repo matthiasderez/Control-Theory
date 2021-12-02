@@ -438,7 +438,7 @@ subplot(2,1,1),semilogx(f, mag_BW2)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
-ylabel('|FRF|  [m]')
+ylabel('|FRF|  [dB]')
 legend('estimated','Location','SouthWest')
 axis tight
 subplot(2,1,2)
@@ -487,7 +487,7 @@ subplot(2,1,1),semilogx(f, mag_SK1)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
-ylabel('|FRF|  [m]')
+ylabel('|FRF|  [dB]')
 legend('estimated','Location','SouthWest')
 axis tight
 subplot(2,1,2)
@@ -536,7 +536,7 @@ subplot(2,1,1),semilogx(f, mag_SK2)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
-ylabel('|FRF|  [m]')
+ylabel('|FRF|  [dB]')
 legend('estimated','Location','SouthWest')
 axis tight
 subplot(2,1,2)
@@ -553,7 +553,7 @@ bode(sys_1)
 bode(sys_2)
 bode(sys_SK1)
 bode(sys_SK2)
-legend('complex model', 'simple model', 'complex model with SK', 'simple model with SK')
+legend('complex model', 'simple model', 'complex model with SK', 'simple model with SK', 'Location','SouthWest')
 hold off
 
 
@@ -943,7 +943,7 @@ subplot(2,1,1),semilogx(f, mag_gb)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
-ylabel('|FRF|  [rad/s]')
+ylabel('|FRF|  [dB]')
 legend('estimated','Location','SouthWest')
 subplot(2,1,2),semilogx(f, phs_gb)
 grid on
@@ -1006,12 +1006,12 @@ phs_gb_SK = 360*ceil(-phs_gb_SK(1)/360) + phs_gb_SK;
 
 % plot results
 figure, hold on
-sgtitle("LLS of simple model with SK filter applied to the input and output data")
+sgtitle("FRF new estimated model for cart on ground with SK filter")
 subplot(2,1,1),semilogx(f, mag_gb_SK)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
-ylabel('|FRF|  [m]')
+ylabel('|FRF|  [dB]')
 legend('estimated','Location','SouthWest')
 axis tight
 subplot(2,1,2)
@@ -1072,7 +1072,7 @@ subplot(2,1,1),semilogx(f, mag_gb_BW)
 grid on
 xlim([f(1) f(end)])
 xlabel('f  [Hz]')
-ylabel('|FRF|  [rad/s]')
+ylabel('|FRF|  [dB]')
 legend('estimated','Location','SouthWest')
 subplot(2,1,2),semilogx(f, phs_gb_BW)
 grid on
@@ -1103,3 +1103,8 @@ figure, hold on
 pzmap(sys_g_BW)
 
 error_ground_BW = sum(abs(va_gs(149:548) - va_est_gs_BW));
+
+
+%% Saving variables
+
+save('assignment1_def.mat');
