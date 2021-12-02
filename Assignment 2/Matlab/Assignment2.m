@@ -7,36 +7,41 @@ clc
 %% Loading data from assignment 1
 
 load('C:\Users\matth\Documents\IW4\Control Theory\Project\Control_Theory\Assignment 1\Matlab\assignment1_def.mat')
+
+%Selected model assignment 1
 sys = sys_g_SK;
+
 %% 1)b) Design of the PI controller
-[Gm,Pm,Wpi,Wc] = margin(sys);
-Wpi = Wpi; % in rad/s
-Wc = Wc; % in rad/s
-w = logspace(-2,log10(fs/2),100)*2*pi;
-% Bode diagram
-figure
-bode(sys)
-grid on
-title('Bodeplot original system')
+[GM,PM,Wpi,Wc] = margin(sys);
+w = logspace(-2,log10(fs/2),100)'*2*pi;  % *2pi so it's in radian
+% % Bode diagram
+% figure
+% bode(sys)
+% grid on
+% title('Bodeplot original system')
 
+% System numerator and denumerator in vector format
+[sys_num,sys_den] = tfdata(sys, 'v');
 
+% The exact magnitude and phase from the bodeplot in vector format
 [mag, phase] = bode(sys,w);
-phase_P = zeros(length(w),1);
-phase_P(:) = phase(:,:,:);
-mag_P(:) = mag(:,:,:);
+phase_ori = zeros(length(w),1);
+mag_ori = zeros(length(w),1);
+phase_ori(:) = phase(:,:,:);
+mag_ori(:) = mag(:,:,:);
 
-% controle
+% Bodeplot original system
 figure
 subplot(211)
-semilogx(w, 20*log10(mag_P))
+semilogx(w, 20*log10(mag_ori))
 grid on, axis tight
 ylabel('|P(j\omega)| [dB]')
 title('Bodeplot original system')
 subplot(212)
-semilogx(w,phase_P)
+semilogx(w,phase_ori)
 grid on, axis tight
 ylabel('\phi(P(j\omega)) [^o]')
-xlabel('w [rad/s]')
+xlabel('\omega [rad/s]')
 
 % Specifications
 PM_des = 45;		%desired phase margin [degrees]
@@ -44,63 +49,87 @@ Dphi_PI = 12;       % allowed phase lag of the PI controller at the crossover fr
 
 % Determine the new cross-over pulsation wco
 phase_crossover = -180 + PM_des + Dphi_PI;
-wco = interp1(phase_P,w,phase_crossover);	
+wco = interp1(phase_ori,w,phase_crossover);	
 
 % Determine Ti [s], such that the phase lag of the PI controller at wco equals Dphi_PI
 Ti = 1/(wco * tan(Dphi_PI*pi/180));      % Matlab uses radians!
 num_PI = [Ti 1];
 den_PI = [Ti 0];
 
-% Calculate the gain such that the amplitude at wco equals 1
-[sys_num,sys_den] = tfdata(sys, 'v');
-
-% Bodeplot of the compensated system
-
+% Transforming the control TF from continuous time to discrete time
 contr_PI_c = tf(num_PI, den_PI)
 contr_PI_d = c2d(contr_PI_c, Ts, 'zoh') 
 
-%contr_PI_2 = tf(num_PI, den_PI, Ts)
+% Open loop system with PI controller
+sys_PI = sys * contr_PI_d
+[num_loopgain,den_loopgain] = tfdata(sys_PI, 'v')
 
+% Calculate the gain such that the amplitude at wco equals 1
+[mag, phase] = bode(sys_PI,w);
+phase_PI = zeros(length(w),1);
+mag_PI = zeros(length(w),1);
+phase_PI(:) = phase(:,:,:);
+mag_PI(:) = mag(:,:,:);
+gain = 1/interp1(w,mag_PI,wco)
 
-sys_tot = sys * contr_PI_d
-[num_loopgain,den_loopgain] = tfdata(sys_tot, 'v')
-[mag, phase] = bode(sys_tot,w);
-phase_loop = zeros(length(w),1);
-mag_loop = zeros(length(w),1);
-phase_loop(:) = phase(:,:,:);
-mag_loop(:) = mag(:,:,:);
-gain = 1/interp1(w,mag_loop,wco)
-
-
-figure
-hold on
-bode(sys)
-bode(sys_tot)
-grid on
-legend('Original system', 'System with PI controller', 'location', 'SouthWest')
-hold off
-
-
+% Controller and open loop system with correct gain
 num_loopgain = num_loopgain*gain;
 num_PI = num_PI * gain;
+contr_PI_g = tf(num_PI, den_PI, Ts)
+sys_PI_g = tf(num_loopgain, den_loopgain, Ts)
 
-sys_tot2 = tf(num_loopgain, den_loopgain, Ts)
-[mag, phase] = bode(sys_tot2,w);
-phase_loop2 = zeros(length(w),1);
-mag_loop2 = zeros(length(w),1);
-phase_loop2(:) = phase(:,:,:);
-mag_loop2(:) = mag(:,:,:);
+[mag, phase] = bode(sys_PI_g,w);
+phase_PI_g = zeros(length(w),1);
+mag_PI_g = zeros(length(w),1);
+phase_PI_g(:) = phase(:,:,:);
+mag_PI_g(:) = mag(:,:,:);
+
+% Bodeplot controller
+figure
+bode(contr_PI_c)
+title('Frequency respons PI controller in discrete time')
+% Bodeplot open loop systems
+figure
+subplot(211)
+semilogx(w, [20*log10(mag_ori), 20*log10(mag_PI),20*log10(mag_PI_g)])
+grid on, axis tight
+ylabel('|P(j\omega)| [dB]')
+title('Bodeplot original open loop systems')
+legend('Original system', 'System with PI controller', 'System with PI with correct gain', 'location', 'NorthEast')
+subplot(212)
+semilogx(w, [phase_ori, phase_PI, phase_PI_g])
+grid on, axis tight
+ylabel('\phi(P(j\omega)) [^o]')
+xlabel('\omega [rad/s]')
+
+% Parameters open loop system with PI controller 
+[GM_PI_g,PM_PI_g,Wpi_PI_g,Wc_PI_g] = margin(sys_PI_g);
 
 
-sys_PI = tf(num_loopgain, den_loopgain);
+% Bode plot closed loop system
+sys_cl = feedback(sys_PI_g,1)
+
+[mag, phase] = bode(sys_cl,w);
+phase_cl = zeros(length(w),1);
+mag_cl = zeros(length(w),1);
+phase_cl(:) = phase(:,:,:);
+mag_cl(:) = mag(:,:,:);
 
 figure
-hold on
-bode(sys)
-bode(sys_tot)
-bode(sys_tot2)
-grid on
-legend('Original system', 'System with PI controller', 'System with PI with correct gain', 'location', 'SouthWest')
-hold off
+subplot(211)
+semilogx(w, 20*log10(mag_cl))
+grid on, axis tight
+ylabel('|P(j\omega)| [dB]')
+title('Bodeplot closed loop system with PI controller')
+subplot(212)
+semilogx(w,phase_cl)
+grid on, axis tight
+ylabel('\phi(P(j\omega)) [^o]')
+xlabel('\omega [rad/s]')
 
+%% Step response closed loop system
 
+t = [0:0.01:10];
+[sim_step] = impulse(sys_cl,t);
+figure
+plot(t, sim_step)

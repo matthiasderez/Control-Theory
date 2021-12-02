@@ -45,7 +45,7 @@ void Robot::control() {
     LED1(ON);
     LED2(OFF);
     
-    if (counter - counterThousand >= 300) {
+    if (counter - counterThousand >= 1000) {
       /* Event code */
       LED1(OFF);
       if (out != 0){
