@@ -57,12 +57,12 @@ num_PI = [Ti 1];
 den_PI = [Ti 0];
 
 % Transforming the control TF from continuous time to discrete time
-contr_PI_c = tf(num_PI, den_PI);
-contr_PI_d = c2d(contr_PI_c, Ts, 'zoh') ;
+contr_PI_c = tf(num_PI, den_PI)
+contr_PI_d = c2d(contr_PI_c, Ts, 'zoh') 
 
 % Open loop system with PI controller
-sys_PI = sys * contr_PI_d;
-[num_loopgain,den_loopgain] = tfdata(sys_PI, 'v');
+sys_PI = sys * contr_PI_d
+[num_loopgain,den_loopgain] = tfdata(sys_PI, 'v')
 
 % Calculate the gain such that the amplitude at wco equals 1
 [mag, phase] = bode(sys_PI,w);
@@ -70,7 +70,7 @@ phase_PI = zeros(length(w),1);
 mag_PI = zeros(length(w),1);
 phase_PI(:) = phase(:,:,:);
 mag_PI(:) = mag(:,:,:);
-gain = 1/interp1(w,mag_PI,wco);
+gain = 1/interp1(w,mag_PI,wco)
 
 % Controller and open loop system with correct gain
 num_loopgain = num_loopgain*gain;
