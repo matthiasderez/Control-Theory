@@ -190,7 +190,7 @@ From now on, the original model of Subsection \ref{subsec:complex_model} is refe
 % ---------------------------------------------------------------------------
 
 \subsection{Input and Output}
-As previously mentioned, the input of the model is the voltage source $V(s)$ applied to the motor's armature. This voltage is controlled by the Arduino and is expressed in Volts [V]. The output is the rotational velocity of the wheel  $\dot{\Theta}(s)$, expressed in [rad/s].
+As previously mentioned, the input of the model is the voltage source $V(s)$ applied to the motor's armature. This voltage is controlled by the Arduino and is expressed in Volts [V]. The output is the rotational velocity of the wheel  $\Omega(s) = \dot{\Theta}(s)$, expressed in [rad/s].
 
 % ---------------------------------------------------------------------------
 
@@ -211,7 +211,7 @@ This step-up step-down pattern is repeated four times in order to assess the noi
 		\centering 
 		\includegraphics[width=\textwidth]{motor_velocity.eps}
 	\end{subfigure}
-	\caption{\textbf{Left}: Input voltage [V]. \textbf{Right}: Motor velocities, for motor A and B respectively.} 
+	\caption{\textbf{Left}: Input voltage [V]. \textbf{Right}: Motor velocities [rad/s], for motor A and B respectively.} 
 	\label{fig:IO}
 \end{figure*}
 
@@ -234,38 +234,131 @@ This step-up step-down pattern is repeated four times in order to assess the noi
 
 \subsection{System Parameters}
 \label{subsec:lse}
+\subsubsection{Estimation criterion}
 
-In this subsection, the unknown parameters $b_0$, $b_1$, $a_0$ and $a_1$ of Equations \ref{eq:TF3} and \ref{eq:TF_simple2} are determined for each motor. First, the difference equation is determined: 
-\subsubsection*{Complex Model}
+Now, the unknown parameters $b_0$, $b_1$, $a_0$ and $a_1$ of Equations \ref{eq:TF3} and \ref{eq:TF_simple2} are determined for each motor. This is done using the least squares method where the \textit{least squares criterion} is minimized: 
 \begin{equation}
-	content...
-\end{equation}
-
-\subsubsection*{Simple Model}
-\begin{equation}
-content...
-\end{equation}
-
-
-
-This is done using the least squares method where the \textit{least squares criterion} is minimized: 
-\begin{equation}
+	\label{eq:lse}
 	\text{min } V_N (\vec{\theta}, \vec{Z}^N) = \text{min }\sum_{t = 1}^{N}\frac{1}{2} \left[\omega[t] - \vec{\phi}^{\text{ }T}[t]\vec{\theta}\right]^2
 \end{equation}
-where $\vec{\theta}$ is \textbf{not} the angular position of the wheels, but a vector composed of the unknown coefficients, $\vec{Z}^N$ is the measured input and output data and $\vec{\phi}[t]$ is a vector containing the coefficients of the difference equation:
+where $\vec{\theta}$ is \textbf{not} the angular position of the wheels, but a vector composed of the unknown coefficients, $\vec{Z}^N$ is the measured input and output data and $\vec{\phi}[t]$ is a vector containing the coefficients of the difference equation. Equation \ref{eq:lse} boils down to minimizing the squared error between the empirical output and the estimated output. 
 
+
+\subsubsection*{Complex Model}
+The difference equation of the complex model is derived as follows:
 \begin{equation}
-	\begin{split}
-	\vec{\theta} &= \left[a_0\text{ }a_1\text{ }b_0\text{ }b_1\right]^T \\
-	\vec{\phi}[t] &= \left[-\omega[t-1]\text{ }-\omega[t-2]\text{ }V[k-2]\text{ }V[k-3]\right]^T
-	\end{split}
+\begin{split}
+\frac{\Omega(z)}{V(z)} &= \frac{b_0z + b_1}{z^3 + a_0 z^2 + a_1 z} \\
+\iff (1 + a_0 z^{-1} + a_1 z^{-2})\Omega(z) &= (b_0 z^{-2} + b_1 z^{-3})V(z) \\
+\iff \omega[t] + a_0 \omega[t-1] + a_1 \omega[t-2] &= b_0 V[t-2] + b_1 V[t-3] 
+\end{split}
 \end{equation}
+This means that:
+\begin{equation}
+\begin{split}
+\vec{\theta} &= \left[a_0\text{ }a_1\text{ }b_0\text{ }b_1\right]^T \\
+\vec{\phi}[t] &= \left[-\omega[t-1]\text{ }-\omega[t-2]\text{ }V[t-2]\text{ }V[t-3]\right]^T
+\end{split}
+\end{equation}
+
+
+\subsubsection*{Simple Model}
+Analogously for the simple model:
+\begin{equation}
+\begin{split}
+\frac{\Omega(z)}{V(z)} &= \frac{b_0}{z^2 + a_0 z} \\
+\iff (1 + a_0 z^{-1})\Omega(z) &= b_0 z^{-2} V(z) \\	
+\iff \omega[t] + a_0 \omega[t-1] &= b_0 V[t-2]
+\end{split}
+\end{equation}
+This yields: 
+\begin{equation}
+\begin{split}
+\vec{\theta}_{\text{simple}} &= \left[a_0\text{ }b_0\right]^T \\
+\vec{\phi}[t]_{\text{simple}} &= \left[-\omega[t-1]\text{ }V[t-2]\right]^T
+\end{split}
+\end{equation}
+
+\subsubsection{Results}
+\noindent The unknown coefficients are determined using \texttt{Matlab}. This allows to construct the transfer function for each of the motors, as well as the locations of the poles and the zeros. These values are summarized in Table \ref{tab:overview} and visualized in Figure \ref{fig:pz}.
+\\\\
+As expected, the simple model has no zeros, because the numerator of the transfer function is of order 0. The NaN values in the table refer to the poles that are at the origin of the pole-zero map. Both models have such a pole, because of the multiplication by $z^{-1}$ to take the MicroOS delay into account. Further, for the simple model, the transfer functions for motor A and B are approximately the same, which explains why the poles coincide in Figure \ref{fig:pz_simple}.
+
+\begin{table}[htp]
+	\centering
+	\caption{Overview of the complex and simple models for each motor.}
+	\label{tab:overview}
+	\bgroup
+	\def\arraystretch{1.8}
+	\begin{tabular}{|c||cc||cc|}
+		\hline & \multicolumn{2}{c||}{\textbf{Complex}} & \multicolumn{2}{c|}{\textbf{Simple}} 
+		\\ \hline \hline
+		& \multicolumn{1}{c|}{Motor A} & Motor B & \multicolumn{1}{c|}{Motor A} & Motor B
+		\\ \hline
+		Transfer function & \multicolumn{1}{c|}{\scalebox{1.15}{$\frac{0.6952\text{ }z + 0.7978}{z^3 - 0.04632\text{ }z^2 - 0.242\text{ }z}$}} & \scalebox{1.15}{$\frac{0.6901\text{ }z + 0.6834}{z^3 - 0.2128\text{ }z^2 - 0.1303\text{ }z}$} & \multicolumn{1}{c|}{\scalebox{1.15}{$\frac{ 0.8842}{z^2 - 0.5787\text{ }z}$}} & \scalebox{1.15}{$\frac{0.8832}{z^2 - 0.5778\text{ }z}$} 
+		\\ \hline
+		Poles [rad/s] & \multicolumn{1}{c|}{66.2; 323; NaN} & 72.8; 340; NaN & \multicolumn{1}{c|}{54.7; NaN} & 54.9; NaN
+		\\ \hline
+		Zeros [rad/s] & \multicolumn{1}{c|}{314} & 314 & \multicolumn{1}{c|}{/} & /
+		\\ \hline
+	\end{tabular}
+	\egroup
+\end{table}
+
+
+\begin{figure*}[htp!]
+	\centering
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{p&z_complex_cropped.pdf}
+		\caption{\textbf{Complex} model}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.48\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{p&z_simple_cropped.pdf}
+		\caption{\textbf{Simple} model}
+		\label{fig:pz_simple}
+	\end{subfigure}
+	\caption{Visualization of the poles and the zeros of both models, for each motor.} 
+	\label{fig:pz}
+\end{figure*}
 
 
 
 % ---------------------------------------------------------------------------
 
 \subsection{Filtering}
+In the least-squares ARX model parameter estimation, the quadratic prediction error emphasises errors at high frequencies. Because noisy data typically resides at these high frequencies, low-pass data filtering can be used to improve the parameter estimation. The input data is free of noise, because it is controlled by the user. However, if one would only filter the output data, one would not only identify the physical system, but also the filter. This is why both input \textbf{and} output data are filtered. 
+\\\\
+First, a low-pass Butterworth filter is examined. The order of the filter is chosen higher than the system in order to have more flexibility and to have a strong enough attenuation of high frequencies. On the other hand, the order may not be too high, otherwise both input and output data have a big delay. In this manner, a $6^{\text{th}}$ order filter is used. 
+\\\\
+In addition, the cut-off frequency must be smaller than half the sample rate. Normally, the cut-off is determined as the frequency where the magnitude of the \textbf{exact} model is equal to 3 dB. Though, the exact model of the system is not known, so one has to rely on trial and error. For now, the cut-off is approximated by the bandwidth of the unfiltered identified model, which is given in Table \ref{tab:overview}. In Subsection X, this cut-off is further optimised in order to minimize the error between the identified model and the empirical values.
+
+
+\begin{table}[htp]
+	\centering
+	\caption{Overview of the complex and simple models for each motor, after applying a Butterworth filter.}
+	\label{tab:overview_BW}
+	\bgroup
+	\def\arraystretch{1.8}
+	\begin{tabular}{|c||cc||cc|}
+		\hline & \multicolumn{2}{c||}{\textbf{Complex}} & \multicolumn{2}{c|}{\textbf{Simple}} 
+		\\ \hline \hline
+		& \multicolumn{1}{c|}{Motor A} & Motor B & \multicolumn{1}{c|}{Motor A} & Motor B
+		\\ \hline
+		Transfer function & \multicolumn{1}{c|}{\scalebox{1.15}{$\frac{0.6952\text{ }z + 0.7978}{z^3 - 0.04632\text{ }z^2 - 0.242\text{ }z}$}} & \scalebox{1.15}{$\frac{0.6901\text{ }z + 0.6834}{z^3 - 0.2128\text{ }z^2 - 0.1303\text{ }z}$} & \multicolumn{1}{c|}{\scalebox{1.15}{$\frac{ 0.8842}{z^2 - 0.5787\text{ }z}$}} & \scalebox{1.15}{$\frac{0.8832}{z^2 - 0.5778\text{ }z}$} 
+		\\ \hline
+		Poles [rad/s] & \multicolumn{1}{c|}{66.2; 323; NaN} & 72.8; 340; NaN & \multicolumn{1}{c|}{54.7; NaN} & 54.9; NaN
+		\\ \hline
+		Zeros [rad/s] & \multicolumn{1}{c|}{314} & 314 & \multicolumn{1}{c|}{/} & /
+		\\ \hline
+	\end{tabular}
+	\egroup
+\end{table}
+
+
+
 
 % ---------------------------------------------------------------------------
 

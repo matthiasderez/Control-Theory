@@ -5,8 +5,10 @@
 \BOOKMARK [1][-]{section.2}{Identification of each 'DC Motor + Wheel'}{}% 5
 \BOOKMARK [2][-]{subsection.2.1}{Excitation Signal}{section.2}% 6
 \BOOKMARK [2][-]{subsection.2.2}{System Parameters}{section.2}% 7
-\BOOKMARK [2][-]{subsection.2.3}{Filtering}{section.2}% 8
-\BOOKMARK [2][-]{subsection.2.4}{Experimental Model Validation}{section.2}% 9
-\BOOKMARK [1][-]{section.3}{Identification of the Cart on the Ground}{}% 10
-\BOOKMARK [2][-]{subsection.3.1}{Model Validation}{section.3}% 11
-\BOOKMARK [2][-]{subsection.3.2}{Re-identification}{section.3}% 12
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Estimation criterion}{subsection.2.2}% 8
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Results}{subsection.2.2}% 9
+\BOOKMARK [2][-]{subsection.2.3}{Filtering}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.4}{Experimental Model Validation}{section.2}% 11
+\BOOKMARK [1][-]{section.3}{Identification of the Cart on the Ground}{}% 12
+\BOOKMARK [2][-]{subsection.3.1}{Model Validation}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.2}{Re-identification}{section.3}% 14

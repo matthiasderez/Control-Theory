@@ -5,23 +5,15 @@
 %% Loading data
 close all
 clear
-% csvfile = '../Data/recording9.csv';
+
+% csvfile = '../Data/data.csv';
 % labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
 % labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
 % data = dlmread(csvfile, ',', 2, 0); % Data follows the labels
-% 
+%  
 % save data
 
-%load data.mat
-
-% csvfile = '../Data/new_data.csv';
-% labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
-% labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
-% new_data = dlmread(csvfile, ',', 2, 0); % Data follows the labels
- 
-%save new_data.mat
-
-load new_data.mat
+load data.mat
 
 
 % csvfile = '../Data/recording10(4V).csv';
@@ -53,14 +45,14 @@ load data11.mat
 
 load ground_step.mat
 
-% csvfile = '../Data/ground_blokfuncties.csv';
+% csvfile = '../Data/ground_squarewave.csv';
 % labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
 % labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
-% ground_blokfuncties = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+% ground_squarewave = dlmread(csvfile, ',', 2, 0); % Data follows the labels
 % 
-% save ground_blokfuncties
+% save ground_squarewave
 
-load ground_blokfuncties.mat
+load ground_squarewave.mat
 
 % csvfile = '../Data/air_step_input6.csv';
 % labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
@@ -71,18 +63,17 @@ load ground_blokfuncties.mat
 
 load air_step.mat
 
-load Excitation_BlockWave.mat
 
 %% Defining variables
 
 % Data alternating +6V, 0V, -6V, 0V, input
-voltageA = new_data(:,2);
-voltageB = new_data(:,3);
-positionA = new_data(:,4);
-positionB = new_data(:,5);
-va  = new_data(:, 6); % velocity motor a
-vb = new_data(:, 7); % velocity motor b
-t = new_data(:,10);
+voltageA = data(:,2);
+voltageB = data(:,3);
+positionA = data(:,4);
+positionB = data(:,5);
+va  = data(:, 6); % velocity motor a
+vb = data(:, 7); % velocity motor b
+t = data(:,10);
 N = length(t);
 num_periods = 4;
 points_per_period = N/num_periods;
@@ -102,8 +93,8 @@ va_gs  = ground_step(:, 6);
 vb_gs = ground_step(:, 7);
 %voltageA_gs = ground_step(:,2);
 %voltageB_gs = ground_step(:,3);
-va_gb  = ground_blokfuncties(:, 6);
-vb_gb = ground_blokfuncties(:, 7);
+va_gb  = ground_squarewave(:, 6);
+vb_gb = ground_squarewave(:, 7);
 t_gs = ground_step(:,10);
 
 
@@ -251,137 +242,159 @@ print -depsc V_deltaV.eps
 %% 2.b) Least square method on data motor A, no filtering: COMPLEX MODEL
 
 % H(z) = (b0*z+b1)/(z(z^2+a0z+a1))
-% 
+
+%%% MOTOR A 
+
 % collect the signals appearing in the difference equation
-b1 = va(4:end); 
-phi1 = [-va(3:end-1), -va(2:end-2), voltageA(2:end-2), voltageA(1:end-3)]; 
+b_1A = va(4:end); 
+phi_1A = [-va(3:end-1), -va(2:end-2), voltageA(2:end-2), voltageA(1:end-3)]; 
+
 % perform the fit to get the desired parameters
-theta1 = phi1\b1;
+theta_1A = phi_1A\b_1A;
 
 % build the identified model
-Num1 = [0, theta1(3), theta1(4)];
-Den1 = [1, theta1(1), theta1(2), 0];
-sys_1 = tf(Num1, Den1, Ts)
+Num_1A = [0, theta_1A(3), theta_1A(4)];
+Den_1A = [1, theta_1A(1), theta_1A(2), 0];
+sys_1A = tf(Num_1A, Den_1A, Ts)
 
-% compute the frequency response of the identified model
-FRF1 = squeeze(freqresp(sys_1,2*pi*f));
-mag_1 = 20*log10(abs(FRF1));
-phs_1 = 180/pi*unwrap(angle(FRF1)); 
-phs_1 = 360*ceil(-phs_1(1)/360) + phs_1;
+%%% MOTOR B 
 
-% plot the results
-figure,hold on,
-subplot(2,1,1),semilogx(f, mag_1)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('|FRF|  [rad/s]')
-legend('estimated','Location','SouthWest')
-subplot(2,1,2),semilogx(f, phs_1)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('\phi(FRF)  [^\circ]')
-legend('estimated','Location','SouthWest')
-sgtitle('FRF complex model')
-print -depsc FRF_complex_model.eps
+% collect the signals appearing in the difference equation
+b_1B = vb(4:end); 
+phi_1B = [-vb(3:end-1), -vb(2:end-2), voltageB(2:end-2), voltageB(1:end-3)]; 
 
-figure
-bode(sys_1)
+% perform the fit to get the desired parameters
+theta_1B = phi_1B\b_1B;
+
+% build the identified model
+Num_1B = [0, theta_1B(3), theta_1B(4)];
+Den_1B = [1, theta_1B(1), theta_1B(2), 0];
+sys_1B = tf(Num_1B, Den_1B, Ts)
+
+% Bode plots
+figure, hold on
+bode(sys_1A)
+bode(sys_1B)
+legend('Motor A', 'Motor B')
+hold off
+
+% Pole-Zero map
+figure, hold on
+pzmap(sys_1A, sys_1B)
+set(gca, 'FontSize', 11)
+legend('Motor A', 'Motor B')
+print -depsc p&z_complex.eps
+
 %% 2.b) Least square method on data motor A, no filtering: SIMPLE MODEL
 
 % suppose L = 0
-% H(z) = b1/(z(z-a1))
+% H(z) = b0/(z(z+a0))
+
+%%% Motor A
+
 % collect the signals appearing in the difference equation
-b2 = va(3:end); 
-phi2 = [va(2:end-1), voltageA(1:end-2)]; 
+b_2A = va(3:end); 
+phi_2A = [-va(2:end-1), voltageA(1:end-2)]; 
 
 % perform the fit to get the desired parameters
-theta2 = phi2\b2;
+theta_2A = phi_2A\b_2A;
 
 % build the identified model
-Num2 = [theta2(2)];
-Den2 = [1, -theta2(1), 0];
-sys_2 = tf(Num2, Den2, Ts);
+Num_2A = [theta_2A(2)];
+Den_2A = [1, theta_2A(1), 0];
+sys_2A = tf(Num_2A, Den_2A, Ts)
 
-% compute the frequency response of the identified model
-FRF2 = squeeze(freqresp(sys_2,2*pi*f));
-mag_2 = 20*log10(abs(FRF2));
-phs_2 = 180/pi*unwrap(angle(FRF2)); 
-phs_2 = 360*ceil(-phs_2(1)/360) + phs_2;
+%%% Motor B
 
-% plot the results
-figure,hold on,
-subplot(2,1,1),semilogx(f, mag_2)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('|FRF|  [rad/s]')
-legend('estimated','Location','SouthWest')
-subplot(2,1,2),semilogx(f, phs_2)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('\phi(FRF)  [^\circ] simple model')
-legend('estimated','Location','SouthWest')
-sgtitle('FRF simple model')
-print -depsc FRF_simple_model.eps
+% collect the signals appearing in the difference equation
+b_2B = vb(3:end); 
+phi_2B = [-vb(2:end-1), voltageB(1:end-2)]; 
 
-figure 
-bode(sys_2)
+% perform the fit to get the desired parameters
+theta_2B = phi_2B\b_2B;
 
-% THIS IS THE MODEL WE WILL USE
+% build the identified model
+Num_2B = [theta_2B(2)];
+Den_2B = [1, theta_2B(1), 0];
+sys_2B = tf(Num_2B, Den_2B, Ts)
+
+% Bode plots
+figure, hold on
+bode(sys_2A)
+bode(sys_2B)
+legend('Motor A', 'Motor B')
+hold off
+
+% Pole-Zero map
+figure, hold on
+pzmap(sys_2A, sys_2B)
+set(gca, 'FontSize', 11)
+legend('Motor A', 'Motor B')
+print -depsc p&z_simple.eps
+
 
 %% 2.c) Filtering with Butterworth filter: COMPLEX MODEL 
-% orde hoger dan orde systeem
-% cutoff freq = bandwith van ongefilterde LSE
-% te lage orde: te zwakke attenuation van hoge freq
-% te hoge orde: te grote delay
-% => kies 4e orde
 
-% ******* Motor A *******
+%%% Motor A 
 
 % define a low(band)-pass filter
-cutoff = bandwidth(sys_1)/(2*pi);
-[B_BW1,A_BW1] = butter(6, cutoff*(2/fs));
-h = fvtool(B_BW1, A_BW1);
+cutoff = bandwidth(sys_1A)/(2*pi);
+[B_BW_1A,A_BW_1A] = butter(6, cutoff*(2/fs));
+%h = fvtool(B_BW_1A, A_BW_1A);
 
 % apply the filter to both input and output
-va_BW1 = filter(B_BW1, A_BW1, va); 
-voltageA_BW1 = filter(B_BW1, A_BW1, voltageA);
+va_BW_1A = filter(B_BW_1A, A_BW_1A, va); 
+voltageA_BW_1A = filter(B_BW_1A, A_BW_1A, voltageA);
 
 %repeat the identification
-b_BW1 = va_BW1(4:end); 
-phi_BW1 = [-va_BW1(3:end-1),-va_BW1(2:end-2), voltageA_BW1(2:end-2), voltageA_BW1(1:end-3)]; 
-theta_BW1 = phi_BW1\b_BW1;
-Num_BW1 = [0,theta_BW1(3),theta_BW1(4)];
-Den_BW1 = [1, theta_BW1(1),theta_BW1(2), 0];
-sys_BW1 = tf(Num_BW1, Den_BW1, Ts);
+b_BW_1A = va_BW_1A(4:end); 
+phi_BW_1A = [-va_BW_1A(3:end-1),-va_BW_1A(2:end-2), voltageA_BW_1A(2:end-2), voltageA_BW_1A(1:end-3)]; 
+theta_BW_1A = phi_BW_1A\b_BW_1A;
+Num_BW_1A = [0,theta_BW_1A(3),theta_BW_1A(4)];
+Den_BW_1A = [1, theta_BW_1A(1),theta_BW_1A(2), 0];
+sys_BW_1A = tf(Num_BW_1A, Den_BW_1A, Ts)
 
-% compute the frequency response of the new identified model
-FRF_BW1 = squeeze(freqresp(sys_BW1,2*pi*f));
-mag_BW1 = 20*log10(abs(FRF_BW1));
-phs_BW1 = 180/pi*unwrap(angle(FRF_BW1)); 
-phs_BW1 = 360*ceil(-phs_BW1(1)/360) + phs_BW1;
+%%% Motor B
 
-% plot results
+% define a low(band)-pass filter
+cutoff = bandwidth(sys_1B)/(2*pi);
+[B_BW_1B,A_BW_1B] = butter(6, cutoff*(2/fs));
+%h = fvtool(B_BW_1B, A_BW_1B);
+
+% apply the filter to both input and output
+vb_BW_1B = filter(B_BW_1B, A_BW_1B, vb); 
+voltageB_BW_1B = filter(B_BW_1B, A_BW_1B, voltageB);
+
+%repeat the identification
+b_BW_1B = vb_BW_1B(4:end); 
+phi_BW_1B = [-vb_BW_1B(3:end-1),-vb_BW_1B(2:end-2), voltageB_BW_1B(2:end-2), voltageB_BW_1B(1:end-3)]; 
+theta_BW_1B = phi_BW_1B\b_BW_1B;
+Num_BW_1B = [0,theta_BW_1B(3),theta_BW_1B(4)];
+Den_BW_1B = [1, theta_BW_1B(1),theta_BW_1B(2), 0];
+sys_BW_1B = tf(Num_BW_1B, Den_BW_1B, Ts)
+
+% Bode plots
 figure, hold on
-sgtitle("LLS with of complex model low-pass filter applied to the input and output data")
-subplot(2,1,1),semilogx(f, mag_BW1)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('|FRF|  [m]')
-legend('estimated','Location','SouthWest')
-axis tight
-subplot(2,1,2)
-semilogx(f, phs_BW1)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('\phi(FRF)  [^\circ]')
-legend('estimated','Location','SouthWest')
-print -depsc FRF_complex_filter.epsv
+bode(sys_BW_1A)
+bode(sys_BW_1B)
+legend('Motor A', 'Motor B')
+sgtitle('Complex model, filtered')
+hold off
+
+% Pole-Zero map
+figure, hold on
+pzmap(sys_BW_1A, sys_BW_1B)
+set(gca, 'FontSize', 11)
+legend('Motor A', 'Motor B')
+print -depsc p&z_complex_BW.eps
+
+figure, hold on
+bode(sys_1A)
+bode(sys_2A)
+bode(sys_BW_1A)
+legend('Complex','Simple','Complex BW')
+sgtitle('Comparison for motor A')
+hold off
 
 %% 2.c) Filtering with Butterworth filter: SIMPLE MODEL
 
@@ -549,20 +562,22 @@ hold off
 %% 2.d) Difference between response of the simulated model and the emperical values: NO FILTER, COMPLEX MODEL 
 
 % Motor A
-va_est1 = lsim(sys_1,voltageA_step(106:505),t_step(106:505));               % start at 106, moment of step
+va_est_1A = lsim(sys_1A,voltageA_step(106:505),t_step(106:505));               % start at 106, moment of step
 figure
-subplot(2,1,1),plot(t(1:400),[va_step(106:505) va_est1]);
+subplot(2,1,1),plot(t(1:400),[va_step(106:505) va_est_1A]);
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
 ylabel('\omega_a [rad/s]')
 axis tight
-subplot(2,1,2),plot(t(1:400),abs(va_step(106:505) - va_est1))
+subplot(2,1,2),plot(t(1:400),abs(va_step(106:505) - va_est_1A))
 legend('error')
 xlabel('time [s]')
 ylabel('omega_{a empirical} - \omega_{a estimated} [rad/s]')
 axis tight
 sgtitle('Step response complex model motor a')
 print -depsc step_response_complex_a.eps
+
+error_1A_tot= sum(abs(va_step(106:505) - va_est_1A))
 
 % Motor B
 vb_est1 = lsim(sys_1,voltageA_step(106:505),t_step(106:505));
@@ -612,9 +627,7 @@ axis tight
 sgtitle('Response complex model to square wavefunction input motor b')
 print -depsc square_square_wave_response_complex_b.eps
 
-figure, hold on
-pzmap(sys_1)
-print -depsc p&z_complex.eps
+
 
 
 %% 2.d) Difference between response of the simulated model and the real system: SIMPLE MODEL, NO FILTER
@@ -701,14 +714,14 @@ print -depsc p&z_simple.eps
 
 
 %empirical
-va_est_BW1 = lsim(sys_BW1, voltageA_step(106:505), t_step(106:505));
+va_est_BW_1A = lsim(sys_BW_1A, voltageA_step(106:505), t_step(106:505));
 figure
-subplot(2,1,1),plot(t(1:400),[va_step(106:505) va_est_BW1]);
+subplot(2,1,1),plot(t(1:400),[va_step(106:505) va_est_BW_1A]);
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
 ylabel('\omega_a [rad/s]')
 axis tight
-subplot(2,1,2),plot(t(1:400),abs(va_step(106:505) - va_est_BW1))
+subplot(2,1,2),plot(t(1:400),abs(va_step(106:505) - va_est_BW_1A))
 legend('error')
 xlabel('time [s]')
 ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
@@ -716,8 +729,10 @@ axis tight
 sgtitle('Step response of complex model with Butterworth filter')
 print -depsc step_response_complex_BW_a.eps
 
+error_BW1_tot= sum(abs(va_step(106:505) - va_est_BW_1A))
+
 figure,hold on
-pzmap(sys_BW1)
+pzmap(sys_BW_1A)
 print -depsc p&z_complex_BW.eps
 
 
@@ -832,8 +847,8 @@ print -depsc superposition.eps
 % vb_gs = ground_step(:, 7);
 % voltageA_gs = ground_step(:,2);
 % voltageB_gs = ground_step(:,3);
-% va_gb  = ground_blokfuncties(:, 6);
-% vb_gb = ground_blokfuncties(:, 7);
+% va_gb  = ground_squarewave(:, 6);
+% vb_gb = ground_squarewave(:, 7);
 % t_gs = ground_step(:,10);
 
 figure
