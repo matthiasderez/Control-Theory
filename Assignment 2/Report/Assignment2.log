@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  2 DEC 2021 22:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  2 DEC 2021 23:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Assignment1.tex
-(./Assignment1.tex
+**Assignment2.tex
+(./Assignment2.tex
 LaTeX2e <2020-10-01>
 L3 programming layer <2020-09-24> xparse <2020-03-03>
 (c:/Users/matth/texmf/tex/latex/kulak/kulakarticle.cls
@@ -779,8 +779,8 @@ File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count312
 \l__pdf_internal_box=\box110
 )
-(./Assignment1.aux)
-\openout1 = `Assignment1.aux'.
+(./Assignment2.aux)
+\openout1 = `Assignment2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
 LaTeX Font Info:    ... okay on input line 57.
@@ -811,9 +811,9 @@ LaTeX Info: Redefining \ref on input line 57.
 LaTeX Info: Redefining \pageref on input line 57.
 LaTeX Info: Redefining \nameref on input line 57.
 
-(./Assignment1.out) (./Assignment1.out)
+(./Assignment2.out) (./Assignment2.out)
 \@outlinefile=\write4
-\openout4 = `Assignment1.out'.
+\openout4 = `Assignment2.out'.
 
 
 (c:/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -847,12 +847,12 @@ Package gensymb Info: Using \Omega for \ohm on input line 57.
 
 Package gensymb Warning: Not defining \micro.
 
-<kuleuvenLogo.pdf, id=87, 159.33528pt x 56.90259pt>
+<kuleuvenLogo.pdf, id=55, 159.33528pt x 56.90259pt>
 File: kuleuvenLogo.pdf Graphic file (type pdf)
 <use kuleuvenLogo.pdf>
 Package pdftex.def Info: kuleuvenLogo.pdf  used on input line 59.
 (pdftex.def)             Requested size: 119.50601pt x 42.67912pt.
-<kuleuvenSedes.pdf, id=88, 349.305pt x 596.2275pt>
+<kuleuvenSedes.pdf, id=56, 349.305pt x 596.2275pt>
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
 Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 59.
@@ -878,228 +878,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 59--60
 
  []
 
-<../Figures//DC_motors.png, id=91, 364.9635pt x 227.04825pt>
-File: ../Figures//DC_motors.png Graphic file (type png)
-<use ../Figures//DC_motors.png>
-Package pdftex.def Info: ../Figures//DC_motors.png  used on input line 113.
-(pdftex.def)             Requested size: 273.14922pt x 169.9393pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--124
-
- []
-
+AED: lastpage setting LastPage
 [1
 
 {c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <c:/Users/matth/
 texmf/tex/latex/kulak/kuleuvenLogo.pdf> <c:/Users/matth/texmf/tex/latex/kulak/k
-uleuvenSedes.pdf>]
-<../Figures//delay.png, id=130, 274.02374pt x 214.55156pt>
-File: ../Figures//delay.png Graphic file (type png)
-<use ../Figures//delay.png>
-Package pdftex.def Info: ../Figures//delay.png  used on input line 149.
-(pdftex.def)             Requested size: 227.62204pt x 178.22505pt.
-File: kuleuvenSedes.pdf Graphic file (type pdf)
-<use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 152.
-(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-
-
-Package Fancyhdr Warning: \headheight is too small (42.67912pt): 
-Make it at least 46.27914pt.
-We now make it that large for the rest of the document.
-This may cause the page layout to be inconsistent, however.
-
-[2 <../Figures//DC_motors.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 180--185
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 180--185
-
- []
-
-File: kuleuvenSedes.pdf Graphic file (type pdf)
-<use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 185.
-(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-[3 <../Figures//delay.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 199--202
-
- []
-
-Package epstopdf Info: Source file: <../Matlab//input_voltage.eps>
-(epstopdf)                    date: 2021-12-02 17:08:05
-(epstopdf)                    size: 80876 bytes
-(epstopdf)             Output file: <./input_voltage-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-02 16:34:46
-(epstopdf)                    size: 20946 bytes
-(epstopdf)             Command: <repstopdf --outfile=./input_voltage-eps-conver
-ted-to.pdf ../Matlab//input_voltage.eps>
-(epstopdf)             \includegraphics on input line 207.
-runsystem(repstopdf --outfile=./input_voltage-eps-converted-to.pdf ../Matlab//i
-nput_voltage.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <./input_voltage-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-02 22:59:16
-(epstopdf)                    size: 21179 bytes.
-<./input_voltage-eps-converted-to.pdf, id=165, 362.35374pt x 307.1475pt>
-File: ./input_voltage-eps-converted-to.pdf Graphic file (type pdf)
-<use ./input_voltage-eps-converted-to.pdf>
-Package pdftex.def Info: ./input_voltage-eps-converted-to.pdf  used on input li
-ne 207.
-(pdftex.def)             Requested size: 220.79366pt x 187.15817pt.
-Package epstopdf Info: Source file: <../Matlab//motor_velocity.eps>
-(epstopdf)                    date: 2021-12-02 17:08:03
-(epstopdf)                    size: 171859 bytes
-(epstopdf)             Output file: <./motor_velocity-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-02 16:34:46
-(epstopdf)                    size: 44677 bytes
-(epstopdf)             Command: <repstopdf --outfile=./motor_velocity-eps-conve
-rted-to.pdf ../Matlab//motor_velocity.eps>
-(epstopdf)             \includegraphics on input line 212.
-runsystem(repstopdf --outfile=./motor_velocity-eps-converted-to.pdf ../Matlab//
-motor_velocity.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <./motor_velocity-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-02 22:59:17
-(epstopdf)                    size: 44028 bytes.
-<./motor_velocity-eps-converted-to.pdf, id=166, 361.35pt x 307.1475pt>
-File: ./motor_velocity-eps-converted-to.pdf Graphic file (type pdf)
-<use ./motor_velocity-eps-converted-to.pdf>
-Package pdftex.def Info: ./motor_velocity-eps-converted-to.pdf  used on input l
-ine 212.
-(pdftex.def)             Requested size: 227.62204pt x 193.48051pt.
-Package epstopdf Info: Source file: <../Matlab//omegaA_deltaomegaA.eps>
-(epstopdf)                    date: 2021-12-02 17:08:05
-(epstopdf)                    size: 194271 bytes
-(epstopdf)             Output file: <./omegaA_deltaomegaA-eps-converted-to.pdf>
-
-(epstopdf)                    date: 2021-12-02 16:34:46
-(epstopdf)                    size: 36885 bytes
-(epstopdf)             Command: <repstopdf --outfile=./omegaA_deltaomegaA-eps-c
-onverted-to.pdf ../Matlab//omegaA_deltaomegaA.eps>
-(epstopdf)             \includegraphics on input line 222.
-runsystem(repstopdf --outfile=./omegaA_deltaomegaA-eps-converted-to.pdf ../Matl
-ab//omegaA_deltaomegaA.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <./omegaA_deltaomegaA-eps-converted-to.pdf>
-
-(epstopdf)                    date: 2021-12-02 22:59:19
-(epstopdf)                    size: 37411 bytes.
-<./omegaA_deltaomegaA-eps-converted-to.pdf, id=167, 371.3875pt x 299.1175pt>
-File: ./omegaA_deltaomegaA-eps-converted-to.pdf Graphic file (type pdf)
-<use ./omegaA_deltaomegaA-eps-converted-to.pdf>
-Package pdftex.def Info: ./omegaA_deltaomegaA-eps-converted-to.pdf  used on inp
-ut line 222.
-(pdftex.def)             Requested size: 223.0721pt x 179.66814pt.
-Package epstopdf Info: Source file: <../Matlab//omegaB_deltaomegaB.eps>
-(epstopdf)                    date: 2021-12-02 17:08:06
-(epstopdf)                    size: 193219 bytes
-(epstopdf)             Output file: <./omegaB_deltaomegaB-eps-converted-to.pdf>
-
-(epstopdf)                    date: 2021-12-02 16:34:46
-(epstopdf)                    size: 37331 bytes
-(epstopdf)             Command: <repstopdf --outfile=./omegaB_deltaomegaB-eps-c
-onverted-to.pdf ../Matlab//omegaB_deltaomegaB.eps>
-(epstopdf)             \includegraphics on input line 227.
-runsystem(repstopdf --outfile=./omegaB_deltaomegaB-eps-converted-to.pdf ../Matl
-ab//omegaB_deltaomegaB.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <./omegaB_deltaomegaB-eps-converted-to.pdf>
-
-(epstopdf)                    date: 2021-12-02 22:59:21
-(epstopdf)                    size: 37708 bytes.
-<./omegaB_deltaomegaB-eps-converted-to.pdf, id=168, 371.3875pt x 299.1175pt>
-File: ./omegaB_deltaomegaB-eps-converted-to.pdf Graphic file (type pdf)
-<use ./omegaB_deltaomegaB-eps-converted-to.pdf>
-Package pdftex.def Info: ./omegaB_deltaomegaB-eps-converted-to.pdf  used on inp
-ut line 227.
-(pdftex.def)             Requested size: 223.0721pt x 179.66814pt.
-File: kuleuvenSedes.pdf Graphic file (type pdf)
-<use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 245.
-(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-[4 <./input_voltage-eps-converted-to.pdf> <./motor_velocity-eps-converted-to.pd
-f>]
-Underfull \hbox (badness 10000) in paragraph at lines 283--286
-
- []
-
-File: kuleuvenSedes.pdf Graphic file (type pdf)
-<use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 286.
-(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-[5 <./omegaA_deltaomegaA-eps-converted-to.pdf> <./omegaB_deltaomegaB-eps-conver
-ted-to.pdf>]
-<p&z_complex_cropped.pdf, id=213, 358.66397pt x 290.5224pt>
-File: p&z_complex_cropped.pdf Graphic file (type pdf)
-<use p&z_complex_cropped.pdf>
-Package pdftex.def Info: p&z_complex_cropped.pdf  used on input line 313.
-(pdftex.def)             Requested size: 218.51521pt x 177.00117pt.
-<p&z_simple_cropped.pdf, id=214, 359.19194pt x 291.57933pt>
-File: p&z_simple_cropped.pdf Graphic file (type pdf)
-<use p&z_simple_cropped.pdf>
-Package pdftex.def Info: p&z_simple_cropped.pdf  used on input line 319.
-(pdftex.def)             Requested size: 218.51521pt x 177.38261pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 332--337
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 332--337
-
- []
-
-File: kuleuvenSedes.pdf Graphic file (type pdf)
-<use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 337.
-(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-[6 <./p&z_complex_cropped.pdf> <./p&z_simple_cropped.pdf>]
-
-AED: lastpage setting LastPage
-File: kuleuvenSedes.pdf Graphic file (type pdf)
-<use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 393.
-(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-[7] (./Assignment1.aux)
-Package rerunfilecheck Info: File `Assignment1.out' has not changed.
-(rerunfilecheck)             Checksum: 931799D6BB02194C689F50ABE05BAC74;958.
+uleuvenSedes.pdf>] (./Assignment2.aux)
+Package rerunfilecheck Info: File `Assignment2.out' has not changed.
+(rerunfilecheck)             Checksum: 3C1FDFA208303698EBB062A34D4DAF93;379.
  ) 
 Here is how much of TeX's memory you used:
- 21088 strings out of 479917
- 405136 string characters out of 5886666
- 702539 words of memory out of 5000000
- 37157 multiletter control sequences out of 15000+600000
- 549995 words of font info for 64 fonts, out of 8000000 for 9000
+ 20933 strings out of 479917
+ 402059 string characters out of 5886666
+ 688037 words of memory out of 5000000
+ 37066 multiletter control sequences out of 15000+600000
+ 544810 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,18n,99p,696b,1101s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
-ive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2020/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2020/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.p
-fb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texl
-ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2020/texmf-dist
-/fonts/type1/public/cm-super/sfbx0900.pfb><c:/texlive/2020/texmf-dist/fonts/typ
-e1/public/cm-super/sfbx1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/
-cm-super/sfbx1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/s
-fbx1440.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pf
-b><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texl
-ive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><c:/texlive/2020/t
-exmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2020/texmf-dist/
-fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2020/texmf-dist/fonts/type
-1/public/cm-super/sfti1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/c
-m-super/sftt0800.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sf
-tt1000.pfb>
-Output written on Assignment1.pdf (7 pages, 710232 bytes).
+ 89i,12n,99p,889b,1101s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
+ive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2020/t
+exmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2020/texmf-dist/
+fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2020/texmf-dist/fonts/type
+1/public/cm-super/sfrm1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/c
+m-super/sfrm1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sf
+tt0800.pfb>
+Output written on Assignment2.pdf (1 page, 276150 bytes).
 PDF statistics:
- 332 PDF objects out of 1000 (max. 8388607)
- 256 compressed objects within 3 object streams
- 52 named destinations out of 1000 (max. 500000)
- 271 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 101 PDF objects out of 1000 (max. 8388607)
+ 72 compressed objects within 1 object stream
+ 8 named destinations out of 1000 (max. 500000)
+ 167 words of extra memory for PDF output out of 10000 (max. 10000000)
 

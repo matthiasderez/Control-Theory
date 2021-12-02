@@ -1,0 +1,74 @@
+\documentclass[a4paper,kul]{kulakarticle} %options: kul or kulak (default)
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\newlength{\twosubht}
+\newsavebox{\twosubbox}
+\graphicspath{{../Figures/}{../Matlab/}{/}}
+\usepackage[outdir=./]{epstopdf}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\setcounter{MaxMatrixCols}{21}
+
+\usepackage{etoolbox,refcount}
+\usepackage{multicol}
+
+\newcounter{countitems}
+\newcounter{nextitemizecount}
+\newcommand{\setupcountitems}{%
+	\stepcounter{nextitemizecount}%
+	\setcounter{countitems}{0}%
+	\preto\item{\stepcounter{countitems}}%
+}
+\makeatletter
+\newcommand{\computecountitems}{%
+	\edef\@currentlabel{\number\c@countitems}%
+	\label{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
+}
+\newcommand{\nextitemizecount}{%
+	\getrefnumber{countitems@\number\c@nextitemizecount}%
+}
+\newcommand{\previtemizecount}{%
+	\getrefnumber{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
+}
+\makeatother    
+\newenvironment{AutoMultiColItemize}{%
+	\ifnumcomp{\nextitemizecount}{>}{3}{\begin{multicols}{2}}{}%
+		\setupcountitems\begin{itemize}}%
+		{\end{itemize}%
+		\unskip\computecountitems\ifnumcomp{\previtemizecount}{>}{3}{\end{multicols}}{}}
+
+\usepackage{pdflscape}
+
+\date{Academic year 2021 -- 2022}
+\address{
+  Faculty of Engineering Science \\
+  Department of Mechanical Engineering \\
+  Control theory \texttt{[H04X3a]}}
+\title{Report Assignment 2: Velocity control of the cart}
+\author{Matthias Derez, Toon Servaes}
+
+
+\begin{document}
+
+\maketitle
+\section{Introduction}
+In this report, two velocity controllers for DC motors are designed, using frequency respons methods. The main criterion states that the velocity controller yieldaangeziens a zero steady-state error on a constant velocity reference. 
+\section{Design of the controller}
+\subsection{Type of the controller}
+To satisfy the criterion of zero steady-state error, multiple controllers can be used. A PI, PID and feedforward controller can all yield a zero steady-state error. The feedforward controller can be especially usefull for tracking. However, as the controller must yield a zero steady-state error on a constant velocity reference and deal with errors caused by disturbances, the feedforward controller will not be used. Since a large bandwidth yields a fast responding system, a high bandwidth seems advantaegous. If the bandwidth is too high though, the high frequency noise has more influence. A trade-off between the two has to be made. Generally the sampling frequency has to be at least 10-20 times larger than bandwidth (\underline{REFERENTIE C8 S82}). Because of this, the PI controller is chosen, as the extra bandwith delivered by the PID part is unnecessary.  
+\subsection{Design parameters}
+To properly execute the design, some design parameters must be determined. 
+\subsection{Limitations on bandwidth}
+
+\section{Validation of the controller}
+
+
+
+
+\end{document}

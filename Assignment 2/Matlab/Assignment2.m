@@ -45,7 +45,7 @@ xlabel('\omega [rad/s]')
 
 % Specifications
 PM_des = 45;		%desired phase margin [degrees]
-Dphi_PI = 12;       % allowed phase lag of the PI controller at the crossover frequency 
+Dphi_PI = 11;       % allowed phase lag of the PI controller at the crossover frequency 
 
 % Determine the new cross-over pulsation wco
 phase_crossover = -180 + PM_des + Dphi_PI;
@@ -133,3 +133,7 @@ t = [0:0.01:10];
 [sim_step] = step(sys_cl,t);
 figure
 plot(t, sim_step)
+figure
+plot(t,1-sim_step)
+title('ddphi = 11')
+error11 = sum(abs(1-sim_step))
