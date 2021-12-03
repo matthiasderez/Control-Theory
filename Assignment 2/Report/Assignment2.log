@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  2 DEC 2021 23:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  3 DEC 2021 18:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -847,12 +847,12 @@ Package gensymb Info: Using \Omega for \ohm on input line 57.
 
 Package gensymb Warning: Not defining \micro.
 
-<kuleuvenLogo.pdf, id=55, 159.33528pt x 56.90259pt>
+<kuleuvenLogo.pdf, id=67, 159.33528pt x 56.90259pt>
 File: kuleuvenLogo.pdf Graphic file (type pdf)
 <use kuleuvenLogo.pdf>
 Package pdftex.def Info: kuleuvenLogo.pdf  used on input line 59.
 (pdftex.def)             Requested size: 119.50601pt x 42.67912pt.
-<kuleuvenSedes.pdf, id=56, 349.305pt x 596.2275pt>
+<kuleuvenSedes.pdf, id=68, 349.305pt x 596.2275pt>
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
 Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 59.
@@ -878,35 +878,64 @@ Underfull \hbox (badness 10000) in paragraph at lines 59--60
 
  []
 
-
-AED: lastpage setting LastPage
 [1
 
 {c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <c:/Users/matth/
 texmf/tex/latex/kulak/kuleuvenLogo.pdf> <c:/Users/matth/texmf/tex/latex/kulak/k
-uleuvenSedes.pdf>] (./Assignment2.aux)
+uleuvenSedes.pdf>]
+
+Package caption Warning: \label without proper reference on input line 98.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `tab: values' on page 2 undefined on input line 95.
+
+
+AED: lastpage setting LastPage
+File: kuleuvenSedes.pdf Graphic file (type pdf)
+<use kuleuvenSedes.pdf>
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 120.
+(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+
+Package Fancyhdr Warning: \headheight is too small (42.67912pt): 
+Make it at least 46.27914pt.
+We now make it that large for the rest of the document.
+This may cause the page layout to be inconsistent, however.
+
+[2] (./Assignment2.aux)
 Package rerunfilecheck Info: File `Assignment2.out' has not changed.
-(rerunfilecheck)             Checksum: 3C1FDFA208303698EBB062A34D4DAF93;379.
+(rerunfilecheck)             Checksum: 079C594602A1090703603A7E41794CB8;624.
+
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 20933 strings out of 479917
- 402059 string characters out of 5886666
- 688037 words of memory out of 5000000
- 37066 multiletter control sequences out of 15000+600000
- 544810 words of font info for 56 fonts, out of 8000000 for 9000
+ 20953 strings out of 479917
+ 402361 string characters out of 5886666
+ 694189 words of memory out of 5000000
+ 37077 multiletter control sequences out of 15000+600000
+ 545586 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,12n,99p,889b,1101s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 89i,17n,99p,1390b,1101s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
+ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2020/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
+b><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texl
 ive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2020/t
 exmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2020/texmf-dist/
 fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2020/texmf-dist/fonts/type
 1/public/cm-super/sfrm1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/c
 m-super/sfrm1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sf
 tt0800.pfb>
-Output written on Assignment2.pdf (1 page, 276150 bytes).
+Output written on Assignment2.pdf (2 pages, 361625 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
- 72 compressed objects within 1 object stream
- 8 named destinations out of 1000 (max. 500000)
- 167 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 158 PDF objects out of 1000 (max. 8388607)
+ 119 compressed objects within 2 object streams
+ 16 named destinations out of 1000 (max. 500000)
+ 191 words of extra memory for PDF output out of 10000 (max. 10000000)
 
