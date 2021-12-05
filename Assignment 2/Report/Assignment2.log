@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  3 DEC 2021 18:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  3 DEC 2021 21:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -883,18 +883,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 59--60
 {c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <c:/Users/matth/
 texmf/tex/latex/kulak/kuleuvenLogo.pdf> <c:/Users/matth/texmf/tex/latex/kulak/k
 uleuvenSedes.pdf>]
-
-Package caption Warning: \label without proper reference on input line 98.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `tab: values' on page 2 undefined on input line 95.
-
-
+Package epstopdf Info: Source file: <../Matlab//bodeplot_openloop.eps>
+(epstopdf)                    date: 2021-12-03 19:59:38
+(epstopdf)                    size: 55441 bytes
+(epstopdf)             Output file: <./bodeplot_openloop-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-03 20:11:49
+(epstopdf)                    size: 16703 bytes
+(epstopdf)             Command: <repstopdf --outfile=./bodeplot_openloop-eps-co
+nverted-to.pdf ../Matlab//bodeplot_openloop.eps>
+(epstopdf)             \includegraphics on input line 119.
+Package epstopdf Info: Output file is already uptodate.
+<./bodeplot_openloop-eps-converted-to.pdf, id=102, 363.3575pt x 300.12125pt>
+File: ./bodeplot_openloop-eps-converted-to.pdf Graphic file (type pdf)
+<use ./bodeplot_openloop-eps-converted-to.pdf>
+Package pdftex.def Info: ./bodeplot_openloop-eps-converted-to.pdf  used on inpu
+t line 119.
+(pdftex.def)             Requested size: 273.14922pt x 225.61702pt.
+Package epstopdf Info: Source file: <../Matlab//bodeplot_cl.eps>
+(epstopdf)                    date: 2021-12-03 19:59:39
+(epstopdf)                    size: 47180 bytes
+(epstopdf)             Output file: <./bodeplot_cl-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-03 20:14:53
+(epstopdf)                    size: 14273 bytes
+(epstopdf)             Command: <repstopdf --outfile=./bodeplot_cl-eps-converte
+d-to.pdf ../Matlab//bodeplot_cl.eps>
+(epstopdf)             \includegraphics on input line 126.
+Package epstopdf Info: Output file is already uptodate.
+<./bodeplot_cl-eps-converted-to.pdf, id=103, 363.3575pt x 300.12125pt>
+File: ./bodeplot_cl-eps-converted-to.pdf Graphic file (type pdf)
+<use ./bodeplot_cl-eps-converted-to.pdf>
+Package pdftex.def Info: ./bodeplot_cl-eps-converted-to.pdf  used on input line
+ 126.
+(pdftex.def)             Requested size: 273.14922pt x 225.61702pt.
+ 
 AED: lastpage setting LastPage
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 120.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 142.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 Package Fancyhdr Warning: \headheight is too small (42.67912pt): 
@@ -902,19 +927,21 @@ Make it at least 46.27914pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[2] (./Assignment2.aux)
+[2]
+File: kuleuvenSedes.pdf Graphic file (type pdf)
+<use kuleuvenSedes.pdf>
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 142.
+(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+ [3 <./bodeplot_openloop-eps-converted-to.pdf> <./bodeplot_cl-eps-converted-to.
+pdf>] (./Assignment2.aux)
 Package rerunfilecheck Info: File `Assignment2.out' has not changed.
-(rerunfilecheck)             Checksum: 079C594602A1090703603A7E41794CB8;624.
-
-
-LaTeX Warning: There were undefined references.
-
+(rerunfilecheck)             Checksum: D327FE82F9E584B668346BD5D401BEE4;628.
  ) 
 Here is how much of TeX's memory you used:
- 20953 strings out of 479917
- 402361 string characters out of 5886666
- 694189 words of memory out of 5000000
- 37077 multiletter control sequences out of 15000+600000
+ 20977 strings out of 479917
+ 403019 string characters out of 5886666
+ 695357 words of memory out of 5000000
+ 37094 multiletter control sequences out of 15000+600000
  545586 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,17n,99p,1390b,1101s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -932,10 +959,10 @@ fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2020/texmf-dist/fonts/type
 1/public/cm-super/sfrm1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/c
 m-super/sfrm1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sf
 tt0800.pfb>
-Output written on Assignment2.pdf (2 pages, 361625 bytes).
+Output written on Assignment2.pdf (3 pages, 389181 bytes).
 PDF statistics:
- 158 PDF objects out of 1000 (max. 8388607)
- 119 compressed objects within 2 object streams
- 16 named destinations out of 1000 (max. 500000)
- 191 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 186 PDF objects out of 1000 (max. 8388607)
+ 140 compressed objects within 2 object streams
+ 19 named destinations out of 1000 (max. 500000)
+ 201 words of extra memory for PDF output out of 10000 (max. 10000000)
 
