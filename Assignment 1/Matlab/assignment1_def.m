@@ -1,6 +1,7 @@
 %% Explanation naming
 % 2 different models are used in this script: 1 refers to the complex model, 2 refers to the simple model. 
 % Different filters are used: BW stands for Butterworth, SK stands for Sanathanan Koerner
+% A refers to motor A, B to motor B
 
 %% Loading data
 close all
@@ -309,8 +310,8 @@ print -depsc p&z_simple.eps
 %%% Motor A 
 
 % define a low(band)-pass filter
-cutoff = bandwidth(sys_1A)/(2*pi);
-[B_BW_1A,A_BW_1A] = butter(6, cutoff*(2/fs));
+cutoff_1A = 0.017*bandwidth(sys_1A)/(2*pi);
+[B_BW_1A,A_BW_1A] = butter(6, cutoff_1A*(2/fs));
 %h = fvtool(B_BW_1A, A_BW_1A);
 
 % apply the filter to both input and output
@@ -328,8 +329,8 @@ sys_BW_1A = tf(Num_BW_1A, Den_BW_1A, Ts)
 %%% Motor B
 
 % define a low(band)-pass filter
-cutoff = bandwidth(sys_1B)/(2*pi);
-[B_BW_1B,A_BW_1B] = butter(6, cutoff*(2/fs));
+cutoff_1B = bandwidth(sys_1B)/(2*pi);
+[B_BW_1B,A_BW_1B] = butter(6, cutoff_1B*(2/fs));
 %h = fvtool(B_BW_1B, A_BW_1B);
 
 % apply the filter to both input and output
@@ -359,722 +360,866 @@ set(gca, 'FontSize', 11)
 legend('Motor A', 'Motor B')
 print -depsc p&z_complex_BW.eps
 
-figure, hold on
-bode(sys_1A)
-bode(sys_2A)
-bode(sys_BW_1A)
-legend('Complex','Simple','Complex BW')
-sgtitle('Comparison for motor A')
-hold off
-
 %% 2.c) Filtering with Butterworth filter: SIMPLE MODEL
 
-% Butterworth
-% orde hoger dan orde systeem
-% cutoff freq = bandwith van ongefilterde LSE
-% te lage orde: te zwakke attenuation van hoge freq
-% te hoge orde: te grote delay
-% => kies 4e orde
-
-% ******* Motor A *******
+%%% Motor A
 
 % define a low(band)-pass filter
-cutoff = bandwidth(sys_2A)/(2*pi);
-[B_BW2,A_BW2] = butter(6, cutoff*(2/fs));
-h = fvtool(B_BW2, A_BW2);
+cutoff_2A = bandwidth(sys_2A)/(2*pi);
+[B_BW_2A,A_BW_2A] = butter(6, cutoff_2A*(2/fs));
+%h = fvtool(B_BW_2A, A_BW_2A);
 
 % apply the filter to both input and output
-va_BW2 = filter(B_BW2, A_BW2, va); 
-voltageA_BW2 = filter(B_BW2, A_BW2, voltageA);
-
+va_BW_2A = filter(B_BW_2A, A_BW_2A, va); 
+voltageA_BW_2A = filter(B_BW_2A, A_BW_2A, voltageA);
 
 %repeat the identification
-b_BW2 = va_BW2(3:end); 
-phi_BW2 = [va_BW2(2:end-1), voltageA_BW2(1:end-2)]; 
-theta1_BW2 = phi_BW2\b_BW2;
-Num_BW2 = [theta1_BW2(2)];
-Den_BW2 = [1, -theta1_BW2(1), 0];
-sys_BW2 = tf(Num_BW2, Den_BW2, Ts);
+b_BW_2A = va_BW_2A(3:end); 
+phi_BW_2A = [-va_BW_2A(2:end-1), voltageA_BW_2A(1:end-2)]; 
+theta_BW_2A = phi_BW_2A\b_BW_2A;
+Num_BW_2A = [theta_BW_2A(2)];
+Den_BW_2A = [1, theta_BW_2A(1), 0];
+sys_BW_2A = tf(Num_BW_2A, Den_BW_2A, Ts)
 
-% compute the frequency response of the new identified model
-FRF_BW2 = squeeze(freqresp(sys_BW2,2*pi*f));
-mag_BW2 = 20*log10(abs(FRF_BW2));
-phs_BW2 = 180/pi*unwrap(angle(FRF_BW2)); 
-phs_BW2 = 360*ceil(-phs_BW2(1)/360) + phs_BW2;
+%%% Motor B
 
-% plot results
+% define a low(band)-pass filter
+cutoff_2B = bandwidth(sys_2B)/(2*pi);
+[B_BW_2B,A_BW_2B] = butter(6, cutoff_2B*(2/fs));
+%h = fvtool(B_BW_2B, A_BW_2B);
+
+% apply the filter to both input and output
+vb_BW_2B = filter(B_BW_2B, A_BW_2B, vb); 
+voltageB_BW_2B = filter(B_BW_2B, A_BW_2B, voltageB);
+
+%repeat the identification
+b_BW_2B = vb_BW_2B(3:end); 
+phi_BW_2B = [-vb_BW_2B(2:end-1), voltageB_BW_2B(1:end-2)]; 
+theta_BW_2B = phi_BW_2B\b_BW_2B;
+Num_BW_2B = [theta_BW_2B(2)];
+Den_BW_2B = [1, theta_BW_2B(1), 0];
+sys_BW_2B = tf(Num_BW_2B, Den_BW_2B, Ts)
+
+% Bode plots
 figure, hold on
-sgtitle("LLS of simple model with Butterworth filter applied to the input and output data")
-subplot(2,1,1),semilogx(f, mag_BW2)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('|FRF|  [dB]')
-legend('estimated','Location','SouthWest')
-axis tight
-subplot(2,1,2)
-semilogx(f, phs_BW2)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('\phi(FRF)  [^\circ]')
-legend('estimated','Location','SouthWest')
-print -depsc FRF_simple_BW.eps
+bode(sys_BW_2A)
+bode(sys_BW_2B)
+legend('Motor A', 'Motor B')
+sgtitle('Simple model, filtered')
+hold off
+
+% Pole-Zero map
+figure, hold on
+pzmap(sys_BW_2A, sys_BW_2B)
+set(gca, 'FontSize', 11)
+legend('Motor A', 'Motor B')
+print -depsc p&z_simple_BW.eps
+
 
 %% 2.c) Filtering Sanathanan Koerner procedure: COMPLEX MODEL
 
-% Denumerator of complex model without filter: Den1
-sys_SK1 = sys_1A;
-error_SK1 = [100 100 100 100];
-Den_SK1_2 = Den_1A;
-Den_SK1_1 = 0;
-va_SK1 = va;
-voltageA_SK1 = voltageA;
+%%% Motor A
+
+sys_SK_1A = sys_1A;
+error_SK_1A = [100 100 100 100];
+Den_SK_1A_j = Den_1A;
+Den_SK_1A_i = 0;
+va_SK_1A = va;
+voltageA_SK_1A = voltageA;
  
-while abs(error_SK1) > [eps eps eps eps]
-    Den_SK1_1 = Den_SK1_2;
-    va_SK1 = filter(1, Den_SK1_2, va_SK1);
-    voltageA_SK1 = filter(1, Den_SK1_2, voltageA_SK1);
-    b_SK1 = va_SK1(4:end); 
-    phi_SK1 = [-va_SK1(3:end-1),-va_SK1(2:end-2), voltageA_SK1(2:end-2), voltageA_SK1(1:end-3)]; 
-    theta_SK1 = phi_SK1\b_SK1;
-    Num_SK1 = [0, theta_SK1(3), theta_SK1(4) ];
-    Den_SK1_2 = [1, theta_SK1(1),  theta_SK1(2), 0];
-    sys_SK1= tf(Num_SK1, Den_SK1_2, Ts);
-    error_SK1 = Den_SK1_2-Den_SK1_1;
+while abs(error_SK_1A) > [eps eps eps eps]
+    % apply the filter to both input and output
+    Den_SK_1A_i = Den_SK_1A_j;
+    va_SK_1A = filter(1, Den_SK_1A_j, va_SK_1A);
+    voltageA_SK_1A = filter(1, Den_SK_1A_j, voltageA_SK_1A);
+    
+    % repeat the identification
+    b_SK_1A = va_SK_1A(4:end); 
+    phi_SK_1A = [-va_SK_1A(3:end-1),-va_SK_1A(2:end-2), voltageA_SK_1A(2:end-2), voltageA_SK_1A(1:end-3)]; 
+    theta_SK_1A = phi_SK_1A\b_SK_1A;
+    Num_SK_1A = [0, theta_SK_1A(3), theta_SK_1A(4) ];
+    Den_SK_1A_j = [1, theta_SK_1A(1),  theta_SK_1A(2), 0];
+    sys_SK_1A = tf(Num_SK_1A, Den_SK_1A_j, Ts);
+    
+    % error criterion
+    error_SK_1A = Den_SK_1A_j-Den_SK_1A_i;
 end
 
 
-    
-FRF_SK1 = squeeze(freqresp(sys_SK1,2*pi*f));
-mag_SK1 = 20*log10(abs(FRF_SK1));
-phs_SK1 = 180/pi*unwrap(angle(FRF_SK1)); 
-phs_SK1 = 360*ceil(-phs_SK1(1)/360) + phs_SK1;
+%%% Motor B
 
-% plot results
+sys_SK_1B = sys_1B;
+error_SK_1B = [100 100 100 100];
+Den_SK_1B_j = Den_1B;
+Den_SK_1B_i = 0;
+vb_SK_1B = vb;
+voltageB_SK_1B = voltageB;
+ 
+while abs(error_SK_1B) > [eps eps eps eps]
+    % apply the filter to both input and output
+    Den_SK_1B_i = Den_SK_1B_j;
+    vb_SK_1B = filter(1, Den_SK_1B_j, vb_SK_1B);
+    voltageB_SK_1B = filter(1, Den_SK_1B_j, voltageB_SK_1B);
+    
+    % repeat the identification
+    b_SK_1B = vb_SK_1B(4:end); 
+    phi_SK_1B = [-vb_SK_1B(3:end-1),-vb_SK_1B(2:end-2), voltageB_SK_1B(2:end-2), voltageB_SK_1B(1:end-3)]; 
+    theta_SK_1B = phi_SK_1B\b_SK_1B;
+    Num_SK_1B = [0, theta_SK_1B(3), theta_SK_1B(4) ];
+    Den_SK_1B_j = [1, theta_SK_1B(1),  theta_SK_1B(2), 0];
+    sys_SK_1B = tf(Num_SK_1B, Den_SK_1B_j, Ts);
+    
+    % error criterion
+    error_SK_1B = Den_SK_1B_j-Den_SK_1B_i;
+end
+
+
+% Bode plots
 figure, hold on
-sgtitle("LLS of complex model with SK filter applied to the input and output data")
-subplot(2,1,1),semilogx(f, mag_SK1)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('|FRF|  [dB]')
-legend('estimated','Location','SouthWest')
-axis tight
-subplot(2,1,2)
-semilogx(f, phs_SK1)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('\phi(FRF)  [^\circ]')
-legend('estimated','Location','SouthWest')
-print -depsc FRF_SK_filter_complex.eps
+bode(sys_SK_1A)
+bode(sys_SK_1B)
+legend('Motor A', 'Motor B')
+sgtitle('Complex model, SK filter')
+hold off
+
+% Pole-Zero map
+figure, hold on
+pzmap(sys_SK_1A, sys_SK_1B)
+set(gca, 'FontSize', 11)
+legend('Motor A', 'Motor B')
+print -depsc p&z_complex_SK.eps
+
+figure, hold on
+pzplot(sys_1A, 'b', sys_BW_1A, 'r', sys_SK_1A, 'g')
+set(gca, 'FontSize', 11)
+legend('No filter', 'Butterworth', 'Sanathanan Koerner')
+hold off
+print -depsc p&z_complex_all_A.eps
+
+figure, hold on
+pzplot(sys_1B, 'b', sys_BW_1B, 'r', sys_SK_1B, 'g')
+set(gca, 'FontSize', 11)
+legend('No filter', 'Butterworth', 'Sanathanan Koerner')
+hold off
+print -depsc p&z_complex_all_B.eps
 
 %% 2.c) Filtering Sanathanan Koerner procedure: SIMPLE MODEL
 
-% Denumerator of simple model without filter: Den2
-sys_SK2 = sys_2A;
-error2 = [100 100 100];
-Den_SK2_2 = Den_2A;
-Den_SK2_1 = 0;
-va_SK = va;
-voltageA_SK = voltageA;
+%%% Motor A
+
+sys_SK_2A = sys_2A;
+error_SK_2A = [100 100 100];
+Den_SK_2A_j = Den_2A;
+Den_SK_2A_i = 0;
+va_SK_2A = va;
+voltageA_SK_2A = voltageA;
  
-while abs(error2) > [eps eps eps]
-    Den_SK2_1 = Den_SK2_2;
-    va_SK = filter(1, Den_SK2_2, va_SK);
-    voltageA_SK = filter(1, Den_SK2_2, voltageA_SK);
-    b_SK2 = va_SK(3:end); 
-    phi_SK2 = [va_SK(2:end-1), voltageA_SK(1:end-2)]; 
-    theta_SK2 = phi_SK2\b_SK2;
-    Num_SK2 = [0 theta_SK2(2)];
-    Den_SK2_2 = [1, -theta_SK2(1), 0];
-    sys_SK2= tf(Num_SK2, Den_SK2_2, Ts);
-    error2 = Den_SK2_2-Den_SK2_1;
+while abs(error_SK_2A) > [eps eps eps]
+    % apply the filter to both input and output
+    Den_SK_2A_i = Den_SK_2A_j;
+    va_SK_2A = filter(1, Den_SK_2A_j, va_SK_2A);
+    voltageA_SK_2A = filter(1, Den_SK_2A_j, voltageA_SK_2A);
+    
+    % repeat the identification
+    b_SK_2A = va_SK_2A(3:end); 
+    phi_SK_2A = [-va_SK_2A(2:end-1), voltageA_SK_2A(1:end-2)]; 
+    theta_SK_2A = phi_SK_2A\b_SK_2A;
+    Num_SK_2A = [theta_SK_2A(2)];
+    Den_SK_2A_j = [1, theta_SK_2A(1), 0];
+    sys_SK_2A = tf(Num_SK_2A, Den_SK_2A_j, Ts);
+    
+    % error criterion
+    error_SK_2A = Den_SK_2A_j-Den_SK_2A_i;
 end
 
 
+%%% Motor B
+
+sys_SK_2B = sys_2B;
+error_SK_2B = [100 100 100];
+Den_SK_2B_j = Den_2B;
+Den_SK_2B_i = 0;
+vb_SK_2B = vb;
+voltageB_SK_2B = voltageB;
+ 
+while abs(error_SK_2B) > [eps eps eps]
+    % apply the filter to both input and output
+    Den_SK_2B_i = Den_SK_2B_j;
+    vb_SK_2B = filter(1, Den_SK_2B_j, vb_SK_2B);
+    voltageB_SK_2B = filter(1, Den_SK_2B_j, voltageB_SK_2B);
     
-FRF_SK2 = squeeze(freqresp(sys_SK2,2*pi*f));
-mag_SK2 = 20*log10(abs(FRF_SK2));
-phs_SK2 = 180/pi*unwrap(angle(FRF_SK2)); 
-phs_SK2 = 360*ceil(-phs_SK2(1)/360) + phs_SK2;
+    % repeat the identification
+    b_SK_2B = vb_SK_2B(3:end); 
+    phi_SK_2B = [-vb_SK_2B(2:end-1), voltageB_SK_2B(1:end-2)]; 
+    theta_SK_2B = phi_SK_2B\b_SK_2B;
+    Num_SK_2B = [theta_SK_2B(2)];
+    Den_SK_2B_j = [1, theta_SK_2B(1), 0];
+    sys_SK_2B = tf(Num_SK_2B, Den_SK_2B_j, Ts);
+    
+    % error criterion
+    error_SK_2B = Den_SK_2B_j-Den_SK_2B_i;
+end
 
-% plot results
-figure, hold on
-sgtitle("LLS fo simple model with SK filter applied to the input and output data")
-subplot(2,1,1),semilogx(f, mag_SK2)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('|FRF|  [dB]')
-legend('estimated','Location','SouthWest')
-axis tight
-subplot(2,1,2)
-semilogx(f, phs_SK2)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('\phi(FRF)  [^\circ]')
-legend('estimated','Location','SouthWest')
-print -depsc FRF_SK_filter_simpel.eps
 
+% Bode plots
 figure, hold on
-bode(sys_1A)
-bode(sys_2A)
-bode(sys_SK1)
-bode(sys_SK2)
-legend('complex model', 'simple model', 'complex model with SK', 'simple model with SK', 'Location','SouthWest')
+bode(sys_SK_2A)
+bode(sys_SK_2B)
+legend('Motor A', 'Motor B')
+sgtitle('Simple model, SK filter')
 hold off
 
+% Pole-Zero map
+figure, hold on
+pzmap(sys_SK_2A, sys_SK_2B)
+set(gca, 'FontSize', 11)
+legend('Motor A', 'Motor B')
+print -depsc p&z_simple_SK.eps
 
+figure, hold on
+pzplot(sys_2A, 'b', sys_BW_2A, 'r', sys_SK_2A, 'g')
+set(gca, 'FontSize', 11)
+legend('No filter', 'Butterworth', 'Sanathanan Koerner')
+hold off
+print -depsc p&z_simple_all_A.eps
 
+figure, hold on
+pzplot(sys_2B, 'b', sys_BW_2B, 'r', sys_SK_2B, 'g')
+set(gca, 'FontSize', 11)
+legend('No filter', 'Butterworth', 'Sanathanan Koerner')
+hold off
+print -depsc p&z_simple_all_B.eps
 
-%% 2.d) Difference between response of the simulated model and the emperical values: NO FILTER, COMPLEX MODEL 
+%% 2.d) Difference between response of the simulated model and the emperical values: COMPLEX MODEL, NO FILTER
 
 % Motor A
 va_est_1A = lsim(sys_1A,voltageA_step(1:400),t_step(1:400));              
 figure
 subplot(2,1,1),plot(t(1:400),[va_step(1:400) va_est_1A]);
+set(gca, 'FontSize', 11)
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
 ylabel('\omega_a [rad/s]')
 axis tight
 subplot(2,1,2),plot(t(1:400),abs(va_step(1:400) - va_est_1A))
-legend('error')
+set(gca, 'FontSize', 11)
+legend('absolute error')
 xlabel('time [s]')
-ylabel('omega_{a empirical} - \omega_{a estimated} [rad/s]')
+ylabel('|\omega_{a emp} - \omega_{a est}| [rad/s]')
 axis tight
-sgtitle('Step response complex model motor a')
+sgtitle('Complex model - Motor A', 'fontweight', 'bold')
 print -depsc step_response_complex_a.eps
 
-error_1A_tot= sum(abs(va_step(1:400) - va_est_1A))
+error_1A_tot = sum(abs(va_step(1:400) - va_est_1A))
 
 % Motor B
-vb_est1 = lsim(sys_1A,voltageA_step(1:400),t_step(1:400));
+vb_est_1B = lsim(sys_1B,voltageB_step(1:400),t_step(1:400));
 figure
-subplot(2,1,1),plot(t(1:400),[vb_step(1:400) vb_est1]);
+subplot(2,1,1),plot(t(1:400),[vb_step(1:400) vb_est_1B]);
+set(gca, 'FontSize', 11)
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
 ylabel('\omega_b [rad/s]')
 axis tight
-subplot(2,1,2),plot(t(1:400),abs(vb_step(1:400) - vb_est1))
-legend('error')
+subplot(2,1,2),plot(t(1:400),abs(vb_step(1:400) - vb_est_1B))
+set(gca, 'FontSize', 11)
+legend('absolute error')
 xlabel('time [s]')
-ylabel('\omega_{b empirical} - \omega_{b estimated} [rad/s]')
+ylabel('|\omega_{b emp} - \omega_{b est}| [rad/s]')
 axis tight
-sgtitle('Step response complex model motor b')
+sgtitle('Complex model - Motor B', 'fontweight','bold')
 print -depsc step_response_complex_b.eps
 
-% Motor A
-va_est_square = lsim(sys_1A,voltageA,t);
-figure
-subplot(2,1,1),plot(t,[va va_est_square]);
-legend('empirical','estimated','Location','SouthWest')
-xlabel('time [s]')
-ylabel('\omega_a [rad/s]')
-axis tight
-subplot(2,1,2),plot(t,abs(va - va_est_square))
-legend('error')
-xlabel('time [s]')
-ylabel('omega_{a empirical} - \omega_{a estimated} [rad/s]')
-axis tight
-sgtitle('Response complex model to square wavefunction input motor a')
-print -depsc square_square_wave_response_complex_a.eps
-
-% Motor B
-vb_est_square = lsim(sys_1A,voltageA,t);
-figure
-subplot(2,1,1),plot(t,[vb vb_est_square]);
-legend('empirical','estimated','Location','SouthWest')
-xlabel('time [s]')
-ylabel('\omega_b [rad/s]')
-axis tight
-subplot(2,1,2),plot(t,abs(vb - vb_est_square))
-legend('error')
-xlabel('time [s]')
-ylabel('omega_{b empirical} - \omega_{b estimated} [rad/s]')
-axis tight
-sgtitle('Response complex model to square wavefunction input motor b')
-print -depsc square_square_wave_response_complex_b.eps
-
-
-
+error_1B_tot = sum(abs(vb_step(1:400) - vb_est_1B))
 
 %% 2.d) Difference between response of the simulated model and the real system: SIMPLE MODEL, NO FILTER
 
-% Motor A stepinput
-figure
+% Motor A
 va_est_2A = lsim(sys_2A,voltageA_step(1:400),t_step(1:400));
+figure
 subplot(2,1,1),plot(t(1:400),[va_step(1:400) va_est_2A]);
+set(gca, 'FontSize', 11)
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
 ylabel('\omega_a [rad/s]')
 axis tight
 subplot(2,1,2),plot(t(1:400),abs(va_step(1:400) - va_est_2A))
-legend('error')
+set(gca, 'FontSize', 11)
+legend('absolute error')
 xlabel('time [s]')
-ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
+ylabel('|\omega_{a emp} - \omega_{a est}| [rad/s]')
 axis tight
-sgtitle('Step response simple model motor a')
+sgtitle('Simple model - Motor A', 'fontweight', 'bold')
 print -depsc step_response_simple_a.eps
-error_2_tot= sum(abs(va_step(1:400) - va_est_2A));
+
+error_2A_tot = sum(abs(va_step(1:400) - va_est_2A))
 
 figure
-plot(t(1:400),abs(va_step(1:400) - va_est_2A)-abs(va_step(1:400) - va_est_1A))
+plot(t(1:400),abs(va_step(1:400) - va_est_2A) - abs(va_step(1:400) - va_est_1A))
+set(gca, 'FontSize', 11)
 xlabel('time [s]')
 ylabel('error_{simple} - error_{complex}[rad/s]')
 
-
-% Motor B stepinput
+% Motor B 
+vb_est_2B = lsim(sys_2B,voltageB_step(1:400),t_step(1:400));
 figure
-va_estB = lsim(sys_2A,voltageA_step(1:400),t_step(1:400));
-subplot(2,1,1),plot(t(1:400),[vb_step(1:400) va_estB]);
+subplot(2,1,1),plot(t(1:400),[vb_step(1:400) vb_est_2B]);
+set(gca, 'FontSize', 11)
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
 ylabel('\omega_b [rad/s]')
 axis tight
-subplot(2,1,2),plot(t(1:400),abs(vb_step(1:400) - va_estB))
-legend('error')
+subplot(2,1,2),plot(t(1:400),abs(vb_step(1:400) - vb_est_2B))
+set(gca, 'FontSize', 11)
+legend('absolute error')
 xlabel('time [s]')
-ylabel('\omega_b(empirical) - \omega_b(estimated) [rad/s]')
+ylabel('|\omega_{b emp} - \omega_{b est}| [rad/s]')
 axis tight
-sgtitle('Step response simple model motor b')
+sgtitle('Simple model - Motor B', 'fontweight', 'bold')
 print -depsc step_response_simple_b.eps
 
-% Motor A square wave input
-va_est1 = lsim(sys_2A,voltageA,t);
-figure 
-subplot(2,1,1),plot(t,[va va_est1]);
-legend('empirical','estimated','Location','SouthWest')
-xlabel('time [s]')
-ylabel('\omega_a [rad/s]')
-axis tight
-subplot(2,1,2),plot(t,abs(va - va_est1))
-legend('error')
-xlabel('time [s]')
-ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
-axis tight
-sgtitle('response simple model to square wavefunction input motor a')
-print -depsc square_square_wave_response_simple_a.eps
-
-% Motor B square wave input
-va_est1 = lsim(sys_2A,voltageA,t);
-figure 
-subplot(2,1,1),plot(t,[vb va_est1]);
-legend('empirical','estimated','Location','SouthWest')
-xlabel('time [s]')
-ylabel('\omega_b [rad/s]')
-axis tight
-subplot(2,1,2),plot(t,abs(vb - va_est1))
-legend('error')
-xlabel('time [s]')
-ylabel('\omega_b(empirical) - \omega_b(estimated) [rad/s]')
-axis tight
-sgtitle('response simple model to square wavefunction input motor b')
-print -depsc square_square_wave_response_simple_b.eps
-
-
-figure, hold on
-pzmap(sys_2A)
-print -depsc p&z_simple.eps
-
-
+error_2B_tot = sum(abs(vb_step(1:400) - vb_est_2B))
 
 %% 2.d) Difference between response of the simulated model and the real system: COMPLEX MODEL, BUTTERWORTH FILTER
 
-
-%empirical
-va_est_BW_1A = lsim(sys_BW_1A, voltageA_step(1:400), t_step(1:400));
+% Motor A 
+va_est_BW_1A = lsim(sys_BW_1A,voltageA_step(1:400),t_step(1:400));              
 figure
 subplot(2,1,1),plot(t(1:400),[va_step(1:400) va_est_BW_1A]);
+set(gca, 'FontSize', 11)
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
 ylabel('\omega_a [rad/s]')
 axis tight
 subplot(2,1,2),plot(t(1:400),abs(va_step(1:400) - va_est_BW_1A))
-legend('error')
+set(gca, 'FontSize', 11)
+legend('absolute error')
 xlabel('time [s]')
-ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
+ylabel('|\omega_{a emp} - \omega_{a est}| [rad/s]')
 axis tight
-sgtitle('Step response of complex model with Butterworth filter')
+sgtitle('Complex model - Butterworth filter - Motor A', 'fontweight', 'bold')
 print -depsc step_response_complex_BW_a.eps
 
-error_BW1_tot= sum(abs(va_step(1:400) - va_est_BW_1A))
+error_BW_1A_tot = sum(abs(va_step(1:400) - va_est_BW_1A))
 
-figure,hold on
-pzmap(sys_BW_1A)
-print -depsc p&z_complex_BW.eps
+% Motor B 
+vb_est_BW_1B = lsim(sys_BW_1B,voltageB_step(1:400),t_step(1:400));              
+figure
+subplot(2,1,1),plot(t(1:400),[vb_step(1:400) vb_est_BW_1B]);
+set(gca, 'FontSize', 11)
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('\omega_b [rad/s]')
+axis tight
+subplot(2,1,2),plot(t(1:400),abs(vb_step(1:400) - vb_est_BW_1B))
+set(gca, 'FontSize', 11)
+legend('absolute error')
+xlabel('time [s]')
+ylabel('|\omega_{b emp} - \omega_{b est}| [rad/s]')
+axis tight
+sgtitle('Complex model - Butterworth filter - Motor B', 'fontweight', 'bold')
+print -depsc step_response_complex_BW_b.eps
 
-
+error_BW_1B_tot = sum(abs(vb_step(1:400) - vb_est_BW_1B))
 
 %% 2.d) Difference between response of the simulated model and the real system: SIMPLE MODEL, BUTTERWORTH FILTER
-%empirical
-va_est_BW2 = lsim(sys_BW2, voltageA_step(1:400), t_step(1:400));
+
+% Motor A 
+va_est_BW_2A = lsim(sys_BW_2A,voltageA_step(1:400),t_step(1:400));              
 figure
-subplot(2,1,1),plot(t(1:400),[va_step(1:400) va_est_BW2]);
+subplot(2,1,1),plot(t(1:400),[va_step(1:400) va_est_BW_2A]);
+set(gca, 'FontSize', 11)
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
 ylabel('\omega_a [rad/s]')
 axis tight
-subplot(2,1,2),plot(t(1:400),abs(va_step(1:400) - va_est_BW2))
-legend('error')
+subplot(2,1,2),plot(t(1:400),abs(va_step(1:400) - va_est_BW_2A))
+set(gca, 'FontSize', 11)
+legend('absolute error')
 xlabel('time [s]')
-ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
+ylabel('|\omega_{a emp} - \omega_{a est}| [rad/s]')
 axis tight
-sgtitle('Step response of simple model with Butterworth filter')
+sgtitle('Simple model - Butterworth filter - Motor A', 'fontweight', 'bold')
 print -depsc step_response_simple_BW_a.eps
-error_BW2_tot= sum(abs(va_step(1:400) - va_est_BW2));
 
-figure,hold on
-pzmap(sys_BW2)
-print -depsc p&z_simple_BW.eps
+error_BW_2A_tot = sum(abs(va_step(1:400) - va_est_BW_2A))
+
+% Motor B 
+vb_est_BW_2B = lsim(sys_BW_2B,voltageB_step(1:400),t_step(1:400));              
+figure
+subplot(2,1,1),plot(t(1:400),[vb_step(1:400) vb_est_BW_2B]);
+set(gca, 'FontSize', 11)
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('\omega_b [rad/s]')
+axis tight
+subplot(2,1,2),plot(t(1:400),abs(vb_step(1:400) - vb_est_BW_2B))
+set(gca, 'FontSize', 11)
+legend('absolute error')
+xlabel('time [s]')
+ylabel('|\omega_{b emp} - \omega_{b est}| [rad/s]')
+axis tight
+sgtitle('Simple model - Butterworth filter - Motor B', 'fontweight', 'bold')
+print -depsc step_response_simple_BW_b.eps
+
+error_BW_2B_tot = sum(abs(vb_step(1:400) - vb_est_BW_2B))
 
 %% 2.d) Difference between response of the simulated model and the real system: COMPLEX MODEL, SK FILTER
 
-%empirical
-va_est_SK1 = lsim(sys_SK1, voltageA_step(1:400), t_step(1:400));
+% Motor A 
+va_est_SK_1A = lsim(sys_SK_1A,voltageA_step(1:400),t_step(1:400));              
 figure
-subplot(2,1,1),plot(t(1:400),[va_step(1:400) va_est_SK1]);
+subplot(2,1,1),plot(t(1:400),[va_step(1:400) va_est_SK_1A]);
+set(gca, 'FontSize', 11)
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
 ylabel('\omega_a [rad/s]')
 axis tight
-subplot(2,1,2),plot(t(1:400),abs(va_step(1:400) - va_est_SK1))
-legend('error')
+subplot(2,1,2),plot(t(1:400),abs(va_step(1:400) - va_est_SK_1A))
+set(gca, 'FontSize', 11)
+legend('absolute error')
 xlabel('time [s]')
-ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
+ylabel('|\omega_{a emp} - \omega_{a est}| [rad/s]')
 axis tight
-sgtitle('Step response of complex model with SK filter')
-print -depsc step_response_SK_filter__complex_a.eps
+sgtitle('Complex model - Sanathanan Koerner filter - Motor A', 'fontweight', 'bold')
+print -depsc step_response_complex_SK_a.eps
 
-figure,hold on
-pzmap(sys_SK1)
-print -depsc p&z_complex_SK.eps
+error_SK_1A_tot = sum(abs(va_step(1:400) - va_est_SK_1A))
 
-error_SK1_tot= sum(abs(va_step(1:400) - va_est_SK1));
+% Motor B 
+vb_est_SK_1B = lsim(sys_SK_1B,voltageB_step(1:400),t_step(1:400));              
+figure
+subplot(2,1,1),plot(t(1:400),[vb_step(1:400) vb_est_SK_1B]);
+set(gca, 'FontSize', 11)
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('\omega_b [rad/s]')
+axis tight
+subplot(2,1,2),plot(t(1:400),abs(vb_step(1:400) - vb_est_SK_1B))
+set(gca, 'FontSize', 11)
+legend('absolute error')
+xlabel('time [s]')
+ylabel('|\omega_{b emp} - \omega_{b est}| [rad/s]')
+axis tight
+sgtitle('Complex model - Sanathanan Koerner filter - Motor B', 'fontweight', 'bold')
+print -depsc step_response_complex_SK_b.eps
 
-
-
+error_SK_1B_tot = sum(abs(vb_step(1:400) - vb_est_SK_1B))
 
 %% 2.d) Difference between response of the simulated model and the real system: SIMPLE MODEL, SK FILTER
-%empirical
-va_est_SK2 = lsim(sys_SK2, voltageA_step(1:400), t_step(1:400));
+
+% Motor A 
+va_est_SK_2A = lsim(sys_SK_2A,voltageA_step(1:400),t_step(1:400));              
 figure
-subplot(2,1,1),plot(t(1:400),[va_step(1:400) va_est_SK2]);
+subplot(2,1,1),plot(t(1:400),[va_step(1:400) va_est_SK_2A]);
+set(gca, 'FontSize', 11)
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
 ylabel('\omega_a [rad/s]')
 axis tight
-subplot(2,1,2),plot(t(1:400),abs(va_step(1:400) - va_est_SK2))
-legend('error')
+subplot(2,1,2),plot(t(1:400),abs(va_step(1:400) - va_est_SK_2A))
+set(gca, 'FontSize', 11)
+legend('absolute error')
 xlabel('time [s]')
-ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
+ylabel('|\omega_{a emp} - \omega_{a est}| [rad/s]')
 axis tight
-sgtitle('Step response of simple model with SK filter')
-print -depsc step_response_SK_filter__simple_a.eps
+sgtitle('Simple model - Sanathanan Koerner filter - Motor A', 'fontweight', 'bold')
+print -depsc step_response_simple_SK_a.eps
 
-figure,hold on
-pzmap(sys_SK2)
-print -depsc p&z_simple_SK.eps
+error_SK_2A_tot = sum(abs(va_step(1:400) - va_est_SK_2A))
 
-error_SK2_tot= sum(abs(va_step(1:400) - va_est_SK2));
+% Motor B 
+vb_est_SK_2B = lsim(sys_SK_2B,voltageB_step(1:400),t_step(1:400));              
+figure
+subplot(2,1,1),plot(t(1:400),[vb_step(1:400) vb_est_SK_2B]);
+set(gca, 'FontSize', 11)
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('\omega_b [rad/s]')
+axis tight
+subplot(2,1,2),plot(t(1:400),abs(vb_step(1:400) - vb_est_SK_2B))
+set(gca, 'FontSize', 11)
+legend('absolute error')
+xlabel('time [s]')
+ylabel('|\omega_{b emp} - \omega_{b est}| [rad/s]')
+axis tight
+sgtitle('Simple model - Sanathanan Koerner filter - Motor B', 'fontweight', 'bold')
+print -depsc step_response_simple_SK_b.eps
+
+error_SK_2B_tot = sum(abs(vb_step(1:400) - vb_est_SK_2B))
 
 
 
 
 %% 2.d) Superposition principle
 
-va10  = data10(:, 6);
+va10  = data10(:, 6); % data10 contains data resulting from a square wave input with amplitude 4 V
 vb10 = data10(:, 7);
-va11  = data11(:, 6);
+va11  = data11(:, 6); % data11 contains data resulting from a square wave input with amplitude 10 V
 vb11 = data11(:, 7);
 
 figure
 subplot(121)
-plot(t, [va + va10, va11])
+plot(t(1:300), [va(1:300) + va10(1:300), va11(1:300)])
+set(gca, 'FontSize', 11)
 ylabel('\omega_a [rad/s]')
 xlabel('t [s]')
-legend('va (6V) + va (4V)','va (10V)')
-
+legend('\omega_{a\_6V} + \omega_{a\_4V}','\omega_{a\_10V}', 'Location', 'South', 'FontSize', 11)
 subplot(122)
-plot(t, [vb + vb10, vb11])
+plot(t(1:300), abs(va(1:300) + va10(1:300) - va11(1:300)))
+set(gca, 'FontSize', 11)
+ylabel('|\omega_{a\_6V} + \omega_{a\_4V} -  \omega_{a\_10V}| [rad/s]')
+xlabel('t [s]')
+legend('absolute error')
+print -depsc superposition_a.eps
+
+
+figure
+subplot(121)
+plot(t(1:300), [vb(1:300) + vb10(1:300), vb11(1:300)])
+set(gca, 'FontSize', 11)
 ylabel('\omega_b [rad/s]')
 xlabel('t [s]')
-legend('vb (6V) + vb (4V)','vb (10V)')
-sgtitle('Prove system is non-linear')
-print -depsc superposition.eps
+legend('\omega_{b\_6V} + \omega_{b\_4V}','\omega_{b\_10V}', 'Location', 'South', 'FontSize', 11)
+subplot(122)
+plot(t(1:300), abs(vb(1:300) + vb10(1:300) - vb11(1:300)))
+set(gca, 'FontSize', 11)
+ylabel('|\omega_{b\_6V} + \omega_{b\_4V} -  \omega_{b\_10V}| [rad/s]')
+xlabel('t [s]')
+legend('absolute error')
+print -depsc superposition_b.eps
 
 
 %% 3.a) Step input to cart on ground
 
 % Remark: only worked with simple model, no 2 used in naming anymore
 
-% Data cart on ground
-
 % _gs --> Ground Stepinput
 % _gb --> Ground Blokfunctie input (square wave)
-% va_gs  = ground_step(:, 6);
-% vb_gs = ground_step(:, 7);
-% voltageA_gs = ground_step(:,2);
-% voltageB_gs = ground_step(:,3);
-% va_gb  = ground_squarewave(:, 6);
-% vb_gb = ground_squarewave(:, 7);
-% t_gs = ground_step(:,10);
-
-figure
-subplot(121)
-plot(t_gs, va_gs)
-ylabel('\omega_a [rad/s]')
-xlabel('t [s]')
-
-subplot(122)
-plot(t_gs, vb_gs)
-ylabel('\omega_b [rad/s]')
-xlabel('t [s]')
-sgtitle('Motor velocity for step input with cart on the ground')
-print -depsc motor_velocity_groundstep.eps
-
-figure
-subplot(121)
-plot(t_gb, va_gb)
-ylabel('\omega_a [rad/s]')
-xlabel('t [s]')
-
-subplot(122)
-plot(t_gb, vb_gb)
-ylabel('\omega_b [rad/s]')
-xlabel('t [s]')
-
-sgtitle('Motor velocity for square square wave input with cart on the ground')
-print -depsc motor_velocity_ground_square_wave.eps
-
 
 % Motor A
+va_est_gs_A = lsim(sys_2A,voltageA_gs(1:400),t_gs(1:400));
 figure
-va_est1 = lsim(sys_2A,voltageA_gs(1:400),t_gs(1:400));
-subplot(2,1,1),plot(t(1:400),[va_gs(1:400) va_est1]);
+subplot(2,1,1),plot(t_gs(1:400),[va_gs(1:400) va_est_gs_A]);
+set(gca, 'FontSize', 11)
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
 ylabel('\omega_a [rad/s]')
 axis tight
-subplot(2,1,2),plot(t(1:400),abs(va_gs(1:400) - va_est1))
-legend('error')
+subplot(2,1,2),plot(t_gs(1:400),abs(va_gs(1:400) - va_est_gs_A))
+set(gca, 'FontSize', 11)
+legend('absolute error')
 xlabel('time [s]')
-ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
+ylabel('|\omega_{a emp} - \omega_{a est}| [rad/s]')
 axis tight
-sgtitle('Step response motor a old model cart on ground')
-print -depsc step_response_ground_simple_a.eps
+sgtitle('Cart on ground - Old model - Motor A', 'fontweight', 'bold')
+print -depsc step_response_g_a.eps
 
-% Motor B
+sum(abs(va_gs(1:400) - va_est_gs_A))
+
+% Motor B 
+vb_est_gs_B = lsim(sys_2B,voltageB_gs(1:400),t_gs(1:400));
 figure
-va_est1 = lsim(sys_2A,voltageA_gs(1:400),t_gs(1:400));
-subplot(2,1,1),plot(t(1:400),[vb_gs(1:400) va_est1]);
+subplot(2,1,1),plot(t_gs(1:400),[vb_gs(1:400) vb_est_gs_B]);
+set(gca, 'FontSize', 11)
 legend('empirical','estimated','Location','SouthWest')
 xlabel('time [s]')
 ylabel('\omega_b [rad/s]')
 axis tight
-subplot(2,1,2),plot(t(1:400),abs(vb_gs(1:400) - va_est1))
-legend('error')
+subplot(2,1,2),plot(t_gs(1:400),abs(vb_gs(1:400) - vb_est_gs_B))
+set(gca, 'FontSize', 11)
+legend('absolute error')
 xlabel('time [s]')
-ylabel('\omega_b(empirical) - \omega_b(estimated) [rad/s]')
+ylabel('|\omega_{b emp} - \omega_{b est}| [rad/s]')
 axis tight
-sgtitle('Step response motor b old model cart on ground')
-print -depsc step_response_ground_simple_b.eps
+sgtitle('Cart on ground - Old model - Motor B', 'fontweight', 'bold')
+print -depsc step_response_g_b.eps
 
-% Emperical reacts slower -> logic, inertia cart
+sum(abs(vb_gs(1:400) - vb_est_gs_B))
 
+%% 3.b) Identify new model
 
-%%% Identify new model%%% 
+% 'g' stands for 'ground'
 
+%%%%%%%%%%%%%%%%%%%% No filter
 
-% suppose L = 0
-% H(z) = b1/(z(z-a1))
+%%%%%%%%%%% Identification
+
+%%% Motor A
+
 % collect the signals appearing in the difference equation
-b_gb = va_gb(3:end); 
-phi_gb = [va_gb(2:end-1), voltageA(1:end-2)]; 
-% perform the fit to get the desired parameters
+b_gA = va_gb(3:end); 
+phi_gA = [-va_gb(2:end-1), voltageA(1:end-2)]; % voltage_gb_A would be the same as voltageA
 
-theta_gb = phi_gb\b_gb;
+% perform the fit to get the desired parameters
+theta_gA = phi_gA\b_gA;
 
 % build the identified model
-Num_gb = [theta_gb(2)];
-Den_gb = [1, -theta_gb(1), 0];
-sys_g = tf(Num_gb, Den_gb, Ts);
+Num_gA = [theta_gA(2)];
+Den_gA = [1, theta_gA(1), 0];
+sys_gA = tf(Num_gA, Den_gA, Ts)
 
-% compute the frequency response of the identified model
-FRF_gb = squeeze(freqresp(sys_g,2*pi*f));
-mag_gb = 20*log10(abs(FRF_gb));
-phs_gb = 180/pi*unwrap(angle(FRF_gb)); 
-phs_gb = 360*ceil(-phs_gb(1)/360) + phs_gb;
+%%% Motor B
 
-% plot the results
-figure,hold on,
-subplot(2,1,1),semilogx(f, mag_gb)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('|FRF|  [dB]')
-legend('estimated','Location','SouthWest')
-subplot(2,1,2),semilogx(f, phs_gb)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('\phi(FRF)  [^\circ] ')
-legend('estimated','Location','SouthWest')
-sgtitle('FRF new estimated model for cart on ground without filter')
-print -depsc FRF_ground_newmodel_nofilter.eps
+% collect the signals appearing in the difference equation
+b_gB = vb_gb(3:end); 
+phi_gB = [-vb_gb(2:end-1), voltageB(1:end-2)]; 
 
-% Motor A
-figure
-va_est_gs = lsim(sys_g,voltageA_gs(1:400),t_gs(1:400));
-subplot(2,1,1),plot(t(1:400),[va_gs(1:400) va_est_gs]);
-legend('empirical','estimated','Location','SouthWest')
-xlabel('time [s]')
-ylabel('\omega_a [rad/s]')
-axis tight
-subplot(2,1,2),plot(t(1:400),abs(va_gs(1:400) - va_est_gs))
-legend('error')
-xlabel('time [s]')
-ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
-axis tight
-sgtitle('Step response new model motor a for cart on ground without filter')
-print -depsc step_response_ground__newmodel_nofilter_a.eps
+% perform the fit to get the desired parameters
+theta_gB = phi_gB\b_gB;
 
-error_ground_NF = sum(abs(va_gs(1:400) - va_est_gs));
+% build the identified model
+Num_gB = [theta_gB(2)];
+Den_gB = [1, theta_gB(1), 0];
+sys_gB = tf(Num_gB, Den_gB, Ts)
 
-
-%%% Filtering the new model with SK filter %%%
-
-
-% Denumerator of simple model cart on ground without filter: Den_gb
-sys_g_SK = sys_g;
-error_gb_SK = [100 100 100];
-Den_gb_SK_2 = Den_gb;
-Den_gb_SK_1 = 0;
-va_gb_SK = va_gb;
-voltageA_gb_SK = voltageA;
- 
-while abs(error_gb_SK) > [eps eps eps]
-    Den_gb_SK_1 = Den_gb_SK_2;
-    va_gb_SK = filter(1, Den_gb_SK_2, va_gb_SK);
-    voltageA_gb_SK = filter(1, Den_gb_SK_2, voltageA_gb_SK);
-    b_gb_SK = va_gb_SK(3:end); 
-    phi_gb_SK = [va_gb_SK(2:end-1), voltageA_gb_SK(1:end-2)]; 
-    theta_gb_SK = phi_gb_SK\b_gb_SK;
-    Num_gb_SK = [0 theta_gb_SK(2)];
-    Den_gb_SK_2 = [1, -theta_gb_SK(1), 0];
-    sys_g_SK= tf(Num_gb_SK, Den_gb_SK_2, Ts);
-    error_gb_SK = Den_gb_SK_2-Den_gb_SK_1;
-end
-
-
-    
-FRF_gb_SK = squeeze(freqresp(sys_g_SK,2*pi*f));
-mag_gb_SK = 20*log10(abs(FRF_gb_SK));
-phs_gb_SK = 180/pi*unwrap(angle(FRF_gb_SK)); 
-phs_gb_SK = 360*ceil(-phs_gb_SK(1)/360) + phs_gb_SK;
-
-% plot results
+% Bode plots
 figure, hold on
-sgtitle("FRF new estimated model for cart on ground with SK filter")
-subplot(2,1,1),semilogx(f, mag_gb_SK)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('|FRF|  [dB]')
-legend('estimated','Location','SouthWest')
-axis tight
-subplot(2,1,2)
-semilogx(f, phs_gb_SK)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('\phi(FRF)  [^\circ]')
-legend('estimated','Location','SouthWest')
-print -depsc FRF_SK_filter_ground.eps
+bode(sys_gA)
+bode(sys_gB)
+legend('Motor A', 'Motor B')
+hold off
 
-% Motor A
-figure
-va_est_gs_SK = lsim(sys_g_SK,voltageA_gs(1:400),t_gs(1:400));
-subplot(2,1,1),plot(t(1:400),[va_gs(1:400) va_est_gs_SK]);
-legend('empirical','estimated','Location','SouthWest')
-xlabel('time [s]')
-ylabel('\omega_a [rad/s]')
-axis tight
-subplot(2,1,2),plot(t(1:400),abs(va_gs(1:400) - va_est_gs_SK))
-legend('error')
-xlabel('time [s]')
-ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
-axis tight
-sgtitle('Step response new estimated model motor a for cart on ground with SK filter')
-print -depsc step_response_ground__newmodel_SKfilter_a.eps
-
-error_ground_SK = sum(abs(va_gs(1:400) - va_est_gs_SK));
-
-%%% Filtering the new model with BW filter %%%
-
-%cutoff = bandwidth(sys_g_BW)/(2*pi);
-cutoff = 35;
-[B_gb_BW,A_gb_BW] = butter(6, cutoff*(2/fs));
-h = fvtool(B_gb_BW, A_gb_BW);
-
-% apply the filter to both input and output
-va_gb_BW = filter(B_gb_BW, A_gb_BW, va_gb); 
-voltageA_gb_BW = filter(B_gb_BW, A_gb_BW, voltageA);
-
-%repeat the identification
-b_gb_BW = va_gb_BW(3:end); 
-phi_gb_BW = [va_gb_BW(2:end-1), voltageA_gb_BW(1:end-2)]; 
-theta1_gb_BW = phi_gb_BW\b_gb_BW;
-Num_gb_BW = [theta1_gb_BW(2)];
-Den_gb_BW = [1, -theta1_gb_BW(1), 0];
-sys_g_BW = tf(Num_gb_BW, Den_gb_BW, Ts);
-
-% compute the frequency response of the identified model
-FRF_gb_BW = squeeze(freqresp(sys_g_BW,2*pi*f));
-mag_gb_BW = 20*log10(abs(FRF_gb_BW));
-phs_gb_BW = 180/pi*unwrap(angle(FRF_gb_BW)); 
-phs_gb_BW = 360*ceil(-phs_gb_BW(1)/360) + phs_gb_BW;
-
-% plot the results
-figure,hold on,
-subplot(2,1,1),semilogx(f, mag_gb_BW)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('|FRF|  [dB]')
-legend('estimated','Location','SouthWest')
-subplot(2,1,2),semilogx(f, phs_gb_BW)
-grid on
-xlim([f(1) f(end)])
-xlabel('f  [Hz]')
-ylabel('\phi(FRF)  [^\circ]')
-legend('estimated','Location','SouthWest')
-sgtitle('FRF new estimated model for cart on ground with Butterworth filter')
-print -depsc FRF_ground_newmodel_filter.eps
-
-% Motor A
-figure
-va_est_gs_BW = lsim(sys_g_BW,voltageA_gs(1:400),t_gs(1:400));
-subplot(2,1,1),plot(t(1:400),[va_gs(1:400) va_est_gs_BW]);
-legend('empirical','estimated','Location','SouthWest')
-xlabel('time [s]')
-ylabel('\omega_a [rad/s]')
-axis tight
-subplot(2,1,2),plot(t(1:400),abs(va_gs(1:400) - va_est_gs_BW))
-legend('error')
-xlabel('time [s]')
-ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
-axis tight
-sgtitle('Step response new estimated model motor a for cart on ground with Butterworth filter')
-print -depsc step_response_ground__newmodel_filter_a.eps
-
+% Pole-Zero map
 figure, hold on
-pzmap(sys_g_BW)
+pzmap(sys_gA, sys_gB)
+set(gca, 'FontSize', 11)
+legend('Motor A', 'Motor B')
+print -depsc p&z_g.eps
 
-error_ground_BW = sum(abs(va_gs(1:400) - va_est_gs_BW));
+%%%%%%%%%%% Validation
+% NF stands for 'no filter'
 
+% Motor A
+va_est_gs_NF_A = lsim(sys_gA,voltageA_gs(1:400),t_gs(1:400));
+figure
+subplot(2,1,1),plot(t_gs(1:400),[va_gs(1:400) va_est_gs_NF_A]);
+set(gca, 'FontSize', 11)
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('\omega_a [rad/s]')
+axis tight
+subplot(2,1,2),plot(t_gs(1:400),abs(va_gs(1:400) - va_est_gs_NF_A))
+set(gca, 'FontSize', 11)
+legend('absolute error')
+xlabel('time [s]')
+ylabel('|\omega_{a emp} - \omega_{a est}| [rad/s]')
+axis tight
+sgtitle('Cart on ground - New model - Motor A', 'fontweight', 'bold')
+print -depsc step_response_g_NF_a.eps
+
+sum(abs(va_gs(1:400) - va_est_gs_NF_A))
+
+% Motor B 
+vb_est_gs_NF_B = lsim(sys_gA,voltageB_gs(1:400),t_gs(1:400));
+figure
+subplot(2,1,1),plot(t_gs(1:400),[vb_gs(1:400) vb_est_gs_NF_B]);
+set(gca, 'FontSize', 11)
+legend('empirical','estimated','Location','SouthWest')
+xlabel('time [s]')
+ylabel('\omega_b [rad/s]')
+axis tight
+subplot(2,1,2),plot(t_gs(1:400),abs(vb_gs(1:400) - vb_est_gs_NF_B))
+set(gca, 'FontSize', 11)
+legend('absolute error')
+xlabel('time [s]')
+ylabel('|\omega_{b emp} - \omega_{b est}| [rad/s]')
+axis tight
+sgtitle('Cart on ground - New model - Motor B', 'fontweight', 'bold')
+print -depsc step_response_g_NF_b.eps
+
+sum(abs(vb_gs(1:400) - vb_est_gs_NF_B))
+
+
+
+%% overig
+% 
+% %%%%%%%%%%%%%%%%%%%% SK filter
+% 
+% %%%%%%%%%%% Identification
+% 
+% %%% Motor A
+% 
+% sys_SK_gA = sys_gA;
+% error_SK_gA = [100 100 100];
+% Den_SK_gA_j = Den_gA;
+% Den_SK_gA_i = 0;
+% va_SK_gA = va_gb;
+% voltageA_SK_gA = voltageA;
+%  
+% while abs(error_SK_gA) > [eps eps eps]
+%     % apply the filter to both input and output
+%     Den_SK_gA_i = Den_SK_gA_j;
+%     va_SK_gA = filter(1, Den_SK_gA_j, va_SK_gA);
+%     voltageA_SK_gA = filter(1, Den_SK_gA_j, voltageA_SK_gA);
+%     
+%     % repeat the identification
+%     b_SK_gA = va_SK_gA(3:end); 
+%     phi_SK_gA = [-va_SK_gA(2:end-1), voltageA_SK_gA(1:end-2)]; 
+%     theta_SK_gA = phi_SK_gA\b_SK_gA;
+%     Num_SK_gA = [theta_SK_gA(2)];
+%     Den_SK_gA_j = [1, theta_SK_gA(1), 0];
+%     sys_SK_gA = tf(Num_SK_gA, Den_SK_gA_j, Ts);
+%     
+%     % error criterion
+%     error_SK_gA = Den_SK_gA_j-Den_SK_gA_i;
+% end
+% 
+% 
+% %%% Motor B
+% 
+% sys_SK_gB = sys_gB;
+% error_SK_gB = [100 100 100];
+% Den_SK_gB_j = Den_gB;
+% Den_SK_gB_i = 0;
+% vb_SK_gB = vb_gb;
+% voltageB_SK_gB = voltageB;
+%  
+% while abs(error_SK_gB) > [eps eps eps]
+%     % apply the filter to both input and output
+%     Den_SK_gB_i = Den_SK_gB_j;
+%     vb_SK_gB = filter(1, Den_SK_gB_j, vb_SK_gB);
+%     voltageB_SK_gB = filter(1, Den_SK_gB_j, voltageB_SK_gB);
+%     
+%     % repeat the identification
+%     b_SK_gB = vb_SK_gB(3:end); 
+%     phi_SK_gB = [-vb_SK_gB(2:end-1), voltageB_SK_gB(1:end-2)]; 
+%     theta_SK_gB = phi_SK_gB\b_SK_gB;
+%     Num_SK_gB = [theta_SK_gB(2)];
+%     Den_SK_gB_j = [1, theta_SK_gB(1), 0];
+%     sys_SK_gB = tf(Num_SK_gB, Den_SK_gB_j, Ts);
+%     
+%     % error criterion
+%     error_SK_gB = Den_SK_gB_j-Den_SK_gB_i;
+% end
+% 
+% 
+% % Bode plots
+% figure, hold on
+% bode(sys_SK_gA)
+% bode(sys_SK_gB)
+% legend('Motor A', 'Motor B')
+% hold off
+% 
+% % Pole-Zero map
+% figure, hold on
+% pzmap(sys_SK_gA, sys_SK_gB)
+% set(gca, 'FontSize', 11)
+% legend('Motor A', 'Motor B')
+% print -depsc p&z_SK_g.eps
+% 
+% %%%%%%%%%%% Validation
+% 
+% % Motor A
+% va_est_gs_SK_A = lsim(sys_SK_gA,voltageA_gs(1:400),t_gs(1:400));
+% figure
+% subplot(2,1,1),plot(t_gs(1:400),[va_gs(1:400) va_est_gs_SK_A]);
+% set(gca, 'FontSize', 11)
+% legend('empirical','estimated','Location','SouthWest')
+% xlabel('time [s]')
+% ylabel('\omega_a [rad/s]')
+% axis tight
+% subplot(2,1,2),plot(t_gs(1:400),abs(va_gs(1:400) - va_est_gs_SK_A))
+% set(gca, 'FontSize', 11)
+% legend('absolute error')
+% xlabel('time [s]')
+% ylabel('|\omega_{a emp} - \omega_{a est}| [rad/s]')
+% axis tight
+% sgtitle('Cart on ground - Sanathanan Koerner - Motor A', 'fontweight', 'bold')
+% print -depsc step_response_g_SK_a.eps
+% 
+% sum(abs(va_gs(1:400) - va_est_gs_SK_A))
+% 
+% % Motor B 
+% vb_est_gs_SK_B = lsim(sys_SK_gB,voltageB_gs(1:400),t_gs(1:400));
+% figure
+% subplot(2,1,1),plot(t_gs(1:400),[vb_gs(1:400) vb_est_gs_SK_B]);
+% set(gca, 'FontSize', 11)
+% legend('empirical','estimated','Location','SouthWest')
+% xlabel('time [s]')
+% ylabel('\omega_b [rad/s]')
+% axis tight
+% subplot(2,1,2),plot(t_gs(1:400),abs(vb_gs(1:400) - vb_est_gs_SK_B))
+% set(gca, 'FontSize', 11)
+% legend('absolute error')
+% xlabel('time [s]')
+% ylabel('|\omega_{b emp} - \omega_{b est}| [rad/s]')
+% axis tight
+% sgtitle('Cart on ground - Sanathanan Koerner - Motor B', 'fontweight', 'bold')
+% print -depsc step_response_g_SK_b.eps
+% 
+% sum(abs(vb_gs(1:400) - vb_est_gs_SK_B))
+% 
+% 
+% 
+% 
+% 
+% %%%%%%%%%%%%%%%%%%%% BW filter
+% 
+% %%%%%%%%%%% Identification
+% 
+% %cutoff = bandwidth(sys_g_BW)/(2*pi);
+% cutoff = 35;
+% [B_gb_BW,A_gb_BW] = butter(6, cutoff*(2/fs));
+% h = fvtool(B_gb_BW, A_gb_BW);
+% 
+% % apply the filter to both input and output
+% va_gb_BW = filter(B_gb_BW, A_gb_BW, va_gb); 
+% voltageA_gb_BW = filter(B_gb_BW, A_gb_BW, voltageA);
+% 
+% %repeat the identification
+% b_gb_BW = va_gb_BW(3:end); 
+% phi_gb_BW = [va_gb_BW(2:end-1), voltageA_gb_BW(1:end-2)]; 
+% theta1_gb_BW = phi_gb_BW\b_gb_BW;
+% Num_gb_BW = [theta1_gb_BW(2)];
+% Den_gb_BW = [1, -theta1_gb_BW(1), 0];
+% sys_g_BW = tf(Num_gb_BW, Den_gb_BW, Ts);
+% 
+% % compute the frequency response of the identified model
+% FRF_gb_BW = squeeze(freqresp(sys_g_BW,2*pi*f));
+% mag_gb_BW = 20*log10(abs(FRF_gb_BW));
+% phs_gb_BW = 180/pi*unwrap(angle(FRF_gb_BW)); 
+% phs_gb_BW = 360*ceil(-phs_gb_BW(1)/360) + phs_gb_BW;
+% 
+% % plot the results
+% figure,hold on,
+% subplot(2,1,1),semilogx(f, mag_gb_BW)
+% grid on
+% xlim([f(1) f(end)])
+% xlabel('f  [Hz]')
+% ylabel('|FRF|  [dB]')
+% legend('estimated','Location','SouthWest')
+% subplot(2,1,2),semilogx(f, phs_gb_BW)
+% grid on
+% xlim([f(1) f(end)])
+% xlabel('f  [Hz]')
+% ylabel('\phi(FRF)  [^\circ]')
+% legend('estimated','Location','SouthWest')
+% sgtitle('FRF new estimated model for cart on ground with Butterworth filter')
+% print -depsc FRF_ground_newmodel_filter.eps
+% 
+% %%%%%%%%%%% Validation
+% 
+% % Motor A
+% figure
+% va_est_gs_BW = lsim(sys_g_BW,voltageA_gs(1:400),t_gs(1:400));
+% subplot(2,1,1),plot(t(1:400),[va_gs(1:400) va_est_gs_BW]);
+% legend('empirical','estimated','Location','SouthWest')
+% xlabel('time [s]')
+% ylabel('\omega_a [rad/s]')
+% axis tight
+% subplot(2,1,2),plot(t(1:400),abs(va_gs(1:400) - va_est_gs_BW))
+% legend('absolute error')
+% xlabel('time [s]')
+% ylabel('\omega_a(empirical) - \omega_a(estimated) [rad/s]')
+% axis tight
+% sgtitle('Step response new estimated model motor a for cart on ground with Butterworth filter')
+% print -depsc step_response_ground__newmodel_filter_a.eps
+% 
+% figure, hold on
+% pzmap(sys_g_BW)
+% 
+% error_ground_BW = sum(abs(va_gs(1:400) - va_est_gs_BW));
 
 %% Saving variables
 
