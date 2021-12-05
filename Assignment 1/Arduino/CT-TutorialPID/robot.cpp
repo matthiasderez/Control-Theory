@@ -1,16 +1,16 @@
 /*
- * MECOTRON TUTORIAL
- *
- * This is a template to get you started in the course of the tutorial on the
- * control theory platforms, a.k.a. the MECOtrons.s
- * The tasks of the tutorial session will guide you through this template and
- * ask you to make use of the platform's capabilities in a step-by-step fashion.
- *
- * Every function in this template comes with an opening comment that describes
- * its purpose and functionality. Please also pay attention to the remarks that
- * are made in comment blocks.
- *
- */
+   MECOTRON TUTORIAL
+
+   This is a template to get you started in the course of the tutorial on the
+   control theory platforms, a.k.a. the MECOtrons.s
+   The tasks of the tutorial session will guide you through this template and
+   ask you to make use of the platform's capabilities in a step-by-step fashion.
+
+   Every function in this template comes with an opening comment that describes
+   its purpose and functionality. Please also pay attention to the remarks that
+   are made in comment blocks.
+
+*/
 
 #include "robot.h"
 
@@ -18,18 +18,21 @@ bool Robot::init() {
   MECOtron::init(); // Initialize the MECOtron
 
   // Initializing the robot's specific variables
-  for(int k=0; k<2; k++){
+  for (int k = 0; k < 2; k++) {
     x[k] = 0.0;   // Set all components of the vector (float array) x to 0 as initialization
     e[k] = 0.0;
     u[k] = 0.0;
   }
-  
+
   previousTime = 0;
   voltage = 6.0;
-  out = voltage; 
+  out = voltage;
   counter = 0;
   counterThousand = 0;
   sign = 1;
+
+
+
 
   return true;
 }
@@ -40,80 +43,80 @@ void Robot::control() {
 
   // Compute update of motor voltages if controller is enabled (triggered by
   // pushing 'Button 0' in QRoboticsCenter)
-  if(controlEnabled()) {
+  if (controlEnabled()) {
     // Fill your control law here to conditionally update the motor voltage...
     LED1(ON);
     LED2(OFF);
-    
-    if (counter - counterThousand >= 1000) {
-      /* Event code */
-      LED1(OFF);
-      if (out != 0){
-        sign = -sign;
-      }
-      out = out + sign * voltage;
-      counterThousand = counter;
-    }
-    
-    
-    counter = counter + 1;
 
-    writeValue(0, out);
-    setVoltageMotorA(out);
-    writeValue(1, out);
-    setVoltageMotorB(out);
+        if (counter - counterThousand >= 1000) {
+          /* Event code */
+          LED1(OFF);
+          if (out != 0){
+            sign = -sign;
+          }
+          out = out + sign * voltage;
+          counterThousand = counter;
+        }
     
-    writeValue(4, getSpeedMotorA());
-    writeValue(5, getSpeedMotorB());
+        counter = counter + 1;
+    
+        writeValue(0, out);
+        setVoltageMotorA(out);
+        writeValue(1, out);
+        setVoltageMotorB(out);
+    
+        writeValue(4, getSpeedMotorA());
+        writeValue(5, getSpeedMotorB());
+    
 
 
-// -----------------------------------------------------------------------------------------------------
-    
+      // -----------------------------------------------------------------------------------------------------
+
   } else {
     // If the controller is disabled, you might want to do something else...
     LED1(OFF);
     LED2(ON);
-    
+
     writeValue(0, 0.0);
     setVoltageMotorA(0.0); // Apply 0.0 volts to motor A if the control is disabled
     writeValue(1, 0.0);
     setVoltageMotorB(0.0); // Apply 0.0 volts to motor B if the control is disabled
-        
+
     writeValue(4, getSpeedMotorA());
     writeValue(5, getSpeedMotorB());
-    out = voltage; 
+    out = voltage;
     counter = 0;
     counterThousand = 0;
     sign = 1;
-    
-  }
-  
-    float vol_A = readValue(0);
-    float vol_B = readValue(1);
-    
-    //setVoltageMotorA(vol_A); // Apply 6.0 volts to motor A if the control is enabled
-    //setVoltageMotorB(vol_B); // Apply 2.0 volts to motor B if the control is enabled
-    
-    //float voltage_A = getVoltageMotorA();
-    //float voltage_B = getVoltageMotorB();
 
-    float pa = getPositionMotorA();
-    writeValue(2, pa);
-    float pb = getPositionMotorB();
-    writeValue(3, pb);
-  
-//    float va = getSpeedMotorA();    // Get the wheel speed of motor A (in radians/second)
-//    x[1] = x[0]; x[0] = va;         // Memorize the last two samples of the speed of motor A (in fact, a shift register)
-//    writeValue(4, va);
-//    float vb = getSpeedMotorB();  
-//    writeValue(5, vb);
-  
-    float fd = getFrontDistance(); 
-    writeValue(6, fd);
-    float pangle = getPendulumAngle(); 
-    writeValue(7, pangle);
-    time = counter * 0.01;
-    writeValue(8,time);
+  }
+
+  float vol_A = readValue(0);
+  float vol_B = readValue(1);
+
+  //setVoltageMotorA(vol_A); // Apply 6.0 volts to motor A if the control is enabled
+  //setVoltageMotorB(vol_B); // Apply 2.0 volts to motor B if the control is enabled
+
+  //float voltage_A = getVoltageMotorA();
+  //float voltage_B = getVoltageMotorB();
+
+  float pa = getPositionMotorA();
+  writeValue(2, pa);
+  float pb = getPositionMotorB();
+  writeValue(3, pb);
+
+  //    float va = getSpeedMotorA();    // Get the wheel speed of motor A (in radians/second)
+  //    x[1] = x[0]; x[0] = va;         // Memorize the last two samples of the speed of motor A (in fact, a shift register)
+  //    writeValue(4, va);
+  //    float vb = getSpeedMotorB();
+  //    writeValue(5, vb);
+
+  float fd = getFrontDistance();
+  writeValue(6, fd);
+  float pangle = getPendulumAngle();
+  writeValue(7, pangle);
+  time = counter * 0.01;
+  writeValue(8, time);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -123,7 +126,7 @@ bool Robot::controlEnabled() {
 }
 
 void Robot::button0callback() {
-  if(toggleButton(0)) {           // Switches the state of button 0 and checks if the new state is true
+  if (toggleButton(0)) {          // Switches the state of button 0 and checks if the new state is true
     message("Robot enabled.");    // Display a message in the status bar of QRoboticsCenter
   }
   else {
