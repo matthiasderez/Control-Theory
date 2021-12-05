@@ -19,8 +19,12 @@ class Robot : public MECOtron {
     float time;
     float a1;
     float a2;
+    float a3;
+    float a4;
     float b1;
     float b2;
+    float b3;
+    float b4;
     float wdes;
     float uA;
     float uB;

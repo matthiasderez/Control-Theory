@@ -22,10 +22,14 @@ bool Robot::init() {
     errorB = 0.0;
     controlA = 0.0;
     controlB = 0.0;
-    a1 = 1.252;
-    a2 = 0.9582;
-    b1 = 1;
-    b2 = 1;
+    a1 = 0.8;
+    a2 = 0.6692;
+    a3 = 1;
+    a4 = 1;
+    b1 = 0.775;
+    b2 = 0.6442;
+    b3 = 1;
+    b4 = 1;
     counter = 0.0;
     wdes = 6.0;
     
@@ -46,8 +50,8 @@ void Robot::control() {
     float eB = wdes-wB;                 //  calculate the position error of motor B (in radians)
 
     // the actual control algorithm
-    float uA = b2/b1*controlA + a1/b1*eA -a2/b1*errorA; // equation (2), the difference equation
-    float uB = b2/b1*controlB + a1/b1*eB -a2/b1*errorB; // equation (2), the difference equation
+    float uA = a4/a3*controlA + a1/a3*eA -a2/a3*errorA; // equation (2), the difference equation
+    float uB = b4/b3*controlB + b1/b3*eB -b2/b3*errorB; // equation (2), the difference equation
 
  
     errorA = eA; errorB = eB; controlA = uA; controlB = uB;    // append the new values
@@ -60,17 +64,19 @@ void Robot::control() {
     writeValue(1, uB);
     writeValue(4, getSpeedMotorA());
     writeValue(5, getSpeedMotorB());
-    writeValue(10, eA);
+    writeValue(10,eA);
     
   } else {
     // If the controller is disabled, you might want to do something else...
     LED1(OFF);
     LED2(ON);
-    counter = 0;
+    counter = 0.0;
     setVoltageMotorA(0.0);
     setVoltageMotorB(0.0);
     writeValue(0, 0.0);
     writeValue(1, 0.0);
+    writeValue(4, getSpeedMotorA());
+    writeValue(5, getSpeedMotorB());
     errorA = 0.0;
     errorB = 0.0;
     controlA = 0.0;
@@ -78,7 +84,7 @@ void Robot::control() {
     
 
   }
-
+  writeValue(11, errorA);
   float pa = getPositionMotorA();
   writeValue(2, pa);
   float pb = getPositionMotorB();
