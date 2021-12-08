@@ -1,0 +1,17 @@
+\babel@toc {english}{}
+\contentsline {figure}{\numberline {1}{\ignorespaces Bodeplot of the different open loop systems using the general design method\relax }}{3}{figure.caption.4}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Bodeplot of the closed loop system with PI controller using the general design method\relax }}{4}{figure.caption.5}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Step response of the closed loop system with PI controller using the general design method\relax }}{4}{figure.caption.6}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Bodeplot of the open loop systems using the improved controller\relax }}{5}{figure.caption.8}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Bodeplot of the different open loop systems using the improved controller\relax }}{6}{figure.caption.9}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Bodeplot of the closed loop system with PI controller using the improved controller\relax }}{6}{figure.caption.10}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Step response of the closed loop system with PI controller using the improved controller\relax }}{6}{figure.caption.11}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Measured and simulated responses of the closed loop system to a step input of $\SI {6}{rad/s}$ as reference velocity\relax }}{7}{figure.caption.12}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Close-up of the measured and simulated responses of the closed loop system to a step input of $\SI {6}{rad/s}$ as reference velocity\relax }}{8}{figure.caption.13}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Measured and simulated tracking error of the closed loop system to a step input of $\SI {6}{rad/s}$ as reference velocity\relax }}{8}{figure.caption.14}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Close-up of the measured and simulated tracking error of the closed loop system to a step input of $\SI {6}{rad/s}$ as reference velocity\relax }}{9}{figure.caption.15}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Measured and simulated voltages for a step reference input\relax }}{9}{figure.caption.16}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Block diagram of control configuration with force disturbance \cite {tikz}\relax }}{10}{figure.caption.17}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Measured and simulated responses of the closed loop system to a step input of $\SI {6}{rad/s}$ as reference velocity with a constant force disturbance\relax }}{11}{figure.caption.18}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Measured and simulated tracking error of the closed loop system to a step input of $\SI {6}{rad/s}$ as reference velocity with a constant force disturbance\relax }}{11}{figure.caption.19}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Measured and simulated voltages for a step reference input with a constant force disturbance\relax }}{12}{figure.caption.20}%

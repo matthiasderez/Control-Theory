@@ -1,0 +1,16 @@
+\begin{thebibliography}{1}
+
+\bibitem{tikz}
+Siang Lim.
+\newblock Control block diagram with tikz.
+\newblock
+  \url{https://www.overleaf.com/latex/examples/control-block-diagram-with-tikz/jfdcfxhgjmtz},
+  2017.
+\newblock Last accessed December 8th 2021.
+
+\bibitem{slidescontroltheory}
+Swevers~J. Pipeleers~G.
+\newblock {\em Control Theory - Handouts}.
+\newblock Cursusdienst VTK, 2021.
+
+\end{thebibliography}
