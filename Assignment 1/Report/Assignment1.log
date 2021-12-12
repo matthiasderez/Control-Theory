@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.20)  5 DEC 2021 03:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.20)  9 DEC 2021 16:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -901,15 +901,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 204--207
  []
 
 Package epstopdf Info: Source file: <../Matlab/input_voltage.eps>
-(epstopdf)                    date: 2021-12-04 14:52:19
-(epstopdf)                    size: 80583 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 80876 bytes
 (epstopdf)             Output file: <./input_voltage-eps-converted-to.pdf>
 (epstopdf)                    date: 2021-12-04 15:01:09
 (epstopdf)                    size: 20946 bytes
 (epstopdf)             Command: <repstopdf --outfile=./input_voltage-eps-conver
 ted-to.pdf ../Matlab/input_voltage.eps>
 (epstopdf)             \includegraphics on input line 212.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./input_voltage-eps-converted-to.pdf ../Matlab/in
+put_voltage.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./input_voltage-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-09 16:34:31
+(epstopdf)                    size: 20963 bytes.
 <./input_voltage-eps-converted-to.pdf, id=235, 362.35374pt x 307.1475pt>
 File: ./input_voltage-eps-converted-to.pdf Graphic file (type pdf)
 <use ./input_voltage-eps-converted-to.pdf>
@@ -917,15 +922,20 @@ Package pdftex.def Info: ./input_voltage-eps-converted-to.pdf  used on input li
 ne 212.
 (pdftex.def)             Requested size: 220.79366pt x 187.15817pt.
 Package epstopdf Info: Source file: <../Matlab/motor_velocity.eps>
-(epstopdf)                    date: 2021-12-04 14:52:07
-(epstopdf)                    size: 171643 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 171859 bytes
 (epstopdf)             Output file: <./motor_velocity-eps-converted-to.pdf>
 (epstopdf)                    date: 2021-12-04 15:01:11
 (epstopdf)                    size: 44677 bytes
 (epstopdf)             Command: <repstopdf --outfile=./motor_velocity-eps-conve
 rted-to.pdf ../Matlab/motor_velocity.eps>
 (epstopdf)             \includegraphics on input line 217.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./motor_velocity-eps-converted-to.pdf ../Matlab/m
+otor_velocity.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./motor_velocity-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-09 16:34:35
+(epstopdf)                    size: 43810 bytes.
 <./motor_velocity-eps-converted-to.pdf, id=236, 361.35pt x 307.1475pt>
 File: ./motor_velocity-eps-converted-to.pdf Graphic file (type pdf)
 <use ./motor_velocity-eps-converted-to.pdf>
@@ -933,8 +943,8 @@ Package pdftex.def Info: ./motor_velocity-eps-converted-to.pdf  used on input l
 ine 217.
 (pdftex.def)             Requested size: 227.62204pt x 193.48051pt.
 Package epstopdf Info: Source file: <../Matlab/omegaA_deltaomegaA.eps>
-(epstopdf)                    date: 2021-12-04 14:52:20
-(epstopdf)                    size: 194177 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 194271 bytes
 (epstopdf)             Output file: <./omegaA_deltaomegaA-eps-converted-to.pdf>
 
 (epstopdf)                    date: 2021-12-04 15:01:14
@@ -942,16 +952,22 @@ Package epstopdf Info: Source file: <../Matlab/omegaA_deltaomegaA.eps>
 (epstopdf)             Command: <repstopdf --outfile=./omegaA_deltaomegaA-eps-c
 onverted-to.pdf ../Matlab/omegaA_deltaomegaA.eps>
 (epstopdf)             \includegraphics on input line 227.
-Package epstopdf Info: Output file is already uptodate.
-<./omegaA_deltaomegaA-eps-converted-to.pdf, id=237, 372.39125pt x 299.1175pt>
+runsystem(repstopdf --outfile=./omegaA_deltaomegaA-eps-converted-to.pdf ../Matl
+ab/omegaA_deltaomegaA.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./omegaA_deltaomegaA-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2021-12-09 16:34:39
+(epstopdf)                    size: 37186 bytes.
+<./omegaA_deltaomegaA-eps-converted-to.pdf, id=237, 371.3875pt x 299.1175pt>
 File: ./omegaA_deltaomegaA-eps-converted-to.pdf Graphic file (type pdf)
 <use ./omegaA_deltaomegaA-eps-converted-to.pdf>
 Package pdftex.def Info: ./omegaA_deltaomegaA-eps-converted-to.pdf  used on inp
 ut line 227.
-(pdftex.def)             Requested size: 223.0721pt x 179.18433pt.
+(pdftex.def)             Requested size: 223.0721pt x 179.66814pt.
 Package epstopdf Info: Source file: <../Matlab/omegaB_deltaomegaB.eps>
-(epstopdf)                    date: 2021-12-04 14:52:21
-(epstopdf)                    size: 190944 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 193219 bytes
 (epstopdf)             Output file: <./omegaB_deltaomegaB-eps-converted-to.pdf>
 
 (epstopdf)                    date: 2021-12-04 15:01:16
@@ -959,13 +975,19 @@ Package epstopdf Info: Source file: <../Matlab/omegaB_deltaomegaB.eps>
 (epstopdf)             Command: <repstopdf --outfile=./omegaB_deltaomegaB-eps-c
 onverted-to.pdf ../Matlab/omegaB_deltaomegaB.eps>
 (epstopdf)             \includegraphics on input line 232.
-Package epstopdf Info: Output file is already uptodate.
-<./omegaB_deltaomegaB-eps-converted-to.pdf, id=238, 372.39125pt x 299.1175pt>
+runsystem(repstopdf --outfile=./omegaB_deltaomegaB-eps-converted-to.pdf ../Matl
+ab/omegaB_deltaomegaB.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./omegaB_deltaomegaB-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2021-12-09 16:34:44
+(epstopdf)                    size: 37480 bytes.
+<./omegaB_deltaomegaB-eps-converted-to.pdf, id=238, 371.3875pt x 299.1175pt>
 File: ./omegaB_deltaomegaB-eps-converted-to.pdf Graphic file (type pdf)
 <use ./omegaB_deltaomegaB-eps-converted-to.pdf>
 Package pdftex.def Info: ./omegaB_deltaomegaB-eps-converted-to.pdf  used on inp
 ut line 232.
-(pdftex.def)             Requested size: 223.0721pt x 179.18433pt.
+(pdftex.def)             Requested size: 223.0721pt x 179.66814pt.
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
 Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 250.
@@ -1034,8 +1056,8 @@ File: p&z_simple_all_B_cropped.pdf Graphic file (type pdf)
 Package pdftex.def Info: p&z_simple_all_B_cropped.pdf  used on input line 476.
 (pdftex.def)             Requested size: 218.51521pt x 179.1968pt.
 Package epstopdf Info: Source file: <../Matlab/step_response_complex_a.eps>
-(epstopdf)                    date: 2021-12-04 15:23:45
-(epstopdf)                    size: 44326 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 44566 bytes
 (epstopdf)             Output file: <./step_response_complex_a-eps-converted-to
 .pdf>
 (epstopdf)                    date: 2021-12-04 15:24:33
@@ -1043,7 +1065,13 @@ Package epstopdf Info: Source file: <../Matlab/step_response_complex_a.eps>
 (epstopdf)             Command: <repstopdf --outfile=./step_response_complex_a-
 eps-converted-to.pdf ../Matlab/step_response_complex_a.eps>
 (epstopdf)             \includegraphics on input line 503.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./step_response_complex_a-eps-converted-to.pdf ..
+/Matlab/step_response_complex_a.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./step_response_complex_a-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2021-12-09 16:34:48
+(epstopdf)                    size: 16342 bytes.
 <./step_response_complex_a-eps-converted-to.pdf, id=312, 368.37625pt x 299.1175
 pt>
 File: ./step_response_complex_a-eps-converted-to.pdf Graphic file (type pdf)
@@ -1052,8 +1080,8 @@ Package pdftex.def Info: ./step_response_complex_a-eps-converted-to.pdf  used o
 n input line 503.
 (pdftex.def)             Requested size: 218.51521pt x 177.4317pt.
 Package epstopdf Info: Source file: <../Matlab/step_response_complex_b.eps>
-(epstopdf)                    date: 2021-12-04 15:23:47
-(epstopdf)                    size: 45337 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 45291 bytes
 (epstopdf)             Output file: <./step_response_complex_b-eps-converted-to
 .pdf>
 (epstopdf)                    date: 2021-12-04 15:24:37
@@ -1061,7 +1089,13 @@ Package epstopdf Info: Source file: <../Matlab/step_response_complex_b.eps>
 (epstopdf)             Command: <repstopdf --outfile=./step_response_complex_b-
 eps-converted-to.pdf ../Matlab/step_response_complex_b.eps>
 (epstopdf)             \includegraphics on input line 508.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./step_response_complex_b-eps-converted-to.pdf ..
+/Matlab/step_response_complex_b.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./step_response_complex_b-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2021-12-09 16:34:52
+(epstopdf)                    size: 16677 bytes.
 <./step_response_complex_b-eps-converted-to.pdf, id=313, 368.37625pt x 299.1175
 pt>
 File: ./step_response_complex_b-eps-converted-to.pdf Graphic file (type pdf)
@@ -1070,8 +1104,8 @@ Package pdftex.def Info: ./step_response_complex_b-eps-converted-to.pdf  used o
 n input line 508.
 (pdftex.def)             Requested size: 218.51521pt x 177.4317pt.
 Package epstopdf Info: Source file: <../Matlab/step_response_complex_BW_a.eps>
-(epstopdf)                    date: 2021-12-04 15:23:56
-(epstopdf)                    size: 45013 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 44862 bytes
 (epstopdf)             Output file: <./step_response_complex_BW_a-eps-converted
 -to.pdf>
 (epstopdf)                    date: 2021-12-04 15:24:41
@@ -1079,7 +1113,13 @@ Package epstopdf Info: Source file: <../Matlab/step_response_complex_BW_a.eps>
 (epstopdf)             Command: <repstopdf --outfile=./step_response_complex_BW
 _a-eps-converted-to.pdf ../Matlab/step_response_complex_BW_a.eps>
 (epstopdf)             \includegraphics on input line 513.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./step_response_complex_BW_a-eps-converted-to.pdf
+ ../Matlab/step_response_complex_BW_a.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./step_response_complex_BW_a-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2021-12-09 16:34:55
+(epstopdf)                    size: 17659 bytes.
 <./step_response_complex_BW_a-eps-converted-to.pdf, id=314, 368.37625pt x 299.1
 175pt>
 File: ./step_response_complex_BW_a-eps-converted-to.pdf Graphic file (type pdf)
@@ -1089,8 +1129,8 @@ Package pdftex.def Info: ./step_response_complex_BW_a-eps-converted-to.pdf  use
 d on input line 513.
 (pdftex.def)             Requested size: 218.51521pt x 177.4317pt.
 Package epstopdf Info: Source file: <../Matlab/step_response_complex_BW_b.eps>
-(epstopdf)                    date: 2021-12-04 15:23:58
-(epstopdf)                    size: 45064 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 44956 bytes
 (epstopdf)             Output file: <./step_response_complex_BW_b-eps-converted
 -to.pdf>
 (epstopdf)                    date: 2021-12-04 15:24:46
@@ -1098,7 +1138,13 @@ Package epstopdf Info: Source file: <../Matlab/step_response_complex_BW_b.eps>
 (epstopdf)             Command: <repstopdf --outfile=./step_response_complex_BW
 _b-eps-converted-to.pdf ../Matlab/step_response_complex_BW_b.eps>
 (epstopdf)             \includegraphics on input line 518.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./step_response_complex_BW_b-eps-converted-to.pdf
+ ../Matlab/step_response_complex_BW_b.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./step_response_complex_BW_b-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2021-12-09 16:34:59
+(epstopdf)                    size: 16786 bytes.
 <./step_response_complex_BW_b-eps-converted-to.pdf, id=315, 368.37625pt x 299.1
 175pt>
 File: ./step_response_complex_BW_b-eps-converted-to.pdf Graphic file (type pdf)
@@ -1108,8 +1154,8 @@ Package pdftex.def Info: ./step_response_complex_BW_b-eps-converted-to.pdf  use
 d on input line 518.
 (pdftex.def)             Requested size: 218.51521pt x 177.4317pt.
 Package epstopdf Info: Source file: <../Matlab/step_response_complex_SK_a.eps>
-(epstopdf)                    date: 2021-12-04 15:24:05
-(epstopdf)                    size: 44716 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 44586 bytes
 (epstopdf)             Output file: <./step_response_complex_SK_a-eps-converted
 -to.pdf>
 (epstopdf)                    date: 2021-12-04 15:24:50
@@ -1117,18 +1163,24 @@ Package epstopdf Info: Source file: <../Matlab/step_response_complex_SK_a.eps>
 (epstopdf)             Command: <repstopdf --outfile=./step_response_complex_SK
 _a-eps-converted-to.pdf ../Matlab/step_response_complex_SK_a.eps>
 (epstopdf)             \includegraphics on input line 523.
-Package epstopdf Info: Output file is already uptodate.
-<./step_response_complex_SK_a-eps-converted-to.pdf, id=316, 368.37625pt x 299.1
+runsystem(repstopdf --outfile=./step_response_complex_SK_a-eps-converted-to.pdf
+ ../Matlab/step_response_complex_SK_a.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./step_response_complex_SK_a-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2021-12-09 16:35:03
+(epstopdf)                    size: 16903 bytes.
+<./step_response_complex_SK_a-eps-converted-to.pdf, id=316, 372.39125pt x 299.1
 175pt>
 File: ./step_response_complex_SK_a-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./step_response_complex_SK_a-eps-converted-to.pdf>
 Package pdftex.def Info: ./step_response_complex_SK_a-eps-converted-to.pdf  use
 d on input line 523.
-(pdftex.def)             Requested size: 218.51521pt x 177.4317pt.
+(pdftex.def)             Requested size: 218.51521pt x 175.52388pt.
 Package epstopdf Info: Source file: <../Matlab/step_response_complex_SK_b.eps>
-(epstopdf)                    date: 2021-12-04 15:24:08
-(epstopdf)                    size: 45434 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 45320 bytes
 (epstopdf)             Output file: <./step_response_complex_SK_b-eps-converted
 -to.pdf>
 (epstopdf)                    date: 2021-12-04 15:24:54
@@ -1136,15 +1188,21 @@ Package epstopdf Info: Source file: <../Matlab/step_response_complex_SK_b.eps>
 (epstopdf)             Command: <repstopdf --outfile=./step_response_complex_SK
 _b-eps-converted-to.pdf ../Matlab/step_response_complex_SK_b.eps>
 (epstopdf)             \includegraphics on input line 528.
-Package epstopdf Info: Output file is already uptodate.
-<./step_response_complex_SK_b-eps-converted-to.pdf, id=317, 368.37625pt x 299.1
-175pt>
+runsystem(repstopdf --outfile=./step_response_complex_SK_b-eps-converted-to.pdf
+ ../Matlab/step_response_complex_SK_b.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./step_response_complex_SK_b-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2021-12-09 16:35:07
+(epstopdf)                    size: 17252 bytes.
+<./step_response_complex_SK_b-eps-converted-to.pdf, id=317, 371.3875pt x 299.11
+75pt>
 File: ./step_response_complex_SK_b-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./step_response_complex_SK_b-eps-converted-to.pdf>
 Package pdftex.def Info: ./step_response_complex_SK_b-eps-converted-to.pdf  use
 d on input line 528.
-(pdftex.def)             Requested size: 218.51521pt x 177.4317pt.
+(pdftex.def)             Requested size: 218.51521pt x 175.99855pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 494--533
 
@@ -1162,8 +1220,8 @@ Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 533.
 [9 <./p&z_complex_all_A_cropped.pdf> <./p&z_complex_all_B_cropped.pdf> <./p&z_s
 imple_all_A_cropped.pdf> <./p&z_simple_all_B_cropped.pdf>]
 Package epstopdf Info: Source file: <../Matlab/step_response_simple_a.eps>
-(epstopdf)                    date: 2021-12-05 01:14:54
-(epstopdf)                    size: 44695 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 44560 bytes
 (epstopdf)             Output file: <./step_response_simple_a-eps-converted-to.
 pdf>
 (epstopdf)                    date: 2021-12-05 01:31:52
@@ -1171,7 +1229,13 @@ pdf>
 (epstopdf)             Command: <repstopdf --outfile=./step_response_simple_a-e
 ps-converted-to.pdf ../Matlab/step_response_simple_a.eps>
 (epstopdf)             \includegraphics on input line 538.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./step_response_simple_a-eps-converted-to.pdf ../
+Matlab/step_response_simple_a.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./step_response_simple_a-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2021-12-09 16:35:11
+(epstopdf)                    size: 16347 bytes.
 <./step_response_simple_a-eps-converted-to.pdf, id=356, 368.37625pt x 299.1175p
 t>
 File: ./step_response_simple_a-eps-converted-to.pdf Graphic file (type pdf)
@@ -1180,8 +1244,8 @@ Package pdftex.def Info: ./step_response_simple_a-eps-converted-to.pdf  used on
  input line 538.
 (pdftex.def)             Requested size: 218.51521pt x 177.4317pt.
 Package epstopdf Info: Source file: <../Matlab/step_response_simple_b.eps>
-(epstopdf)                    date: 2021-12-05 01:14:58
-(epstopdf)                    size: 44640 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 44499 bytes
 (epstopdf)             Output file: <./step_response_simple_b-eps-converted-to.
 pdf>
 (epstopdf)                    date: 2021-12-05 01:32:05
@@ -1189,7 +1253,13 @@ pdf>
 (epstopdf)             Command: <repstopdf --outfile=./step_response_simple_b-e
 ps-converted-to.pdf ../Matlab/step_response_simple_b.eps>
 (epstopdf)             \includegraphics on input line 543.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./step_response_simple_b-eps-converted-to.pdf ../
+Matlab/step_response_simple_b.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./step_response_simple_b-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2021-12-09 16:35:15
+(epstopdf)                    size: 16379 bytes.
 <./step_response_simple_b-eps-converted-to.pdf, id=357, 368.37625pt x 299.1175p
 t>
 File: ./step_response_simple_b-eps-converted-to.pdf Graphic file (type pdf)
@@ -1198,8 +1268,8 @@ Package pdftex.def Info: ./step_response_simple_b-eps-converted-to.pdf  used on
  input line 543.
 (pdftex.def)             Requested size: 218.51521pt x 177.4317pt.
 Package epstopdf Info: Source file: <../Matlab/step_response_simple_BW_a.eps>
-(epstopdf)                    date: 2021-12-04 15:24:01
-(epstopdf)                    size: 45075 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 44875 bytes
 (epstopdf)             Output file: <./step_response_simple_BW_a-eps-converted-
 to.pdf>
 (epstopdf)                    date: 2021-12-04 18:12:47
@@ -1207,7 +1277,13 @@ to.pdf>
 (epstopdf)             Command: <repstopdf --outfile=./step_response_simple_BW_
 a-eps-converted-to.pdf ../Matlab/step_response_simple_BW_a.eps>
 (epstopdf)             \includegraphics on input line 548.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./step_response_simple_BW_a-eps-converted-to.pdf 
+../Matlab/step_response_simple_BW_a.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./step_response_simple_BW_a-eps-converted-
+to.pdf>
+(epstopdf)                    date: 2021-12-09 16:35:19
+(epstopdf)                    size: 16764 bytes.
 <./step_response_simple_BW_a-eps-converted-to.pdf, id=358, 368.37625pt x 299.11
 75pt>
 File: ./step_response_simple_BW_a-eps-converted-to.pdf Graphic file (type pdf)
@@ -1216,8 +1292,8 @@ Package pdftex.def Info: ./step_response_simple_BW_a-eps-converted-to.pdf  used
  on input line 548.
 (pdftex.def)             Requested size: 218.51521pt x 177.4317pt.
 Package epstopdf Info: Source file: <../Matlab/step_response_simple_BW_b.eps>
-(epstopdf)                    date: 2021-12-04 15:24:03
-(epstopdf)                    size: 44999 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 44891 bytes
 (epstopdf)             Output file: <./step_response_simple_BW_b-eps-converted-
 to.pdf>
 (epstopdf)                    date: 2021-12-04 18:12:50
@@ -1225,7 +1301,13 @@ to.pdf>
 (epstopdf)             Command: <repstopdf --outfile=./step_response_simple_BW_
 b-eps-converted-to.pdf ../Matlab/step_response_simple_BW_b.eps>
 (epstopdf)             \includegraphics on input line 553.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./step_response_simple_BW_b-eps-converted-to.pdf 
+../Matlab/step_response_simple_BW_b.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./step_response_simple_BW_b-eps-converted-
+to.pdf>
+(epstopdf)                    date: 2021-12-09 16:35:23
+(epstopdf)                    size: 16677 bytes.
 <./step_response_simple_BW_b-eps-converted-to.pdf, id=359, 368.37625pt x 299.11
 75pt>
 File: ./step_response_simple_BW_b-eps-converted-to.pdf Graphic file (type pdf)
@@ -1234,8 +1316,8 @@ Package pdftex.def Info: ./step_response_simple_BW_b-eps-converted-to.pdf  used
  on input line 553.
 (pdftex.def)             Requested size: 218.51521pt x 177.4317pt.
 Package epstopdf Info: Source file: <../Matlab/step_response_simple_SK_a.eps>
-(epstopdf)                    date: 2021-12-04 15:24:11
-(epstopdf)                    size: 45051 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 44931 bytes
 (epstopdf)             Output file: <./step_response_simple_SK_a-eps-converted-
 to.pdf>
 (epstopdf)                    date: 2021-12-04 18:12:52
@@ -1243,7 +1325,13 @@ to.pdf>
 (epstopdf)             Command: <repstopdf --outfile=./step_response_simple_SK_
 a-eps-converted-to.pdf ../Matlab/step_response_simple_SK_a.eps>
 (epstopdf)             \includegraphics on input line 558.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./step_response_simple_SK_a-eps-converted-to.pdf 
+../Matlab/step_response_simple_SK_a.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./step_response_simple_SK_a-eps-converted-
+to.pdf>
+(epstopdf)                    date: 2021-12-09 16:35:27
+(epstopdf)                    size: 16776 bytes.
 <./step_response_simple_SK_a-eps-converted-to.pdf, id=360, 368.37625pt x 299.11
 75pt>
 File: ./step_response_simple_SK_a-eps-converted-to.pdf Graphic file (type pdf)
@@ -1252,8 +1340,8 @@ Package pdftex.def Info: ./step_response_simple_SK_a-eps-converted-to.pdf  used
  on input line 558.
 (pdftex.def)             Requested size: 218.51521pt x 177.4317pt.
 Package epstopdf Info: Source file: <../Matlab/step_response_simple_SK_b.eps>
-(epstopdf)                    date: 2021-12-04 15:24:13
-(epstopdf)                    size: 45066 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 44986 bytes
 (epstopdf)             Output file: <./step_response_simple_SK_b-eps-converted-
 to.pdf>
 (epstopdf)                    date: 2021-12-04 18:12:55
@@ -1261,7 +1349,13 @@ to.pdf>
 (epstopdf)             Command: <repstopdf --outfile=./step_response_simple_SK_
 b-eps-converted-to.pdf ../Matlab/step_response_simple_SK_b.eps>
 (epstopdf)             \includegraphics on input line 563.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./step_response_simple_SK_b-eps-converted-to.pdf 
+../Matlab/step_response_simple_SK_b.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./step_response_simple_SK_b-eps-converted-
+to.pdf>
+(epstopdf)                    date: 2021-12-09 16:35:30
+(epstopdf)                    size: 16810 bytes.
 <./step_response_simple_SK_b-eps-converted-to.pdf, id=361, 368.37625pt x 299.11
 75pt>
 File: ./step_response_simple_SK_b-eps-converted-to.pdf Graphic file (type pdf)
@@ -1290,15 +1384,20 @@ Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 577.
 
 Package epstopdf Info: Source file: <../Matlab/superposition_a.eps>
-(epstopdf)                    date: 2021-12-04 22:31:56
-(epstopdf)                    size: 41707 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 42194 bytes
 (epstopdf)             Output file: <./superposition_a-eps-converted-to.pdf>
 (epstopdf)                    date: 2021-12-04 23:55:58
 (epstopdf)                    size: 16511 bytes
 (epstopdf)             Command: <repstopdf --outfile=./superposition_a-eps-conv
 erted-to.pdf ../Matlab/superposition_a.eps>
 (epstopdf)             \includegraphics on input line 589.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./superposition_a-eps-converted-to.pdf ../Matlab/
+superposition_a.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./superposition_a-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-09 16:35:34
+(epstopdf)                    size: 16451 bytes.
 <./superposition_a-eps-converted-to.pdf, id=470, 360.34625pt x 297.11pt>
 File: ./superposition_a-eps-converted-to.pdf Graphic file (type pdf)
 <use ./superposition_a-eps-converted-to.pdf>
@@ -1306,15 +1405,20 @@ Package pdftex.def Info: ./superposition_a-eps-converted-to.pdf  used on input
 line 589.
 (pdftex.def)             Requested size: 218.51521pt x 180.16692pt.
 Package epstopdf Info: Source file: <../Matlab/superposition_b.eps>
-(epstopdf)                    date: 2021-12-04 22:31:57
-(epstopdf)                    size: 41717 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 42222 bytes
 (epstopdf)             Output file: <./superposition_b-eps-converted-to.pdf>
 (epstopdf)                    date: 2021-12-04 23:56:03
 (epstopdf)                    size: 16625 bytes
 (epstopdf)             Command: <repstopdf --outfile=./superposition_b-eps-conv
 erted-to.pdf ../Matlab/superposition_b.eps>
 (epstopdf)             \includegraphics on input line 595.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./superposition_b-eps-converted-to.pdf ../Matlab/
+superposition_b.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./superposition_b-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-09 16:35:38
+(epstopdf)                    size: 16526 bytes.
 <./superposition_b-eps-converted-to.pdf, id=471, 360.34625pt x 297.11pt>
 File: ./superposition_b-eps-converted-to.pdf Graphic file (type pdf)
 <use ./superposition_b-eps-converted-to.pdf>
@@ -1327,15 +1431,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 612--615
  []
 
 Package epstopdf Info: Source file: <../Matlab/step_response_g_a.eps>
-(epstopdf)                    date: 2021-12-05 02:53:05
-(epstopdf)                    size: 45056 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 44954 bytes
 (epstopdf)             Output file: <./step_response_g_a-eps-converted-to.pdf>
 (epstopdf)                    date: 2021-12-05 02:54:12
 (epstopdf)                    size: 16753 bytes
 (epstopdf)             Command: <repstopdf --outfile=./step_response_g_a-eps-co
 nverted-to.pdf ../Matlab/step_response_g_a.eps>
 (epstopdf)             \includegraphics on input line 623.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./step_response_g_a-eps-converted-to.pdf ../Matla
+b/step_response_g_a.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./step_response_g_a-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-09 16:35:42
+(epstopdf)                    size: 16852 bytes.
 <./step_response_g_a-eps-converted-to.pdf, id=474, 365.365pt x 299.1175pt>
 File: ./step_response_g_a-eps-converted-to.pdf Graphic file (type pdf)
 <use ./step_response_g_a-eps-converted-to.pdf>
@@ -1343,15 +1452,20 @@ Package pdftex.def Info: ./step_response_g_a-eps-converted-to.pdf  used on inpu
 t line 623.
 (pdftex.def)             Requested size: 223.0721pt x 182.6257pt.
 Package epstopdf Info: Source file: <../Matlab/step_response_g_b.eps>
-(epstopdf)                    date: 2021-12-05 02:53:07
-(epstopdf)                    size: 44568 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 44562 bytes
 (epstopdf)             Output file: <./step_response_g_b-eps-converted-to.pdf>
 (epstopdf)                    date: 2021-12-05 02:54:15
 (epstopdf)                    size: 16697 bytes
 (epstopdf)             Command: <repstopdf --outfile=./step_response_g_b-eps-co
 nverted-to.pdf ../Matlab/step_response_g_b.eps>
 (epstopdf)             \includegraphics on input line 629.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./step_response_g_b-eps-converted-to.pdf ../Matla
+b/step_response_g_b.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./step_response_g_b-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-09 16:35:46
+(epstopdf)                    size: 16839 bytes.
 <./step_response_g_b-eps-converted-to.pdf, id=475, 365.365pt x 299.1175pt>
 File: ./step_response_g_b-eps-converted-to.pdf Graphic file (type pdf)
 <use ./step_response_g_b-eps-converted-to.pdf>
@@ -1375,8 +1489,8 @@ Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 645.
 [12 <./superposition_a-eps-converted-to.pdf> <./superposition_b-eps-converted-t
 o.pdf>]
 Package epstopdf Info: Source file: <../Matlab/step_response_g_NF_a.eps>
-(epstopdf)                    date: 2021-12-05 02:53:19
-(epstopdf)                    size: 44704 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 44537 bytes
 (epstopdf)             Output file: <./step_response_g_NF_a-eps-converted-to.pd
 f>
 (epstopdf)                    date: 2021-12-05 02:56:56
@@ -1384,7 +1498,13 @@ f>
 (epstopdf)             Command: <repstopdf --outfile=./step_response_g_NF_a-eps
 -converted-to.pdf ../Matlab/step_response_g_NF_a.eps>
 (epstopdf)             \includegraphics on input line 670.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./step_response_g_NF_a-eps-converted-to.pdf ../Ma
+tlab/step_response_g_NF_a.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./step_response_g_NF_a-eps-converted-to.pd
+f>
+(epstopdf)                    date: 2021-12-09 16:35:50
+(epstopdf)                    size: 16908 bytes.
 <./step_response_g_NF_a-eps-converted-to.pdf, id=497, 365.365pt x 299.1175pt>
 File: ./step_response_g_NF_a-eps-converted-to.pdf Graphic file (type pdf)
 <use ./step_response_g_NF_a-eps-converted-to.pdf>
@@ -1392,8 +1512,8 @@ Package pdftex.def Info: ./step_response_g_NF_a-eps-converted-to.pdf  used on i
 nput line 670.
 (pdftex.def)             Requested size: 223.0721pt x 182.6257pt.
 Package epstopdf Info: Source file: <../Matlab/step_response_g_NF_b.eps>
-(epstopdf)                    date: 2021-12-05 02:53:22
-(epstopdf)                    size: 45079 bytes
+(epstopdf)                    date: 2021-12-08 16:14:31
+(epstopdf)                    size: 44913 bytes
 (epstopdf)             Output file: <./step_response_g_NF_b-eps-converted-to.pd
 f>
 (epstopdf)                    date: 2021-12-05 02:56:57
@@ -1401,7 +1521,13 @@ f>
 (epstopdf)             Command: <repstopdf --outfile=./step_response_g_NF_b-eps
 -converted-to.pdf ../Matlab/step_response_g_NF_b.eps>
 (epstopdf)             \includegraphics on input line 676.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./step_response_g_NF_b-eps-converted-to.pdf ../Ma
+tlab/step_response_g_NF_b.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./step_response_g_NF_b-eps-converted-to.pd
+f>
+(epstopdf)                    date: 2021-12-09 16:35:54
+(epstopdf)                    size: 16940 bytes.
 <./step_response_g_NF_b-eps-converted-to.pdf, id=498, 368.37625pt x 299.1175pt>
 
 File: ./step_response_g_NF_b-eps-converted-to.pdf Graphic file (type pdf)
@@ -1435,7 +1561,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 688.
 Here is how much of TeX's memory you used:
  19891 strings out of 492639
  380341 string characters out of 6133087
- 460659 words of memory out of 5000000
+ 460660 words of memory out of 5000000
  23284 multiletter control sequences out of 15000+600000
  17436 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1459,7 +1585,7 @@ ve/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2018/te
 xmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2018/texmf-dist/f
 onts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2018/texmf-dist/fonts/type1
 /public/cm-super/sftt1000.pfb>
-Output written on Assignment1.pdf (14 pages, 1031757 bytes).
+Output written on Assignment1.pdf (14 pages, 1033495 bytes).
 PDF statistics:
  625 PDF objects out of 1000 (max. 8388607)
  477 compressed objects within 5 object streams
