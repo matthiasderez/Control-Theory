@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.20)  12 DEC 2021 04:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.20)  13 DEC 2021 01:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -871,12 +871,12 @@ Package gensymb Info: Using \Omega for \ohm on input line 60.
 
 Package gensymb Warning: Not defining \micro.
 
-<kuleuvenLogo.pdf, id=39, 159.33528pt x 56.90259pt>
+<kuleuvenLogo.pdf, id=43, 159.33528pt x 56.90259pt>
 File: kuleuvenLogo.pdf Graphic file (type pdf)
 <use kuleuvenLogo.pdf>
 Package pdftex.def Info: kuleuvenLogo.pdf  used on input line 62.
 (pdftex.def)             Requested size: 119.50601pt x 42.67912pt.
-<kuleuvenSedes.pdf, id=40, 349.305pt x 596.2275pt>
+<kuleuvenSedes.pdf, id=44, 349.305pt x 596.2275pt>
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
 Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 62.
@@ -940,33 +940,33 @@ Package Fancyhdr Warning: \headheight is too small (42.67912pt):
 
 [2]
 Package epstopdf Info: Source file: <../Matlab/poles.eps>
-(epstopdf)                    date: 2021-12-09 17:28:01
+(epstopdf)                    date: 2021-12-12 20:05:45
 (epstopdf)                    size: 27900 bytes
 (epstopdf)             Output file: <./poles-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-09 17:28:34
+(epstopdf)                    date: 2021-12-12 22:18:48
 (epstopdf)                    size: 11505 bytes
 (epstopdf)             Command: <repstopdf --outfile=./poles-eps-converted-to.p
 df ../Matlab/poles.eps>
 (epstopdf)             \includegraphics on input line 175.
 Package epstopdf Info: Output file is already uptodate.
-<./poles-eps-converted-to.pdf, id=101, 295.1025pt x 302.12875pt>
+<./poles-eps-converted-to.pdf, id=110, 295.1025pt x 302.12875pt>
 File: ./poles-eps-converted-to.pdf Graphic file (type pdf)
 <use ./poles-eps-converted-to.pdf>
 Package pdftex.def Info: ./poles-eps-converted-to.pdf  used on input line 175.
-(pdftex.def)             Requested size: 182.09485pt x 186.43274pt.
-<impulse_response1_cropped.pdf, id=102, 366.58755pt x 294.47115pt>
+(pdftex.def)             Requested size: 227.62204pt x 233.04553pt.
+<impulse_response1_cropped.pdf, id=111, 366.58755pt x 294.47115pt>
 File: impulse_response1_cropped.pdf Graphic file (type pdf)
 <use impulse_response1_cropped.pdf>
 Package pdftex.def Info: impulse_response1_cropped.pdf  used on input line 185.
 
 (pdftex.def)             Requested size: 218.51521pt x 175.52927pt.
-<impulse_response2_cropped.pdf, id=103, 366.58755pt x 294.47115pt>
+<impulse_response2_cropped.pdf, id=112, 366.58755pt x 294.47115pt>
 File: impulse_response2_cropped.pdf Graphic file (type pdf)
 <use impulse_response2_cropped.pdf>
 Package pdftex.def Info: impulse_response2_cropped.pdf  used on input line 190.
 
 (pdftex.def)             Requested size: 218.51521pt x 175.52927pt.
-<impulse_response3_cropped.pdf, id=104, 366.58755pt x 294.47115pt>
+<impulse_response3_cropped.pdf, id=113, 366.58755pt x 294.47115pt>
 File: impulse_response3_cropped.pdf Graphic file (type pdf)
 <use impulse_response3_cropped.pdf>
 Package pdftex.def Info: impulse_response3_cropped.pdf  used on input line 195.
@@ -994,41 +994,73 @@ Underfull \hbox (badness 10000) in paragraph at lines 228--234
 
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 246.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 247.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 248--251
+Underfull \hbox (badness 10000) in paragraph at lines 249--252
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 271--275
 
  []
 
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 265.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 294.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-[6] (./Assignment3.bbl) 
+[6]
+Package epstopdf Info: Source file: <../Matlab/poles_LQE.eps>
+(epstopdf)                    date: 2021-12-13 00:39:16
+(epstopdf)                    size: 27731 bytes
+(epstopdf)             Output file: <./poles_LQE-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-13 00:49:13
+(epstopdf)                    size: 11483 bytes
+(epstopdf)             Command: <repstopdf --outfile=./poles_LQE-eps-converted-
+to.pdf ../Matlab/poles_LQE.eps>
+(epstopdf)             \includegraphics on input line 300.
+Package epstopdf Info: Output file is already uptodate.
+<./poles_LQE-eps-converted-to.pdf, id=201, 295.1025pt x 302.12875pt>
+File: ./poles_LQE-eps-converted-to.pdf Graphic file (type pdf)
+<use ./poles_LQE-eps-converted-to.pdf>
+Package pdftex.def Info: ./poles_LQE-eps-converted-to.pdf  used on input line 3
+00.
+(pdftex.def)             Requested size: 227.62204pt x 233.04553pt.
+File: kuleuvenSedes.pdf Graphic file (type pdf)
+<use kuleuvenSedes.pdf>
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 307.
+(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+ [7 <./poles_LQE-eps-converted-to.pdf>]
+File: kuleuvenSedes.pdf Graphic file (type pdf)
+<use kuleuvenSedes.pdf>
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 313.
+(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+ [8] (./Assignment3.bbl)
+
 AED: lastpage setting LastPage
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 270.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 318.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-[7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 270.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 270.
+[9]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 318.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 318.
  (./Assignment3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 270.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 270.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 318.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 318.
 Package rerunfilecheck Info: File `Assignment3.out' has not changed.
-(rerunfilecheck)             Checksum: 122838B52768ABE235541573152D2252;122.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 270.
+(rerunfilecheck)             Checksum: 58A8E5B701F66D1A52FB16E3BEE7CE1C;224.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 318.
  ) 
 Here is how much of TeX's memory you used:
- 21663 strings out of 492639
- 430146 string characters out of 6133087
- 536926 words of memory out of 5000000
- 25075 multiletter control sequences out of 15000+600000
+ 21685 strings out of 492639
+ 430523 string characters out of 6133087
+ 538316 words of memory out of 5000000
+ 25084 multiletter control sequences out of 15000+600000
  17598 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,18n,80p,913b,1077s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,20n,80p,913b,1077s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
 ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2018/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2018/texmf-dis
@@ -1045,10 +1077,10 @@ pe1/public/cm-super/sfrm0800.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public
 sfrm1200.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1000.p
 fb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb><c:/tex
 live/2018/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on Assignment3.pdf (7 pages, 522923 bytes).
+Output written on Assignment3.pdf (9 pages, 545089 bytes).
 PDF statistics:
- 255 PDF objects out of 1000 (max. 8388607)
- 186 compressed objects within 2 object streams
- 38 named destinations out of 1000 (max. 500000)
- 155 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 300 PDF objects out of 1000 (max. 8388607)
+ 225 compressed objects within 3 object streams
+ 50 named destinations out of 1000 (max. 500000)
+ 168 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -72,21 +72,38 @@ ylim([-1.2 0.2])
 legend({'0', '100'})
 print -depsc impulse_response3.eps
 
-% 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 %% 2
+% LQE estimator gain
+Q = 0.1;
+R = 0.01;
+L = dlqr(A', A'*C', Q, R)'
+
+% steady state Kalmain gain using derived formula
+P = (1/2)*(-Q+ sqrt(Q^2+4*R*Q));
+L = -(P+Q)/(P+Q+R)
+
+% Closed loop poles of the LQE
+figure 
+hold on 
+% poles
+ratio = 0:0.5:10;
+poles = 2./(ratio + 2 + sqrt(ratio.^2 + 4*ratio));
+color = jet(21);
+for i = 1:length(poles)
+    scatter(poles(i), 0, 50, color(i,:), 'x')
+end
+h = legend({'0','0.5','1','1.5','2.5','3','3.5','4','4.5','5','5.5','6','6.5','7','7.5','8','8.5','9','9.5','10'},'AutoUpdate','off', 'Fontsize', 8.5);
+% unit circle
+theta = linspace(0,2*pi,300); 
+plot(cos(theta), sin(theta), 'k', 'LineWidth', 0.5)
+% y axis
+xline(0);
+% markup
+xlim([-1 1.7])
+ylim([-1.35 1.35])
+axis square
+sgtitle('Closed loop poles of the LQE', 'fontweight', 'bold')
+xlabel('Real Axis')
+ylabel('Imaginary Axis')
+print -depsc poles_LQE.eps
+

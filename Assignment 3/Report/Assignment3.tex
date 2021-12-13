@@ -121,7 +121,7 @@ with $T_s$ the sampling time of $0.01$ s. From the general discretized state spa
 Assuming full state feedback, the closed loop transfer function is:
 \begin{equation}
 	\begin{split}
-	H(z) = \frac{Y(z)}{R(z)} &= (C-DK)(z - A - BK)^{-1}B + D \\
+	H(z) = \frac{Y(z)}{R(z)} &= (C-DK)(z - A + BK)^{-1}B + D \\
 	&= -(z-1 + T_s K)^{-1} T_s \\
 	&= \frac{-T_s}{z-1+T_sK}
 	\end{split}
@@ -130,7 +130,7 @@ with $K$ the state feedback gain. Subsequently, the closed loop system has one p
 \begin{equation}
 	p_d = 1 - T_s K
 \end{equation}
-This equation indicates that the poles move to the left for increasing K, or inversely, move to the right for decreasing K, as seen in Figure \ref{fig:poles}. In the discrete time domain, the system is stable if the poles are within the unit circle. For this particular system, this means $0 < K < 200$ Hz.
+This equation indicates that the pole moves to the left for increasing K, or inversely, move to the right for decreasing K, as seen in Figure \ref{fig:poles}. In the discrete time domain, the system is stable if the poles are within the unit circle. For this particular system, this means $0 < K < 200$ Hz.
 
 
 \begin{figure}[htp]
@@ -172,7 +172,7 @@ This equation indicates that the poles move to the left for increasing K, or inv
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=0.4\linewidth]{poles.eps}
+	\includegraphics[width=0.5\linewidth]{poles.eps}
 	\caption{Pole locations of the closed-loop system for varying values of the state feedback gain.}
 	\label{fig:poles}
 \end{figure}
@@ -205,7 +205,7 @@ As previously elaborated, the measurement equation is equal to
 	y[t] = -x[t]
 	\label{eq:eq7}
 \end{equation}
-so the C and D matrices of the state-space model are scalar values, respectively $-1$ and $0$. In this Section, these values are used to validate the principles of the Karman filter on this system. To this extent, some mathematical derivations are done. 
+so the C and D matrices of the state-space model are scalar values, respectively $-1$ and $0$. In this Section, these values are used to validate the principles of the Kalman filter on this system. To this extent, some mathematical derivations are done. 
 
 \subsubsection*{Kalman gain}
 
@@ -217,7 +217,7 @@ Firstly, an expression for the time-varying Kalmain gain $L_{k+1}$ is derived as
 	\mathbf{\hat{P}}_{k+1|k} &= \mathbf{A} \mathbf{\hat{P}}_{k|k} \mathbf{A}^T + \mathbf{Q}_k \label{eq:eq10}
 \end{align}
 
-\noindent All matrices and vectors are scalar values in this specific system, so from now on, the boldface notation is left out. Inserting Equation \ref{eq:eq8} and \ref{eq:eq9} in Equation \ref{eq:eq10} and using $A = 1$ and $C = -1$ yields:
+\noindent All matrices and vectors are scalar values in this specific system, so from now on, the boldface notation is left out. Inserting Equations (\ref{eq:eq8}) and (\ref{eq:eq9}) in Equation (\ref{eq:eq10}) and using $A = 1$ and $C = -1$ yields:
 \begin{equation}
 	\begin{split}
 	L_{k+1} &= -\left( \hat{P}_{k|k} + Q_k \right) \left( \hat{P}_{k+1|k} + R_{k+1} \right)^{-1} \\
@@ -226,7 +226,7 @@ Firstly, an expression for the time-varying Kalmain gain $L_{k+1}$ is derived as
 	\end{split}
 	\label{eq:eq11}
 \end{equation}
-where Equation \ref{eq:eq10} was used again in the last step.
+where Equation (\ref{eq:eq10}) was used again in the last step.
 \\\\
 Taking the limit for $Q_k \rightarrow \infty$ results in $L_{k+1} = -1$, which in turn leads to $\hat{x}_{k+1|k+1} = -y_{k+1}$. This is literally the measurement equation of the state-space model (\ref{eq:eq7}). One can explain this as follows: the larger $Q$, the greater the variation of the process noise, the less confidence in the model. Or equivalently, the more confidence in the measurement. In the extreme case, i.e. $Q_k \rightarrow \infty$, one has so little confidence in the model that the state equation is entirely neglected. 
 \\\\
@@ -237,12 +237,13 @@ Secondly, an expression for the next state estimate covariance $\hat{P}_{k+1|k+1
 \begin{equation}
 	\hat{P}_{k+1|k+1} = (1 - L_{k+1} C)\hat{P}_{k+1|k} = (1 + L_{k+1})\hat{P}_{k+1|k}
 \end{equation}
-Using Equation \ref{eq:eq10} and \ref{eq:eq11} yields:
+Using Equations (\ref{eq:eq10}) and (\ref{eq:eq11}) yields:
 \begin{equation}
 	\begin{split}
 	\hat{P}_{k+1|k+1} &= \left(1 - \frac{\hat{P}_{k|k} + Q_k}{\hat{P}_{k|k} + Q_k + R_{k+1}}\right) \hat{P}_{k+1|k} \\
 	&= \frac{R_{k+1}}{\hat{P}_{k|k} + Q_k + R_{k+1}}\left(\hat{P}_{k|k} + Q_k\right)
 	\end{split}
+	\label{eq:eq13}
 \end{equation}
 
 \noindent Taking the limit for $Q_k \rightarrow \infty$ results in $\hat{P}_{k+1|k+1} = R_{k+1}$. Again,  $Q_k \rightarrow \infty$ indicates that there is zero confidence in the model, so only the measurements get used to adapt the state estimate. This way, the reliability of the estimator is purely based on the reliability of the measurement. In other words, the uncertainty on the state estimate evolves according to the measurement noise covariance. Whereas this uncertainty evolves depending on both the model and the measurements in normal operation of the filter.
@@ -250,16 +251,63 @@ Using Equation \ref{eq:eq10} and \ref{eq:eq11} yields:
 Further, the limit for $R_{k+1} \rightarrow \infty$ prompts $\hat{P}_{k+1|k+1} = \hat{P}_{k|k} + Q_k = \hat{P}_{k+1|k}$. Once more, $R_{k+1} \rightarrow \infty$ indicates zero confidence in the measurements. The a priori covariance matrix of the estimation error is equal to the a posteriori covariance matrix, so the correction step in neglected. In other words, the reliability of the estimator is purely based on the reliability of the model. In normal operation of the filter, $\hat{P}_{k+1|k+1} \preceq \hat{P}_{k+1|k}$, meaning that the uncertainty of the state estimate decreases, whereas in this limit case, the uncertainty does not decrease after the correction step, but it stays the same.
 
 \subsubsection*{Steady state covariance}
-Now, 
+Now, an expression for the steady state covariance $\hat{P}_\infty$ and the related Kalman gain $L_\infty$ is obtained as a function of $Q$ and $R$. For this, $\hat{P}_{k|k} = \hat{P}_{k+1|k+1} = \hat{P}_\infty$, $R_{k+1} = R_{\infty}$ and $Q_k = Q_\infty$ are inserted in Equation (\ref{eq:eq13}):
+\begin{equation}
+	\hat{P}_\infty = \frac{R_{\infty}}{\hat{P}_{\infty} + Q_\infty + R_{\infty}}\left(\hat{P}_{\infty} + Q_\infty\right)
+\end{equation}
+Solving for $\hat{P}_\infty$ gives:
+\begin{equation}
+	\hat{P}_\infty = \frac{-Q_\infty \pm \sqrt{Q_\infty^2 + 4R_\infty Q_\infty}}{2}
+\end{equation}
+As all covariances must be positive numbers, the only solution for the steady state covariance is: 
+\begin{equation}
+\hat{P}_\infty = \frac{-Q_\infty + \sqrt{Q_\infty^2 + 4R_\infty Q_\infty}}{2}
+\label{eq:eq16}
+\end{equation}
+Analogously, these steady state covariances are inserted in Equation (\ref{eq:eq11}) in order to find the related steady state Kalman gain:
+\begin{equation}
+L_\infty = - \frac{\hat{P}_\infty + Q_\infty}{\hat{P}_\infty + Q_\infty + R_\infty}
+\label{eq:eq17}
+\end{equation}
+With $\hat{P}_\infty$ equal to Equation (\ref{eq:eq16}), $L_\infty$ is likewise expressed as a function of the steady state process noise covariance $Q_\infty$ and the steady state measurement noise covariance $R_\infty$.
+\\\\
+In steady state, i.e. $k \rightarrow \infty$, the optimal Kalman gain $L_{k+1}$ should converge to the estimator gain $L$ of a Linear Quadratic Estimator. This is verified by computing $L_\infty$ for various numerical values of $Q_\infty$ and $R_\infty$ using the derived equation. It is then compared to the result using the \texttt{dlqr(A',A'*C',Q,R)'} command in \texttt{Matlab}. E.g. $Q = 0.01$ and $R = 0.01$ leads to $L = -0.9161$ in both cases. One can conclude that the derived formula is correct.
+
+\subsubsection*{Closed loop pole of the LQE}
+Lastly, an expression for the closed-loop pole of the Linear Quadratic Estimator is derived as a function of $\frac{Q}{R}$. Generally, the estimator state equation is given by 
+\begin{equation}
+	\hat{x}_{k+1} = (A-LC) \hat{x}_k + (B-LD) u_k + L y_k
+\end{equation}
+In this way, the closed loop poles of the estimator are calculated as the eigenvalues of the matrix (A-LC):
+\begin{equation}
+	\text{det}(p_d I - (A-L_\infty C)) = 0
+\end{equation}
+Using the previously calculated scalar values of $A$ and $C$ and using Equations (\ref{eq:eq16}) and (\ref{eq:eq17}) yields:
+\begin{equation}
+	\begin{split}
+		p_d &= 1 + L_\infty \\
+		&= 1 - \frac{\hat{P}_\infty + Q_\infty}{\hat{P}_\infty + Q_\infty + R_\infty} \\
+		&= \frac{R_\infty}{\hat{P}_\infty + Q_\infty + R_\infty} \\
+		&= \frac{2R_\infty}{-Q_\infty + \sqrt{Q_\infty^2 + 4R_\infty Q_\infty} + 2Q_\infty + 2R_\infty} \\
+		&= \cfrac{2}{\cfrac{Q_\infty}{R_\infty} + 2 + \sqrt{\left(\cfrac{Q_\infty}{R_\infty}\right)^2 + \cfrac{4Q_\infty}{R_\infty}}}
+	\end{split}
+\end{equation}
+
+\noindent From this equation, one can deduce that the pole goes to zero with increasing $\frac{Q}{R}$. Inversely, for decreasing ratio ($\frac{Q}{R} \rightarrow 0$), the value of the pole shifts towards $1$. These conclusions are verified by Figure \ref{fig:poles_LQE}. For $\frac{Q}{R} = 0$, the pole lies on the unit circle, which implies that the system is unstable for this ratio. This is the only $\frac{Q}{R}$ - value that leads to instability, because, as depicted by the figure, the poles move towards the centre of the unit circle for increasing values of the ratio. In turn, it means that the systems responds faster and faster. This can easily be explained: the larger $\frac{Q}{R}$, the more confidence in the measurement. Subsequently, the system is more sensitive to measurement noise, which complies with a faster responding system.
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{poles_LQE.eps}
+	\caption{Closed loop poles of the Linear Quadratic Estimator for varying values of the ratio between $Q$ and $R$, respecitvely the covariance of the process noise and the covariance of the measurement noise.}
+	\label{fig:poles_LQE}
+\end{figure}
 
 
 
+\newpage
+\section{Implementation of a State Estimator and a State Feedback Controller}
 
-
-
-
-
-
+Yayeet
 
 
 \newpage
