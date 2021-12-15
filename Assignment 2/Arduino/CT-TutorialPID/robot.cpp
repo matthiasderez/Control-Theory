@@ -31,7 +31,7 @@ bool Robot::init() {
     b3 = 1;
     b4 = 1;
     counter = 0.0;
-    wdes = 6.0;
+    wdes = -6.0;
     
   return true;
 }

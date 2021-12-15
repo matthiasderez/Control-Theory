@@ -31,8 +31,8 @@ void Robot::control() {
 
   float volt_A = 0.0;
   float volt_B = 0.0;
-  Matrix<1> desired_velocity; //control signal
-  desired_velocity.Fill(0); //Initialize matrix with zeros
+//  Matrix<1> desired_velocity; //control signal
+//  desired_velocity.Fill(0); //Initialize matrix with zeros
 
   // Kalman filtering
   if(KalmanFilterEnabled()) {   // only do this if controller is enabled (triggered by pushing 'Button 1' in QRoboticsCenter)
@@ -49,9 +49,10 @@ void Robot::control() {
   if(controlEnabled()) {   // only do this if controller is enabled (triggered by pushing 'Button 0' in QRoboticsCenter)
 
      // UNCOMMENT AND COMPLETE LINES BELOW TO IMPLEMENT POSITION CONTROLLER
-    float desired_position = readValue(0);      // use channel 0 to provide the constant position reference
+    float desired_position = readValue(0);// use channel 0 to provide the constant position reference
+    writeValue(6,desired_position);
     xref(0) = -desired_position ;                               // transform desired_position to the state reference (make sure units are consistent)
-    K(0) = 10 ;                                  // state feedback gain K, to design
+    K(0) = 199 ;                                  // state feedback gain K, to design
     desired_velocity = K * (xref - _xhat);      // calculate the state feedback signal, (i.e. the input for the velocity controller)
 
     //// UNCOMMENT AND COMPLETE LINES BELOW TO IMPLEMENT VELOCITY CONTROLLER
@@ -69,7 +70,8 @@ void Robot::control() {
 
     volt_A = uA;
     volt_B = uB;
-
+    counter = counter +1;
+   
     //// COMMENT OR REMOVE LINES BELOW ONCE YOU IMPLEMENT THE VELOCITY CONTROLLER
     // volt_A = 0.0;
     // volt_B = 0.0;
@@ -83,6 +85,7 @@ void Robot::control() {
     desired_velocity(0) = 0.0;
     setVoltageMotorA(0.0);
     setVoltageMotorB(0.0);
+    counter = 0;
   }
 
   // Kalman filtering
@@ -95,9 +98,11 @@ void Robot::control() {
   
   // Send useful outputs to QRC
   writeValue(0, volt_A);
-  writeValue(1, volt_B);
+  
   writeValue(2, desired_velocity(0));
-  writeValue(3, getPositionMotorA());
+  float time = counter*0.01;
+  
+  writeValue(3, time);
   writeValue(4, getPositionMotorB());
   writeValue(5, getSpeedMotorA());
   writeValue(6, getSpeedMotorB());
