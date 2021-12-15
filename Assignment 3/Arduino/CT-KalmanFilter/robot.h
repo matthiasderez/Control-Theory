@@ -29,6 +29,7 @@ class Robot : public MECOtron {
     Matrix<1> xref;       // reference state
     Matrix<1,1> K;        // state feedback gain
     Matrix<1> desired_velocity; //control signal
+    Matrix<1> L;
 
     // Velocity controller
     float time;

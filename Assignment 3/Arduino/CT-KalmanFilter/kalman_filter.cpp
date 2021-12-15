@@ -1,9 +1,10 @@
 #include "kalman_filter.h"
 
+
 void PredictionUpdate(const Matrix<1> &u, Matrix<1> &xhat, Matrix<1,1> &Phat) {
   // // UNCOMMENT AND COMPLETE LINES BELOW TO IMPLEMENT PredictionUpdate OF THE KALMAN FILTER
    // Tuning parameter
-   float arrayQ[1][1]{{ 3.0505e-4}}; //Provide here the element values of weight Q
+   float arrayQ[1][1]{{ 3.0505e-2}}; //Provide here the element values of weight Q
    Matrix<1,1> Q = arrayQ;
   
    // System A&B-matrix
