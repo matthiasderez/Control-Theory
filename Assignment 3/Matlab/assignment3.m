@@ -125,25 +125,6 @@ xlabel('Real Axis')
 ylabel('Imaginary Axis')
 print -depsc poles_LQE.eps
 
-% %% Pole placement
-% 
-% A_c = 0;
-% B_c = 1;
-% C_c = -1;
-% D_c = 0;
-% sys_c = ss(A_c,B_c,C_c,D_c);
-% pzmap(sys_c)
-% 
-% ts = 1; % settling time
-% dzeta = 0.7; % proper value for damping
-% wn = 4.6/(ts*dzeta);
-% sigma = dzeta*wn;
-% wd = wn*sqrt(1-dzeta^2);
-% pc = [-sigma - 1j*wd, -sigma + 1j*wd];
-% pd = exp(Ts*pc);
-% F = 0;
-% G = 1;
-% Kplace = place(F, G, pd);
 
 
 
@@ -166,3 +147,60 @@ ylabel('Distance [m]')
 R = cov(fd);
 Q = 10*R;
 P00 = (0.015/3)^2;
+
+
+%% 3
+% data
+csvfile = '../Data/K1.csv';
+labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+K1 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+ 
+save K1.mat
+
+csvfile = '../Data/K2.csv';
+labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+K2 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+ 
+save K2.mat
+
+csvfile = '../Data/K4.csv';
+labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+K4 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+ 
+save K4.mat
+
+% plots
+
+t = K1(:, 5);
+fd1 = K1(:, 9);
+fd2 = K2(:, 9);
+fd4 = K4(:, 9);
+
+figure
+hold on
+plot(t, [fd1, fd2, fd4]);
+xlabel('time [s]')
+ylabel('measured distance [m]')
+legend('K = 1','K = 2','K = 4', 'Location', 'SouthEast')
+sgtitle('Measured response for variable K')
+
+
+voltageA1 = K1(:, 2);
+voltageA2 = K2(:, 2);
+voltageA4 = K4(:, 2);
+
+figure
+hold on
+plot(t, [voltageA1, voltageA2, voltageA4]);
+yline(0);
+xlabel('time [s]')
+ylabel('voltage [V]')
+legend('K = 1','K = 2','K = 4', 'Location', 'SouthEast')
+sgtitle('Control signal for variable K')
+
+
+
+
