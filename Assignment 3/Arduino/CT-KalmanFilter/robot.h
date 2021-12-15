@@ -47,6 +47,8 @@ class Robot : public MECOtron {
     float counter;
     float controlA;
     float controlB;
+    float eA;
+    float eB;
 
   public:
     // Constructor

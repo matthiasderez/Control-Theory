@@ -48,17 +48,17 @@ void Robot::control() {
 
   if(controlEnabled()) {   // only do this if controller is enabled (triggered by pushing 'Button 0' in QRoboticsCenter)
 
-    // // UNCOMMENT AND COMPLETE LINES BELOW TO IMPLEMENT POSITION CONTROLLER
-    //float desired_position = readValue(0);      // use channel 0 to provide the constant position reference
-    //xref(0) = ? ;                               // transform desired_position to the state reference (make sure units are consistent)
-    //K(0) = ? ;                                  // state feedback gain K, to design
-    //desired_velocity = K * (xref - _xhat);      // calculate the state feedback signal, (i.e. the input for the velocity controller)
+     // UNCOMMENT AND COMPLETE LINES BELOW TO IMPLEMENT POSITION CONTROLLER
+    float desired_position = readValue(0);      // use channel 0 to provide the constant position reference
+    xref(0) = -desired_position ;                               // transform desired_position to the state reference (make sure units are consistent)
+    K(0) = 10 ;                                  // state feedback gain K, to design
+    desired_velocity = K * (xref - _xhat);      // calculate the state feedback signal, (i.e. the input for the velocity controller)
 
     //// UNCOMMENT AND COMPLETE LINES BELOW TO IMPLEMENT VELOCITY CONTROLLER
     float wA = getSpeedMotorA();
     float wB = getSpeedMotorB();        
-    float eA = wdes-wA;      // Here wdes vervangen door desired_velocity/R [rad/s]       //  calculate the position error of motor A (in radians)
-    float eB = wdes-wB;                 //  calculate the position error of motor B (in radians)
+    float eA = desired_velocity(0)/0.033-wA;      // Here wdes vervangen door desired_velocity(0)/R [rad/s]       //  calculate the position error of motor A (in radians)
+    float eB = desired_velocity(0)/0.033-wB;                 //  calculate the position error of motor B (in radians)
 
     // the actual control algorithm
     float uA = a4/a3*controlA + a1/a3*eA -a2/a3*errorA; // equation (2), the difference equation
@@ -107,19 +107,24 @@ void Robot::control() {
 }
 
 void Robot::resetController(){
-  // Set all errors and control signals in the memory back to 0
-  // ...
-  // ...
+    errorA = 0.0;
+    errorB = 0.0;
+    eA = 0.0;
+    eB = 0.0;
+    controlA = 0.0;
+    controlB = 0.0;
+    uA = 0.0;
+    uB = 0.0;
 }
 
 void Robot::resetKalmanFilter() {
-  // // UNCOMMENT AND MODIFIES LINES BELOW TO IMPLEMENT THE RESET OF THE KALMAN FILTER
-  // // Initialize state covariance matrix
-  // _Phat.Fill(0);      // Initialize the covariance matrix
-  // _Phat(0,0) = ?;     // Fill the initial covariance matrix, you can change this according to your experiments
-  //
-  // // Initialize state estimate
-  // _xhat(0) = 0.0;     // Change this according to your experiments
+   // UNCOMMENT AND MODIFIES LINES BELOW TO IMPLEMENT THE RESET OF THE KALMAN FILTER
+   // Initialize state covariance matrix
+   _Phat.Fill(0);      // Initialize the covariance matrix
+   _Phat(0,0) = 2.5e-5;     // Fill the initial covariance matrix, you can change this according to your experiments
+  
+   // Initialize state estimate
+   _xhat(0) = -0.15;     // Change this according to your experiments
 }
 
 bool Robot::controlEnabled() {
@@ -133,7 +138,7 @@ bool Robot::KalmanFilterEnabled() {
 void Robot::button0callback() {
   if(toggleButton(0)) {           // Switches the state of button 0 and checks if the new state is true
     resetController();
-    message("Controller resed and enabled.");    // Display a message in the status bar of QRoboticsCenter
+    message("Controller reset and enabled.");    // Display a message in the status bar of QRoboticsCenter
   }
   else {
     message("Control disabled.");

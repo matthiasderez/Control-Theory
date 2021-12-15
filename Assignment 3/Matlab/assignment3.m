@@ -41,6 +41,7 @@ ylabel('Imaginary Axis')
 print -depsc poles.eps
 
 poles_c = log(poles)/Ts;
+poles_d2 = exp(poles_c*Ts);
 figure
 hold on
 for i = 1:length(poles)
@@ -124,3 +125,44 @@ xlabel('Real Axis')
 ylabel('Imaginary Axis')
 print -depsc poles_LQE.eps
 
+% %% Pole placement
+% 
+% A_c = 0;
+% B_c = 1;
+% C_c = -1;
+% D_c = 0;
+% sys_c = ss(A_c,B_c,C_c,D_c);
+% pzmap(sys_c)
+% 
+% ts = 1; % settling time
+% dzeta = 0.7; % proper value for damping
+% wn = 4.6/(ts*dzeta);
+% sigma = dzeta*wn;
+% wd = wn*sqrt(1-dzeta^2);
+% pc = [-sigma - 1j*wd, -sigma + 1j*wd];
+% pd = exp(Ts*pc);
+% F = 0;
+% G = 1;
+% Kplace = place(F, G, pd);
+
+
+
+
+% csvfile = '../Data/FrontDistance.csv';
+% labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+% labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+% FrontDistance = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+%  
+% save FrontDistance
+
+t = 0:0.01:10.63;
+load FrontDistance.mat
+fd = FrontDistance(:,2);
+figure
+plot(t,fd)
+xlabel('time [s]')
+ylabel('Distance [m]')
+
+R = cov(fd);
+Q = 10*R;
+P00 = (0.015/3)^2;
