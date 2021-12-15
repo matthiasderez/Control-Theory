@@ -10,8 +10,20 @@
 
 bool Robot::init() {
   MECOtron::init(); // Initialize the MECOtron
-
-  desired_velocity(0) = 0;
+    errorA = 0.0;
+    errorB = 0.0;
+    controlA = 0.0;
+    controlB = 0.0;
+    a1 = 0.8;
+    a2 = 0.6692;
+    a3 = 1;
+    a4 = 1;
+    b1 = 0.775;
+    b2 = 0.6442;
+    b3 = 1;
+    b4 = 1;
+    counter = 0.0;
+  desired_velocity(0) = 0.0;
   return true;
 }
 
@@ -43,15 +55,24 @@ void Robot::control() {
     //desired_velocity = K * (xref - _xhat);      // calculate the state feedback signal, (i.e. the input for the velocity controller)
 
     //// UNCOMMENT AND COMPLETE LINES BELOW TO IMPLEMENT VELOCITY CONTROLLER
-    // ...
-    // ...                                          // implement your velocity controller here (assignment 2), such that the motors track velocity v
-    // ...
-    //volt_A =
-    //volt_B =
+    float wA = getSpeedMotorA();
+    float wB = getSpeedMotorB();        
+    float eA = wdes-wA;      // Here wdes vervangen door desired_velocity/R [rad/s]       //  calculate the position error of motor A (in radians)
+    float eB = wdes-wB;                 //  calculate the position error of motor B (in radians)
+
+    // the actual control algorithm
+    float uA = a4/a3*controlA + a1/a3*eA -a2/a3*errorA; // equation (2), the difference equation
+    float uB = b4/b3*controlB + b1/b3*eB -b2/b3*errorB; // equation (2), the difference equation
+
+ 
+    errorA = eA; errorB = eB; controlA = uA; controlB = uB;    // append the new values
+
+    volt_A = uA;
+    volt_B = uB;
 
     //// COMMENT OR REMOVE LINES BELOW ONCE YOU IMPLEMENT THE VELOCITY CONTROLLER
-    volt_A = 0.0;
-    volt_B = 0.0;
+    // volt_A = 0.0;
+    // volt_B = 0.0;
 
     // Send wheel speed command
     setVoltageMotorA(volt_A);

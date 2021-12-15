@@ -30,6 +30,24 @@ class Robot : public MECOtron {
     Matrix<1,1> K;        // state feedback gain
     Matrix<1> desired_velocity; //control signal
 
+    // Velocity controller
+    float time;
+    float a1;
+    float a2;
+    float a3;
+    float a4;
+    float b1;
+    float b2;
+    float b3;
+    float b4;
+    float uA;
+    float uB;
+    float errorA;
+    float errorB;
+    float counter;
+    float controlA;
+    float controlB;
+
   public:
     // Constructor
     Robot() { }
