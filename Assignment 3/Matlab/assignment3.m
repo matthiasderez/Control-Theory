@@ -188,6 +188,64 @@ legend('K = 1','K = 2','K = 4', 'Location', 'SouthEast')
 sgtitle('Measured response for variable K')
 
 
+%%% reversed
+% data
+csvfile = '../Data/K1_reversed.csv';
+labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+K1_r = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+ 
+save K1_r.mat
+
+csvfile = '../Data/K2_reversed.csv';
+labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+K2_r = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+ 
+save K2_r.mat
+
+csvfile = '../Data/K4_reversed.csv';
+labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+K4_r = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+ 
+save K4_r.mat
+
+% plots
+
+t = K1_r(:, 5);
+fd1_r = K1_r(:, 9);
+fd2_r = K2_r(:, 9);
+fd4_r = K4_r(:, 9);
+
+figure
+hold on
+plot(t, [fd1_r, fd2_r, fd4_r]);
+xlabel('time [s]')
+ylabel('measured distance [m]')
+legend('K = 1','K = 2','K = 4', 'Location', 'SouthEast')
+sgtitle('Measured response for variable K')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 voltageA1 = K1(:, 2);
 voltageA2 = K2(:, 2);
 voltageA4 = K4(:, 2);
