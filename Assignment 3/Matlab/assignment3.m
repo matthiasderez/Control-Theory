@@ -272,12 +272,12 @@ sgtitle('Control signal for variable K')
 
 % Voor de foute xhat(0) zijn volgende waarden gekozen:
     % xhat(0) = -0.05 terwijl het wagentje rijdt van -0.25 naar -0.15
-%bestanden met naar wrongx_rho...
+% wagentje zou dus eerst even naar achter moeten rijden.
     
 %% State estimator using pole placement
-K = 2;
+K = 73;
 
-pd = 1-Ts*K;
+pd = 1-0.033*Ts*K;
 pc = log(pd)/Ts;
 
 % Choose estimater poles 10 times slower in continuous time
@@ -287,7 +287,9 @@ pde = exp(pce*Ts);
 %estimator gain
 Lplace = place(A',C',pde)
 
-% Weer zelfde stap met verkeerde xhat(0) = -0.05
+% Weer zelfde stap met verkeerde xhat(0) = -0.05, zeer duidelijk sichtbaar
+% dat door trage estimator echt de verkeerde kant wordt opgegaan in het begin, zichtbaar
+% tijdens metingen!!!
 % Bestand met naam pole_placement
 % duurt zeer lang, dus mss grafiek met transiente respons en volledige
 % respons?
