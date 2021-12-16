@@ -227,20 +227,30 @@ load K2rho10.mat
 %  
 % save K4rho10.mat
 load K4rho10.mat
+% 
+% csvfile = '../Data/K3rho10.csv';
+% labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+% labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+% K3rho10 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+%  
+% save K3rho10.mat
+load K3rho10.mat
+
 
 % plots
 
 t = K1rho10(:, 5);
 fd1_r = K1rho10(:, 9);
 fd2_r = K2rho10(:, 9);
+fd3_r = K3rho10(:, 9);
 fd4_r = K4rho10(:, 9);
 
 figure
 hold on
-plot(t, [fd1_r, fd2_r, fd4_r]);
+plot(t, [fd1_r, fd2_r, fd3_r, fd4_r]);
 xlabel('time [s]')
 ylabel('measured distance [m]')
-legend('K = 1','K = 2','K = 4', 'Location', 'SouthEast')
+legend('K = 1','K = 2','K = 3','K = 4', 'Location', 'NorthEast')
 sgtitle('Measured response for variable K')
 
 
@@ -248,17 +258,38 @@ sgtitle('Measured response for variable K')
 
 voltageA1 = K1rho10(:, 2);
 voltageA2 = K2rho10(:, 2);
+voltageA3 = K3rho10(:, 3);
 voltageA4 = K4rho10(:, 2);
 
 figure
 hold on
-plot(t, [voltageA1, voltageA2, voltageA4]);
+plot(t, [voltageA1, voltageA2, voltageA3, voltageA4]);
 yline(0);
 xlabel('time [s]')
 ylabel('voltage [V]')
-legend('K = 1','K = 2','K = 4', 'Location', 'SouthEast')
+legend('K = 1','K = 2','K = 3','K = 4', 'Location', 'NorthEast')
 sgtitle('Control signal for variable K')
 
+% Voor de foute xhat(0) zijn volgende waarden gekozen:
+    % xhat(0) = -0.05 terwijl het wagentje rijdt van -0.25 naar -0.15
+%bestanden met naar wrongx_rho...
+    
+%% State estimator using pole placement
+K = 2;
 
+pd = 1-Ts*K;
+pc = log(pd)/Ts;
 
+% Choose estimater poles 10 times slower in continuous time
+pce = pc/10;
+pde = exp(pce*Ts);
 
+%estimator gain
+Lplace = place(A',C',pde)
+
+% Weer zelfde stap met verkeerde xhat(0) = -0.05
+% Bestand met naam pole_placement
+% duurt zeer lang, dus mss grafiek met transiente respons en volledige
+% respons?
+
+ 

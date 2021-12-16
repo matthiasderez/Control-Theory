@@ -4,7 +4,7 @@
 void PredictionUpdate(const Matrix<1> &u, Matrix<1> &xhat, Matrix<1,1> &Phat) {
   // // UNCOMMENT AND COMPLETE LINES BELOW TO IMPLEMENT PredictionUpdate OF THE KALMAN FILTER
    // Tuning parameter
-   float arrayQ[1][1]{{ 3.0505e-2}}; //Provide here the element values of weight Q
+   float arrayQ[1][1]{{ 3.0505e-4}}; //Provide here the element values of weight Q
    Matrix<1,1> Q = arrayQ;
   
    // System A&B-matrix
@@ -38,7 +38,10 @@ void CorrectionUpdate(const Matrix<1> &y, Matrix<1> &xhat, Matrix<1,1> &Phat, Ma
   
    // Compute optimal Kalman filter gain
    Matrix<1,1> L = Phat * C.Transpose() * S.Inverse();
-  
+
+  // Pole placement
+//  Matrix<1,1> L ;
+//  L(0) = -0.002;
    // Compute corrected system state estimate
    xhat += L * nu;
   

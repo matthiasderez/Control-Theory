@@ -40,7 +40,7 @@ void Robot::control() {
     Matrix<1> distance_measurement;                                     // define a vector of length 1
     distance_measurement(0) = getFrontDistance();                       // front distance
     CorrectionUpdate(distance_measurement, _xhat, _Phat, _nu, _S);     // do the correction step -> update _xhat, _Phat, _nu, _S
-    
+
   }
   writeValue(8, _xhat(0)); // a posteriori state estimate
   writeValue(9, _Phat(0)); // a posteriori state covariance
@@ -130,7 +130,7 @@ void Robot::resetKalmanFilter() {
    _Phat(0,0) = 2.5e-5;     // Fill the initial covariance matrix, you can change this according to your experiments
   
    // Initialize state estimate
-   _xhat(0) = -0.05;     // Change this according to your experiments
+   _xhat(0) = -0.25;     // Change this according to your experiments
 }
 
 bool Robot::controlEnabled() {
