@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2021.12.18)  18 DEC 2021 11:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2021.12.18)  18 DEC 2021 12:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1062,56 +1062,63 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
 
 [2]
+
+LaTeX Warning: Reference `fig:impulse_response' on page 3 undefined on input li
+ne 170.
+
+
+LaTeX Warning: Reference `fig:impulse_response' on page 3 undefined on input li
+ne 172.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 170--173
 
  []
 
 Package epstopdf Info: Source file: <../Matlab//poles.eps>
-(epstopdf)                    date: 2021-12-18 10:45:29
-(epstopdf)                    size: 27979 bytes
+(epstopdf)                    date: 2021-12-18 11:02:51
+(epstopdf)                    size: 26348 bytes
 (epstopdf)             Output file: <./poles-eps-converted-to.pdf>
 (epstopdf)                    date: 2021-12-18 10:45:29
 (epstopdf)                    size: 11509 bytes
 (epstopdf)             Command: <miktex-epstopdf --outfile=./poles-eps-converte
 d-to.pdf ../Matlab//poles.eps>
 (epstopdf)             \includegraphics on input line 179.
-Package epstopdf Info: Output file is already uptodate.
-<./poles-eps-converted-to.pdf, id=113, 295.1025pt x 302.12875pt>
+runsystem(miktex-epstopdf --outfile=./poles-eps-converted-to.pdf ../Matlab//pol
+es.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./poles-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-18 10:45:29
+(epstopdf)                    size: 11509 bytes.
+<./poles-eps-converted-to.pdf, id=109, 295.1025pt x 302.12875pt>
 File: ./poles-eps-converted-to.pdf Graphic file (type pdf)
 <use ./poles-eps-converted-to.pdf>
 Package pdftex.def Info: ./poles-eps-converted-to.pdf  used on input line 179.
 (pdftex.def)             Requested size: 227.62204pt x 233.04553pt.
-<impulse_response1_cropped.pdf, id=114, 366.58755pt x 294.47115pt>
-File: impulse_response1_cropped.pdf Graphic file (type pdf)
-<use impulse_response1_cropped.pdf>
-Package pdftex.def Info: impulse_response1_cropped.pdf  used on input line 189.
-
-(pdftex.def)             Requested size: 218.51521pt x 175.52927pt.
-<impulse_response3_cropped.pdf, id=115, 366.58755pt x 294.47115pt>
-File: impulse_response3_cropped.pdf Graphic file (type pdf)
-<use impulse_response3_cropped.pdf>
-Package pdftex.def Info: impulse_response3_cropped.pdf  used on input line 194.
-
-(pdftex.def)             Requested size: 218.51521pt x 175.52927pt.
 Package epstopdf Info: Source file: <../Matlab//poles_cont.eps>
-(epstopdf)                    date: 2021-12-18 10:45:29
-(epstopdf)                    size: 23739 bytes
+(epstopdf)                    date: 2021-12-18 11:02:56
+(epstopdf)                    size: 22234 bytes
 (epstopdf)             Output file: <./poles_cont-eps-converted-to.pdf>
 (epstopdf)                    date: 2021-12-18 10:45:29
 (epstopdf)                    size: 9369 bytes
 (epstopdf)             Command: <miktex-epstopdf --outfile=./poles_cont-eps-con
 verted-to.pdf ../Matlab//poles_cont.eps>
-(epstopdf)             \includegraphics on input line 201.
-Package epstopdf Info: Output file is already uptodate.
-<./poles_cont-eps-converted-to.pdf, id=116, 367.3725pt x 302.12875pt>
+(epstopdf)             \includegraphics on input line 209.
+runsystem(miktex-epstopdf --outfile=./poles_cont-eps-converted-to.pdf ../Matlab
+//poles_cont.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./poles_cont-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-18 10:45:29
+(epstopdf)                    size: 9369 bytes.
+<./poles_cont-eps-converted-to.pdf, id=110, 367.3725pt x 302.12875pt>
 File: ./poles_cont-eps-converted-to.pdf Graphic file (type pdf)
 <use ./poles_cont-eps-converted-to.pdf>
 Package pdftex.def Info: ./poles_cont-eps-converted-to.pdf  used on input line 
-201.
-(pdftex.def)             Requested size: 273.14922pt x 224.65514pt.
+209.
+(pdftex.def)             Requested size: 227.62204pt x 187.20262pt.
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 205.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 213.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 Package fancyhdr Warning: \headheight is too small (42.67912pt): 
@@ -1122,11 +1129,19 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
 
 [3 <./poles-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 240--246
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 240--246
+
+ []
+
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 205.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 246.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-
 
 Package fancyhdr Warning: \headheight is too small (42.67912pt): 
 (fancyhdr)                Make it at least 46.27914pt, for example:
@@ -1135,20 +1150,19 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
 
-[4 <./impulse_response1_cropped.pdf> <./impulse_response3_cropped.pdf> <./poles
-_cont-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 232--238
+[4 <./poles_cont-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 261--264
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 232--238
+Underfull \hbox (badness 10000) in paragraph at lines 283--287
 
  []
 
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 251.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 287.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 Package fancyhdr Warning: \headheight is too small (42.67912pt): 
@@ -1159,19 +1173,32 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 253--256
+Package epstopdf Info: Source file: <../Matlab//poles_LQE.eps>
+(epstopdf)                    date: 2021-12-18 11:03:08
+(epstopdf)                    size: 26223 bytes
+(epstopdf)             Output file: <./poles_LQE-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-18 10:45:29
+(epstopdf)                    size: 11442 bytes
+(epstopdf)             Command: <miktex-epstopdf --outfile=./poles_LQE-eps-conv
+erted-to.pdf ../Matlab//poles_LQE.eps>
+(epstopdf)             \includegraphics on input line 312.
+runsystem(miktex-epstopdf --outfile=./poles_LQE-eps-converted-to.pdf ../Matlab/
+/poles_LQE.eps)...executed safely (allowed).
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 275--279
-
- []
-
+Package epstopdf Info: Result file: <./poles_LQE-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-18 10:45:29
+(epstopdf)                    size: 11442 bytes.
+<./poles_LQE-eps-converted-to.pdf, id=172, 295.1025pt x 302.12875pt>
+File: ./poles_LQE-eps-converted-to.pdf Graphic file (type pdf)
+<use ./poles_LQE-eps-converted-to.pdf>
+Package pdftex.def Info: ./poles_LQE-eps-converted-to.pdf  used on input line 3
+12.
+(pdftex.def)             Requested size: 227.62204pt x 233.04553pt.
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 298.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 319.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+
 
 Package fancyhdr Warning: \headheight is too small (42.67912pt): 
 (fancyhdr)                Make it at least 46.27914pt, for example:
@@ -1181,25 +1208,9 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
 
 [6]
-Package epstopdf Info: Source file: <../Matlab//poles_LQE.eps>
-(epstopdf)                    date: 2021-12-18 10:45:29
-(epstopdf)                    size: 27700 bytes
-(epstopdf)             Output file: <./poles_LQE-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-18 10:45:29
-(epstopdf)                    size: 11442 bytes
-(epstopdf)             Command: <miktex-epstopdf --outfile=./poles_LQE-eps-conv
-erted-to.pdf ../Matlab//poles_LQE.eps>
-(epstopdf)             \includegraphics on input line 304.
-Package epstopdf Info: Output file is already uptodate.
-<./poles_LQE-eps-converted-to.pdf, id=203, 295.1025pt x 302.12875pt>
-File: ./poles_LQE-eps-converted-to.pdf Graphic file (type pdf)
-<use ./poles_LQE-eps-converted-to.pdf>
-Package pdftex.def Info: ./poles_LQE-eps-converted-to.pdf  used on input line 3
-04.
-(pdftex.def)             Requested size: 227.62204pt x 233.04553pt.
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 311.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 325.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 
@@ -1210,25 +1221,12 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
 
-[7 <./poles_LQE-eps-converted-to.pdf>]
-File: kuleuvenSedes.pdf Graphic file (type pdf)
-<use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 317.
-(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+[7 <./poles_LQE-eps-converted-to.pdf>] (Assignment3.bbl)
 
-
-Package fancyhdr Warning: \headheight is too small (42.67912pt): 
-(fancyhdr)                Make it at least 46.27914pt, for example:
-(fancyhdr)                \setlength{\headheight}{46.27914pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
-
-[8] (Assignment3.bbl) 
 AED: lastpage setting LastPage
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 322.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 330.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 Package fancyhdr Warning: \headheight is too small (42.67912pt): 
@@ -1238,15 +1236,18 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
 
-[9] (Assignment3.aux)
+[8] (Assignment3.aux)
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `Assignment3.out' has not changed.
 (rerunfilecheck)             Checksum: 428FA3CDFA33367261D47E6663D2348A;769.
  ) 
 Here is how much of TeX's memory you used:
- 26711 strings out of 478659
- 536816 string characters out of 2845919
- 833714 words of memory out of 3000000
- 44255 multiletter control sequences out of 15000+600000
+ 26690 strings out of 478659
+ 536170 string characters out of 2845919
+ 832591 words of memory out of 3000000
+ 44238 multiletter control sequences out of 15000+600000
  417388 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,20n,94p,895b,1102s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1269,9 +1270,9 @@ sfonts/cm/cmr10.pfb><C:/Users/murcy/AppData/Local/Programs/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmr7.pfb><C:/Users/murcy/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/murcy/AppData/Local/Programs/MiKT
 eX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on Assignment3.pdf (9 pages, 464836 bytes).
+Output written on Assignment3.pdf (8 pages, 406553 bytes).
 PDF statistics:
- 598 PDF objects out of 1000 (max. 8388607)
- 51 named destinations out of 1000 (max. 500000)
- 168 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 571 PDF objects out of 1000 (max. 8388607)
+ 49 named destinations out of 1000 (max. 500000)
+ 158 words of extra memory for PDF output out of 10000 (max. 10000000)
 

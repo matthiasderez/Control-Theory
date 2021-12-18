@@ -1,4 +1,4 @@
 \babel@toc {english}{}\relax 
 \contentsline {section}{\numberline {1}Design of the State Feedback Controller}{2}{section.1}%
-\contentsline {section}{\numberline {2}Kalman Filter}{5}{section.2}%
-\contentsline {section}{\numberline {3}Implementation of a State Estimator and a State Feedback Controller}{8}{section.3}%
+\contentsline {section}{\numberline {2}Kalman Filter}{4}{section.2}%
+\contentsline {section}{\numberline {3}Implementation of a State Estimator and a State Feedback Controller}{7}{section.3}%

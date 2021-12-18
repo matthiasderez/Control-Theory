@@ -62,22 +62,13 @@ for K = 10:10:50
     sys = ss(A-B*K,B,C-D*K,D,Ts);
     impulse(sys)
 end
-set(gca, 'Fontsize', 11)
+set(gca, 'Fontsize', 12)
+xlabel('Time', 'FontSize', 12)
+ylabel('Amplitude', 'FontSize', 12)
 ylim([-1.2 0.2])
-legend({'10','20','30','40','50'})
+legend({'10','20','30','40','50'}, 'Location','SouthEast')
 hold off
 print -depsc impulse_response1.eps
-
-figure
-hold on
-for K = 150:10:190
-    sys = ss(A-B*K,B,C-D*K,D,Ts);
-    impulse(sys)
-end
-set(gca, 'Fontsize', 11)
-legend({'150','160','170','180','190'})
-hold off
-print -depsc impulse_response2.eps
 
 figure
 hold on
@@ -85,20 +76,22 @@ for K = [0, 100]
     sys = ss(A-B*K,B,C-D*K,D,Ts);
     impulse(sys)
 end
-set(gca, 'Fontsize', 11)
+set(gca, 'Fontsize', 12)
+xlabel('Time', 'FontSize', 12)
+ylabel('Amplitude', 'FontSize', 12)
 ylim([-1.2 0.2])
-legend({'0', '100'})
+legend({'0', '100'}, 'Location','SouthEast')
 print -depsc impulse_response3.eps
 
 %% 2
 % LQE estimator gain
 Q = 0.1;
 R = 0.01;
-L = dlqr(A', A'*C', Q, R)'
+L1 = dlqr(A', A'*C', Q, R)';
 
 % steady state Kalmain gain using derived formula
 P = (1/2)*(-Q+ sqrt(Q^2+4*R*Q));
-L = -(P+Q)/(P+Q+R)
+L2 = -(P+Q)/(P+Q+R);
 
 % Closed loop poles of the LQE
 figure 
