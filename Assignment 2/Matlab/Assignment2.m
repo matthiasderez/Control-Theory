@@ -88,6 +88,8 @@ num_PI_B = [Ti_B 1];
 den_PI_B = [Ti_B 0];
 
 % Transforming the control TF from continuous time to discrete time
+% continu D(s) = K/s(s+1/Ti) = V(s)/E(s) = K(1 + 1/(Ti*s))
+% V(s) = E(s) (K + K/(s*Ti))
 contrA_PI_c = tf(num_PI_A, den_PI_A);
 contrA_PI_d = c2d(contrA_PI_c, Ts, 'zoh') ;
 [num_PI_A,den_PI_A] = tfdata(contrA_PI_d, 'v');
