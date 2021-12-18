@@ -1,3 +1,10 @@
-\BOOKMARK [1][-]{section.1}{\376\377\000D\000e\000s\000i\000g\000n\000\040\000o\000f\000\040\000t\000h\000e\000\040\000S\000t\000a\000t\000e\000\040\000F\000e\000e\000d\000b\000a\000c\000k\000\040\000C\000o\000n\000t\000r\000o\000l\000l\000e\000r}{}% 1
-\BOOKMARK [1][-]{section.2}{\376\377\000K\000a\000l\000m\000a\000n\000\040\000F\000i\000l\000t\000e\000r}{}% 2
-\BOOKMARK [1][-]{section.3}{\376\377\000I\000m\000p\000l\000e\000m\000e\000n\000t\000a\000t\000i\000o\000n\000\040\000o\000f\000\040\000a\000\040\000S\000t\000a\000t\000e\000\040\000E\000s\000t\000i\000m\000a\000t\000o\000r\000\040\000a\000n\000d\000\040\000a\000\040\000S\000t\000a\000t\000e\000\040\000F\000e\000e\000d\000b\000a\000c\000k\000\040\000C\000o\000n\000t\000r\000o\000l\000l\000e\000r}{}% 3
+\BOOKMARK [1][-]{section.1}{Design of the State Feedback Controller}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Input \046 Output}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{State Space Model}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Close Loop Transfer Function}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{Kalman Filter}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Kalman Gain}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.2}{Next State Estimate Covariance}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.3}{Steady State Covariance}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.4}{Closed Loop Pole of the LQE}{section.2}% 9
+\BOOKMARK [1][-]{section.3}{Implementation of a State Estimator and a State Feedback Controller}{}% 10

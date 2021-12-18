@@ -1,5 +1,6 @@
-\babel@toc {english}{}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces Flow diagram of the closed loop system. \cite {tikz}\relax }}{3}{figure.caption.7}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Pole locations of the closed-loop system for varying values of the state feedback gain.\relax }}{3}{figure.caption.8}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Impulse response of the closed-loop system for varying values of the state feedback gain K in continuous time.\relax }}{4}{figure.caption.9}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Closed loop poles of the Linear Quadratic Estimator for varying values of the ratio between $Q$ and $R$, respecitvely the covariance of the process noise and the covariance of the measurement noise.\relax }}{7}{figure.caption.14}%
+\babel@toc {english}{}
+\contentsline {figure}{\numberline {1}{\ignorespaces Flow diagram of the closed loop system. \cite {tikz}\relax }}{3}{figure.caption.4}
+\contentsline {figure}{\numberline {2}{\ignorespaces Discrete time pole locations of the closed-loop system for varying values of the state feedback gain.\relax }}{3}{figure.caption.5}
+\contentsline {figure}{\numberline {3}{\ignorespaces Continuous time pole locations of the closed-loop system for varying values of the state feedback gain.\relax }}{4}{figure.caption.6}
+\contentsline {figure}{\numberline {4}{\ignorespaces Impulse response of the closed-loop system for varying values of the state feedback gain K.\relax }}{4}{figure.caption.7}
+\contentsline {figure}{\numberline {5}{\ignorespaces Closed loop poles of the Linear Quadratic Estimator for varying values of the ratio between $Q$ and $R$, respecitvely the covariance of the process noise and the covariance of the measurement noise.\relax }}{7}{figure.caption.8}
