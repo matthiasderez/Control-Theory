@@ -130,7 +130,9 @@ with $K$ the state feedback gain. Subsequently, the closed loop system has one p
 \begin{equation}
 	p_d = 1 - T_s K
 \end{equation}
-This equation indicates that the pole moves to the left for increasing K, or inversely, move to the right for decreasing K, as seen in Figure \ref{fig:poles}. In the discrete time domain, the system is stable if the poles are within the unit circle. For this particular system, this means $0 < K < 200$ Hz.
+This equation indicates that the pole moves to the left for increasing K, or inversely, move to the right for decreasing K, as seen in Figure \ref{fig:poles}. In the discrete time domain, the system is stable if the poles are within the unit circle. For this particular system, this means $0 < K < 200$ Hz. 
+\\\\
+However, discrete-time poles on the negative side of the real axis have no physical meaning, as these are purely digital effects that have no use in practice. Thus, the state feedback gain is restricted as follows: $0 < K \le 100$ Hz.
 
 
 \begin{figure}[htp]
@@ -165,7 +167,9 @@ This equation indicates that the pole moves to the left for increasing K, or inv
 	\label{fig:flowdiagram}
 \end{figure}
 \newpage
-\noindent Furthermore, a pole that is close to the unit circle, e.g. for $K = 10$ or $K = 190$, leads to a slower responding system. Equivalently, a pole that is closer to the origin leads to a faster response. These conclusions are demonstrated by Figure \ref{fig:impulse_response}. The limit cases are when, on the one hand, the pole is located on the unit circle itself, meaning that the system is on the marginally stable. On the other hand, a pole which lies at the origin corresponds to an infinitely fast system, i.e. a pure time delay. This would however mean that the control signal will be infinitely large, thus saturating the actuators. So there is a trade-off between response time and cost in terms of required actuation signal. Both of these limit cases are depicted in Figure \ref{fig:impulse_response}. The previously made conclusions can also be verified by transforming the poles to continuous time and plotting them in the imaginary plane. For continuous time poles, we know that the further the pole lies from the imaginary axis (in the left hand plane) the faster the respons. The conclusions are confirmed in Figure \ref{fig:poles cont}. 
+\noindent Furthermore, a pole that is close to the unit circle, e.g. for $K = 10$, leads to a slower responding system. Equivalently, a pole that is closer to the origin leads to a faster response. These conclusions are demonstrated by Figure \ref{fig:impulse_response}. The limit cases are when, on the one hand, the pole is located on the unit circle itself, meaning that the system is marginally stable. 
+\\\\
+On the other hand, a pole which lies at the origin corresponds to an infinitely fast system, i.e. a pure time delay. This would however mean that the control signal will be infinitely large, thus saturating the actuators. So there is a trade-off between response time and cost in terms of required actuation signal. Both of these limit cases are depicted in Figure \ref{fig:impulse_response}. The previously made conclusions can also be verified by transforming the poles to continuous time and plotting them in the imaginary plane. For continuous time poles, we know that the further the pole lies from the imaginary axis (in the left hand plane) the faster the response. The conclusions are confirmed in Figure \ref{fig:poles cont}. 
 
 
 
@@ -185,11 +189,6 @@ This equation indicates that the pole moves to the left for increasing K, or inv
 		\includegraphics[width=\textwidth]{impulse_response1_cropped.pdf}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[b]{0.48\textwidth}  
-		\centering 
-		\includegraphics[width=\textwidth]{impulse_response2_cropped.pdf}
-	\end{subfigure}
-	
 	\begin{subfigure}[b]{0.48\textwidth}  
 		\centering 
 		\includegraphics[width=\textwidth]{impulse_response3_cropped.pdf}

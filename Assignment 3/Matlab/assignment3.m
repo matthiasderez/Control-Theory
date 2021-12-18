@@ -64,7 +64,7 @@ for K = 10:10:50
 end
 set(gca, 'Fontsize', 11)
 ylim([-1.2 0.2])
-legend({'0','10','20','30','40','50'})
+legend({'10','20','30','40','50'})
 hold off
 print -depsc impulse_response1.eps
 
