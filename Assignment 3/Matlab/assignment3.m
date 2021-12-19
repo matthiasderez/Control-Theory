@@ -120,7 +120,9 @@ print -depsc poles_LQE.eps
 
 
 
+%% 3
 
+%%% 3a) determine the measurement noise covariance 
 
 % csvfile = '../Data/FrontDistance.csv';
 % labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
@@ -131,123 +133,38 @@ print -depsc poles_LQE.eps
 
 t = 0:0.01:10.63;
 load FrontDistance.mat
-fd = FrontDistance(:,2);
+x = FrontDistance(:,2);
 figure
-plot(t,fd)
+plot(t,x)
 xlabel('time [s]')
 ylabel('Distance [m]')
 
-R = cov(fd);
+R = cov(x);
 Q = 10*R;
 P00 = (0.015/3)^2;
 
+%%% 3b)
 
-%% 3
-% data
-csvfile = '../Data/K1.csv';
-labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
-labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
-K1 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
- 
-save K1.mat
-
-csvfile = '../Data/K2.csv';
-labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
-labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
-K2 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
- 
-save K2.mat
-
-csvfile = '../Data/K4.csv';
-labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
-labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
-K4 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
- 
-save K4.mat
-
-% plots
-
-t = K1(:, 5);
-fd1 = K1(:, 9);
-fd2 = K2(:, 9);
-fd4 = K4(:, 9);
-
-figure
-hold on
-plot(t, [fd1, fd2, fd4]);
-xlabel('time [s]')
-ylabel('measured distance [m]')
-legend('K = 1','K = 2','K = 4', 'Location', 'SouthEast')
-sgtitle('Measured response for variable K')
-
-voltageA1 = K1(:, 2);
-voltageA2 = K2(:, 2);
-voltageA4 = K4(:, 2);
-
-figure
-hold on
-plot(t, [voltageA1, voltageA2, voltageA4]);
-yline(0);
-xlabel('time [s]')
-ylabel('voltage [V]')
-legend('K = 1','K = 2','K = 4', 'Location', 'SouthEast')
-sgtitle('Control signal for variable K')
-
-
-
-%%% reversed
-% data
-% csvfile = '../Data/K1rho10.csv';
-% labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
-% labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
-% K1rho10 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
-%  
-% save K1rho10.mat
+% loeading measurements
 load K1rho10.mat
-
-% csvfile = '../Data/K2rho10.csv';
-% labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
-% labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
-% K2rho10 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
-%  
-% save K2rho10.mat
 load K2rho10.mat
-
-% csvfile = '../Data/K4rho10.csv';
-% labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
-% labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
-% K4rho10 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
-%  
-% save K4rho10.mat
-load K4rho10.mat
-% 
-% csvfile = '../Data/K3rho10.csv';
-% labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
-% labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
-% K3rho10 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
-%  
-% save K3rho10.mat
 load K3rho10.mat
-
+load K4rho10.mat
 
 % plots
-
 t = K1rho10(:, 5);
-fd1_r = K1rho10(:, 9);
-fd2_r = K2rho10(:, 9);
-fd3_r = K3rho10(:, 9);
-fd4_r = K4rho10(:, 9);
+x1 = -K1rho10(:, 9);
+x2 = -K2rho10(:, 9);
+x3 = -K3rho10(:, 9);
+x4 = -K4rho10(:, 9);
 
 figure
 hold on
-plot(t, [fd1_r, fd2_r, fd3_r, fd4_r]);
+plot(t, [x1, x2, x3, x4]);
 xlabel('time [s]')
 ylabel('measured distance [m]')
 legend('K = 1','K = 2','K = 3','K = 4', 'Location', 'NorthEast')
 sgtitle('Measured response for variable K')
-
-
-
 
 voltageA1 = K1rho10(:, 2);
 voltageA2 = K2rho10(:, 2);
@@ -263,6 +180,65 @@ ylabel('voltage [V]')
 legend('K = 1','K = 2','K = 3','K = 4', 'Location', 'NorthEast')
 sgtitle('Control signal for variable K')
 
+%%% 3c)
+
+load K2_4rho1000.mat
+load K2_4rho100.mat
+load K2_4rho10.mat
+load K2_4rho1.mat
+load K2_4rho0_1.mat
+load K2_4rho0_01.mat
+load K2_4rho0_001.mat
+
+t = K2_4rho1000(:, 5);
+x1 = -K2_4rho1000(:, 9);
+x2 = -K2_4rho100(:, 9);
+x3 = -K2_4rho10(:, 9);
+x4 = -K2_4rho1(:, 9);
+x5 = -K2_4rho0_1(:, 9);
+x6 = -K2_4rho0_01(:, 9);
+x7 = -K2_4rho0_001(:, 9);
+
+figure
+hold on
+plot(t, [x1, x2, x3, x4, x5, x6, x7]);
+xlabel('time [s]')
+ylabel('measured distance [m]')
+legend('\rho = 1000', '\rho = 100','\rho = 10','\rho = 1','\rho = 0.1','\rho = 0.01','\rho = 0.001','Location', 'NorthEast')
+sgtitle('Measured response for variable \rho')
+%%%%%%%%%%%%%%%%%%%%%
+figure
+hold on
+plot(t, [x1, x2]);
+xlabel('time [s]')
+ylabel('measured distance [m]')
+legend('\rho = 1000', '\rho = 100', 'Location', 'NorthEast')
+sgtitle('Measured response for variable \rho')
+
+figure
+hold on
+plot(t, [x3, x4]);
+xlabel('time [s]')
+ylabel('measured distance [m]')
+legend('\rho = 10', '\rho = 1', 'Location', 'NorthEast')
+sgtitle('Measured response for variable \rho')
+
+figure
+hold on
+plot(t, [x5, x6]);
+xlabel('time [s]')
+ylabel('measured distance [m]')
+legend('\rho = 0.1', '\rho = 0.01', 'Location', 'NorthEast')
+sgtitle('Measured response for variable \rho')
+
+figure
+hold on
+plot(t, x7);
+xlabel('time [s]')
+ylabel('measured distance [m]')
+legend('\rho = 0.001', 'Location', 'NorthEast')
+sgtitle('Measured response for variable \rho')
+%%%%%%%%%%%%%%%%%%%%
 % Voor de foute xhat(0) zijn volgende waarden gekozen:
     % xhat(0) = -0.05 terwijl het wagentje rijdt van -0.25 naar -0.15
 % wagentje zou dus eerst even naar achter moeten rijden.
@@ -287,4 +263,4 @@ Lplace = place(A',C',pde)
 % duurt zeer lang, dus mss grafiek met transiente respons en volledige
 % respons?
 
- 
+ sgt
