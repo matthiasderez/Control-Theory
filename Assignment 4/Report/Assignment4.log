@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  18 DEC 2021 17:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  19 DEC 2021 18:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -957,17 +957,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--63
 \tf@lot=\write7
 \openout7 = `Assignment4.lot'.
 
-<pendulumoncart.png, id=70, 199.947pt x 246.32025pt>
+<pendulumoncart.png, id=71, 199.947pt x 246.32025pt>
 File: pendulumoncart.png Graphic file (type png)
 <use pendulumoncart.png>
-Package pdftex.def Info: pendulumoncart.png  used on input line 90.
+Package pdftex.def Info: pendulumoncart.png  used on input line 91.
 (pdftex.def)             Requested size: 182.09831pt x 224.33969pt.
-<VLDpendulum.jpg, id=74, 313.17pt x 423.83344pt>
+<VLDpendulum.jpg, id=75, 313.17pt x 423.83344pt>
 File: VLDpendulum.jpg Graphic file (type jpg)
 <use VLDpendulum.jpg>
-Package pdftex.def Info: VLDpendulum.jpg  used on input line 96.
+Package pdftex.def Info: VLDpendulum.jpg  used on input line 97.
 (pdftex.def)             Requested size: 182.09831pt x 246.45087pt.
- (./Assignment4.bbl
+ [1
+
+{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <c:/Users/matth/
+texmf/tex/latex/kulak/kuleuvenLogo.pdf> <c:/Users/matth/texmf/tex/latex/kulak/k
+uleuvenSedes.pdf>]
+File: kuleuvenSedes.pdf Graphic file (type pdf)
+<use kuleuvenSedes.pdf>
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 155.
+(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (42.67912pt): 
+Make it at least 46.27914pt.
+We now make it that large for the rest of the document.
+This may cause the page layout to be inconsistent, however.
+
+[2 <./pendulumoncart.png> <./VLDpendulum.jpg>]
+<logdecrement.png, id=136, 386.6445pt x 320.397pt>
+File: logdecrement.png Graphic file (type png)
+<use logdecrement.png>
+Package pdftex.def Info: logdecrement.png  used on input line 219.
+(pdftex.def)             Requested size: 273.14922pt x 226.35413pt.
+File: kuleuvenSedes.pdf Graphic file (type pdf)
+<use kuleuvenSedes.pdf>
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 225.
+(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+ [3] (./Assignment4.bbl
 Underfull \hbox (badness 4556) in paragraph at lines 4--10
 []\T1/cmr/m/n/10 Aurelio Are-nas.  The use of a nin-tendo wii re-mote con-trol 
 in physics ex-per-i-ments.
@@ -979,50 +1005,47 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--10
 99 _ The _ use _ of _ a _ Nintendo _ Wii _
  []
 
-[1
-
-{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <c:/Users/matth/
-texmf/tex/latex/kulak/kuleuvenLogo.pdf> <c:/Users/matth/texmf/tex/latex/kulak/k
-uleuvenSedes.pdf>]) 
+) 
 AED: lastpage setting LastPage
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 115.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 231.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-
-Package Fancyhdr Warning: \headheight is too small (42.67912pt): 
-Make it at least 46.27914pt.
-We now make it that large for the rest of the document.
-This may cause the page layout to be inconsistent, however.
-
-[2 <./pendulumoncart.png> <./VLDpendulum.jpg>] (./Assignment4.aux)
+[4 <./logdecrement.png>] (./Assignment4.aux)
 Package rerunfilecheck Info: File `Assignment4.out' has not changed.
 (rerunfilecheck)             Checksum: BCEDB4A3065DDD2E2B87096FDC83E209;472.
  ) 
 Here is how much of TeX's memory you used:
- 22952 strings out of 479917
- 461411 string characters out of 5886666
- 778519 words of memory out of 5000000
- 39016 multiletter control sequences out of 15000+600000
- 545899 words of font info for 58 fonts, out of 8000000 for 9000
+ 22996 strings out of 479917
+ 461982 string characters out of 5886666
+ 789046 words of memory out of 5000000
+ 39037 multiletter control sequences out of 15000+600000
+ 547512 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,17n,99p,558b,1101s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 89i,21n,99p,558b,1101s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
-ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/
-cm-super/sfbx1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/s
-fbx1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pf
-b><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texl
-ive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2020/t
-exmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2020/texmf-dist/
+ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2020/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2020/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi5.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.
+pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/tex
+live/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2020/texmf-dist/fonts/typ
+e1/public/cm-super/sfbx1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/
+cm-super/sfbx1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/s
+fbx1440.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pf
+b><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texl
+ive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2020/t
+exmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2020/texmf-dist/
 fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2020/texmf-dist/fonts/type
 1/public/cm-super/sftt1000.pfb>
-Output written on Assignment4.pdf (2 pages, 435595 bytes).
+Output written on Assignment4.pdf (4 pages, 537105 bytes).
 PDF statistics:
- 168 PDF objects out of 1000 (max. 8388607)
- 126 compressed objects within 2 object streams
- 19 named destinations out of 1000 (max. 500000)
- 177 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 240 PDF objects out of 1000 (max. 8388607)
+ 186 compressed objects within 2 object streams
+ 37 named destinations out of 1000 (max. 500000)
+ 182 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -80,15 +80,16 @@ To derive the continuous model of the velocity-steered cart with pendulum, Newto
 Using Equation \ref{eq:J}, this can be simplified to:
 \begin{equation}
 	L\ddot{\theta}+\ddot{x}cos(\theta) = -gsin(\theta) - \frac{c}{mL}\dot{\theta}
+	\label{eq:newton}
 \end{equation}
 
-The parameters of the theoretical continuous model of the velocity-steered cart are $x$ and $\theta$. The input is the cart velocity $\dot{x}$ which has units $[m/s]$. The output of the model is the pendulum angle $\theta$ with units $[rad]$. 
+The parameters of the theoretical continuous model of the velocity-steered cart are $x$ and $\theta$. The input is the cart velocity $\dot{x}$ which has units $[m/s]$. The outputs of the model are the cart position $x$ with units $[m]$ and the pendulum angle $\theta$ with units $[rad]$. 
 \begin{figure*}[htp!]
 	\centering
 	\begin{minipage}{.5\textwidth}
 		\centering
 		\includegraphics[width=.8\linewidth]{pendulumoncart.png}
-		\captionof{figure}{Depiction of the pendulum placed on the cart \cite{Quanser}}
+		\captionof{figure}{Depiction of the pendulum placed on the cart \cite{Researchgate} }
 		\label{fig:pendulumoncart}
 	\end{minipage}%
 	\begin{minipage}{.5\textwidth}
@@ -101,10 +102,125 @@ The parameters of the theoretical continuous model of the velocity-steered cart 
 
 
 \subsection{State-space equation for the nonlinear model}
+To derive a state-space equation for the non-linear model, following states are used:
+\begin{equation}
+	\xi = [x, \theta, L\dot{\theta} +  \dot{x}cos(\theta)]^{T}
+\end{equation}
+In this state vector, $x$ stands for the position of the cart and $\theta$ stands for the pendulum angle. In the third state, $L\dot{\theta} +  \dot{x}cos(\theta)]^{T}$ the tangential velocity of the centre of gravity of the pendulum with relation to a standstill reference frame can be recognized. For this reason, we will call the third state $v_{tan}$ from now on. The state vector then becomes: 
+\begin{equation}
+\xi = [x, \theta, v_{tan}]^{T}
+\label{eq:xi}
+\end{equation}
+Using Equation \ref{eq:newton} and the definition of $\xi$, the nonlinear state-space equation can be derived. The input is the velocity of the cart and is denoted as $v_{c}$. 
+
+\begin{equation}
+	\dot{\xi} = \mathbf{f}(\xi,v_c) = \begin{bmatrix}
+	\dot{x} \\ \dot{\theta} \\ L\ddot{\theta} + \ddot{x}cos(\theta) - \dot{x}sin(\theta)\dot{\theta}
+	\end{bmatrix} = \begin{bmatrix}
+	v_c \\ \frac{v_{tan}-v_ccos(\theta)}{L} \\ -gsin(\theta) - (\frac{c}{mL}+v_csin(\theta))(\frac{v_{tan} - v_ccos(\theta)}{L})
+	\end{bmatrix}
+	\label{eq:nonlinear}
+\end{equation}
+\begin{equation}
+	\mathbf{y} 
+ = \begin{bmatrix}
+	 x\\\theta
+ \end{bmatrix} = \begin{bmatrix}
+ 1&0&0\\0&1&0
+ \end{bmatrix}\xi + 0*v_c
+ \end{equation}
+
+
+
 
 \subsection{Linearization of the model}
+The nonlinear model can be linearized around the equilibrium state $\mathbf{\xi_0}$ = $[0,0,0]^T$. Both $\theta$ and $v_{tan}$ have to be zero in the equilibrium state. The value of $x$ doesn't really matter, but is taken equal to zero for convenience. The equilibrium input $v_{c0}$ is also chosen to be equal to zero. Calculating the jacobian matrices \textbf{F} and \textbf{G}, we can rewrite the model as:
+\begin{equation}
+	\delta\mathbf{\dot{\xi}} = \mathbf{F}\delta\mathbf{\xi} + \mathbf{G}\delta v_c
+\end{equation}
+Where $\delta\mathbf{\xi}$ and $\delta v_c$ are defined as follows:
+\begin{equation}
+	\begin{split}
+	\delta\mathbf{\xi} &= \xi - \xi_0 = \xi \\
+	\delta v_c &= v_c - v_{c0} = v_c
+	\end{split}
+\end{equation}
+Using nonlinear Equation \ref{eq:nonlinear}, $\mathbf{F}$ and $\mathbf{G}$ are defined as: 
+\begin{equation}
+	\begin{split}
+	\mathbf{F} &= \frac{\partial \mathbf{f}}{\partial \xi}\Bigr|_{\xi_0, v_{c0}}\\
+	\mathbf{G} &= \frac{\partial \mathbf{f}}{\partial v_{c}}\Bigr|_{\xi_0, v_{c0}}
+	\end{split}	
+	\label{eq:jacobians}
+\end{equation}
+From Equation \ref{eq:jacobians}, the following matrices arise:
+\begin{equation}
+	\begin{split}
+		\mathbf{F} &= \begin{bmatrix}
+			0&0&0\\0&0&\frac{1}{L}\\0&-g&\frac{-c}{mL^2}
+		\end{bmatrix}\\
+		\mathbf{G} &= \begin{bmatrix}
+			1\\\frac{-1}{L}\\\frac{c}{mL^2}
+		\end{bmatrix}
+	\end{split}
+\end{equation}
+ As the measurement equation was already linear, we find the following linear state-space model:
+
+\begin{equation}
+	\label{eq:sslinear}
+	\delta\mathbf{\dot{\xi}} = \begin{bmatrix}
+	0&0&0\\0&0&\frac{1}{L}\\0&-g&\frac{-c}{mL^2}
+	\end{bmatrix} \delta\xi + \begin{bmatrix}
+	1\\\frac{-1}{L}\\\frac{c}{mL^2}
+	\end{bmatrix} \delta v_c
+\end{equation}
+\begin{equation}
+	\mathbf{y} 
+		= \begin{bmatrix}
+	x\\\theta
+	\end{bmatrix} = \begin{bmatrix}
+	1&0&0\\0&1&0
+	\end{bmatrix}\xi + 0*v_c
+\end{equation}
+By applying the laplacetransformation to Equation \ref{eq:sslinear}, following transferfunctions can be found. 
+
+\begin{equation}
+\begin{split}
+\frac{d\delta x}{dt} = v_c &\rightarrow H_x(s) = \frac{\delta X(s)}{\delta V_c(s)} = \frac{1}{s}\\
+\frac{d\delta \theta}{dt} = \frac{v_{tan}-v_c}{L} &\rightarrow H_{\theta}(s) = \frac{\delta \Theta(s)}{\delta V_c(s)} = \frac{-1}{sL}\\
+\frac{d\delta v_{tan}}{dt} = -g\delta\theta - \frac{c}{mL^2}\delta v_{tan} +  \frac{c}{mL^2} \delta v_c &\rightarrow H_{v_{tan}}(s) = \frac{\delta V_{tan}(s)}{\delta V_c(s)} = \frac{1}{\frac{mL^2}{c}s+1}
+\end{split}
+\end{equation}
+
 
 \subsection{Determination of the pendulum length}
+The damping ratio $\zeta$ can be determined, using the logarithmic decrement. In this experiment, the maximal amplitude of the angle $\theta$ for two consecutive periods are measured. This is shown in Figure \ref{fig:logdecrement}, where T stands for the period of the oscillation. The logarithmic decrement $\delta$ is then defined as \cite{slidestrillingen}:
+\begin{equation}
+	\delta = ln\bigg(\frac{\theta(t)}{\theta(t+T)}\bigg) = \frac{2\pi\zeta}{\sqrt{1-\zeta^2}}
+	\label{eq:delta}
+\end{equation}
+Where $\theta(t)$ and $\theta(t+T)$ are both the values of the maximal angle in their period. From Equation \ref{eq:delta}, $\zeta$ can be derived:
+\begin{equation}
+	\zeta = \frac{\delta}{\sqrt{(2\pi)^2+\delta^2}}
+\end{equation}
+To derive the length of the pendulum, the period of the oscillations is measured. From the measured period, we can derive the measured (damped) pulsation, which is an estimate for the real pulsation. 
+\begin{equation}
+	\omega_d = \frac{2\pi}{T} = \omega_n\sqrt{1-\zeta^2}
+	\label{eq:wd}
+\end{equation}
+From Equation \ref{eq:wd}, the natural pulastion $\omega_n$ can be derived. As $\omega_n = \sqrt{\frac{g}{L}}$, L can be found as:
+\begin{equation}
+	L = \frac{g}{\omega_n^2} = \frac{g(1-\zeta^2)}{\omega_d^2}
+\end{equation}
+
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{logdecrement.png}
+	\caption{Measured values for the experiment to determine $\zeta$}
+	\label{fig:logdecrement}
+\end{figure}
+The numerical values are: $L = 0.1261m$, $\zeta = 0.0327$
 
 \subsection{Discretization}
 

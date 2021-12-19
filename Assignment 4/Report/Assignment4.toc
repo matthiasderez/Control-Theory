@@ -3,5 +3,5 @@
 \contentsline {subsection}{\numberline {1.1}Theoretical continuous model}{1}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}State-space equation for the nonlinear model}{2}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}Linearization of the model}{2}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Determination of the pendulum length}{2}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Discretization}{2}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.4}Determination of the pendulum length}{3}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Discretization}{4}{subsection.1.5}%
