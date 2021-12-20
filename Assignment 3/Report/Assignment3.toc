@@ -11,4 +11,5 @@
 \contentsline {subsection}{\numberline {2.5}Closed Loop Pole of the LQE}{6}{subsection.2.5}%
 \contentsline {section}{\numberline {3}Implementation of a State Estimator and a State Feedback Controller}{8}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Values for K, Q and R}{8}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Step Response for varying State Feedback Gain}{8}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.2}Step Response for varying K}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Step Response for varying Q and R}{10}{subsection.3.3}%

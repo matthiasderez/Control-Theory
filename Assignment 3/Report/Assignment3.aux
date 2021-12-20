@@ -43,6 +43,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Measurement Equation}{5}{subsection.2.1}\protected@file@percent }
 \newlabel{eq:eq7}{{7}{5}{Measurement Equation}{equation.2.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Kalman Gain}{5}{subsection.2.2}\protected@file@percent }
+\newlabel{subsec:kalman_gain}{{2.2}{5}{Kalman Gain}{subsection.2.2}{}}
 \newlabel{eq:eq8}{{8}{5}{Kalman Gain}{equation.2.8}{}}
 \newlabel{eq:eq9}{{9}{5}{Kalman Gain}{equation.2.9}{}}
 \newlabel{eq:eq10}{{10}{5}{Kalman Gain}{equation.2.10}{}}
@@ -50,21 +51,37 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Next State Estimate Covariance}{5}{subsection.2.3}\protected@file@percent }
 \newlabel{eq:eq13}{{13}{6}{Next State Estimate Covariance}{equation.2.13}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Steady State Covariance}{6}{subsection.2.4}\protected@file@percent }
+\newlabel{subsec:ss}{{2.4}{6}{Steady State Covariance}{subsection.2.4}{}}
 \newlabel{eq:eq16}{{16}{6}{Steady State Covariance}{equation.2.16}{}}
 \newlabel{eq:eq17}{{17}{6}{Steady State Covariance}{equation.2.17}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Closed Loop Pole of the LQE}{6}{subsection.2.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Closed loop poles of the Linear Quadratic Estimator for varying values of the ratio between $Q$ and $R$, respecitvely the covariance of the process noise and the covariance of the measurement noise.\relax }}{7}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:poles_LQE}{{5}{7}{Closed loop poles of the Linear Quadratic Estimator for varying values of the ratio between $Q$ and $R$, respecitvely the covariance of the process noise and the covariance of the measurement noise.\relax }{figure.caption.8}{}}
+\newlabel{subsec:lqe}{{2.5}{6}{Closed Loop Pole of the LQE}{subsection.2.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Relative error between the LQE estimator gain and the steady state Kalman gain.\relax }}{7}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:gain_error}{{5}{7}{Relative error between the LQE estimator gain and the steady state Kalman gain.\relax }{figure.caption.8}{}}
 \citation{68rule}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Closed loop poles of the Linear Quadratic Estimator for varying values of the ratio between $Q$ and $R$, respecitvely the covariance of the process noise and the covariance of the measurement noise.\relax }}{8}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:poles_LQE}{{6}{8}{Closed loop poles of the Linear Quadratic Estimator for varying values of the ratio between $Q$ and $R$, respecitvely the covariance of the process noise and the covariance of the measurement noise.\relax }{figure.caption.9}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Implementation of a State Estimator and a State Feedback Controller}{8}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Values for K, Q and R}{8}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Step Response for varying State Feedback Gain}{8}{subsection.3.2}\protected@file@percent }
+\newlabel{subsec:kqr}{{3.1}{8}{Values for K, Q and R}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Step Response for varying K}{9}{subsection.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Response and corresponding control signals of the closed-loop system to a step signal as position reference for varying values of the state feedback gain K.\relax }}{9}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:variable_K}{{7}{9}{Response and corresponding control signals of the closed-loop system to a step signal as position reference for varying values of the state feedback gain K.\relax }{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Step Response for varying Q and R}{10}{subsection.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Evolution of the state estimate covariance $\hat  {P}_{k|k}$ and the corresponding Kalman gain $L_k$ for different values of $\rho = \frac  {Q}{R}$.\relax }}{10}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:variable_rho}{{8}{10}{Evolution of the state estimate covariance $\hat {P}_{k|k}$ and the corresponding Kalman gain $L_k$ for different values of $\rho = \frac {Q}{R}$.\relax }{figure.caption.11}{}}
 \bibstyle{plain}
 \bibdata{bibliography.bib}
 \bibcite{68rule}{1}
 \bibcite{tikz}{2}
 \bibcite{slidescontroltheory}{3}
-\newlabel{LastPage}{{}{9}{}{page.9}{}}
-\xdef\lastpage@lastpage{9}
-\xdef\lastpage@lastpageHy{9}
-\gdef \@abspage@last{9}
+\newlabel{fig:error_L}{{9a}{11}{Relative error between the \textbf {experimental} steady state Kalman gain and \textbf {theoretical} LQE estimator gain.\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:error_L}{{a}{11}{Relative error between the \textbf {experimental} steady state Kalman gain and \textbf {theoretical} LQE estimator gain.\relax }{figure.caption.12}{}}
+\newlabel{fig:error_P}{{9b}{11}{Relative error between the \textbf {experimental} steady state state estimator gain and \textbf {theoretical} gain of Equation \ref {eq:eq16}.\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:error_P}{{b}{11}{Relative error between the \textbf {experimental} steady state state estimator gain and \textbf {theoretical} gain of Equation \ref {eq:eq16}.\relax }{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Relative errors between experimental gains and theoretical gains, calculated using \texttt  {dlqr} and Equation \ref  {eq:eq16}.\relax }}{11}{figure.caption.12}\protected@file@percent }
+\newlabel{error2}{{9}{11}{Relative errors between experimental gains and theoretical gains, calculated using \texttt {dlqr} and Equation \ref {eq:eq16}.\relax }{figure.caption.12}{}}
+\newlabel{LastPage}{{}{11}{}{page.11}{}}
+\xdef\lastpage@lastpage{11}
+\xdef\lastpage@lastpageHy{11}
+\gdef \@abspage@last{11}

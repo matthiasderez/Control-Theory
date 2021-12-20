@@ -235,7 +235,7 @@ As previously elaborated, the measurement equation is equal to
 so the C and D matrices of the state-space model are scalar values, respectively $-1$ and $0$. In this Section, these values are used to validate the principles of the Kalman filter on this system. To this extent, some mathematical derivations are done. 
 
 \subsection{Kalman Gain}
-
+\label{subsec:kalman_gain}
 Firstly, an expression for the time-varying Kalmain gain $L_{k+1}$ is derived as a function of the state estimate covariance $\hat{P}_{k|k}$, the process noise covariance $Q$ and measurement noise covariance $R$. This starts from the following equations in Chapter 10 of \textit{Control Theory - Handouts} \cite{slidescontroltheory}:
 
 \begin{align}
@@ -278,6 +278,7 @@ Using Equations (\ref{eq:eq10}) and (\ref{eq:eq11}) yields:
 Further, the limit for $R_{k+1} \rightarrow \infty$ prompts $\hat{P}_{k+1|k+1} = \hat{P}_{k|k} + Q_k = \hat{P}_{k+1|k}$. Once more, $R_{k+1} \rightarrow \infty$ indicates zero confidence in the measurements. The a priori covariance matrix of the estimation error is equal to the a posteriori covariance matrix, so the correction step in neglected. In other words, the reliability of the estimator is purely based on the reliability of the model. In normal operation of the filter, $\hat{P}_{k+1|k+1} \preceq \hat{P}_{k+1|k}$, meaning that the uncertainty of the state estimate decreases, whereas in this limit case, the uncertainty does not decrease after the correction step, but it stays the same.
 
 \subsection{Steady State Covariance}
+\label{subsec:ss}
 Now, an expression for the steady state covariance $\hat{P}_\infty$ and the related Kalman gain $L_\infty$ is obtained as a function of $Q$ and $R$. For this, $\hat{P}_{k|k} = \hat{P}_{k+1|k+1} = \hat{P}_\infty$, $R_{k+1} = R_{\infty}$ and $Q_k = Q_\infty$ are inserted in Equation (\ref{eq:eq13}):
 \begin{equation}
 	\hat{P}_\infty = \frac{R_{\infty}}{\hat{P}_{\infty} + Q_\infty + R_{\infty}}\left(\hat{P}_{\infty} + Q_\infty\right)
@@ -298,9 +299,17 @@ L_\infty = - \frac{\hat{P}_\infty + Q_\infty}{\hat{P}_\infty + Q_\infty + R_\inf
 \end{equation}
 With $\hat{P}_\infty$ equal to Equation (\ref{eq:eq16}), $L_\infty$ is likewise expressed as a function of the steady state process noise covariance $Q_\infty$ and the steady state measurement noise covariance $R_\infty$.
 \\\\
-In steady state, i.e. $k \rightarrow \infty$, the optimal Kalman gain $L_{k+1}$ should converge to the estimator gain $L$ of a Linear Quadratic Estimator. This is verified by computing $L_\infty$ for various numerical values of $Q_\infty$ and $R_\infty$ using the derived equation. It is then compared to the result using the \texttt{dlqr(A',A'*C',Q,R)'} command in \texttt{Matlab}. E.g. $Q = 0.01$ and $R = 0.01$ leads to $L = -0.9161$ in both cases. One can conclude that the derived formula is correct.
+In steady state, i.e. $k \rightarrow \infty$, the optimal Kalman gain $L_{k+1}$ should converge to the estimator gain $L$ of a Linear Quadratic Estimator. This is verified by computing $L_\infty$ for various numerical values of $Q_\infty$ and $R_\infty$ using the derived equation. It is then compared to the result using the \texttt{dlqr(A',A'*C',Q,R)'} command in \texttt{Matlab}. Figure \ref{fig:gain_error} depicts the relative error between the LQE estimator gain and the steady state Kalman gain that is calculated using the derived formula. This is done for different combinations of $Q$ and $R$, where both are between $10^{-4}$ and $1$. The error is in the order of the machine precision, so one can conclude that the derived formula is correct.
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=.6\linewidth]{gain_error.eps}
+	\caption{Relative error between the LQE estimator gain and the steady state Kalman gain.}
+	\label{fig:gain_error}
+\end{figure}
 
 \subsection{Closed Loop Pole of the LQE}
+\label{subsec:lqe}
 Lastly, an expression for the closed-loop pole of the Linear Quadratic Estimator is derived as a function of $\frac{Q}{R}$. Generally, the estimator state equation is given by 
 \begin{equation}
 	\hat{x}_{k+1} = (A-LC) \hat{x}_k + (B-LD) u_k + L y_k
@@ -320,7 +329,7 @@ Using the previously calculated scalar values of $A$ and $C$ and using Equations
 	\end{split}
 \end{equation}
 
-\noindent From this equation, one can deduce that the pole goes to zero with increasing $\frac{Q}{R}$. Inversely, for decreasing ratio ($\frac{Q}{R} \rightarrow 0$), the value of the pole shifts towards $1$. These conclusions are verified by Figure \ref{fig:poles_LQE}. For $\frac{Q}{R} = 0$, the pole lies on the unit circle, which implies that the system is marginally stable for this ratio. This is the only $\frac{Q}{R}$ - value that leads to instability, because, as depicted by the figure, the poles move towards the centre of the unit circle for increasing values of the ratio. In turn, it means that the systems responds faster and faster. This can easily be explained: the larger $\frac{Q}{R}$, the more confidence in the measurement. Subsequently, the system is more sensitive to measurement noise, which complies with a faster, more nervous tracking of the system.
+\noindent From this equation, one can deduce that the pole goes to zero with increasing $\frac{Q}{R}$. Inversely, for decreasing ratio ($\frac{Q}{R} \rightarrow 0$), the value of the pole shifts towards $1$. These conclusions are verified by Figure \ref{fig:poles_LQE}. For $\frac{Q}{R} = 0$, the pole lies on the unit circle, which implies that the system is marginally stable for this ratio. This is the only $\frac{Q}{R}$ - value that leads to instability, because, as depicted by the figure, the poles move towards the centre of the unit circle for increasing values of the ratio. In turn, it means that the system responds faster and faster. This can easily be explained: the larger $\frac{Q}{R}$, the more confidence in the measurement. Subsequently, the system is more sensitive to measurement noise, which complies with a faster, more nervous tracking of the system.
 
 \begin{figure}[htp!]
 	\centering
@@ -335,6 +344,7 @@ Using the previously calculated scalar values of $A$ and $C$ and using Equations
 \section{Implementation of a State Estimator and a State Feedback Controller}
 
 \subsection{Values for K, Q and R}
+\label{subsec:kqr}
 The Kalman filter accounts for two types of noise. Firstly, the uncertainty about the system equations and the process disturbance inputs causes noise, which is modeled by the \textbf{process noise}. A disturbance input may e.g. be the slipping of the wheels when the motors are activated. Secondly, there is \textbf{measurement noise}, which comes from the inaccuracy of the sensor that measures the distance to the wall. The infrared rays sent out by the sensor may reflect in an incomplete fashion, causing the noise. 
 \\\\
 Firstly, the measurement noise covariance $R$ is directly calculated, based on the distance data obtained when the cart is standing still in front of a wall at a certain distance. Next, the \texttt{Matlab} command \texttt{cov()} returns the wanted value of $R$. In this case, $R = 3.0505 e^{-5}$ m$^2$.
@@ -343,7 +353,7 @@ Secondly, the process noise covariance is calculated by multiplying $R$ with an 
 \\\\
 Next, as discussed in Subsection \ref{subsec:tf}, the value of the state feedback gain $K$ is a trade-off between response time and control effort and is restricted to $0 < K < 100$ Hz for stability reasons. Furthermore, it is important that the pole of the state estimator is faster than the pole of the closed loop system. Subsequently, Figure \ref{fig:poles_LQE} shows that it is preferred that $K$ is chosen in a way that the pole of the closed loop system is bigger than $0.5$.
 \\\\
-In order to determine the static feedback gain, experiments are conducted with different values of $K$. In these experiments, the cart starts at a position of $x = -0.3$ m, which is the maximum distance at which the distance sensor gives reliable results. The desired position of the cart is then set to $x = -0.05$ m, the minimum distance of the operating range of the sensor. This is done in order to judge whether or not the chosen $K$ leads to an input voltage of $> 12$ V when the cart has to bridge the biggest possible distance. An input voltage that exceeds this limit means that the DC motor saturates, thus $K$ would be too high. These experiments reveal that a static feedback gain of $2.4$ Hz does not cross this limit, while also ensuring a fast enough response time. This response time is further elaborated in the next Subsection.
+In order to determine the static feedback gain, experiments are conducted with different values of $K$. In these experiments, the cart starts at a position of $x = -0.3$ m, which is the maximum distance at which the distance sensor gives reliable results. The desired position of the cart is then set to $x = -0.05$ m, the minimum distance of the operating range of the sensor. This is done in order to judge whether or not the chosen $K$ leads to an input voltage of $> 12$ V when the cart has to bridge the biggest possible distance. An input voltage that exceeds this limit means that the DC motor saturates, thus $K$ would be too high. These experiments reveal that a static feedback gain of $2.4$ Hz does not cross this limit, while also ensuring a fast enough response time.
 \\\\
 Lastly, a value for the initial state covariance $P_{0|0}$ is settled. In this report, it is assumed that the cart can almost certainly be placed within $1.5$ cm in front or behind the intended initial state $x_{\text{init}}$. Following the \textit{68-95-99.7 rule}\footnote{"In statistics, the 68–95–99.7 rule, also known as the empirical rule, is a shorthand used to remember the percentage of values that lie within an interval estimate in a normal distribution: 68\%, 95\%, and 99.7\% of the values lie within one, two, and three standard deviations of the mean, respectively." \cite{68rule}} leads to $P_{0|0} = \left(\frac{0.015}{3}\right)^2 = 2.5e^{-5}$ m$^2$.
 \\\\
@@ -357,8 +367,82 @@ Summarized:
 	\end{itemize}
 \end{multicols}
 
-\subsection{Step Response for varying State Feedback Gain}
-Yeet
+
+\subsection{Step Response for varying K}
+Figure \ref{fig:variable_K} depicts the measured response of the system to a step signal as position reference at $t = 0$. This is done for different values of the static feedback gain $K$. This way, the explanation given in Subsection \ref{subsec:tf} is experimentally verified. Indeed, the bigger $K$, the closer the pole of the closed loop system lies to the origin, the faster the response. Inversely, a smaller $K$ corresponds to a slower responding system.
+\\\\
+The consequence that a faster response time comes with a larger cost in terms of actuation signal is also visualized in Figure \ref{fig:variable_K}. Ditto for smaller values of $K$. On this figure, the low-level control signals are plotted for the same values as the previous figure, which clearly shows the trade-off as explained in Subsection \ref{subsec:tf} and \ref{subsec:kqr}.
+\\\\
+As previously mentioned, there is a theoretical limitation on the value of $K$. It must oblige $0 < K < 200$ Hz in order to have a stable system. Furthermore, there are some practical limitations as well. $K$ must be less than or equal to $2.4$ Hz so the DC motors do not saturate when the cart travels from $x = -0.3$ m to $x = -0.05$ m. Also, $K$ cannot be too high, otherwise there is the risk that the wheels slip. 
+\\\\
+With all of this in mind, $K = 2.4$ Hz is chosen, which was also discussed in the previous Subsection.
+
+\begin{figure*}[htp!]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{response_variable_K.eps}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.478\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{voltage_variable_K.eps}
+	\end{subfigure}
+	\caption{Response and corresponding control signals of the closed-loop system to a step signal as position reference for varying values of the state feedback gain K.} 
+	\label{fig:variable_K}
+\end{figure*}
+
+
+\subsection{Step Response for varying Q and R}
+Next, the same step signal is applied, but now with varying values of the process noise covariance $Q$ and measurement noise covariance $R$, while $K = 2.4$ Hz. The evolution of the state estimate covariance $\hat{P}_{k|k}$ and the corresponding Kalman gain $L_k$ is examined and depicted in Figure \ref{fig:variable_rho}. 
+\\\\
+Because $R$ is a measured quantity and $Q$ is chosen with respect to $R$, only $Q$ is varied. However, conceptually, $R$ could also be varied while $Q$ remains constant. This is why it is indicated on the figure that the ratio $\rho = \frac{Q}{R}$ changes.
+
+\begin{figure*}[htp!]
+	\centering
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{phat.eps}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.48\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{L.eps}
+	\end{subfigure}
+	\caption{Evolution of the state estimate covariance $\hat{P}_{k|k}$ and the corresponding Kalman gain $L_k$ for different values of $\rho = \frac{Q}{R}$.} 
+	\label{fig:variable_rho}
+\end{figure*}
+
+\noindent It immediately stands out that both $\hat{P}_{k|k}$ and $L_k$ are constant in time for a certain $\rho$, and thus equal to the steady state gains. This is actually not entirely true, as there is a very short transition from the initial values to the steady state values as soon as the Kalman filter is enabled. Due to it being very short, it is not visible on the plots. 
+\\\\
+In Figure \ref{fig:error_L}, the relative error between this experimentally determined steady state Kalman gain and the LQE estimator gain is depicted. As pointed out in Subsection \ref{subsec:lqe}, the steady state Kalman gain $L_\infty$ is as good as equal to the gain of an LQE. This is confirmed by the magnitude of the error in Figure \ref{fig:error_L}, which is in the order of $10^{-7}$. Figure \ref{fig:error_P} indicates the relative error between the experimental steady state state estimator gain and theoretical gain of Equation \ref{eq:eq16}
+\\\\
+The analysis of Subsection \ref{subsec:ss} showed that the closed loop pole of the LQE goes to zero with increasing $\rho$. This corresponds a to quickly responding system, which explains the values of $L_k$ in Figure \ref{fig:variable_rho} for large $\rho$. Namely, a fast response demands that the correction step has a great influence, which in turn correlates with a large estimator gain (in absolute value). This is exactly what can be seen in the right plot.
+\\\\
+Furthermore, Equation (\ref{eq:eq13}) showed that $\hat{P}_{k|k}$ converges towards $R_k$ for $\rho \rightarrow \infty$. The left plot of Figure \ref{fig:variable_rho} confirms this, as $R_k = R = 3.0505e^{-5}$ m$^2$.
+\\\\
+Inversely, for a decreasing ratio ($\rho \rightarrow 0$), the value of the closed loop pole shifts towards $1$, corresponding to a marginally stable system. For this case, the correction step should be negligible, which is in line with a gain of $0$. Again, Figure \ref{fig:variable_rho} indicates that $L_k$ comes closer to $0$ for decreasing $\rho$. Also, Equation (\ref{eq:eq13}) prompts once more that that the correction step can be omitted for $\rho \rightarrow 0$, as it leads to $\hat{P}_{k|k} = \hat{P}_{k|k-1}$.
+\\\\
+These two cases for $\rho$ are also confirmed by Subsection \ref{subsec:kalman_gain}, where $L_{k+1}$ is theoretically calculated for $Q_k \rightarrow \infty$ and $R_k \rightarrow \infty$, respectively equivalent with $\rho \rightarrow \infty$ and  $\rho \rightarrow 0$, which yielded $L_{k+1}  = -1$ and $L_{k+1}  = 0$.
+
+\begin{figure*}[htp!]
+	\centering
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{error_L.eps}
+		\caption{Relative error between the \textbf{experimental} steady state Kalman gain and \textbf{theoretical} LQE estimator gain.}
+		\label{fig:error_L}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.48\textwidth}  
+		\centering 
+		\includegraphics[width=\linewidth]{error_P.eps}
+		\caption{Relative error between the \textbf{experimental} steady state state estimator gain and \textbf{theoretical} gain of Equation \ref{eq:eq16}.}
+		\label{fig:error_P}
+	\end{subfigure}
+	\caption{Relative errors between experimental gains and theoretical gains, calculated using \texttt{dlqr} and Equation \ref{eq:eq16}.} 
+	\label{error2}
+\end{figure*}
 
 
 
