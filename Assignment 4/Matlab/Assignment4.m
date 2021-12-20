@@ -17,7 +17,7 @@ ylabel('Pendulum angle [°]')
 A = zeros(12,1); % Amplitudes
 indices = zeros(12); % Indices of maxima
 timeMax = zeros(12,1); % Time instance of maxima
-That = 72;
+That = 71;
 sum = 0;
 for i = 1:12
     A(i) = max(angle(40+(i-1)*That:40+i*That));

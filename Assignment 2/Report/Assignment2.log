@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  8 DEC 2021 16:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  19 DEC 2021 17:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1051,11 +1051,11 @@ This may cause the page layout to be inconsistent, however.
 [2]
 Package epstopdf Info: Source file: <../Matlab//bodeplotA_openloop_method1.eps>
 
-(epstopdf)                    date: 2021-12-08 15:57:20
+(epstopdf)                    date: 2021-12-13 08:54:55
 (epstopdf)                    size: 57139 bytes
 (epstopdf)             Output file: <./bodeplotA_openloop_method1-eps-converted
 -to.pdf>
-(epstopdf)                    date: 2021-12-08 15:59:10
+(epstopdf)                    date: 2021-12-19 17:36:12
 (epstopdf)                    size: 17016 bytes
 (epstopdf)             Command: <repstopdf --outfile=./bodeplotA_openloop_metho
 d1-eps-converted-to.pdf ../Matlab//bodeplotA_openloop_method1.eps>
@@ -1071,11 +1071,11 @@ d on input line 139.
 (pdftex.def)             Requested size: 223.0721pt x 185.89722pt.
 Package epstopdf Info: Source file: <../Matlab//bodeplotB_openloop_method1.eps>
 
-(epstopdf)                    date: 2021-12-08 15:57:21
+(epstopdf)                    date: 2021-12-13 08:54:56
 (epstopdf)                    size: 57139 bytes
 (epstopdf)             Output file: <./bodeplotB_openloop_method1-eps-converted
 -to.pdf>
-(epstopdf)                    date: 2021-12-08 15:59:13
+(epstopdf)                    date: 2021-12-19 17:36:20
 (epstopdf)                    size: 16848 bytes
 (epstopdf)             Command: <repstopdf --outfile=./bodeplotB_openloop_metho
 d1-eps-converted-to.pdf ../Matlab//bodeplotB_openloop_method1.eps>
@@ -1090,11 +1090,11 @@ Package pdftex.def Info: ./bodeplotB_openloop_method1-eps-converted-to.pdf  use
 d on input line 145.
 (pdftex.def)             Requested size: 223.0721pt x 185.89722pt.
 Package epstopdf Info: Source file: <../Matlab//bodeplotA_cl_method1.eps>
-(epstopdf)                    date: 2021-12-08 15:57:27
+(epstopdf)                    date: 2021-12-13 08:55:00
 (epstopdf)                    size: 48790 bytes
 (epstopdf)             Output file: <./bodeplotA_cl_method1-eps-converted-to.pd
 f>
-(epstopdf)                    date: 2021-12-08 15:59:15
+(epstopdf)                    date: 2021-12-19 17:36:28
 (epstopdf)                    size: 14563 bytes
 (epstopdf)             Command: <repstopdf --outfile=./bodeplotA_cl_method1-eps
 -converted-to.pdf ../Matlab//bodeplotA_cl_method1.eps>
@@ -1108,11 +1108,11 @@ Package pdftex.def Info: ./bodeplotA_cl_method1-eps-converted-to.pdf  used on i
 nput line 156.
 (pdftex.def)             Requested size: 223.0721pt x 185.38336pt.
 Package epstopdf Info: Source file: <../Matlab//bodeplotB_cl_method1.eps>
-(epstopdf)                    date: 2021-12-08 15:57:28
+(epstopdf)                    date: 2021-12-13 08:55:01
 (epstopdf)                    size: 49258 bytes
 (epstopdf)             Output file: <./bodeplotB_cl_method1-eps-converted-to.pd
 f>
-(epstopdf)                    date: 2021-12-08 15:59:18
+(epstopdf)                    date: 2021-12-19 17:36:36
 (epstopdf)                    size: 14489 bytes
 (epstopdf)             Command: <repstopdf --outfile=./bodeplotB_cl_method1-eps
 -converted-to.pdf ../Matlab//bodeplotB_cl_method1.eps>
@@ -1126,11 +1126,11 @@ Package pdftex.def Info: ./bodeplotB_cl_method1-eps-converted-to.pdf  used on i
 nput line 162.
 (pdftex.def)             Requested size: 223.0721pt x 185.38336pt.
 Package epstopdf Info: Source file: <../Matlab//stepresponsA_cl_method1.eps>
-(epstopdf)                    date: 2021-12-08 15:57:29
+(epstopdf)                    date: 2021-12-13 08:55:02
 (epstopdf)                    size: 22716 bytes
 (epstopdf)             Output file: <./stepresponsA_cl_method1-eps-converted-to
 .pdf>
-(epstopdf)                    date: 2021-12-08 15:59:21
+(epstopdf)                    date: 2021-12-19 17:36:44
 (epstopdf)                    size: 10804 bytes
 (epstopdf)             Command: <repstopdf --outfile=./stepresponsA_cl_method1-
 eps-converted-to.pdf ../Matlab//stepresponsA_cl_method1.eps>
@@ -1144,11 +1144,11 @@ Package pdftex.def Info: ./stepresponsA_cl_method1-eps-converted-to.pdf  used o
 n input line 173.
 (pdftex.def)             Requested size: 220.79366pt x 183.09949pt.
 Package epstopdf Info: Source file: <../Matlab//stepresponsB_cl_method1.eps>
-(epstopdf)                    date: 2021-12-08 15:57:30
+(epstopdf)                    date: 2021-12-13 08:55:02
 (epstopdf)                    size: 22719 bytes
 (epstopdf)             Output file: <./stepresponsB_cl_method1-eps-converted-to
 .pdf>
-(epstopdf)                    date: 2021-12-08 15:59:23
+(epstopdf)                    date: 2021-12-19 17:36:52
 (epstopdf)                    size: 10937 bytes
 (epstopdf)             Command: <repstopdf --outfile=./stepresponsB_cl_method1-
 eps-converted-to.pdf ../Matlab//stepresponsB_cl_method1.eps>
@@ -1192,12 +1192,12 @@ sed on input line 227.
 (pdftex.def)             Requested size: 223.0721pt x 166.5103pt.
 Package epstopdf Info: Source file: <../Matlab//bodeplotA_openloop_method2.eps>
 
-(epstopdf)                    date: 2021-12-08 15:57:35
+(epstopdf)                    date: 2021-12-13 08:55:06
 (epstopdf)                    size: 57135 bytes
 (epstopdf)             Output file: <./bodeplotA_openloop_method2-eps-converted
 -to.pdf>
-(epstopdf)                    date: 2021-12-08 15:59:25
-(epstopdf)                    size: 16997 bytes
+(epstopdf)                    date: 2021-12-19 17:37:00
+(epstopdf)                    size: 16991 bytes
 (epstopdf)             Command: <repstopdf --outfile=./bodeplotA_openloop_metho
 d2-eps-converted-to.pdf ../Matlab//bodeplotA_openloop_method2.eps>
 (epstopdf)             \includegraphics on input line 237.
@@ -1212,11 +1212,11 @@ d on input line 237.
 (pdftex.def)             Requested size: 223.0721pt x 185.89722pt.
 Package epstopdf Info: Source file: <../Matlab//bodeplotB_openloop_method2.eps>
 
-(epstopdf)                    date: 2021-12-08 15:57:36
+(epstopdf)                    date: 2021-12-13 08:55:07
 (epstopdf)                    size: 57132 bytes
 (epstopdf)             Output file: <./bodeplotB_openloop_method2-eps-converted
 -to.pdf>
-(epstopdf)                    date: 2021-12-08 15:59:28
+(epstopdf)                    date: 2021-12-19 17:37:08
 (epstopdf)                    size: 16911 bytes
 (epstopdf)             Command: <repstopdf --outfile=./bodeplotB_openloop_metho
 d2-eps-converted-to.pdf ../Matlab//bodeplotB_openloop_method2.eps>
@@ -1231,11 +1231,11 @@ Package pdftex.def Info: ./bodeplotB_openloop_method2-eps-converted-to.pdf  use
 d on input line 243.
 (pdftex.def)             Requested size: 223.0721pt x 185.89722pt.
 Package epstopdf Info: Source file: <../Matlab//bodeplotA_cl_method2.eps>
-(epstopdf)                    date: 2021-12-08 15:57:41
+(epstopdf)                    date: 2021-12-13 08:55:10
 (epstopdf)                    size: 48804 bytes
 (epstopdf)             Output file: <./bodeplotA_cl_method2-eps-converted-to.pd
 f>
-(epstopdf)                    date: 2021-12-08 15:59:30
+(epstopdf)                    date: 2021-12-19 17:37:17
 (epstopdf)                    size: 14579 bytes
 (epstopdf)             Command: <repstopdf --outfile=./bodeplotA_cl_method2-eps
 -converted-to.pdf ../Matlab//bodeplotA_cl_method2.eps>
@@ -1249,11 +1249,11 @@ Package pdftex.def Info: ./bodeplotA_cl_method2-eps-converted-to.pdf  used on i
 nput line 254.
 (pdftex.def)             Requested size: 223.0721pt x 185.38336pt.
 Package epstopdf Info: Source file: <../Matlab//bodeplotB_cl_method2.eps>
-(epstopdf)                    date: 2021-12-08 15:57:42
+(epstopdf)                    date: 2021-12-13 08:55:11
 (epstopdf)                    size: 48815 bytes
 (epstopdf)             Output file: <./bodeplotB_cl_method2-eps-converted-to.pd
 f>
-(epstopdf)                    date: 2021-12-08 15:59:32
+(epstopdf)                    date: 2021-12-19 17:37:27
 (epstopdf)                    size: 14500 bytes
 (epstopdf)             Command: <repstopdf --outfile=./bodeplotB_cl_method2-eps
 -converted-to.pdf ../Matlab//bodeplotB_cl_method2.eps>
@@ -1267,11 +1267,11 @@ Package pdftex.def Info: ./bodeplotB_cl_method2-eps-converted-to.pdf  used on i
 nput line 260.
 (pdftex.def)             Requested size: 223.0721pt x 185.38336pt.
 Package epstopdf Info: Source file: <../Matlab//stepresponsA_cl_method2.eps>
-(epstopdf)                    date: 2021-12-08 15:57:42
+(epstopdf)                    date: 2021-12-13 08:55:11
 (epstopdf)                    size: 22354 bytes
 (epstopdf)             Output file: <./stepresponsA_cl_method2-eps-converted-to
 .pdf>
-(epstopdf)                    date: 2021-12-08 15:59:35
+(epstopdf)                    date: 2021-12-19 17:37:36
 (epstopdf)                    size: 10771 bytes
 (epstopdf)             Command: <repstopdf --outfile=./stepresponsA_cl_method2-
 eps-converted-to.pdf ../Matlab//stepresponsA_cl_method2.eps>
@@ -1285,11 +1285,11 @@ Package pdftex.def Info: ./stepresponsA_cl_method2-eps-converted-to.pdf  used o
 n input line 271.
 (pdftex.def)             Requested size: 223.0721pt x 184.98824pt.
 Package epstopdf Info: Source file: <../Matlab//stepresponsB_cl_method2.eps>
-(epstopdf)                    date: 2021-12-08 15:57:43
+(epstopdf)                    date: 2021-12-13 08:55:12
 (epstopdf)                    size: 22354 bytes
 (epstopdf)             Output file: <./stepresponsB_cl_method2-eps-converted-to
 .pdf>
-(epstopdf)                    date: 2021-12-08 15:59:37
+(epstopdf)                    date: 2021-12-19 17:37:46
 (epstopdf)                    size: 10909 bytes
 (epstopdf)             Command: <repstopdf --outfile=./stepresponsB_cl_method2-
 eps-converted-to.pdf ../Matlab//stepresponsB_cl_method2.eps>
@@ -1317,11 +1317,11 @@ ethod2-eps-converted-to.pdf> <./bodeplotA_cl_method2-eps-converted-to.pdf> <./b
 odeplotB_cl_method2-eps-converted-to.pdf> <./stepresponsA_cl_method2-eps-conver
 ted-to.pdf> <./stepresponsB_cl_method2-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../Matlab//comparison_stepresponseA.eps>
-(epstopdf)                    date: 2021-12-08 15:57:45
+(epstopdf)                    date: 2021-12-13 08:55:13
 (epstopdf)                    size: 40522 bytes
 (epstopdf)             Output file: <./comparison_stepresponseA-eps-converted-t
 o.pdf>
-(epstopdf)                    date: 2021-12-08 15:59:39
+(epstopdf)                    date: 2021-12-19 17:37:55
 (epstopdf)                    size: 13183 bytes
 (epstopdf)             Command: <repstopdf --outfile=./comparison_stepresponseA
 -eps-converted-to.pdf ../Matlab//comparison_stepresponseA.eps>
@@ -1335,11 +1335,11 @@ Package pdftex.def Info: ./comparison_stepresponseA-eps-converted-to.pdf  used
 on input line 294.
 (pdftex.def)             Requested size: 223.0721pt x 189.61398pt.
 Package epstopdf Info: Source file: <../Matlab//comparison_stepresponseB.eps>
-(epstopdf)                    date: 2021-12-08 15:57:50
+(epstopdf)                    date: 2021-12-13 08:55:17
 (epstopdf)                    size: 40525 bytes
 (epstopdf)             Output file: <./comparison_stepresponseB-eps-converted-t
 o.pdf>
-(epstopdf)                    date: 2021-12-08 15:59:41
+(epstopdf)                    date: 2021-12-19 17:38:03
 (epstopdf)                    size: 13317 bytes
 (epstopdf)             Command: <repstopdf --outfile=./comparison_stepresponseB
 -eps-converted-to.pdf ../Matlab//comparison_stepresponseB.eps>
@@ -1354,11 +1354,11 @@ on input line 300.
 (pdftex.def)             Requested size: 223.0721pt x 189.61398pt.
 Package epstopdf Info: Source file: <../Matlab//comparison_stepresponseA_zoom.e
 ps>
-(epstopdf)                    date: 2021-12-08 15:57:46
+(epstopdf)                    date: 2021-12-13 08:55:14
 (epstopdf)                    size: 21300 bytes
 (epstopdf)             Output file: <./comparison_stepresponseA_zoom-eps-conver
 ted-to.pdf>
-(epstopdf)                    date: 2021-12-08 15:59:44
+(epstopdf)                    date: 2021-12-19 17:38:11
 (epstopdf)                    size: 9852 bytes
 (epstopdf)             Command: <repstopdf --outfile=./comparison_stepresponseA
 _zoom-eps-converted-to.pdf ../Matlab//comparison_stepresponseA_zoom.eps>
@@ -1374,11 +1374,11 @@ used on input line 311.
 (pdftex.def)             Requested size: 223.0721pt x 182.51834pt.
 Package epstopdf Info: Source file: <../Matlab//comparison_stepresponseB_zoom.e
 ps>
-(epstopdf)                    date: 2021-12-08 15:57:51
+(epstopdf)                    date: 2021-12-13 08:55:18
 (epstopdf)                    size: 21300 bytes
 (epstopdf)             Output file: <./comparison_stepresponseB_zoom-eps-conver
 ted-to.pdf>
-(epstopdf)                    date: 2021-12-08 15:59:46
+(epstopdf)                    date: 2021-12-19 17:38:19
 (epstopdf)                    size: 10008 bytes
 (epstopdf)             Command: <repstopdf --outfile=./comparison_stepresponseB
 _zoom-eps-converted-to.pdf ../Matlab//comparison_stepresponseB_zoom.eps>
@@ -1394,11 +1394,11 @@ used on input line 317.
 (pdftex.def)             Requested size: 223.0721pt x 182.51834pt.
 Package epstopdf Info: Source file: <../Matlab//trackingerror_stepresponseA.eps
 >
-(epstopdf)                    date: 2021-12-08 15:57:47
+(epstopdf)                    date: 2021-12-13 08:55:15
 (epstopdf)                    size: 33375 bytes
 (epstopdf)             Output file: <./trackingerror_stepresponseA-eps-converte
 d-to.pdf>
-(epstopdf)                    date: 2021-12-08 15:59:48
+(epstopdf)                    date: 2021-12-19 17:38:28
 (epstopdf)                    size: 13606 bytes
 (epstopdf)             Command: <repstopdf --outfile=./trackingerror_steprespon
 seA-eps-converted-to.pdf ../Matlab//trackingerror_stepresponseA.eps>
@@ -1414,11 +1414,11 @@ ed on input line 328.
 (pdftex.def)             Requested size: 223.0721pt x 188.04395pt.
 Package epstopdf Info: Source file: <../Matlab//trackingerror_stepresponseB.eps
 >
-(epstopdf)                    date: 2021-12-08 15:57:53
+(epstopdf)                    date: 2021-12-13 08:55:19
 (epstopdf)                    size: 33374 bytes
 (epstopdf)             Output file: <./trackingerror_stepresponseB-eps-converte
 d-to.pdf>
-(epstopdf)                    date: 2021-12-08 15:59:50
+(epstopdf)                    date: 2021-12-19 17:38:36
 (epstopdf)                    size: 13780 bytes
 (epstopdf)             Command: <repstopdf --outfile=./trackingerror_steprespon
 seB-eps-converted-to.pdf ../Matlab//trackingerror_stepresponseB.eps>
@@ -1434,11 +1434,11 @@ ed on input line 334.
 (pdftex.def)             Requested size: 223.0721pt x 188.04395pt.
 Package epstopdf Info: Source file: <../Matlab//trackingerror_stepresponseA_zoo
 m.eps>
-(epstopdf)                    date: 2021-12-08 15:57:49
+(epstopdf)                    date: 2021-12-13 08:55:16
 (epstopdf)                    size: 19635 bytes
 (epstopdf)             Output file: <./trackingerror_stepresponseA_zoom-eps-con
 verted-to.pdf>
-(epstopdf)                    date: 2021-12-08 15:59:52
+(epstopdf)                    date: 2021-12-19 17:38:44
 (epstopdf)                    size: 10215 bytes
 (epstopdf)             Command: <repstopdf --outfile=./trackingerror_steprespon
 seA_zoom-eps-converted-to.pdf ../Matlab//trackingerror_stepresponseA_zoom.eps>
@@ -1454,11 +1454,11 @@ f  used on input line 345.
 (pdftex.def)             Requested size: 223.0721pt x 187.01756pt.
 Package epstopdf Info: Source file: <../Matlab//trackingerror_stepresponseB_zoo
 m.eps>
-(epstopdf)                    date: 2021-12-08 15:57:54
+(epstopdf)                    date: 2021-12-13 08:55:20
 (epstopdf)                    size: 19637 bytes
 (epstopdf)             Output file: <./trackingerror_stepresponseB_zoom-eps-con
 verted-to.pdf>
-(epstopdf)                    date: 2021-12-08 15:59:55
+(epstopdf)                    date: 2021-12-19 17:38:52
 (epstopdf)                    size: 10371 bytes
 (epstopdf)             Command: <repstopdf --outfile=./trackingerror_steprespon
 seB_zoom-eps-converted-to.pdf ../Matlab//trackingerror_stepresponseB_zoom.eps>
@@ -1474,11 +1474,11 @@ f  used on input line 351.
 (pdftex.def)             Requested size: 223.0721pt x 187.01756pt.
 Package epstopdf Info: Source file: <../Matlab//comparison_voltage_stepresponse
 A.eps>
-(epstopdf)                    date: 2021-12-08 15:57:55
+(epstopdf)                    date: 2021-12-13 08:55:21
 (epstopdf)                    size: 31460 bytes
 (epstopdf)             Output file: <./comparison_voltage_stepresponseA-eps-con
 verted-to.pdf>
-(epstopdf)                    date: 2021-12-08 15:59:57
+(epstopdf)                    date: 2021-12-19 17:39:00
 (epstopdf)                    size: 13211 bytes
 (epstopdf)             Command: <repstopdf --outfile=./comparison_voltage_stepr
 esponseA-eps-converted-to.pdf ../Matlab//comparison_voltage_stepresponseA.eps>
@@ -1494,11 +1494,11 @@ f  used on input line 363.
 (pdftex.def)             Requested size: 223.0721pt x 192.82906pt.
 Package epstopdf Info: Source file: <../Matlab//comparison_voltage_stepresponse
 B.eps>
-(epstopdf)                    date: 2021-12-08 15:57:56
+(epstopdf)                    date: 2021-12-13 08:55:22
 (epstopdf)                    size: 31444 bytes
 (epstopdf)             Output file: <./comparison_voltage_stepresponseB-eps-con
 verted-to.pdf>
-(epstopdf)                    date: 2021-12-08 15:59:59
+(epstopdf)                    date: 2021-12-19 17:39:08
 (epstopdf)                    size: 13391 bytes
 (epstopdf)             Command: <repstopdf --outfile=./comparison_voltage_stepr
 esponseB-eps-converted-to.pdf ../Matlab//comparison_voltage_stepresponseB.eps>
@@ -1539,11 +1539,11 @@ Package pdftex.def Info: ../Matlab//blockdiagram.png  used on input line 385.
 (pdftex.def)             Requested size: 455.24408pt x 187.26794pt.
 Package epstopdf Info: Source file: <../Matlab//comparison_stepresponseA_FD.eps
 >
-(epstopdf)                    date: 2021-12-08 15:58:02
+(epstopdf)                    date: 2021-12-13 08:55:23
 (epstopdf)                    size: 40700 bytes
 (epstopdf)             Output file: <./comparison_stepresponseA_FD-eps-converte
 d-to.pdf>
-(epstopdf)                    date: 2021-12-08 16:00:01
+(epstopdf)                    date: 2021-12-19 17:39:18
 (epstopdf)                    size: 13767 bytes
 (epstopdf)             Command: <repstopdf --outfile=./comparison_stepresponseA
 _FD-eps-converted-to.pdf ../Matlab//comparison_stepresponseA_FD.eps>
@@ -1559,11 +1559,11 @@ ed on input line 396.
 (pdftex.def)             Requested size: 223.0721pt x 192.0926pt.
 Package epstopdf Info: Source file: <../Matlab//comparison_stepresponseB_FD.eps
 >
-(epstopdf)                    date: 2021-12-08 15:58:04
+(epstopdf)                    date: 2021-12-13 08:55:25
 (epstopdf)                    size: 40683 bytes
 (epstopdf)             Output file: <./comparison_stepresponseB_FD-eps-converte
 d-to.pdf>
-(epstopdf)                    date: 2021-12-08 16:00:03
+(epstopdf)                    date: 2021-12-19 17:39:26
 (epstopdf)                    size: 13898 bytes
 (epstopdf)             Command: <repstopdf --outfile=./comparison_stepresponseB
 _FD-eps-converted-to.pdf ../Matlab//comparison_stepresponseB_FD.eps>
@@ -1579,11 +1579,11 @@ ed on input line 402.
 (pdftex.def)             Requested size: 223.0721pt x 192.0926pt.
 Package epstopdf Info: Source file: <../Matlab//trackingerror_stepresponseA_FD.
 eps>
-(epstopdf)                    date: 2021-12-08 15:58:03
+(epstopdf)                    date: 2021-12-13 08:55:24
 (epstopdf)                    size: 33539 bytes
 (epstopdf)             Output file: <./trackingerror_stepresponseA_FD-eps-conve
 rted-to.pdf>
-(epstopdf)                    date: 2021-12-08 16:00:06
+(epstopdf)                    date: 2021-12-19 17:39:34
 (epstopdf)                    size: 13912 bytes
 (epstopdf)             Command: <repstopdf --outfile=./trackingerror_steprespon
 seA_FD-eps-converted-to.pdf ../Matlab//trackingerror_stepresponseA_FD.eps>
@@ -1599,11 +1599,11 @@ Package pdftex.def Info: ./trackingerror_stepresponseA_FD-eps-converted-to.pdf
 (pdftex.def)             Requested size: 223.0721pt x 190.50204pt.
 Package epstopdf Info: Source file: <../Matlab//trackingerror_stepresponseB_FD.
 eps>
-(epstopdf)                    date: 2021-12-08 15:58:05
+(epstopdf)                    date: 2021-12-13 08:55:26
 (epstopdf)                    size: 33522 bytes
 (epstopdf)             Output file: <./trackingerror_stepresponseB_FD-eps-conve
 rted-to.pdf>
-(epstopdf)                    date: 2021-12-08 16:00:08
+(epstopdf)                    date: 2021-12-19 17:39:42
 (epstopdf)                    size: 13986 bytes
 (epstopdf)             Command: <repstopdf --outfile=./trackingerror_steprespon
 seB_FD-eps-converted-to.pdf ../Matlab//trackingerror_stepresponseB_FD.eps>
@@ -1619,11 +1619,11 @@ Package pdftex.def Info: ./trackingerror_stepresponseB_FD-eps-converted-to.pdf
 (pdftex.def)             Requested size: 223.0721pt x 190.50204pt.
 Package epstopdf Info: Source file: <../Matlab//comparison_voltage_stepresponse
 A_FD.eps>
-(epstopdf)                    date: 2021-12-08 15:58:06
+(epstopdf)                    date: 2021-12-13 08:55:27
 (epstopdf)                    size: 31626 bytes
 (epstopdf)             Output file: <./comparison_voltage_stepresponseA_FD-eps-
 converted-to.pdf>
-(epstopdf)                    date: 2021-12-08 16:00:10
+(epstopdf)                    date: 2021-12-19 17:39:50
 (epstopdf)                    size: 13670 bytes
 (epstopdf)             Command: <repstopdf --outfile=./comparison_voltage_stepr
 esponseA_FD-eps-converted-to.pdf ../Matlab//comparison_voltage_stepresponseA_FD
@@ -1640,11 +1640,11 @@ Package pdftex.def Info: ./comparison_voltage_stepresponseA_FD-eps-converted-to
 (pdftex.def)             Requested size: 223.0721pt x 195.3497pt.
 Package epstopdf Info: Source file: <../Matlab//comparison_voltage_stepresponse
 B_FD.eps>
-(epstopdf)                    date: 2021-12-08 15:58:07
+(epstopdf)                    date: 2021-12-13 08:55:28
 (epstopdf)                    size: 31617 bytes
 (epstopdf)             Output file: <./comparison_voltage_stepresponseB_FD-eps-
 converted-to.pdf>
-(epstopdf)                    date: 2021-12-08 16:00:12
+(epstopdf)                    date: 2021-12-19 17:39:58
 (epstopdf)                    size: 13841 bytes
 (epstopdf)             Command: <repstopdf --outfile=./comparison_voltage_stepr
 esponseB_FD-eps-converted-to.pdf ../Matlab//comparison_voltage_stepresponseB_FD
@@ -1707,7 +1707,7 @@ m-super/sfrm1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sf
 rm1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb
 ><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb><c:/texli
 ve/2020/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on Assignment2.pdf (12 pages, 815363 bytes).
+Output written on Assignment2.pdf (12 pages, 815388 bytes).
 PDF statistics:
  557 PDF objects out of 1000 (max. 8388607)
  411 compressed objects within 5 object streams

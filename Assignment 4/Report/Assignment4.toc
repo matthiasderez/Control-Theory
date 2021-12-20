@@ -1,7 +1,7 @@
 \babel@toc {english}{}
-\contentsline {section}{\numberline {1}Modellation and identification of the system}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Theoretical continuous model}{1}{subsection.1.1}%
+\contentsline {section}{\numberline {1}Modellation and identification of the system}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Theoretical continuous model}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}State-space equation for the nonlinear model}{2}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Linearization of the model}{2}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Determination of the pendulum length}{2}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Discretization}{2}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.3}Linearization of the model}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Determination of the pendulum length}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Discretization}{5}{subsection.1.5}%
