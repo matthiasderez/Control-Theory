@@ -68,7 +68,7 @@
 
 \section{Modellation and identification of the system}
 \subsection{Theoretical continuous model}
-The configuration of the pendulum placed on the cart is depicted in Figure \ref{fig:pendulumoncart}, along with the definition of the position of the cart $x$ and the angle of the pendulum $\theta$. In Figure \ref{fig:VLDpendulum}, the free body diagram of the pendulum is shown. The real pendulum is depicted as a mass $m$, placed in the center of gravity of the the real pendulum. This mass is connected to the rotation point via a massless bar with length L. This way, the moment of inertia J can easily be computed: 
+The configuration of the pendulum placed on the cart is depicted in Figure \ref{fig:pendulumoncart}, along with the definition of the position of the cart $x$ and the angle of the pendulum $\theta$. In Figure \ref{fig:VLDpendulum}, the free body diagram of the pendulum is shown. The pendulum is depicted as a mass $m$, placed in the center of gravity of the the real pendulum. This mass is connected to the rotation point via a massless bar with length L. This way, the moment of inertia J can easily be computed: 
 \begin{equation}
 	J = m*L^2
 	\label{eq:J}
@@ -205,7 +205,7 @@ Where $\theta(t)$ and $\theta(t+T)$ are both the values of the maximal angle in 
 \begin{equation}
 	\zeta = \frac{\delta}{\sqrt{(2\pi)^2+\delta^2}}
 \end{equation}
-By measuring the period of the oscillations, the distance $L$ from the rotating point to the centre of gravity can be calculated. Since the pendulum has two \underline{BOUTEN IN HET ENGELS} detached at the end of it, the centre of gravity will be locatied close to the end, but the distributed mass of the pendulum will cause the measured length $L_m$ to be a bit larger than the calculated length$L$.
+By measuring the period of the oscillations, the distance $L$ from the rotating point to the centre of gravity can be calculated. Since the pendulum has two bolts detached at the end of it, the centre of gravity will be located close to the end, but the distributed mass of the pendulum will cause the calculated length $L$ to be smaller than the measured length from the rotating point to the end of the pendulum $L_m$.
 
  From the measured period, we can derive the measured (damped) pulsation, which is an estimate for the real pulsation. 
 \begin{equation}
@@ -224,8 +224,8 @@ From Equation \ref{eq:wd}, the natural pulastion $\omega_n$ can be derived. As $
 	\caption{Measured values for the experiment to determine $\zeta$}
 	\label{fig:logdecrement}
 \end{figure}
-The numerical values are: $L = 0.1261m$, $\zeta = 0.0327$ \underline{ZETA DIMENSIELOOS?}. As expected, the measured length $L_m = $ \underline{MEASURED LENGTH} is a larger than de calculated length $L$. 
-If the damping is neglected, the measured pulsation $\omega_d$ is equal to the natural pulsation $\omega_n$ and the length can be calculated as $L' = \frac{g}{\omega_d^2} = 1.1262m$.
+The numerical values are: $T = 0.71s$, $L = 0.1258m$, $\zeta = 0.0327 [-]$. As expected, the measured length $L_m = 0.151m$ is larger than de calculated length $L$. 
+If the damping is neglected, the measured pulsation $\omega_d$ is equal to the natural pulsation $\omega_n$ and the length can be calculated as $L' = \frac{g}{\omega_d^2} = 0.1259m$.
 
 The damping coefficient $c$ is related to the damping ratio $\zeta$ via Equation \ref{eq:c}. As the pendulum mass is unknown, the moment of inertia $J$ is unknown and $c$ can not be calculated. 
 
@@ -260,7 +260,6 @@ Which can be translated into the following discretized, linear state-space model
 	\end{bmatrix}\xi[k] + 0* v_c[k]
 	\end{split}
 \end{equation}
-
 To discretize the nonlinear model, the forward Euler method is used as well:
 \begin{equation}
 	\dot{\xi} = \frac{\xi[k+1]-\xi[k]}{T_s}
@@ -270,12 +269,19 @@ By filling in Equation \ref{eq:FEnonlinear} in Equation \ref{eq:nonlinear} the f
 \begin{equation}
 	\xi[k+1] = T_s\mathbf{f}(\xi[k],v_c[k]) + \xi[k]
 \end{equation}
-By neglecting the damping of the system, following discretized, nonlinear state-space model can be found. 
+By neglecting the damping of the system, following discretized, nonlinear state-space model can be found:
 \begin{equation}
-	\xi[k+1] = \begin{bmatrix}
+\begin{split}
+	\xi[k+1] &= \begin{bmatrix}
 	T_sv_c[k] + x[k]\\T_s*\frac{v_{tan}[k] - v_c[k]cos(\theta[k])}{L} + \theta[k]\\
 	T_s\bigg(-gsin(\theta[k]) - v_c[k]sin(\theta[k])\frac{v_{tan}[k]-v_c[k]cos(\theta[k])}{L}\bigg) + v_{tan}[k]
-	\end{bmatrix}
+	\end{bmatrix}\\
+	\begin{bmatrix}
+	x[k]\\\theta[k]
+	\end{bmatrix} &= \begin{bmatrix}
+	1&0&0\\0&1&0
+	\end{bmatrix}\xi[k] + 0* v_c[k]
+	\end{split}
 \end{equation}
 
  
