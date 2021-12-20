@@ -142,7 +142,7 @@ hold off
 
 %%% 3a) determine the measurement noise covariance 
 % 
-% csvfile = '../Data/FrontDistance.csv';
+% csvfile = '../Data2/FrontDistance.csv';
 % labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
 % labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
 % FrontDistance = dlmread(csvfile, ',', 2, 0); % Data follows the labels
@@ -162,9 +162,41 @@ Q = 10*R;
 P00 = (0.015/3)^2;
 
 %%% 3b)
+
+csvfile = '../Data2/K1rho10.csv';
+labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+K1rho10 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+ 
+save K1rho10
+csvfile = '../Data2/K2rho10.csv';
+labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+K2rho10 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+ 
+save K2rho10
+csvfile = '../Data2/K2.4rho10.csv';
+labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+K2_4rho10 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+ 
+save K2_4rho10
+csvfile = '../Data2/K3rho10.csv';
+labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+K3rho10 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+ 
+save K3rho10
+csvfile = '../Data2/K4rho10.csv';
+labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
+labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
+K3rho10 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+ 
+save K4rho10
 % loeading measurements
 load K1rho10.mat
 load K2rho10.mat
+load K2_4rho10.mat
 load K3rho10.mat
 load K4rho10.mat
 
@@ -177,16 +209,17 @@ x1 = -K1rho10(1:351, 9);
 x2 = -K2rho10(1:351, 9);
 x3 = -K3rho10(1:351, 9);
 x4 = -K4rho10(1:351, 9);
+x5 = -K2_4rho10(1:351, 9);
 
 
 figure
 hold on
-plot(t, [x1, x2, x4]);
+plot(t, [x1, x2, x4,x5]);
 plot(t, reference, 'LineWidth',2)
 set(gca, 'FontSize', 11)
 xlabel('time [s]')
 ylabel('measured distance [m]')
-legend({'K = 1','K = 2','K = 4', 'reference'}, 'Location', 'SouthEast')
+legend({'K = 1','K = 2','K = 4','K = 2.4' 'reference'}, 'Location', 'SouthEast')
 sgtitle('Measured response for variable K')
 print -depsc response_variable_K.eps
 hold off
@@ -196,16 +229,17 @@ voltageA1 = K1rho10(1:201, 2);
 voltageA2 = K2rho10(1:201, 2);
 voltageA3 = K3rho10(1:201, 2);
 voltageA4 = K4rho10(1:201, 2);
+voltageA5 = K2_4rho10(1:201, 2);
 
 figure
 hold on
-plot(t, [voltageA1, voltageA2, voltageA4]);
+plot(t, [voltageA1, voltageA2, voltageA4, voltageA5]);
 plot(t, zeros(size(t)), 'LineWidth',2)
 set(gca, 'FontSize', 11)
 xlabel('time [s]')
 ylabel('voltage [V]')
-legend({'K = 1','K = 2','K = 4'}, 'Location', 'NorthEast')
-sgtitle('Control signal for variable K')
+legend({'K = 1','K = 2','K = 4','K = 2.4' }, 'Location', 'NorthEast')
+sgtitle('Control signal for variable ')
 print -depsc voltage_variable_K.eps
 hold off
 

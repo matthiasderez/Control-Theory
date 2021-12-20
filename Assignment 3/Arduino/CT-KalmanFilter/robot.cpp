@@ -52,7 +52,7 @@ void Robot::control() {
      // UNCOMMENT AND COMPLETE LINES BELOW TO IMPLEMENT POSITION CONTROLLER
     float desired_position = readValue(0);// use channel 0 to provide the constant position reference
     xref(0) = -desired_position ;                               // transform desired_position to the state reference (make sure units are consistent)
-    K(0) = 2.4 ;                                  // state feedback gain K, to design
+    K(0) = 2.4;                                  // state feedback gain K, to design
     desired_velocity = K * (xref - _xhat);      // calculate the state feedback signal, (i.e. the input for the velocity controller)
 
     //// UNCOMMENT AND COMPLETE LINES BELOW TO IMPLEMENT VELOCITY CONTROLLER
