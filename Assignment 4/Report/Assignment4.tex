@@ -64,6 +64,7 @@
 \tableofcontents
 \listoffigures
 \listoftables
+\newpage
 
 \section{Modellation and identification of the system}
 \subsection{Theoretical continuous model}
@@ -94,7 +95,7 @@ The parameters of the theoretical continuous model of the velocity-steered cart 
 	\end{minipage}%
 	\begin{minipage}{.5\textwidth}
 		\centering
-		\includegraphics[width=0.8\linewidth]{VLDpendulum.jpg}
+		\includegraphics[width=0.8\linewidth]{VLDpendulum.png}
 		\captionof{figure}{Free body diagram of the pendulum \cite{Researchgate}}
 		\label{fig:VLDpendulum}
 	\end{minipage}
@@ -137,6 +138,7 @@ Using Equation \ref{eq:newton} and the definition of $\xi$, the nonlinear state-
 The nonlinear model can be linearized around the equilibrium state $\mathbf{\xi_0}$ = $[0,0,0]^T$. Both $\theta$ and $v_{tan}$ have to be zero in the equilibrium state. The value of $x$ doesn't really matter, but is taken equal to zero for convenience. The equilibrium input $v_{c0}$ is also chosen to be equal to zero. Calculating the jacobian matrices \textbf{F} and \textbf{G}, we can rewrite the model as:
 \begin{equation}
 	\delta\mathbf{\dot{\xi}} = \mathbf{F}\delta\mathbf{\xi} + \mathbf{G}\delta v_c
+	\label{eq:deltaxidotlinear}
 \end{equation}
 Where $\delta\mathbf{\xi}$ and $\delta v_c$ are defined as follows:
 \begin{equation}
@@ -203,7 +205,9 @@ Where $\theta(t)$ and $\theta(t+T)$ are both the values of the maximal angle in 
 \begin{equation}
 	\zeta = \frac{\delta}{\sqrt{(2\pi)^2+\delta^2}}
 \end{equation}
-To derive the length of the pendulum, the period of the oscillations is measured. From the measured period, we can derive the measured (damped) pulsation, which is an estimate for the real pulsation. 
+By measuring the period of the oscillations, the distance $L$ from the rotating point to the centre of gravity can be calculated. Since the pendulum has two \underline{BOUTEN IN HET ENGELS} detached at the end of it, the centre of gravity will be locatied close to the end, but the distributed mass of the pendulum will cause the measured length $L_m$ to be a bit larger than the calculated length$L$.
+
+ From the measured period, we can derive the measured (damped) pulsation, which is an estimate for the real pulsation. 
 \begin{equation}
 	\omega_d = \frac{2\pi}{T} = \omega_n\sqrt{1-\zeta^2}
 	\label{eq:wd}
@@ -220,11 +224,61 @@ From Equation \ref{eq:wd}, the natural pulastion $\omega_n$ can be derived. As $
 	\caption{Measured values for the experiment to determine $\zeta$}
 	\label{fig:logdecrement}
 \end{figure}
-The numerical values are: $L = 0.1261m$, $\zeta = 0.0327$
+The numerical values are: $L = 0.1261m$, $\zeta = 0.0327$ \underline{ZETA DIMENSIELOOS?}. As expected, the measured length $L_m = $ \underline{MEASURED LENGTH} is a larger than de calculated length $L$. 
+If the damping is neglected, the measured pulsation $\omega_d$ is equal to the natural pulsation $\omega_n$ and the length can be calculated as $L' = \frac{g}{\omega_d^2} = 1.1262m$.
 
+The damping coefficient $c$ is related to the damping ratio $\zeta$ via Equation \ref{eq:c}. As the pendulum mass is unknown, the moment of inertia $J$ is unknown and $c$ can not be calculated. 
+
+\begin{equation}
+		\zeta = \frac{c}{c_{crit}} = \frac{c}{2J\omega_n}
+		\label{eq:c}
+\end{equation}
+
+For the reminder of this report, the damping will be neglected.
 \subsection{Discretization}
+To discretize the linear model, the forwart Euler method is used:
+\begin{equation}
+	\delta\dot{\xi} = \frac{\delta\xi[k+1]-\delta\xi[k]}{T_s}
+	\label{eq:FElinear}
+\end{equation}
+Filling in Equation \ref{eq:FElinear} in Equation \ref{eq:deltaxidotlinear}, following equation can be derived:
+\begin{equation}
+	\delta\xi[k+1] = (\mathbf{I} + T_s\mathbf{F})\delta\xi[k] + T_s\mathbf{G}\delta v_c[k]
+\end{equation}
+Which can be translated into the following discretized, linear state-space model (where the damping is neglected, $c = 0$):
+\begin{equation}
+\begin{split}
+	\delta\xi[k+1] &= \begin{bmatrix}
+	1&0&0\\0&1&\frac{T_s}{L}\\0&-gT_s&1
+	\end{bmatrix}\delta\xi[k] + \begin{bmatrix}
+	T_s\\ \frac{-T_s}{L}\\0
+	\end{bmatrix}v_c[k]\\
+	\begin{bmatrix}
+	x[k]\\\theta[k]
+	\end{bmatrix} &= \begin{bmatrix}
+	1&0&0\\0&1&0
+	\end{bmatrix}\xi[k] + 0* v_c[k]
+	\end{split}
+\end{equation}
 
+To discretize the nonlinear model, the forward Euler method is used as well:
+\begin{equation}
+	\dot{\xi} = \frac{\xi[k+1]-\xi[k]}{T_s}
+	\label{eq:FEnonlinear}
+\end{equation}
+By filling in Equation \ref{eq:FEnonlinear} in Equation \ref{eq:nonlinear} the following equation can be derived:
+\begin{equation}
+	\xi[k+1] = T_s\mathbf{f}(\xi[k],v_c[k]) + \xi[k]
+\end{equation}
+By neglecting the damping of the system, following discretized, nonlinear state-space model can be found. 
+\begin{equation}
+	\xi[k+1] = \begin{bmatrix}
+	T_sv_c[k] + x[k]\\T_s*\frac{v_{tan}[k] - v_c[k]cos(\theta[k])}{L} + \theta[k]\\
+	T_s\bigg(-gsin(\theta[k]) - v_c[k]sin(\theta[k])\frac{v_{tan}[k]-v_c[k]cos(\theta[k])}{L}\bigg) + v_{tan}[k]
+	\end{bmatrix}
+\end{equation}
 
+ 
 \bibliographystyle{plain}
 \bibliography{bibliography}
 
