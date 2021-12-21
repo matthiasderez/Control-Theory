@@ -51,18 +51,18 @@ void Robot::control() {
      CorrectionUpdate(measurements, _xhat, _Phat, _nu, _S);     // do the correction step -> update _xhat, _Phat, _nu, _S
 
     // // Useful outputs to QRC for assignment questions
-     writeValue(7, _xhat(0));
-     writeValue(8, _xhat(1));
-     writeValue(9, _xhat(2));
-     writeValue(1, _Phat(0,0));
-     writeValue(2, _Phat(1,0));
-     // writeValue(4, _Phat(1,0));
-     writeValue(4, _Phat(1,1));
-     writeValue(3, _Phat(2,0));
-     writeValue(5, _Phat(2,1));
-     writeValue(6, _Phat(2,2));
-     writeValue(10, measurements(0));
-     writeValue(11, measurements(1));
+//     writeValue(7, _xhat(0));
+//     writeValue(8, _xhat(1));
+//     writeValue(9, _xhat(2));
+//     writeValue(1, _Phat(0,0));
+//     writeValue(2, _Phat(1,0));
+//     // writeValue(4, _Phat(1,0));
+//     writeValue(4, _Phat(1,1));
+//     writeValue(3, _Phat(2,0));
+//     writeValue(5, _Phat(2,1));
+//     writeValue(6, _Phat(2,2));
+//     writeValue(10, measurements(0));
+//     writeValue(11, measurements(1));
   }
 
   if(controlEnabled()) {   // only do this if controller is enabled (triggered by pushing 'Button 0' in QRoboticsCenter)
@@ -144,22 +144,22 @@ void Robot::control() {
 //  writeValue(4, getSpeedMotorB());
 //  writeValue(5, volt_A);
 //  writeValue(6, volt_B);
-    writeValue(5, desiredVelocityMotorA); // Puur voor test even
-    writeValue(6, volt_B);
+//    writeValue(5, desiredVelocityMotorA); // Puur voor test even
+//    writeValue(6, volt_B);
 
    // Useful outputs to QRC for assignment questions
-   writeValue(1, _xhat(0));
-   writeValue(2, _xhat(1));
-   writeValue(3, _xhat(2));
-   writeValue(4, _Phat(0,0));
-   // writeValue(4, _Phat(1,0));
-//   writeValue(5, _Phat(1,0));
-//   writeValue(6, _Phat(1,1));
-   writeValue(7, _Phat(2,0));
-   writeValue(7, _Phat(2,1));
-   writeValue(9, _Phat(2,2));
-   writeValue(10, measurements(0));
-   writeValue(11, measurements(1));
+     writeValue(7, _xhat(0));
+     writeValue(8, _xhat(1));
+     writeValue(9, _xhat(2));
+     writeValue(1, _Phat(0,0));
+     writeValue(2, _Phat(1,0));
+     // writeValue(4, _Phat(1,0));
+     writeValue(4, _Phat(1,1));
+     writeValue(3, _Phat(2,0));
+     writeValue(5, _Phat(2,1));
+     writeValue(6, _Phat(2,2));
+     writeValue(10, measurements(0));
+     writeValue(11, measurements(1));
 
   //triggers the trajectory to return the next values during the next cycle
   trajectory.update();
