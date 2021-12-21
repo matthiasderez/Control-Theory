@@ -8,9 +8,9 @@ void PredictionUpdate(const Matrix<1> &u, Matrix<3> &xhat, Matrix<3,3> &Phat) {
    const float g = 9.81;   //Gravitational acceleration [m/s^2]
   
    // Tuning parameter
-   float arrayQ[3][3]{ { 2.7878e-4,  0,  0},    //Provide here the element values of weight Q
-                       { 0,  9.4124e-4,  0},
-                       { 0,  0,  1e-0}};
+   float arrayQ[3][3]{ { 2.7878e-8,  0,  0},    //Provide here the element values of weight Q
+                       { 0,  9.4124e-8,  0},
+                       { 0,  0,  1e-4}};
   
    Matrix<3, 3> Q = arrayQ;
   
