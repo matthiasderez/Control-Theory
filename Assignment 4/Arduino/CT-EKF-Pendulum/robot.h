@@ -32,7 +32,26 @@ class Robot : public MECOtron {
     // Position controller
     Matrix<3> xref;        // reference state
     Matrix<1> desiredVelocityCart;  // control signal
-
+    float r;
+    // Velocity controller
+    float time;
+    float a1;
+    float a2;
+    float a3;
+    float a4;
+    float b1;
+    float b2;
+    float b3;
+    float b4;
+    float uA;
+    float uB;
+    float errorA;
+    float errorB;
+    float counter;
+    float controlA;
+    float controlB;
+    float eA;
+    float eB;
   public:
     // Constructor
     Robot() { }
