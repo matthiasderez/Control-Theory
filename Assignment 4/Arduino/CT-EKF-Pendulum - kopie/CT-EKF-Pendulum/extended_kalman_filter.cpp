@@ -44,19 +44,18 @@ void PredictionUpdate(const Matrix<1> &u, Matrix<3> &xhat, Matrix<3,3> &Phat) {
   // Phat = A * Phat * A.Transpose() + Q;
 }
 
-void CorrectionUpdate(const Matrix<2> &y, Matrix<3> &xhat, Matrix<3,3> &Phat, Matrix<2> &nu, Matrix<2,2> &S) {
+void CorrectionUpdate(const Matrix<1> &y, Matrix<3> &xhat, Matrix<3,3> &Phat, Matrix<1> &nu, Matrix<1,1> &S) {
    // UNCOMMENT AND COMPLETE LINES BELOW TO IMPLEMENT CorrectionUpdate OF THE EXTENDED KALMAN FILTER
   // Tuning parameter
-   float arrayR[2][2]{{2.7878e-9, 0},    //Provide here the element values of weight R
-                      {0, 9.4124e-6}};
-   Matrix<2, 2> R = arrayR;
+   float arrayR[1][1]{{ 9.4124e-6}};
+   Matrix<1, 1> R = arrayR;
   // System C-matrix - Compute Jacobian of measurement equation
-   float arrayJh[2][3]{{0, 0, 0}, {0, 1, 0}}; //Provide here the element values of the Jacobian of measurement equation
+   float arrayJh[1][3]{{0, 1, 0}}; //Provide here the element values of the Jacobian of measurement equation
                        
-   Matrix<2,3> C = arrayJh;
+   Matrix<1,3> C = arrayJh;
   
    // Evaluate measurement equation
-   Matrix<2> h = C*xhat;
+   Matrix<1> h = C*xhat;
   
    // Compute innovation
    nu = y - h;
@@ -65,7 +64,7 @@ void CorrectionUpdate(const Matrix<2> &y, Matrix<3> &xhat, Matrix<3,3> &Phat, Ma
    S = C * Phat * C.Transpose() + R;
   
    // Compute optimal Kalman filter gain
-   Matrix<3,2> L = Phat * C.Transpose() * S.Inverse();
+   Matrix<3,1> L = Phat * C.Transpose() * S.Inverse();
   
    // Compute corrected system state estimate
    xhat += L * nu;

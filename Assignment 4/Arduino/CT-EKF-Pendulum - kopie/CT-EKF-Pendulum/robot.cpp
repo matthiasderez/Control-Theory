@@ -48,7 +48,9 @@ void Robot::control() {
 
      measurements(0) = getPositionMotorA()*r; //transform encoders measurement (getPositionMotorA() and getPositionMotorB()) to cart position measurement
      measurements(1) = -getPendulumAngle();
-     CorrectionUpdate(measurements, _xhat, _Phat, _nu, _S);     // do the correction step -> update _xhat, _Phat, _nu, _S
+     float arrayNewmeas[1][1] {{measurements(1)}};
+     Matrix <1,1> Newmeas = arrayNewmeas;
+     CorrectionUpdate(Newmeas, _xhat, _Phat, _nu, _S);     // do the correction step -> update _xhat, _Phat, _nu, _S
 
     // // Useful outputs to QRC for assignment questions
      writeValue(1, _xhat(0));
