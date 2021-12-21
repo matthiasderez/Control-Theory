@@ -45,4 +45,53 @@ L2 = 9.81/wd^2;
 
 
 
+
+
+
+%% 2
+
+% with wheel encoder
+R_x = 2.7878e-9;
+R_theta = 9.4124e-6;
+
+R = [R_x, 0; 0, R_theta];
+obj = KalmanExperiment.createfromQRC45();
+
+%%% state 1
+figure()
+hold on 
+plotstates(obj, 1, 0.95)
+plotmeasurements(obj, 1, 0.95)
+hold off
+
+%%% state 2
+figure()
+hold on 
+plotstates(obj, 2, 0.95)
+plotmeasurements(obj, 2, 0.95)
+ylim([-0.6 0.6])
+hold off
+
+%%% state 3
+figure()
+hold on 
+plotstates(obj, 3, 0.95)
+hold off
+
+
+
+
+% without wheel encoder
+
+
+
+
+
+
+
+
+
+
+
+
     
