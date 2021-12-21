@@ -51,7 +51,7 @@ L2 = 9.81/wd^2;
 %% 2
 
 % with wheel encoder
-R_x = 2.7878e-6;
+R_x = 2.7878e-9;
 R_theta = 9.4124e-6;
 
 R = [R_x, 0; 0, R_theta];
