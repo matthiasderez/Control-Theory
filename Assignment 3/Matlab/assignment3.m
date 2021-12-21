@@ -142,12 +142,14 @@ hold off
 
 %%% 3a) determine the measurement noise covariance 
 % 
-% csvfile = '../Data/FrontDistance.csv';
+
+% csvfile = '../Data2/K2.4rho0.001.csv';
 % labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
 % labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
-% FrontDistance = dlmread(csvfile, ',', 2, 0); % Data follows the labels
+% K2_4rho0_001 = dlmread(csvfile, ',', 2, 0); % Data follows the labels
 %  
-% save FrontDistance
+% save K2_4rho0_001.mat
+
 
 t = 0:0.01:10.62;
 load FrontDistance.mat
@@ -172,7 +174,7 @@ load K4rho10.mat
 t = K1rho10(1:351, 5);
 reference = zeros(size(t));
 reference(t<=0) = -0.25;
-reference(t>0) = -0.15;
+reference(t>0) = -0.1;
 x1 = -K1rho10(1:351, 9);
 x2 = -K2rho10(1:351, 9);
 x3 = -K3rho10(1:351, 9);
@@ -181,12 +183,12 @@ x4 = -K4rho10(1:351, 9);
 
 figure
 hold on
-plot(t, [x1, x2, x4]);
+plot(t, [x1, x2, x3, x4]);
 plot(t, reference, 'LineWidth',2)
 set(gca, 'FontSize', 11)
 xlabel('time [s]')
 ylabel('measured distance [m]')
-legend({'K = 1','K = 2','K = 4', 'reference'}, 'Location', 'SouthEast')
+legend({'K = 1','K = 2','K = 3','K = 4', 'reference'}, 'Location', 'SouthEast')
 sgtitle('Measured response for variable K')
 print -depsc response_variable_K.eps
 hold off
@@ -199,12 +201,12 @@ voltageA4 = K4rho10(1:201, 2);
 
 figure
 hold on
-plot(t, [voltageA1, voltageA2, voltageA4]);
+plot(t, [voltageA1, voltageA2, voltageA3, voltageA4]);
 plot(t, zeros(size(t)), 'LineWidth',2)
 set(gca, 'FontSize', 11)
 xlabel('time [s]')
 ylabel('voltage [V]')
-legend({'K = 1','K = 2','K = 4'}, 'Location', 'NorthEast')
+legend({'K = 1','K = 2','K = 3', 'K = 4'}, 'Location', 'NorthEast')
 sgtitle('Control signal for variable K')
 print -depsc voltage_variable_K.eps
 hold off
@@ -250,7 +252,7 @@ rho = [1000 100 10 1 0.1 0.01 0.001];
 error_P = zeros(length(rho), 1);
 for i = 1:length(rho)
     phatk_i = phatk(:,i);
-    error_P(i) = phatk_i(100) - P(rho(i)*3.0505e-05, 3.0505e-05);
+    error_P(i) = phatk_i(100) - P(rho(i)*8.4588e-06, 8.4588e-06);
 end
 
 figure
@@ -265,7 +267,7 @@ hold off
 print -depsc error_P.eps
 
 % plots for L
-L = @(phat, rho) -(phat + 3.0505e-05*rho)/(phat + 3.0505e-05*rho + 3.0505e-05);
+L = @(phat, rho) -(phat + 8.4588e-06*rho)/(phat + 8.4588e-06*rho + 8.4588e-06);
 
 L1 = L(phat1, 1000);
 L2 = L(phat2, 100);
@@ -294,7 +296,7 @@ rho = [1000 100 10 1 0.1 0.01 0.001];
 error_L = zeros(length(rho), 1);
 for i = 1:length(rho)
     Lk_i = Lk(:,i);
-    error_L(i) = Lk_i(100) - dlqr(1, -1, rho(i)*3.0505e-05, 3.0505e-05);
+    error_L(i) = Lk_i(100) - dlqr(1, -1, rho(i)*8.4588e-06, 8.4588e-06);
 end
 
 figure
@@ -331,7 +333,7 @@ sgtitle('Measured response for variable \rho')
 
 %%% 3d)
 
-
+analyzeconsistency(KalmanExperiment.createfromQRC3())
 
 
 

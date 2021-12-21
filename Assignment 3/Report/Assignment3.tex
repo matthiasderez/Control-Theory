@@ -244,7 +244,7 @@ Firstly, an expression for the time-varying Kalmain gain $L_{k+1}$ is derived as
 	\mathbf{\hat{P}}_{k+1|k} &= \mathbf{A} \mathbf{\hat{P}}_{k|k} \mathbf{A}^T + \mathbf{Q}_k \label{eq:eq10}
 \end{align}
 
-\noindent All matrices and vectors are scalar values in this specific system, so from now on, the boldface notation is left out. Inserting Equations (\ref{eq:eq8}) and (\ref{eq:eq9}) in Equation (\ref{eq:eq10}) and using $A = 1$ and $C = -1$ yields:
+\noindent Where $S_{k+1}$ is the innovation covariance. All matrices and vectors are scalar values in this specific system, so from now on, the boldface notation is left out. Inserting Equations (\ref{eq:eq8}) and (\ref{eq:eq9}) in Equation (\ref{eq:eq10}) and using $A = 1$ and $C = -1$ yields:
 \begin{equation}
 	\begin{split}
 	L_{k+1} &= -\left( \hat{P}_{k|k} + Q_k \right) \left( \hat{P}_{k+1|k} + R_{k+1} \right)^{-1} \\
@@ -347,9 +347,9 @@ Using the previously calculated scalar values of $A$ and $C$ and using Equations
 \label{subsec:kqr}
 The Kalman filter accounts for two types of noise. Firstly, the uncertainty about the system equations and the process disturbance inputs causes noise, which is modeled by the \textbf{process noise}. A disturbance input may e.g. be the slipping of the wheels when the motors are activated. Secondly, there is \textbf{measurement noise}, which comes from the inaccuracy of the sensor that measures the distance to the wall. The infrared rays sent out by the sensor may reflect in an incomplete fashion, causing the noise. 
 \\\\
-Firstly, the measurement noise covariance $R$ is directly calculated, based on the distance data obtained when the cart is standing still in front of a wall at a certain distance. Next, the \texttt{Matlab} command \texttt{cov()} returns the wanted value of $R$. In this case, $R = 3.0505 e^{-5}$ m$^2$.
+Firstly, the measurement noise covariance $R$ is directly calculated, based on the distance data obtained when the cart is standing still in front of a wall at a certain distance. Next, the \texttt{Matlab} command \texttt{cov()} returns the wanted value of $R$. In this case, $R = 8.4588 e^{-6}$ m$^2$.
 \\\\
-Secondly, the process noise covariance is calculated by multiplying $R$ with an arbitrary constant. $\frac{Q}{R} = 10$ seems fit for this system, which implies that one has slightly more trust in the measurements than in the model. This leads to $Q = 3.0505 e^{-4}$ m$^2$.
+Secondly, the process noise covariance is calculated by multiplying $R$ with an arbitrary constant. $\frac{Q}{R} = 10$ seems fit for this system, which implies that one has slightly more trust in the measurements than in the model. This leads to $Q = 8.4588 e^{-5}$ m$^2$.
 \\\\
 Next, as discussed in Subsection \ref{subsec:tf}, the value of the state feedback gain $K$ is a trade-off between response time and control effort and is restricted to $0 < K < 100$ Hz for stability reasons. Furthermore, it is important that the pole of the state estimator is faster than the pole of the closed loop system. Subsequently, Figure \ref{fig:poles_LQE} shows that it is preferred that $K$ is chosen in a way that the pole of the closed loop system is bigger than $0.5$.
 \\\\
@@ -361,8 +361,8 @@ Summarized:
 \begin{multicols}{2}
 	\begin{itemize}
 		\item $K = 2.4$ Hz
-		\item $R = 3.0505 e^{-5}$ m$^2$
-		\item $Q = 3.0505 e^{-4}$ m$^2$
+		\item $R = 8.4588 e^{-6}$ m$^2$
+		\item $Q = 8.4588 e^{-5}$ m$^2$
 		\item $P_{0|0} = 2.5e^{-5}$ m$^2$
 	\end{itemize}
 \end{multicols}
@@ -417,9 +417,7 @@ Because $R$ is a measured quantity and $Q$ is chosen with respect to $R$, only $
 \\\\
 In Figure \ref{fig:error_L}, the relative error between this experimentally determined steady state Kalman gain and the LQE estimator gain is depicted. As pointed out in Subsection \ref{subsec:lqe}, the steady state Kalman gain $L_\infty$ is as good as equal to the gain of an LQE. This is confirmed by the magnitude of the error in Figure \ref{fig:error_L}, which is in the order of $10^{-7}$. Figure \ref{fig:error_P} indicates the relative error between the experimental steady state state estimator gain and theoretical gain of Equation \ref{eq:eq16}
 \\\\
-The analysis of Subsection \ref{subsec:ss} showed that the closed loop pole of the LQE goes to zero with increasing $\rho$. This corresponds a to quickly responding system, which explains the values of $L_k$ in Figure \ref{fig:variable_rho} for large $\rho$. Namely, a fast response demands that the correction step has a great influence, which in turn correlates with a large estimator gain (in absolute value). This is exactly what can be seen in the right plot.
-\\\\
-Furthermore, Equation (\ref{eq:eq13}) showed that $\hat{P}_{k|k}$ converges towards $R_k$ for $\rho \rightarrow \infty$. The left plot of Figure \ref{fig:variable_rho} confirms this, as $R_k = R = 3.0505e^{-5}$ m$^2$.
+The analysis of Subsection \ref{subsec:ss} showed that the closed loop pole of the LQE goes to zero with increasing $\rho$. This corresponds a to quickly responding system, which explains the values of $L_k$ in Figure \ref{fig:variable_rho} for large $\rho$. Namely, a fast response demands that the correction step has a great influence, which in turn correlates with a large estimator gain (in absolute value). This is exactly what can be seen in the right plot. Furthermore, Equation (\ref{eq:eq13}) showed that $\hat{P}_{k|k}$ converges towards $R_k$ for $\rho \rightarrow \infty$. The left plot of Figure \ref{fig:variable_rho} confirms this, as $R_k = R = 8.4588 e^{-6}$ m$^2$.
 \\\\
 Inversely, for a decreasing ratio ($\rho \rightarrow 0$), the value of the closed loop pole shifts towards $1$, corresponding to a marginally stable system. For this case, the correction step should be negligible, which is in line with a gain of $0$. Again, Figure \ref{fig:variable_rho} indicates that $L_k$ comes closer to $0$ for decreasing $\rho$. Also, Equation (\ref{eq:eq13}) prompts once more that that the correction step can be omitted for $\rho \rightarrow 0$, as it leads to $\hat{P}_{k|k} = \hat{P}_{k|k-1}$.
 \\\\
@@ -443,6 +441,40 @@ These two cases for $\rho$ are also confirmed by Subsection \ref{subsec:kalman_g
 	\caption{Relative errors between experimental gains and theoretical gains, calculated using \texttt{dlqr} and Equation \ref{eq:eq16}.} 
 	\label{error2}
 \end{figure*}
+
+\subsection{Evolution of NIS and SNIS}
+In this Subsection, the consistency of the Kalman filter is checked using two statistical tests based on innovations: NIS and SNIS. The Normalized Innovation Squared (NIS) is calculated as:
+\begin{equation}
+	NIS_k = \nu_k^T S_k^{-1}\nu_k
+\end{equation}
+where $S_k$ is the innovation covariance and the innovation (or measurement residual) itself is:
+\begin{equation}
+	\nu_k = y_k - C \hat{x}_{k|k-1}
+\end{equation}
+So the NIS becomes:
+\begin{equation}
+	NIS_k = 
+\end{equation}
+The Summed Normalized Innovation Squared (SNIS) is then equal to:
+\begin{equation}
+	SNIS_k = \sum_{j = k-M+1}^{k} \nu_j^T S_j^{-1}\nu_j
+\end{equation}
+which boils down to the sum of the latest M NIS-values. Both $NIS_k$ and $SNIS_k$ are $\chi^2$-distributed, with respectively $1$ and $M$ degrees of freedom.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width =0.48\linewidth]{rho10.png}
+\end{figure}
+
+
+
+
+
+
+
+
+
 
 
 

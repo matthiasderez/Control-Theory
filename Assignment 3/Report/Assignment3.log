@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.18)  20 DEC 2021 16:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.18)  21 DEC 2021 13:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -920,12 +920,12 @@ Package gensymb Info: Using \Omega for \ohm on input line 60.
 
 Package gensymb Warning: Not defining \micro.
 
-<kuleuvenLogo.pdf, id=87, 159.33528pt x 56.90259pt>
+<kuleuvenLogo.pdf, id=91, 159.33528pt x 56.90259pt>
 File: kuleuvenLogo.pdf Graphic file (type pdf)
 <use kuleuvenLogo.pdf>
 Package pdftex.def Info: kuleuvenLogo.pdf  used on input line 62.
 (pdftex.def)             Requested size: 119.50601pt x 42.67912pt.
-<kuleuvenSedes.pdf, id=88, 349.305pt x 596.2275pt>
+<kuleuvenSedes.pdf, id=92, 349.305pt x 596.2275pt>
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
 Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 62.
@@ -1008,31 +1008,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 171--176
  []
 
 Package epstopdf Info: Source file: <../Matlab//poles.eps>
-(epstopdf)                    date: 2021-12-20 11:52:38
+(epstopdf)                    date: 2021-12-21 11:03:57
 (epstopdf)                    size: 27901 bytes
 (epstopdf)             Output file: <./poles-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-20 11:53:34
+(epstopdf)                    date: 2021-12-21 11:04:41
 (epstopdf)                    size: 12146 bytes
 (epstopdf)             Command: <repstopdf --outfile=./poles-eps-converted-to.p
 df ../Matlab//poles.eps>
 (epstopdf)             \includegraphics on input line 182.
 Package epstopdf Info: Output file is already uptodate.
-<./poles-eps-converted-to.pdf, id=181, 295.1025pt x 302.12875pt>
+<./poles-eps-converted-to.pdf, id=187, 295.1025pt x 302.12875pt>
 File: ./poles-eps-converted-to.pdf Graphic file (type pdf)
 <use ./poles-eps-converted-to.pdf>
 Package pdftex.def Info: ./poles-eps-converted-to.pdf  used on input line 182.
 (pdftex.def)             Requested size: 227.62204pt x 233.04553pt.
 Package epstopdf Info: Source file: <../Matlab//poles_cont.eps>
-(epstopdf)                    date: 2021-12-20 11:52:40
-(epstopdf)                    size: 23943 bytes
+(epstopdf)                    date: 2021-12-21 11:03:59
+(epstopdf)                    size: 23792 bytes
 (epstopdf)             Output file: <./poles_cont-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-20 11:53:37
-(epstopdf)                    size: 9934 bytes
+(epstopdf)                    date: 2021-12-21 11:04:44
+(epstopdf)                    size: 9932 bytes
 (epstopdf)             Command: <repstopdf --outfile=./poles_cont-eps-converted
 -to.pdf ../Matlab//poles_cont.eps>
 (epstopdf)             \includegraphics on input line 189.
 Package epstopdf Info: Output file is already uptodate.
-<./poles_cont-eps-converted-to.pdf, id=182, 367.3725pt x 302.12875pt>
+<./poles_cont-eps-converted-to.pdf, id=188, 367.3725pt x 302.12875pt>
 File: ./poles_cont-eps-converted-to.pdf Graphic file (type pdf)
 <use ./poles_cont-eps-converted-to.pdf>
 Package pdftex.def Info: ./poles_cont-eps-converted-to.pdf  used on input line 
@@ -1042,7 +1042,7 @@ Package pdftex.def Info: ./poles_cont-eps-converted-to.pdf  used on input line
 
 pdfTeX warning: pdflatex.exe (file ./impulse_response1.pdf): PDF inclusion: fou
 nd PDF version <1.7>, but at most version <1.5> allowed
-<impulse_response1.pdf, id=183, 369.22844pt x 290.24536pt>
+<impulse_response1.pdf, id=189, 369.22844pt x 290.24536pt>
 File: impulse_response1.pdf Graphic file (type pdf)
 <use impulse_response1.pdf>
 Package pdftex.def Info: impulse_response1.pdf  used on input line 213.
@@ -1051,7 +1051,7 @@ Package pdftex.def Info: impulse_response1.pdf  used on input line 213.
 
 pdfTeX warning: pdflatex.exe (file ./impulse_response3.pdf): PDF inclusion: fou
 nd PDF version <1.7>, but at most version <1.5> allowed
-<impulse_response3.pdf, id=184, 369.22844pt x 290.24536pt>
+<impulse_response3.pdf, id=190, 369.22844pt x 290.24536pt>
 File: impulse_response3.pdf Graphic file (type pdf)
 <use impulse_response3.pdf>
 Package pdftex.def Info: impulse_response3.pdf  used on input line 218.
@@ -1116,16 +1116,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 299--303
  []
 
 Package epstopdf Info: Source file: <../Matlab//gain_error.eps>
-(epstopdf)                    date: 2021-12-20 11:52:57
+(epstopdf)                    date: 2021-12-21 11:04:15
 (epstopdf)                    size: 194138 bytes
 (epstopdf)             Output file: <./gain_error-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-20 11:53:40
+(epstopdf)                    date: 2021-12-21 11:04:47
 (epstopdf)                    size: 202636 bytes
 (epstopdf)             Command: <repstopdf --outfile=./gain_error-eps-converted
 -to.pdf ../Matlab//gain_error.eps>
 (epstopdf)             \includegraphics on input line 306.
 Package epstopdf Info: Output file is already uptodate.
-<./gain_error-eps-converted-to.pdf, id=254, 422.57875pt x 317.185pt>
+<./gain_error-eps-converted-to.pdf, id=259, 422.57875pt x 317.185pt>
 File: ./gain_error-eps-converted-to.pdf Graphic file (type pdf)
 <use ./gain_error-eps-converted-to.pdf>
 Package pdftex.def Info: ./gain_error-eps-converted-to.pdf  used on input line 
@@ -1145,16 +1145,16 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 
 [6]
 Package epstopdf Info: Source file: <../Matlab//poles_LQE.eps>
-(epstopdf)                    date: 2021-12-20 11:52:58
+(epstopdf)                    date: 2021-12-21 11:04:16
 (epstopdf)                    size: 27732 bytes
 (epstopdf)             Output file: <./poles_LQE-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-20 11:53:42
+(epstopdf)                    date: 2021-12-21 11:04:50
 (epstopdf)                    size: 12127 bytes
 (epstopdf)             Command: <repstopdf --outfile=./poles_LQE-eps-converted-
 to.pdf ../Matlab//poles_LQE.eps>
 (epstopdf)             \includegraphics on input line 336.
 Package epstopdf Info: Output file is already uptodate.
-<./poles_LQE-eps-converted-to.pdf, id=268, 295.1025pt x 302.12875pt>
+<./poles_LQE-eps-converted-to.pdf, id=273, 295.1025pt x 302.12875pt>
 File: ./poles_LQE-eps-converted-to.pdf Graphic file (type pdf)
 <use ./poles_LQE-eps-converted-to.pdf>
 Package pdftex.def Info: ./poles_LQE-eps-converted-to.pdf  used on input line 3
@@ -1231,34 +1231,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 372--379
  []
 
 Package epstopdf Info: Source file: <../Matlab//response_variable_K.eps>
-(epstopdf)                    date: 2021-12-20 11:52:58
-(epstopdf)                    size: 39521 bytes
+(epstopdf)                    date: 2021-12-21 11:04:18
+(epstopdf)                    size: 43220 bytes
 (epstopdf)             Output file: <./response_variable_K-eps-converted-to.pdf
 >
-(epstopdf)                    date: 2021-12-20 11:53:45
-(epstopdf)                    size: 11157 bytes
+(epstopdf)                    date: 2021-12-21 11:04:52
+(epstopdf)                    size: 12564 bytes
 (epstopdf)             Command: <repstopdf --outfile=./response_variable_K-eps-
 converted-to.pdf ../Matlab//response_variable_K.eps>
 (epstopdf)             \includegraphics on input line 384.
 Package epstopdf Info: Output file is already uptodate.
-<./response_variable_K-eps-converted-to.pdf, id=304, 379.4175pt x 307.1475pt>
+<./response_variable_K-eps-converted-to.pdf, id=309, 379.4175pt x 307.1475pt>
 File: ./response_variable_K-eps-converted-to.pdf Graphic file (type pdf)
 <use ./response_variable_K-eps-converted-to.pdf>
 Package pdftex.def Info: ./response_variable_K-eps-converted-to.pdf  used on in
 put line 384.
 (pdftex.def)             Requested size: 223.0721pt x 180.58275pt.
 Package epstopdf Info: Source file: <../Matlab//voltage_variable_K.eps>
-(epstopdf)                    date: 2021-12-20 11:52:59
-(epstopdf)                    size: 28418 bytes
+(epstopdf)                    date: 2021-12-21 11:04:18
+(epstopdf)                    size: 32584 bytes
 (epstopdf)             Output file: <./voltage_variable_K-eps-converted-to.pdf>
 
-(epstopdf)                    date: 2021-12-20 11:53:47
-(epstopdf)                    size: 10657 bytes
+(epstopdf)                    date: 2021-12-21 11:04:54
+(epstopdf)                    size: 12220 bytes
 (epstopdf)             Command: <repstopdf --outfile=./voltage_variable_K-eps-c
 onverted-to.pdf ../Matlab//voltage_variable_K.eps>
 (epstopdf)             \includegraphics on input line 389.
 Package epstopdf Info: Output file is already uptodate.
-<./voltage_variable_K-eps-converted-to.pdf, id=305, 361.35pt x 307.1475pt>
+<./voltage_variable_K-eps-converted-to.pdf, id=310, 361.35pt x 307.1475pt>
 File: ./voltage_variable_K-eps-converted-to.pdf Graphic file (type pdf)
 <use ./voltage_variable_K-eps-converted-to.pdf>
 Package pdftex.def Info: ./voltage_variable_K-eps-converted-to.pdf  used on inp
@@ -1284,95 +1284,90 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 [9 <./response_variable_K-eps-converted-to.pdf> <./voltage_variable_K-eps-conve
 rted-to.pdf>]
 Package epstopdf Info: Source file: <../Matlab//phat.eps>
-(epstopdf)                    date: 2021-12-20 15:58:30
-(epstopdf)                    size: 130786 bytes
+(epstopdf)                    date: 2021-12-21 11:04:19
+(epstopdf)                    size: 130854 bytes
 (epstopdf)             Output file: <./phat-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-20 16:05:13
-(epstopdf)                    size: 34302 bytes
+(epstopdf)                    date: 2021-12-21 11:04:56
+(epstopdf)                    size: 34821 bytes
 (epstopdf)             Command: <repstopdf --outfile=./phat-eps-converted-to.pd
 f ../Matlab//phat.eps>
 (epstopdf)             \includegraphics on input line 405.
 Package epstopdf Info: Output file is already uptodate.
-<./phat-eps-converted-to.pdf, id=328, 368.37625pt x 310.15875pt>
+<./phat-eps-converted-to.pdf, id=333, 359.3425pt x 310.15875pt>
 File: ./phat-eps-converted-to.pdf Graphic file (type pdf)
 <use ./phat-eps-converted-to.pdf>
 Package pdftex.def Info: ./phat-eps-converted-to.pdf  used on input line 405.
-(pdftex.def)             Requested size: 218.51521pt x 183.98119pt.
+(pdftex.def)             Requested size: 218.51521pt x 188.60971pt.
 Package epstopdf Info: Source file: <../Matlab//L.eps>
-(epstopdf)                    date: 2021-12-20 12:07:43
+(epstopdf)                    date: 2021-12-21 11:04:20
 (epstopdf)                    size: 109746 bytes
 (epstopdf)             Output file: <./L-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-20 12:11:55
+(epstopdf)                    date: 2021-12-21 11:04:58
 (epstopdf)                    size: 23000 bytes
 (epstopdf)             Command: <repstopdf --outfile=./L-eps-converted-to.pdf .
 ./Matlab//L.eps>
 (epstopdf)             \includegraphics on input line 410.
 Package epstopdf Info: Output file is already uptodate.
-<./L-eps-converted-to.pdf, id=329, 370.38374pt x 307.1475pt>
+<./L-eps-converted-to.pdf, id=334, 370.38374pt x 307.1475pt>
 File: ./L-eps-converted-to.pdf Graphic file (type pdf)
 <use ./L-eps-converted-to.pdf>
 Package pdftex.def Info: ./L-eps-converted-to.pdf  used on input line 410.
 (pdftex.def)             Requested size: 218.51521pt x 181.21075pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--427
+Underfull \hbox (badness 10000) in paragraph at lines 416--425
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--427
+Underfull \hbox (badness 10000) in paragraph at lines 416--425
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--427
+Underfull \hbox (badness 10000) in paragraph at lines 416--425
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--427
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 416--427
+Underfull \hbox (badness 10000) in paragraph at lines 416--425
 
  []
 
 Package epstopdf Info: Source file: <../Matlab//error_L.eps>
-(epstopdf)                    date: 2021-12-20 16:04:52
-(epstopdf)                    size: 48200 bytes
+(epstopdf)                    date: 2021-12-21 11:04:21
+(epstopdf)                    size: 48207 bytes
 (epstopdf)             Output file: <./error_L-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-20 16:05:17
-(epstopdf)                    size: 17441 bytes
+(epstopdf)                    date: 2021-12-21 11:05:00
+(epstopdf)                    size: 17438 bytes
 (epstopdf)             Command: <repstopdf --outfile=./error_L-eps-converted-to
 .pdf ../Matlab//error_L.eps>
-(epstopdf)             \includegraphics on input line 432.
+(epstopdf)             \includegraphics on input line 430.
 Package epstopdf Info: Output file is already uptodate.
-<./error_L-eps-converted-to.pdf, id=342, 376.40625pt x 307.1475pt>
+<./error_L-eps-converted-to.pdf, id=347, 376.40625pt x 307.1475pt>
 File: ./error_L-eps-converted-to.pdf Graphic file (type pdf)
 <use ./error_L-eps-converted-to.pdf>
-Package pdftex.def Info: ./error_L-eps-converted-to.pdf  used on input line 432
+Package pdftex.def Info: ./error_L-eps-converted-to.pdf  used on input line 430
 .
 (pdftex.def)             Requested size: 218.51521pt x 178.31439pt.
 Package epstopdf Info: Source file: <../Matlab//error_P.eps>
-(epstopdf)                    date: 2021-12-20 16:04:20
-(epstopdf)                    size: 48025 bytes
+(epstopdf)                    date: 2021-12-21 11:04:20
+(epstopdf)                    size: 48767 bytes
 (epstopdf)             Output file: <./error_P-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-20 16:06:31
-(epstopdf)                    size: 17531 bytes
+(epstopdf)                    date: 2021-12-21 11:05:02
+(epstopdf)                    size: 17599 bytes
 (epstopdf)             Command: <repstopdf --outfile=./error_P-eps-converted-to
 .pdf ../Matlab//error_P.eps>
-(epstopdf)             \includegraphics on input line 439.
+(epstopdf)             \includegraphics on input line 437.
 Package epstopdf Info: Output file is already uptodate.
-<./error_P-eps-converted-to.pdf, id=343, 373.395pt x 310.15875pt>
+<./error_P-eps-converted-to.pdf, id=348, 367.3725pt x 310.15875pt>
 File: ./error_P-eps-converted-to.pdf Graphic file (type pdf)
 <use ./error_P-eps-converted-to.pdf>
-Package pdftex.def Info: ./error_P-eps-converted-to.pdf  used on input line 439
+Package pdftex.def Info: ./error_P-eps-converted-to.pdf  used on input line 437
 .
-(pdftex.def)             Requested size: 218.51521pt x 181.50603pt.
+(pdftex.def)             Requested size: 218.51521pt x 184.48758pt.
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 450.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 449.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 Package fancyhdr Warning: \headheight is too small (42.67912pt): 
@@ -1383,12 +1378,16 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
 
 [10 <./phat-eps-converted-to.pdf> <./L-eps-converted-to.pdf>]
-(./Assignment3.bbl) 
-AED: lastpage setting LastPage
+<rho10.png, id=368, 421.575pt x 316.18124pt>
+File: rho10.png Graphic file (type png)
+<use rho10.png>
+Package pdftex.def Info: rho10.png  used on input line 467.
+(pdftex.def)             Requested size: 218.51521pt x 163.88931pt.
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 455.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 482.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+
 
 Package fancyhdr Warning: \headheight is too small (42.67912pt): 
 (fancyhdr)                Make it at least 46.27914pt, for example:
@@ -1398,15 +1397,29 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
 
 [11 <./error_L-eps-converted-to.pdf> <./error_P-eps-converted-to.pdf>]
-(./Assignment3.aux)
+(./Assignment3.bbl) 
+AED: lastpage setting LastPage
+File: kuleuvenSedes.pdf Graphic file (type pdf)
+<use kuleuvenSedes.pdf>
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 487.
+(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+
+Package fancyhdr Warning: \headheight is too small (42.67912pt): 
+(fancyhdr)                Make it at least 46.27914pt, for example:
+(fancyhdr)                \setlength{\headheight}{46.27914pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
+
+[12 <./rho10.png (PNG copy)>] (./Assignment3.aux)
 Package rerunfilecheck Info: File `Assignment3.out' has not changed.
-(rerunfilecheck)             Checksum: E2098E5A5EE7E9AA16736D76AEB45E89;2761.
+(rerunfilecheck)             Checksum: 296561D9C00A001984385FF986D98D31;2956.
  ) 
 Here is how much of TeX's memory you used:
- 26810 strings out of 478353
- 531575 string characters out of 5852100
- 837584 words of memory out of 5000000
- 44354 multiletter control sequences out of 15000+600000
+ 26826 strings out of 478353
+ 531779 string characters out of 5852100
+ 838584 words of memory out of 5000000
+ 44361 multiletter control sequences out of 15000+600000
  420651 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,20n,94p,911b,1102s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1431,10 +1444,10 @@ t/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/ty
 pe1/public/cm-super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
 /cm-super/sftt0800.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/
 sftt1000.pfb>
-Output written on Assignment3.pdf (11 pages, 932416 bytes).
+Output written on Assignment3.pdf (12 pages, 957636 bytes).
 PDF statistics:
- 491 PDF objects out of 1000 (max. 8388607)
- 362 compressed objects within 4 object streams
- 63 named destinations out of 1000 (max. 500000)
- 291 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 508 PDF objects out of 1000 (max. 8388607)
+ 377 compressed objects within 4 object streams
+ 70 named destinations out of 1000 (max. 500000)
+ 304 words of extra memory for PDF output out of 10000 (max. 10000000)
 
