@@ -8,9 +8,9 @@ void PredictionUpdate(const Matrix<1> &u, Matrix<3> &xhat, Matrix<3,3> &Phat) {
    const float g = 9.81;   //Gravitational acceleration [m/s^2]
   
    // Tuning parameter
-   float arrayQ[3][3]{ { 2.7878e-8,  0,  0},    //Provide here the element values of weight Q
-                       { 0,  9.4124e-8,  0},
-                       { 0,  0,  1e-4}};
+   float arrayQ[3][3]{ { 2.7878e-4,  0,  0},    //Provide here the element values of weight Q
+                       { 0,  9.4124e-4,  0},
+                       { 0,  0,  1e-0}};
   
    Matrix<3, 3> Q = arrayQ;
   
@@ -47,11 +47,11 @@ void PredictionUpdate(const Matrix<1> &u, Matrix<3> &xhat, Matrix<3,3> &Phat) {
 void CorrectionUpdate(const Matrix<2> &y, Matrix<3> &xhat, Matrix<3,3> &Phat, Matrix<2> &nu, Matrix<2,2> &S) {
    // UNCOMMENT AND COMPLETE LINES BELOW TO IMPLEMENT CorrectionUpdate OF THE EXTENDED KALMAN FILTER
   // Tuning parameter
-   float arrayR[2][2]{{2.7878e-9, 0},    //Provide here the element values of weight R
-                      {0, 9.4124e-6}};
+   float arrayR[2][2]{{2.7878e-5, 0},    //Provide here the element values of weight R
+                      {0, 9.4124e-2}};
    Matrix<2, 2> R = arrayR;
   // System C-matrix - Compute Jacobian of measurement equation
-   float arrayJh[2][3]{{0, 0, 0}, {0, 1, 0}}; //Provide here the element values of the Jacobian of measurement equation
+   float arrayJh[2][3]{{1, 0, 0}, {0, 1, 0}}; //Provide here the element values of the Jacobian of measurement equation
                        
    Matrix<2,3> C = arrayJh;
   
