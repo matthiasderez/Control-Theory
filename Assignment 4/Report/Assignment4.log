@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  22 DEC 2021 17:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  22 DEC 2021 20:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -916,12 +916,12 @@ Package gensymb Info: Using \Omega for \ohm on input line 63.
 
 Package gensymb Warning: Not defining \micro.
 
-<kuleuvenLogo.pdf, id=83, 159.33528pt x 56.90259pt>
+<kuleuvenLogo.pdf, id=91, 159.33528pt x 56.90259pt>
 File: kuleuvenLogo.pdf Graphic file (type pdf)
 <use kuleuvenLogo.pdf>
 Package pdftex.def Info: kuleuvenLogo.pdf  used on input line 65.
 (pdftex.def)             Requested size: 119.50601pt x 42.67912pt.
-<kuleuvenSedes.pdf, id=84, 349.305pt x 596.2275pt>
+<kuleuvenSedes.pdf, id=92, 349.305pt x 596.2275pt>
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
 Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 65.
@@ -968,19 +968,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--66
 {c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <c:/Users/matth/
 texmf/tex/latex/kulak/kuleuvenLogo.pdf> <c:/Users/matth/texmf/tex/latex/kulak/k
 uleuvenSedes.pdf>]
-<pendulumoncart.png, id=134, 199.947pt x 246.32025pt>
+<pendulumoncart.png, id=144, 199.947pt x 246.32025pt>
 File: pendulumoncart.png Graphic file (type png)
 <use pendulumoncart.png>
-Package pdftex.def Info: pendulumoncart.png  used on input line 95.
+Package pdftex.def Info: pendulumoncart.png  used on input line 105.
 (pdftex.def)             Requested size: 182.09831pt x 224.33969pt.
-<VLDpendulum.png, id=138, 295.70474pt x 349.305pt>
+<VLDpendulum.png, id=148, 295.70474pt x 349.305pt>
 File: VLDpendulum.png Graphic file (type png)
 <use VLDpendulum.png>
-Package pdftex.def Info: VLDpendulum.png  used on input line 101.
+Package pdftex.def Info: VLDpendulum.png  used on input line 111.
 (pdftex.def)             Requested size: 182.09831pt x 215.10645pt.
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 117.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 127.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 
@@ -992,35 +992,40 @@ This may cause the page layout to be inconsistent, however.
 [2 <./pendulumoncart.png> <./VLDpendulum.png>]
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 206.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 216.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
  [3]
-<logdecrement.png, id=187, 386.6445pt x 320.397pt>
+<logdecrement.png, id=197, 386.6445pt x 320.397pt>
 File: logdecrement.png Graphic file (type png)
 <use logdecrement.png>
-Package pdftex.def Info: logdecrement.png  used on input line 229.
+Package pdftex.def Info: logdecrement.png  used on input line 239.
 (pdftex.def)             Requested size: 273.14922pt x 226.35413pt.
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 249.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 259.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
  [4 <./logdecrement.png>]
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 319.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 329.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 [5]
-Overfull \hbox (23.73618pt too wide) in paragraph at lines 332--333
+Overfull \hbox (23.73618pt too wide) in paragraph at lines 342--343
 \T1/cmr/m/n/10 equal to those used in the lin-ear Kalman fil-ter (see Equa-tion
 s $[]$).
  []
 
 LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
-342.
+352.
 (c:/texlive/2020/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
-) (./Assignment4.bbl
+)
+File: kuleuvenSedes.pdf Graphic file (type pdf)
+<use kuleuvenSedes.pdf>
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 367.
+(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+ [6] (./Assignment4.bbl
 Underfull \hbox (badness 4556) in paragraph at lines 4--10
 []\T1/cmr/m/n/10 Aurelio Are-nas.  The use of a nin-tendo wii re-mote con-trol 
 in physics ex-per-i-ments.
@@ -1032,25 +1037,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--10
 99 _ The _ use _ of _ a _ Nintendo _ Wii _
  []
 
-File: kuleuvenSedes.pdf Graphic file (type pdf)
-<use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 16.
-(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-[6]) 
+) 
 AED: lastpage setting LastPage
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 353.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 373.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 [7] (./Assignment4.aux)
 Package rerunfilecheck Info: File `Assignment4.out' has not changed.
-(rerunfilecheck)             Checksum: 4EE3523E66F0F908B80272FC7843C2F0;1126.
+(rerunfilecheck)             Checksum: 1F52E6E6A95822242A7FEEF8E781B0AD;1286.
  ) 
 Here is how much of TeX's memory you used:
- 23091 strings out of 479917
- 463550 string characters out of 5886666
- 792958 words of memory out of 5000000
- 39090 multiletter control sequences out of 15000+600000
+ 23109 strings out of 479917
+ 463924 string characters out of 5886666
+ 793020 words of memory out of 5000000
+ 39105 multiletter control sequences out of 15000+600000
  550426 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,25n,99p,642b,1101s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1073,10 +1074,10 @@ ive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2020/t
 exmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2020/texmf-dist/
 fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2020/texmf-dist/fonts/type
 1/public/cm-super/sftt1000.pfb>
-Output written on Assignment4.pdf (7 pages, 550913 bytes).
+Output written on Assignment4.pdf (7 pages, 553309 bytes).
 PDF statistics:
- 327 PDF objects out of 1000 (max. 8388607)
- 268 compressed objects within 3 object streams
- 61 named destinations out of 1000 (max. 500000)
- 238 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 339 PDF objects out of 1000 (max. 8388607)
+ 280 compressed objects within 3 object streams
+ 64 named destinations out of 1000 (max. 500000)
+ 254 words of extra memory for PDF output out of 10000 (max. 10000000)
 

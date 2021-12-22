@@ -67,6 +67,16 @@
 \tableofcontents
 \listoffigures
 \listoftables
+\tikzstyle{block} = [draw, rectangle, 
+minimum height=3em, minimum width=6em]
+\tikzstyle{blocksmall} = [draw, rectangle, 
+minimum height=3em, minimum width=3em]
+\tikzstyle{sum} = [draw, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+
+
 \newpage
 
 \section{Modellation and identification of the system}
@@ -339,13 +349,23 @@ Since the linearization of the model has no influence on the measurement noise c
 
 \section{Design and implementation of a state feedback controller based on the linearized model}
 \subsection{Design of a linear quadratic regulator}
-The objective of the LQR is to find the control input $v_c[k]$ that moves the system states $\xi \neq 0$ to \textbf{0}, in a way the performance criterion $\J$ is minimized. This means a tradeoff has to be made between performane $\J_p$, the speed with which the states go to zero, and the controll effort $\J_c$. The criterion is given in Equation \ref{eq:criterionLQR}. 
+The objective of the LQR is to find the control input $v_c[k]$ that moves the system states $\xi \neq 0$ to \textbf{0}, in a way the performance criterion $\J$ is minimized. This means a tradeoff has to be made between performane $\J_p$, the speed with which the states go to zero (or a desired state), and the controll effort $\J_c$. The criterion is given in Equation \ref{eq:criterionLQR}. 
 \begin{equation}
 	\J = \J_p + \J_c =  \sum_{k=0}^{\infty}\mathbf{\xi}[k]^T\mathbf{Q}\mathbf{\xi}[k] + v_c[k]Rv_c[k]
 	\label{eq:criterionLQR}
 \end{equation}
-The matrix \textbf{Q} and the value R are design parameters. These values determine which part of the tradeoff is most important in this particular design: performance or control effort. 
+The matrix \textbf{Q} and the value R are design parameters. These values determine which part of the tradeoff is most important in this particular design: performance or control effort. The tuning of the parameters and thus the design of the LQR itself is done in Section \ref{sec:implFBcontr}. 
 
+\subsection{Design of a feedforward gain}
+The pendulum mass position can be written as:
+\begin{equation}
+	x_p = x + L*sin(\theta) = x + L*\theta
+\end{equation}
+$x_p$ is thus a combination of the two outputs of the linear system. 
+
+
+\subsection{Implementation of the controller}
+\label{sec:implFBcontr}
 
 \bibliographystyle{plain}
 \bibliography{bibliography}

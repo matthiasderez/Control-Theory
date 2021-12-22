@@ -1,4 +1,4 @@
-\babel@toc {english}{}\relax 
+\babel@toc {english}{}
 \contentsline {section}{\numberline {1}Design of the State Feedback Controller}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Input \& Output}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}State Space Model}{2}{subsection.1.2}%

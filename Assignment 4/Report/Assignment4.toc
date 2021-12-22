@@ -12,3 +12,5 @@
 \contentsline {subsection}{\numberline {3.3}Implementation of the extended Kalman filter}{6}{subsection.3.3}%
 \contentsline {section}{\numberline {4}Design and implementation of a state feedback controller based on the linearized model}{6}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Design of a linear quadratic regulator}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Design of a feedforward gain}{7}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Implementation of the controller}{7}{subsection.4.3}%
