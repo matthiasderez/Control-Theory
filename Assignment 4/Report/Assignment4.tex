@@ -11,7 +11,10 @@
 
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows}
-
+\usepackage{calrsfs}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+\newcommand{\La}{\mathcal{J}}
+\newcommand{\J}{\pazocal{J}}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
@@ -129,12 +132,14 @@ Using Equation \ref{eq:newton} and the definition of $\xi$, the nonlinear state-
  \end{bmatrix} = \begin{bmatrix}
  1&0&0\\0&1&0
  \end{bmatrix}\xi + 0*v_c
+ \label{eq:measurementnonlinear}
  \end{equation}
 
 
 
 
 \subsection{Linearization of the model}
+\label{sec:linearization}
 The nonlinear model can be linearized around the equilibrium state $\mathbf{\xi_0}$ = $[0,0,0]^T$. Both $\theta$ and $v_{tan}$ have to be zero in the equilibrium state. The value of $x$ doesn't really matter, but is taken equal to zero for convenience. The equilibrium input $v_{c0}$ is also chosen to be equal to zero. Calculating the jacobian matrices \textbf{F} and \textbf{G}, we can rewrite the model as:
 \begin{equation}
 	\delta\mathbf{\dot{\xi}} = \mathbf{F}\delta\mathbf{\xi} + \mathbf{G}\delta v_c
@@ -183,6 +188,7 @@ From Equation \ref{eq:jacobians}, the following matrices arise:
 	\end{bmatrix} = \begin{bmatrix}
 	1&0&0\\0&1&0
 	\end{bmatrix}\xi + 0*v_c
+	\label{eq:measurementlinear}
 \end{equation}
 By applying the laplace transformation to Equation \ref{eq:sslinear}, following transfer functions can be found. 
 
@@ -271,20 +277,67 @@ By filling in Equation \ref{eq:FEnonlinear} in Equation \ref{eq:nonlinear} the f
 \end{equation}
 By neglecting the damping of the system, following discretized, nonlinear state-space model can be found:
 \begin{equation}
-\begin{split}
-	\xi[k+1] &= \begin{bmatrix}
+	\xi[k+1] = \begin{bmatrix}
 	T_sv_c[k] + x[k]\\T_s*\frac{v_{tan}[k] - v_c[k]cos(\theta[k])}{L} + \theta[k]\\
 	T_s\bigg(-gsin(\theta[k]) - v_c[k]sin(\theta[k])\frac{v_{tan}[k]-v_c[k]cos(\theta[k])}{L}\bigg) + v_{tan}[k]
-	\end{bmatrix}\\
+	\end{bmatrix}
+	\label{eq:ssnonlineardiscrete}
+\end{equation}
+\begin{equation}
 	\begin{bmatrix}
 	x[k]\\\theta[k]
-	\end{bmatrix} &= \begin{bmatrix}
+	\end{bmatrix} = \begin{bmatrix}
 	1&0&0\\0&1&0
 	\end{bmatrix}\xi[k] + 0* v_c[k]
-	\end{split}
+	\label{eq:measurementlineardiscrete}
 \end{equation}
 
- 
+\section{Design and implementation of a linear Kalman filter}
+The linearized measurement equation is given by Equation \ref{eq:measurementlineardiscrete}.
+
+
+\section{Design and implementation of an extended Kalman filter}
+\subsection{Nonlinear measurement equation}
+As is already written down in the nonlinear state-space model Equations \ref{eq:measurementnonlinear}, the measurement equation based on the nonlinear system equations is actually a linear equation. This is caused by the fact that the two outputs $x$ and $\theta$ are two states. The measurement equation based on the nonlinear system equations can be written as:
+\begin{equation}
+	\mathbf{y} = \begin{bmatrix}
+	x\\\theta
+	\end{bmatrix} = \mathbf{g}(\xi,v_c) = \begin{bmatrix}
+	1&0&0\\0&1&0
+	\end{bmatrix}\xi + 0* v_c
+\end{equation}
+\subsection{Jacobian of the state and measurement equation}
+As described in \ref{sec:linearization}, the Jacobians of the state and measurement equation can be found by taking the derivative of the nonlinear model $\dot{\xi} = \mathbf{f}(\xi,v_c)$ to the state vector and input respectively:
+\begin{equation}
+\begin{split}
+\mathbf{F} &= \frac{\partial \mathbf{f}}{\partial \xi}\\
+\mathbf{G} &= \frac{\partial \mathbf{f}}{\partial v_{c}}
+\end{split}	
+\label{eq:jacobiannotequilibrium}
+\end{equation}
+Unlike the linear Kalman filter, the extended Kalman filter uses discretized jacobian matrices evaluated in the current state estimate and not in the equilibrium state. Using Equations \ref{eq:jacobiannotequilibrium}, following expressions can be derived for the discrete time jacobians, starting from nonlinear, discrete state-space model \ref{eq:ssnonlineardiscrete}. Damping is neglected: 
+\begin{equation}
+\begin{split}
+\mathbf{F} &= \begin{bmatrix}
+1&0&0\\0&1+T_s\frac{v_csin(\theta)}{L}&\frac{T_s}{L}\\0&T_s\bigg(-gcos(\theta) - \frac{v_{tan}-v_ccos(\theta)}{L}*v_ccos(\theta)-\frac{(v_csin(\theta))^2}{L}\bigg)&1+T_s\frac{-v_csin(\theta)}{L}
+\end{bmatrix}\\
+\mathbf{G} &= \begin{bmatrix}
+T_s\\\frac{-T_scos(\theta)}{L}\\T_s\bigg(-sin(\theta)\frac{v_{tan}-v_ccos(\theta)}{L} +cos(\theta) \frac{v_c sin(\theta)}{L}\bigg)
+\end{bmatrix}
+\end{split}
+\end{equation}
+\subsection{Implementation of the extended Kalman filter}
+
+\section{Design and implementation of a state feedback controller based on the linearized model}
+\subsection{Design of a linear quadratic regulator}
+The objective of the LQR is to find the control input $v_c[k]$ that moves the system states $\xi \neq 0$ to \textbf{0}, in a way the performance criterion $\J$ is minimized. This means a tradeoff has to be made between performane $\J_p$, the speed with which the states go to zero, and the controll effort $\J_c$. The criterion is given in Equation \ref{eq:criterionLQR}. 
+\begin{equation}
+	\J = \J_p + \J_c =  \sum_{k=0}^{\infty}\mathbf{\xi}[k]^T\mathbf{Q}\mathbf{\xi}[k] + v_c[k]Rv_c[k]
+	\label{eq:criterionLQR}
+\end{equation}
+The matrix \textbf{Q} and the value R are design parameters. These values determine which part of the tradeoff is most important in this particular design: performance or control effort. 
+
+
 \bibliographystyle{plain}
 \bibliography{bibliography}
 
