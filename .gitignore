@@ -2,3 +2,23 @@
 *.log
 
 *.synctex(busy)
+
+*.synctex.gz
+
+*.log
+
+*.aux
+
+*.bbl
+
+*.blg
+
+*.lof
+
+*.log
+
+*.lot
+
+*.out
+
+*.toc
