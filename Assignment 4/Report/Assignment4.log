@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  22 DEC 2021 01:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  22 DEC 2021 17:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1011,9 +1011,14 @@ Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 319.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 [5]
+Overfull \hbox (23.73618pt too wide) in paragraph at lines 332--333
+\T1/cmr/m/n/10 equal to those used in the lin-ear Kalman fil-ter (see Equa-tion
+s $[]$).
+ []
+
 LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
-333.
- (c:/texlive/2020/texmf-dist/tex/latex/psnfss/omszplm.fd
+342.
+(c:/texlive/2020/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 ) (./Assignment4.bbl
 Underfull \hbox (badness 4556) in paragraph at lines 4--10
@@ -1027,24 +1032,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--10
 99 _ The _ use _ of _ a _ Nintendo _ Wii _
  []
 
-) 
+File: kuleuvenSedes.pdf Graphic file (type pdf)
+<use kuleuvenSedes.pdf>
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 16.
+(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+[6]) 
 AED: lastpage setting LastPage
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 344.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 353.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-[6] (./Assignment4.aux)
+[7] (./Assignment4.aux)
 Package rerunfilecheck Info: File `Assignment4.out' has not changed.
 (rerunfilecheck)             Checksum: 4EE3523E66F0F908B80272FC7843C2F0;1126.
  ) 
 Here is how much of TeX's memory you used:
- 23088 strings out of 479917
- 463525 string characters out of 5886666
- 792899 words of memory out of 5000000
- 39089 multiletter control sequences out of 15000+600000
+ 23091 strings out of 479917
+ 463550 string characters out of 5886666
+ 792958 words of memory out of 5000000
+ 39090 multiletter control sequences out of 15000+600000
  550426 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,25n,99p,553b,1101s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 89i,25n,99p,642b,1101s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
 ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2020/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2020/texmf-dist
@@ -1064,10 +1073,10 @@ ive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2020/t
 exmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2020/texmf-dist/
 fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2020/texmf-dist/fonts/type
 1/public/cm-super/sftt1000.pfb>
-Output written on Assignment4.pdf (6 pages, 547032 bytes).
+Output written on Assignment4.pdf (7 pages, 550913 bytes).
 PDF statistics:
- 317 PDF objects out of 1000 (max. 8388607)
- 259 compressed objects within 3 object streams
- 59 named destinations out of 1000 (max. 500000)
+ 327 PDF objects out of 1000 (max. 8388607)
+ 268 compressed objects within 3 object streams
+ 61 named destinations out of 1000 (max. 500000)
  238 words of extra memory for PDF output out of 10000 (max. 10000000)
 
