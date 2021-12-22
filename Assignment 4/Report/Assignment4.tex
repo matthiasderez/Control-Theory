@@ -305,11 +305,48 @@ To discretize the non-linear model, the forward Euler method is used as well:
 	
 \section{Design and implementation of a linear Kalman filter}
 The linearized measurement equation is given by Equation \ref{eq:measurementlineardiscrete}. For the matrices $Q$, $R$ and $\hat{P}_{0|0}$, the following numerical values are used:
+
 \begin{align}
 	\mathbf{R} &= \begin{bmatrix} 2.7878\cdot 10^{-9} & 0 \\ 0 & 9.4124\cdot 10^{-6}\end{bmatrix} \begin{bmatrix} \text{m}^2 \\ \text{rad}^2 \end{bmatrix}\\	
-	\mathbf{Q} &= \begin{bmatrix} 2.7878\cdot 10^{-8} & 0 & 0\\ 0 & 9.4124\cdot 10^{-8} & 0 \\ 0&0& 10^{-4}\end{bmatrix} \begin{bmatrix} \text{m}^2 \\ \text{rad}^2 \\ \left(\frac{\text{m}}{\text{s}}\right)^2\end{bmatrix} \\
-	\mathbf{\hat{P}_{0|0}} &= 0
+	\mathbf{Q} &= \begin{bmatrix} 2.7878\cdot 10^{-8} & 0 & 0\\ 0 & 9.4124\cdot 10^{-8} & 0 \\ 0&0& 10^{-4}\end{bmatrix} \begin{bmatrix} \text{m}^2 \\ \text{rad}^2 \\ \left(\frac{\text{m}}{\text{s}}\right)^2\end{bmatrix} \label{eq:eq28}\\
+	\mathbf{\hat{P}_{0|0}} &= \begin{bmatrix} 10^{-6} & 0 & 0\\ 0 & 2.3511\cdot 10^{-6} & 0 \\ 0&0& 10^{-6}\end{bmatrix} \begin{bmatrix} \text{m}^2 \\ \text{rad}^2 \\ \left(\frac{\text{m}}{\text{s}}\right)^2\end{bmatrix}
 \end{align}
+
+\noindent The value of $\mathbf{R}_{11} = R_x$ is determined by estimating the resolution of the wheel encoder experimentally. To this extent, the wheel is manually rotated as little as possible. The position values of the motors obtained using \texttt{getPositionMotorA()} are compared before and after this rotation. In this report, the difference in positions is $0.0032$ m. Dividing this difference by $2$ yields the maximum possible deviation of the position $x$, after multiplication by the radius of the wheels.  This last operation is because the previously mentioned formula returns the position in radians, while $x$ is expressed in meters. Finally, the measurement noise covariance is given as the square of this last calculated value.
+\\\\
+$\mathbf{R}_{22} = R_\theta$ is also determined using the resolution of the pendulum encoder. For this sensor, the resolution is already given and is equal to 1024 steps per revolution. This means that the pendulum angle can be determined with an accuracy of $0.5\cdot\frac{2\pi}{1024}$ radians. Again, taking the square of this value yields the measurement noise covariance for the pendulum angle $\theta$. 
+\\\\
+For the values of $Q_x$ and $Q_\theta$, experiments with varying $Q$ are conducted, of which the best ones yield the values given in (\ref{eq:eq28}). The best experiments are those that lead to the estimated states being the closest to reality. This way, $Q_x$ is set to $10\cdot R_x$, while $Q_\theta$ is set to $0.01 \cdot R_\theta$. Lastly, $Q_{v_{tan}}$ is taken in the order of the square root of $Q_x$ and $Q_\theta$, because $v_{tan}$ involves a derivative.
+\\\\
+Next, for $\hat{P}_{0|0, \theta}$, the following experiment is conducted: the pendulum is manually set so that one thinks that $\theta = 0$. Then, the measured angle $\theta$ shows how much one deviates from $\theta = 0$. This is repeated multiple times. The largest value of the measured angle over all the experiments is then taken as the maximum deviation when one wants to place the pendulum at $\theta = 0$. In this report, this value is taken to be $0.0046$ rad. Following the \textit{68-95-99.7 rule}\footnote{"In statistics, the 68–95–99.7 rule, also known as the empirical rule, is a shorthand used to remember the percentage of values that lie within an interval estimate in a normal distribution: 68\%, 95\%, and 99.7\% of the values lie within one, two, and three standard deviations of the mean, respectively." \cite{68rule}} then leads to $\hat{P}_{0|0, \theta} = \left(\frac{0.0046}{3}\right)^2 = 2.3511\cdot 10^{-6}$ rad$^2$.
+\\\\
+Lastly, $\hat{P}_{0|0, x}$ and $\hat{P}_{0|0, v_{tan}}$ are taken in the same order, leading to a value of $10^{-6}$.
+
+
+\begin{figure*}[htp!]
+	\centering
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{state1.eps}
+		\caption{$x$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.48\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{state2.eps}
+		\caption{$\theta$}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.48\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{state3.eps}
+		\caption{$v_{tan}$}
+	\end{subfigure}
+	\caption{Yeet} 
+	\label{fig:yeet}
+\end{figure*}
+
+
+
 
 	
 \section{Design and implementation of an extended Kalman filter}

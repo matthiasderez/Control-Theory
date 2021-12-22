@@ -3,44 +3,46 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Assignment4.aux
 The style file: plain.bst
 Database file #1: bibliography.bib
-You've used 4 entries,
+Warning--to sort, need author or key in 68rule
+You've used 5 entries,
             2118 wiz_defined-function locations,
-            518 strings with 4566 characters,
-and the built_in function-call counts, 886 in all, are:
-= -- 82
-> -- 28
+            522 strings with 4674 characters,
+and the built_in function-call counts, 1058 in all, are:
+= -- 100
+> -- 29
 < -- 0
-+ -- 13
++ -- 14
 - -- 8
-* -- 30
-:= -- 159
-add.period$ -- 14
-call.type$ -- 4
-change.case$ -- 14
+* -- 36
+:= -- 179
+add.period$ -- 17
+call.type$ -- 5
+change.case$ -- 17
 chr.to.int$ -- 0
-cite$ -- 4
-duplicate$ -- 38
-empty$ -- 89
+cite$ -- 6
+duplicate$ -- 45
+empty$ -- 112
 format.name$ -- 8
-if$ -- 189
+if$ -- 232
 int.to.chr$ -- 0
-int.to.str$ -- 4
+int.to.str$ -- 5
 missing$ -- 4
-newline$ -- 25
+newline$ -- 30
 num.names$ -- 8
-pop$ -- 32
+pop$ -- 40
 preamble$ -- 1
-purify$ -- 12
+purify$ -- 14
 quote$ -- 0
-skip$ -- 24
+skip$ -- 30
 stack$ -- 0
-substring$ -- 21
-swap$ -- 4
+substring$ -- 26
+swap$ -- 5
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 12
-warning$ -- 0
+type$ -- 16
+warning$ -- 1
 while$ -- 8
-width$ -- 5
-write$ -- 46
+width$ -- 6
+write$ -- 56
+(There was 1 warning)

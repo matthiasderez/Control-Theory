@@ -106,6 +106,7 @@ classdef KalmanExperiment
             for i=1:length(states)
                 j = states(i); 
                 p = plot(obj.t,obj.x(j,:));
+                set(gca,'Fontsize',12)
                 p.DisplayName = ['state ' num2str(j) ' (' num2str(confidence*100) '% interval)'];
                 hold on;
                 f = fill(bound(1,:),bound(j+1,:),p.Color,'FaceAlpha',0.15,'LineStyle','none');
