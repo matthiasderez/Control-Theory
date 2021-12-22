@@ -1,5 +1,5 @@
 QGPIORecord, QRC v6.1.0, 21-12-2021 @ 00:12:26, Windows 10 Version 2009, 10.0.19042, x86_64
-Time, VoltageA, VoltageB, desired_velocity, time, PositionB, SpeedA, SpeedB, GetFrontDistance, xhat, Phat, nu, S
+Time, VoltageA, VoltageB, desired_velocity, time, PositionB, SpeedA, SpeedB, y, x, P, nu, S
 26251, 0, 0, 0, 0, -3.25379, 0, 0, 0.251411, -0.251265, 2.2852e-06, 0.000200152, 1.15899e-05
 26261, 8.80315, 8.52805, 0.36313, 0.01, -3.25379, 0, 0, 0.251411, -0.251304, 2.2852e-06, 0.000146091, 1.15899e-05
 26271, 10.0179, 9.74986, 0.353868, 0.02, -3.25379, 0, 0, 0.24683, -0.247445, 2.2852e-06, -0.000842616, 1.15899e-05

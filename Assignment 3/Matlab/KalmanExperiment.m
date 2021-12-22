@@ -346,6 +346,7 @@ classdef KalmanExperiment
             f = fill(bound(:,1),bound(:,2),p.Color,'FaceAlpha',0.15,'LineStyle','none');
             f.Annotation.LegendInformation.IconDisplayStyle = 'off';
             title(['\bfNIS\rm: ' num2str(100*prob_nis) '% is in ' num2str(confidence*100) '% confidence interval']);
+            set(gca, 'FontSize', 11)
             xlabel('time'); 
             ylabel('NIS'); 
             subplot(212); 
@@ -357,6 +358,7 @@ classdef KalmanExperiment
             f = fill(bound(:,1),bound(:,2),p.Color,'FaceAlpha',0.15,'LineStyle','none');
             f.Annotation.LegendInformation.IconDisplayStyle = 'off';
             title(['\bfSNIS\rm: ' num2str(100*prob_snis) '% is in ' num2str(confidence*100) '% confidence interval']);
+            set(gca, 'FontSize', 11)
             xlabel('time'); 
             ylabel('SNIS'); 
             if ~h; hold off; end

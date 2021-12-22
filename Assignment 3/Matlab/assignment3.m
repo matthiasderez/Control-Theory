@@ -310,48 +310,167 @@ title('$\bf{Error \: on \: L_{\infty} \: for \: variable \: \rho}$','Interpreter
 hold off
 print -depsc error_L.eps
 
+%%% 3d)
+R = 8.4588e-06;
+ke_rho1000 = KalmanExperiment.createfromQRC3();
+ke_rho100 = KalmanExperiment.createfromQRC3();
+ke_rho10 = KalmanExperiment.createfromQRC3();
+ke_rho1 = KalmanExperiment.createfromQRC3();
+ke_rho0_1 = KalmanExperiment.createfromQRC3();
+ke_rho0_01 = KalmanExperiment.createfromQRC3();
+ke_rho0_001 = KalmanExperiment.createfromQRC3();
+
+ke_rho1000.analyzeconsistency();
+sgtitle('$\bf{Q = 8.4588 \cdot 10^{-3} m^2 \: || \: R = 8.4588 \cdot 10^{-6} m^2}$','Interpreter','latex', 'FontSize', 15)
+print -depsc SNIS_1000.eps
+
+ke_rho100.analyzeconsistency();
+sgtitle('$\bf{Q = 8.4588 \cdot 10^{-4} m^2 \: || \: R = 8.4588 \cdot 10^{-6} m^2}$','Interpreter','latex', 'FontSize', 15)
+print -depsc SNIS_100.eps
+
+ke_rho10.analyzeconsistency();
+sgtitle('$\bf{Q = 8.4588 \cdot 10^{-5} m^2 \: || \: R = 8.4588 \cdot 10^{-6} m^2}$','Interpreter','latex', 'FontSize', 15)
+print -depsc SNIS_10.eps
+
+ke_rho1.analyzeconsistency();
+sgtitle('$\bf{Q = 8.4588 \cdot 10^{-6} m^2 \: || \: R = 8.4588 \cdot 10^{-6} m^2}$','Interpreter','latex', 'FontSize', 15)
+print -depsc SNIS_1.eps
+
+ke_rho0_1.analyzeconsistency();
+sgtitle('$\bf{Q = 8.4588 \cdot 10^{-7} m^2 \: || \: R = 8.4588 \cdot 10^{-6} m^2}$','Interpreter','latex', 'FontSize', 15)
+print -depsc SNIS_01.eps
+
+ke_rho0_01.analyzeconsistency();
+sgtitle('$\bf{Q = 8.4588 \cdot 10^{-8} m^2 \: || \: R = 8.4588 \cdot 10^{-6} m^2}$','Interpreter','latex', 'FontSize', 15)
+print -depsc SNIS_001.eps
+
+ke_rho0_001.analyzeconsistency();
+sgtitle('$\bf{Q = 8.4588 \cdot 10^{-9} m^2 \: || \: R = 8.4588 \cdot 10^{-6} m^2}$','Interpreter','latex', 'FontSize', 15)
+print -depsc SNIS_0001.eps
 
 
+%%% 3e)
 
-%%%%%%%%%%%%%%%%%%%%
-x1 = -K2_4rho1000(:, 9);
-x2 = -K2_4rho100(:, 9);
-x3 = -K2_4rho10(:, 9);
-x4 = -K2_4rho1(:, 9);
-x5 = -K2_4rho0_1(:, 9);
-x6 = -K2_4rho0_01(:, 9);
-x7 = -K2_4rho0_001(:, 9);
+% loading data
+load K2_4x0_05rho1000.mat
+load K2_4x0_05rho100.mat
+load K2_4x0_05rho10.mat
+load K2_4x0_05rho1.mat
+load K2_4x0_05rho0_1.mat
+load K2_4x0_05rho0_01.mat
+load K2_4x0_05rho0_001.mat
+
+t = K2_4x0_05rho1000(1:351, 5);
+reference = zeros(size(t));
+reference(t<=0) = -0.25;
+reference(t>0) = -0.1;
+
+x1 = -K2_4x0_05rho1000(1:351, 9);
+x2 = -K2_4x0_05rho100(1:351, 9);
+x3 = -K2_4x0_05rho10(1:351, 9);
+x4 = -K2_4x0_05rho1(1:351, 9);
+x5 = -K2_4x0_05rho0_1(1:351, 9);
+x6 = -K2_4x0_05rho0_01(1:351, 9);
+x7 = -K2_4x0_05rho0_001(1:351, 9);
+
+xhat1 = K2_4x0_05rho1000(1:351, 10);
+xhat2 = K2_4x0_05rho100(1:351, 10);
+xhat3 = K2_4x0_05rho10(1:351, 10);
+xhat4 = K2_4x0_05rho1(1:351, 10);
+xhat5 = K2_4x0_05rho0_1(1:351, 10);
+xhat6 = K2_4x0_05rho0_01(1:351, 10);
+xhat7 = K2_4x0_05rho0_001(1:351, 10);
+
+% plots
+figure
+hold on
+plot(t, [x1, xhat1]);
+plot(t, reference, 'LineWidth',2)
+set(gca, 'FontSize', 11)
+xlabel('time [s]')
+ylabel('distance [m]')
+legend({'measured', 'estimated','reference'},'Location', 'east')
+title('\rho = 1000', 'Fontsize', 15)
+print -depsc wrong_pos_1000.eps
+hold off
 
 figure
 hold on
-plot(t, [x1, x2, x3, x4, x5, x6, x7]);
+plot(t, [x2, xhat2]);
+plot(t, reference, 'LineWidth',2)
+set(gca, 'FontSize', 11)
 xlabel('time [s]')
-ylabel('measured distance [m]')
-legend('\rho = 1000', '\rho = 100','\rho = 10','\rho = 1','\rho = 0.1','\rho = 0.01','\rho = 0.001','Location', 'NorthEast')
-sgtitle('Measured response for variable \rho')
-%%%%%%%%%%%%%%%%%%%%
+ylabel('distance [m]')
+legend({'measured', 'estimated','reference'},'Location', 'east', 'FontSize', 11)
+title('\rho = 100', 'Fontsize', 15)
+print -depsc wrong_pos_100.eps
+hold off
 
-%%% 3d)
+figure
+hold on
+plot(t, [x3, xhat3]);
+plot(t, reference, 'LineWidth',2)
+set(gca, 'FontSize', 11)
+xlabel('time [s]')
+ylabel('distance [m]')
+legend({'measured', 'estimated','reference'},'Location', 'east', 'FontSize', 11)
+title('\rho = 10', 'Fontsize', 15)
+print -depsc wrong_pos_10.eps
+hold off
 
-analyzeconsistency(KalmanExperiment.createfromQRC3())
+figure
+hold on
+plot(t, [x4, xhat4]);
+plot(t, reference, 'LineWidth',2)
+set(gca, 'FontSize', 11)
+xlabel('time [s]')
+ylabel('distance [m]')
+legend({'measured', 'estimated','reference'},'Location', 'east', 'FontSize', 11)
+title('\rho = 1', 'Fontsize', 15)
+print -depsc wrong_pos_1.eps
+hold off
+
+figure
+hold on
+plot(t, [x5, xhat5]);
+plot(t, reference, 'LineWidth',2)
+set(gca, 'FontSize', 11)
+xlabel('time [s]')
+ylabel('distance [m]')
+legend({'measured', 'estimated','reference'},'Location', 'east', 'FontSize', 11)
+title('\rho = 0.1', 'Fontsize', 15)
+print -depsc wrong_pos_01.eps
+hold off
+
+figure
+hold on
+plot(t, [x6, xhat6]);
+plot(t, reference, 'LineWidth',2)
+set(gca, 'FontSize', 11)
+xlabel('time [s]')
+ylabel('distance [m]')
+legend({'measured', 'estimated','reference'},'Location', 'east', 'FontSize', 11)
+title('\rho = 0.01', 'Fontsize', 15)
+print -depsc wrong_pos_001.eps
+hold off
+
+figure
+hold on
+plot(t, [x7, xhat7]);
+plot(t, reference, 'LineWidth',2)
+set(gca, 'FontSize', 11)
+xlabel('time [s]')
+ylabel('distance [m]')
+legend({'measured', 'estimated','reference'},'Location', 'east', 'FontSize', 11)
+title('\rho = 0.001', 'Fontsize', 15)
+print -depsc wrong_pos_0001.eps
+hold off
 
 
+%%% 3f) 
 
-
-
-
-
-
-
-
-
-% Voor de foute xhat(0) zijn volgende waarden gekozen:
-    % xhat(0) = -0.05 terwijl het wagentje rijdt van -0.25 naar -0.15
-% wagentje zou dus eerst even naar achter moeten rijden.
-    
-%% State estimator using pole placement
+% State estimator using pole placement
 K = 2.4;
-
 pd = 1-Ts*K;
 pc = log(pd)/Ts;
 
@@ -359,14 +478,29 @@ pc = log(pd)/Ts;
 pce = pc/10;
 pde = exp(pce*Ts);
 
-%estimator gain
-Lplace = place(A',C',pde)
+% estimator gain
+Lplace = acker(A',C',pde);
 
-% Weer zelfde stap met verkeerde xhat(0) = -0.05, zeer duidelijk sichtbaar
-% dat door trage estimator echt de verkeerde kant wordt opgegaan in het begin, zichtbaar
-% tijdens metingen!!!
-% Bestand met naam pole_placement
-% duurt zeer lang, dus mss grafiek met transiente respons en volledige
-% respons?
+% load data
+load K2_4_poleplacement.mat
 
- 
+t = K2_4_poleplacement(:, 5);
+reference = zeros(size(t));
+reference(t<=0) = -0.25;
+reference(t>0) = -0.2;
+
+x = -K2_4_poleplacement(:, 9);
+xhat = K2_4_poleplacement(:, 10);
+
+% plot
+figure
+hold on
+plot(t, [x, xhat]);
+plot(t, reference, 'LineWidth',2)
+set(gca, 'FontSize', 11)
+xlabel('time [s]')
+ylabel('distance [m]')
+legend({'measured', 'estimated','reference'},'Location', 'southeast')
+title('Pole placement', 'Fontsize', 15)
+print -depsc pole_placement.eps
+hold off

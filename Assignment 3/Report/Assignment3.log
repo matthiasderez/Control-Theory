@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.18)  21 DEC 2021 13:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.18)  22 DEC 2021 04:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -920,12 +920,12 @@ Package gensymb Info: Using \Omega for \ohm on input line 60.
 
 Package gensymb Warning: Not defining \micro.
 
-<kuleuvenLogo.pdf, id=91, 159.33528pt x 56.90259pt>
+<kuleuvenLogo.pdf, id=99, 159.33528pt x 56.90259pt>
 File: kuleuvenLogo.pdf Graphic file (type pdf)
 <use kuleuvenLogo.pdf>
 Package pdftex.def Info: kuleuvenLogo.pdf  used on input line 62.
 (pdftex.def)             Requested size: 119.50601pt x 42.67912pt.
-<kuleuvenSedes.pdf, id=92, 349.305pt x 596.2275pt>
+<kuleuvenSedes.pdf, id=100, 349.305pt x 596.2275pt>
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
 Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 62.
@@ -1017,7 +1017,7 @@ Package epstopdf Info: Source file: <../Matlab//poles.eps>
 df ../Matlab//poles.eps>
 (epstopdf)             \includegraphics on input line 182.
 Package epstopdf Info: Output file is already uptodate.
-<./poles-eps-converted-to.pdf, id=187, 295.1025pt x 302.12875pt>
+<./poles-eps-converted-to.pdf, id=204, 295.1025pt x 302.12875pt>
 File: ./poles-eps-converted-to.pdf Graphic file (type pdf)
 <use ./poles-eps-converted-to.pdf>
 Package pdftex.def Info: ./poles-eps-converted-to.pdf  used on input line 182.
@@ -1032,7 +1032,7 @@ Package epstopdf Info: Source file: <../Matlab//poles_cont.eps>
 -to.pdf ../Matlab//poles_cont.eps>
 (epstopdf)             \includegraphics on input line 189.
 Package epstopdf Info: Output file is already uptodate.
-<./poles_cont-eps-converted-to.pdf, id=188, 367.3725pt x 302.12875pt>
+<./poles_cont-eps-converted-to.pdf, id=205, 367.3725pt x 302.12875pt>
 File: ./poles_cont-eps-converted-to.pdf Graphic file (type pdf)
 <use ./poles_cont-eps-converted-to.pdf>
 Package pdftex.def Info: ./poles_cont-eps-converted-to.pdf  used on input line 
@@ -1042,7 +1042,7 @@ Package pdftex.def Info: ./poles_cont-eps-converted-to.pdf  used on input line
 
 pdfTeX warning: pdflatex.exe (file ./impulse_response1.pdf): PDF inclusion: fou
 nd PDF version <1.7>, but at most version <1.5> allowed
-<impulse_response1.pdf, id=189, 369.22844pt x 290.24536pt>
+<impulse_response1.pdf, id=206, 369.22844pt x 290.24536pt>
 File: impulse_response1.pdf Graphic file (type pdf)
 <use impulse_response1.pdf>
 Package pdftex.def Info: impulse_response1.pdf  used on input line 213.
@@ -1051,7 +1051,7 @@ Package pdftex.def Info: impulse_response1.pdf  used on input line 213.
 
 pdfTeX warning: pdflatex.exe (file ./impulse_response3.pdf): PDF inclusion: fou
 nd PDF version <1.7>, but at most version <1.5> allowed
-<impulse_response3.pdf, id=190, 369.22844pt x 290.24536pt>
+<impulse_response3.pdf, id=207, 369.22844pt x 290.24536pt>
 File: impulse_response3.pdf Graphic file (type pdf)
 <use impulse_response3.pdf>
 Package pdftex.def Info: impulse_response3.pdf  used on input line 218.
@@ -1125,7 +1125,7 @@ Package epstopdf Info: Source file: <../Matlab//gain_error.eps>
 -to.pdf ../Matlab//gain_error.eps>
 (epstopdf)             \includegraphics on input line 306.
 Package epstopdf Info: Output file is already uptodate.
-<./gain_error-eps-converted-to.pdf, id=259, 422.57875pt x 317.185pt>
+<./gain_error-eps-converted-to.pdf, id=276, 422.57875pt x 317.185pt>
 File: ./gain_error-eps-converted-to.pdf Graphic file (type pdf)
 <use ./gain_error-eps-converted-to.pdf>
 Package pdftex.def Info: ./gain_error-eps-converted-to.pdf  used on input line 
@@ -1154,7 +1154,7 @@ Package epstopdf Info: Source file: <../Matlab//poles_LQE.eps>
 to.pdf ../Matlab//poles_LQE.eps>
 (epstopdf)             \includegraphics on input line 336.
 Package epstopdf Info: Output file is already uptodate.
-<./poles_LQE-eps-converted-to.pdf, id=273, 295.1025pt x 302.12875pt>
+<./poles_LQE-eps-converted-to.pdf, id=290, 295.1025pt x 302.12875pt>
 File: ./poles_LQE-eps-converted-to.pdf Graphic file (type pdf)
 <use ./poles_LQE-eps-converted-to.pdf>
 Package pdftex.def Info: ./poles_LQE-eps-converted-to.pdf  used on input line 3
@@ -1241,7 +1241,7 @@ Package epstopdf Info: Source file: <../Matlab//response_variable_K.eps>
 converted-to.pdf ../Matlab//response_variable_K.eps>
 (epstopdf)             \includegraphics on input line 384.
 Package epstopdf Info: Output file is already uptodate.
-<./response_variable_K-eps-converted-to.pdf, id=309, 379.4175pt x 307.1475pt>
+<./response_variable_K-eps-converted-to.pdf, id=327, 379.4175pt x 307.1475pt>
 File: ./response_variable_K-eps-converted-to.pdf Graphic file (type pdf)
 <use ./response_variable_K-eps-converted-to.pdf>
 Package pdftex.def Info: ./response_variable_K-eps-converted-to.pdf  used on in
@@ -1258,20 +1258,20 @@ Package epstopdf Info: Source file: <../Matlab//voltage_variable_K.eps>
 onverted-to.pdf ../Matlab//voltage_variable_K.eps>
 (epstopdf)             \includegraphics on input line 389.
 Package epstopdf Info: Output file is already uptodate.
-<./voltage_variable_K-eps-converted-to.pdf, id=310, 361.35pt x 307.1475pt>
+<./voltage_variable_K-eps-converted-to.pdf, id=328, 361.35pt x 307.1475pt>
 File: ./voltage_variable_K-eps-converted-to.pdf Graphic file (type pdf)
 <use ./voltage_variable_K-eps-converted-to.pdf>
 Package pdftex.def Info: ./voltage_variable_K-eps-converted-to.pdf  used on inp
 ut line 389.
 (pdftex.def)             Requested size: 217.60522pt x 184.9648pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 397--400
+Underfull \hbox (badness 10000) in paragraph at lines 398--401
 
  []
 
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 400.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 401.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 Package fancyhdr Warning: \headheight is too small (42.67912pt): 
@@ -1291,12 +1291,12 @@ Package epstopdf Info: Source file: <../Matlab//phat.eps>
 (epstopdf)                    size: 34821 bytes
 (epstopdf)             Command: <repstopdf --outfile=./phat-eps-converted-to.pd
 f ../Matlab//phat.eps>
-(epstopdf)             \includegraphics on input line 405.
+(epstopdf)             \includegraphics on input line 406.
 Package epstopdf Info: Output file is already uptodate.
-<./phat-eps-converted-to.pdf, id=333, 359.3425pt x 310.15875pt>
+<./phat-eps-converted-to.pdf, id=350, 359.3425pt x 310.15875pt>
 File: ./phat-eps-converted-to.pdf Graphic file (type pdf)
 <use ./phat-eps-converted-to.pdf>
-Package pdftex.def Info: ./phat-eps-converted-to.pdf  used on input line 405.
+Package pdftex.def Info: ./phat-eps-converted-to.pdf  used on input line 406.
 (pdftex.def)             Requested size: 218.51521pt x 188.60971pt.
 Package epstopdf Info: Source file: <../Matlab//L.eps>
 (epstopdf)                    date: 2021-12-21 11:04:20
@@ -1306,30 +1306,30 @@ Package epstopdf Info: Source file: <../Matlab//L.eps>
 (epstopdf)                    size: 23000 bytes
 (epstopdf)             Command: <repstopdf --outfile=./L-eps-converted-to.pdf .
 ./Matlab//L.eps>
-(epstopdf)             \includegraphics on input line 410.
+(epstopdf)             \includegraphics on input line 411.
 Package epstopdf Info: Output file is already uptodate.
-<./L-eps-converted-to.pdf, id=334, 370.38374pt x 307.1475pt>
+<./L-eps-converted-to.pdf, id=351, 370.38374pt x 307.1475pt>
 File: ./L-eps-converted-to.pdf Graphic file (type pdf)
 <use ./L-eps-converted-to.pdf>
-Package pdftex.def Info: ./L-eps-converted-to.pdf  used on input line 410.
+Package pdftex.def Info: ./L-eps-converted-to.pdf  used on input line 411.
 (pdftex.def)             Requested size: 218.51521pt x 181.21075pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--425
+Underfull \hbox (badness 10000) in paragraph at lines 417--426
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--425
+Underfull \hbox (badness 10000) in paragraph at lines 417--426
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--425
+Underfull \hbox (badness 10000) in paragraph at lines 417--426
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--425
+Underfull \hbox (badness 10000) in paragraph at lines 417--426
 
  []
 
@@ -1341,12 +1341,12 @@ Package epstopdf Info: Source file: <../Matlab//error_L.eps>
 (epstopdf)                    size: 17438 bytes
 (epstopdf)             Command: <repstopdf --outfile=./error_L-eps-converted-to
 .pdf ../Matlab//error_L.eps>
-(epstopdf)             \includegraphics on input line 430.
+(epstopdf)             \includegraphics on input line 431.
 Package epstopdf Info: Output file is already uptodate.
-<./error_L-eps-converted-to.pdf, id=347, 376.40625pt x 307.1475pt>
+<./error_L-eps-converted-to.pdf, id=364, 376.40625pt x 307.1475pt>
 File: ./error_L-eps-converted-to.pdf Graphic file (type pdf)
 <use ./error_L-eps-converted-to.pdf>
-Package pdftex.def Info: ./error_L-eps-converted-to.pdf  used on input line 430
+Package pdftex.def Info: ./error_L-eps-converted-to.pdf  used on input line 431
 .
 (pdftex.def)             Requested size: 218.51521pt x 178.31439pt.
 Package epstopdf Info: Source file: <../Matlab//error_P.eps>
@@ -1357,17 +1357,17 @@ Package epstopdf Info: Source file: <../Matlab//error_P.eps>
 (epstopdf)                    size: 17599 bytes
 (epstopdf)             Command: <repstopdf --outfile=./error_P-eps-converted-to
 .pdf ../Matlab//error_P.eps>
-(epstopdf)             \includegraphics on input line 437.
+(epstopdf)             \includegraphics on input line 438.
 Package epstopdf Info: Output file is already uptodate.
-<./error_P-eps-converted-to.pdf, id=348, 367.3725pt x 310.15875pt>
+<./error_P-eps-converted-to.pdf, id=365, 367.3725pt x 310.15875pt>
 File: ./error_P-eps-converted-to.pdf Graphic file (type pdf)
 <use ./error_P-eps-converted-to.pdf>
-Package pdftex.def Info: ./error_P-eps-converted-to.pdf  used on input line 437
+Package pdftex.def Info: ./error_P-eps-converted-to.pdf  used on input line 438
 .
 (pdftex.def)             Requested size: 218.51521pt x 184.48758pt.
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 449.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 450.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 Package fancyhdr Warning: \headheight is too small (42.67912pt): 
@@ -1378,16 +1378,126 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
 
 [10 <./phat-eps-converted-to.pdf> <./L-eps-converted-to.pdf>]
-<rho10.png, id=368, 421.575pt x 316.18124pt>
-File: rho10.png Graphic file (type png)
-<use rho10.png>
-Package pdftex.def Info: rho10.png  used on input line 467.
-(pdftex.def)             Requested size: 218.51521pt x 163.88931pt.
+Underfull \hbox (badness 10000) in paragraph at lines 462--466
+
+ []
+
+Package epstopdf Info: Source file: <../Matlab//SNIS_1000.eps>
+(epstopdf)                    date: 2021-12-22 01:40:12
+(epstopdf)                    size: 50758 bytes
+(epstopdf)             Output file: <./SNIS_1000-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-22 01:40:24
+(epstopdf)                    size: 48572 bytes
+(epstopdf)             Command: <repstopdf --outfile=./SNIS_1000-eps-converted-
+to.pdf ../Matlab//SNIS_1000.eps>
+(epstopdf)             \includegraphics on input line 470.
+Package epstopdf Info: Output file is already uptodate.
+<./SNIS_1000-eps-converted-to.pdf, id=387, 422.57875pt x 317.185pt>
+File: ./SNIS_1000-eps-converted-to.pdf Graphic file (type pdf)
+<use ./SNIS_1000-eps-converted-to.pdf>
+Package pdftex.def Info: ./SNIS_1000-eps-converted-to.pdf  used on input line 4
+70.
+(pdftex.def)             Requested size: 204.85844pt x 153.76677pt.
+Package epstopdf Info: Source file: <../Matlab//SNIS_100.eps>
+(epstopdf)                    date: 2021-12-22 01:40:12
+(epstopdf)                    size: 51389 bytes
+(epstopdf)             Output file: <./SNIS_100-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-22 01:40:26
+(epstopdf)                    size: 49262 bytes
+(epstopdf)             Command: <repstopdf --outfile=./SNIS_100-eps-converted-t
+o.pdf ../Matlab//SNIS_100.eps>
+(epstopdf)             \includegraphics on input line 471.
+Package epstopdf Info: Output file is already uptodate.
+<./SNIS_100-eps-converted-to.pdf, id=388, 422.57875pt x 317.185pt>
+File: ./SNIS_100-eps-converted-to.pdf Graphic file (type pdf)
+<use ./SNIS_100-eps-converted-to.pdf>
+Package pdftex.def Info: ./SNIS_100-eps-converted-to.pdf  used on input line 47
+1.
+(pdftex.def)             Requested size: 204.85844pt x 153.76677pt.
+Package epstopdf Info: Source file: <../Matlab//SNIS_10.eps>
+(epstopdf)                    date: 2021-12-22 01:40:13
+(epstopdf)                    size: 53746 bytes
+(epstopdf)             Output file: <./SNIS_10-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-22 01:40:28
+(epstopdf)                    size: 52007 bytes
+(epstopdf)             Command: <repstopdf --outfile=./SNIS_10-eps-converted-to
+.pdf ../Matlab//SNIS_10.eps>
+(epstopdf)             \includegraphics on input line 472.
+Package epstopdf Info: Output file is already uptodate.
+<./SNIS_10-eps-converted-to.pdf, id=389, 422.57875pt x 317.185pt>
+File: ./SNIS_10-eps-converted-to.pdf Graphic file (type pdf)
+<use ./SNIS_10-eps-converted-to.pdf>
+Package pdftex.def Info: ./SNIS_10-eps-converted-to.pdf  used on input line 472
+.
+(pdftex.def)             Requested size: 204.85844pt x 153.76677pt.
+Package epstopdf Info: Source file: <../Matlab//SNIS_1.eps>
+(epstopdf)                    date: 2021-12-22 01:40:14
+(epstopdf)                    size: 52881 bytes
+(epstopdf)             Output file: <./SNIS_1-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-22 01:40:30
+(epstopdf)                    size: 51379 bytes
+(epstopdf)             Command: <repstopdf --outfile=./SNIS_1-eps-converted-to.
+pdf ../Matlab//SNIS_1.eps>
+(epstopdf)             \includegraphics on input line 473.
+Package epstopdf Info: Output file is already uptodate.
+<./SNIS_1-eps-converted-to.pdf, id=390, 422.57875pt x 317.185pt>
+File: ./SNIS_1-eps-converted-to.pdf Graphic file (type pdf)
+<use ./SNIS_1-eps-converted-to.pdf>
+Package pdftex.def Info: ./SNIS_1-eps-converted-to.pdf  used on input line 473.
+
+(pdftex.def)             Requested size: 204.85844pt x 153.76677pt.
+Package epstopdf Info: Source file: <../Matlab//SNIS_01.eps>
+(epstopdf)                    date: 2021-12-22 01:40:15
+(epstopdf)                    size: 51243 bytes
+(epstopdf)             Output file: <./SNIS_01-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-22 01:40:31
+(epstopdf)                    size: 51793 bytes
+(epstopdf)             Command: <repstopdf --outfile=./SNIS_01-eps-converted-to
+.pdf ../Matlab//SNIS_01.eps>
+(epstopdf)             \includegraphics on input line 474.
+Package epstopdf Info: Output file is already uptodate.
+<./SNIS_01-eps-converted-to.pdf, id=391, 422.57875pt x 317.185pt>
+File: ./SNIS_01-eps-converted-to.pdf Graphic file (type pdf)
+<use ./SNIS_01-eps-converted-to.pdf>
+Package pdftex.def Info: ./SNIS_01-eps-converted-to.pdf  used on input line 474
+.
+(pdftex.def)             Requested size: 204.85844pt x 153.76677pt.
+Package epstopdf Info: Source file: <../Matlab//SNIS_001.eps>
+(epstopdf)                    date: 2021-12-22 01:40:16
+(epstopdf)                    size: 49652 bytes
+(epstopdf)             Output file: <./SNIS_001-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-22 01:40:33
+(epstopdf)                    size: 51495 bytes
+(epstopdf)             Command: <repstopdf --outfile=./SNIS_001-eps-converted-t
+o.pdf ../Matlab//SNIS_001.eps>
+(epstopdf)             \includegraphics on input line 475.
+Package epstopdf Info: Output file is already uptodate.
+<./SNIS_001-eps-converted-to.pdf, id=392, 422.57875pt x 317.185pt>
+File: ./SNIS_001-eps-converted-to.pdf Graphic file (type pdf)
+<use ./SNIS_001-eps-converted-to.pdf>
+Package pdftex.def Info: ./SNIS_001-eps-converted-to.pdf  used on input line 47
+5.
+(pdftex.def)             Requested size: 204.85844pt x 153.76677pt.
+Package epstopdf Info: Source file: <../Matlab//SNIS_0001.eps>
+(epstopdf)                    date: 2021-12-22 01:40:16
+(epstopdf)                    size: 51275 bytes
+(epstopdf)             Output file: <./SNIS_0001-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-22 01:40:35
+(epstopdf)                    size: 53649 bytes
+(epstopdf)             Command: <repstopdf --outfile=./SNIS_0001-eps-converted-
+to.pdf ../Matlab//SNIS_0001.eps>
+(epstopdf)             \includegraphics on input line 476.
+Package epstopdf Info: Output file is already uptodate.
+<./SNIS_0001-eps-converted-to.pdf, id=393, 422.57875pt x 317.185pt>
+File: ./SNIS_0001-eps-converted-to.pdf Graphic file (type pdf)
+<use ./SNIS_0001-eps-converted-to.pdf>
+Package pdftex.def Info: ./SNIS_0001-eps-converted-to.pdf  used on input line 4
+76.
+(pdftex.def)             Requested size: 204.85844pt x 153.76677pt.
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 482.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 481.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-
 
 Package fancyhdr Warning: \headheight is too small (42.67912pt): 
 (fancyhdr)                Make it at least 46.27914pt, for example:
@@ -1397,11 +1507,147 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
 
 [11 <./error_L-eps-converted-to.pdf> <./error_P-eps-converted-to.pdf>]
-(./Assignment3.bbl) 
-AED: lastpage setting LastPage
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 487.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 481.
+(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+
+
+Package fancyhdr Warning: \headheight is too small (42.67912pt): 
+(fancyhdr)                Make it at least 46.27914pt, for example:
+(fancyhdr)                \setlength{\headheight}{46.27914pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
+
+[12 <./SNIS_1000-eps-converted-to.pdf> <./SNIS_100-eps-converted-to.pdf> <./SNI
+S_10-eps-converted-to.pdf> <./SNIS_1-eps-converted-to.pdf> <./SNIS_01-eps-conve
+rted-to.pdf> <./SNIS_001-eps-converted-to.pdf> <./SNIS_0001-eps-converted-to.pd
+f>]
+Underfull \hbox (badness 10000) in paragraph at lines 484--489
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 484--489
+
+ []
+
+Package epstopdf Info: Source file: <../Matlab//wrong_pos_1000.eps>
+(epstopdf)                    date: 2021-12-22 04:25:40
+(epstopdf)                    size: 33892 bytes
+(epstopdf)             Output file: <./wrong_pos_1000-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-22 04:27:59
+(epstopdf)                    size: 11335 bytes
+(epstopdf)             Command: <repstopdf --outfile=./wrong_pos_1000-eps-conve
+rted-to.pdf ../Matlab//wrong_pos_1000.eps>
+(epstopdf)             \includegraphics on input line 492.
+Package epstopdf Info: Output file is already uptodate.
+<./wrong_pos_1000-eps-converted-to.pdf, id=457, 379.4175pt x 310.15875pt>
+File: ./wrong_pos_1000-eps-converted-to.pdf Graphic file (type pdf)
+<use ./wrong_pos_1000-eps-converted-to.pdf>
+Package pdftex.def Info: ./wrong_pos_1000-eps-converted-to.pdf  used on input l
+ine 492.
+(pdftex.def)             Requested size: 204.85844pt x 167.4643pt.
+Package epstopdf Info: Source file: <../Matlab//wrong_pos_100.eps>
+(epstopdf)                    date: 2021-12-22 03:16:32
+(epstopdf)                    size: 33870 bytes
+(epstopdf)             Output file: <./wrong_pos_100-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-22 03:23:09
+(epstopdf)                    size: 11672 bytes
+(epstopdf)             Command: <repstopdf --outfile=./wrong_pos_100-eps-conver
+ted-to.pdf ../Matlab//wrong_pos_100.eps>
+(epstopdf)             \includegraphics on input line 493.
+Package epstopdf Info: Output file is already uptodate.
+<./wrong_pos_100-eps-converted-to.pdf, id=458, 379.4175pt x 310.15875pt>
+File: ./wrong_pos_100-eps-converted-to.pdf Graphic file (type pdf)
+<use ./wrong_pos_100-eps-converted-to.pdf>
+Package pdftex.def Info: ./wrong_pos_100-eps-converted-to.pdf  used on input li
+ne 493.
+(pdftex.def)             Requested size: 204.85844pt x 167.4643pt.
+Package epstopdf Info: Source file: <../Matlab//wrong_pos_10.eps>
+(epstopdf)                    date: 2021-12-22 03:16:33
+(epstopdf)                    size: 33859 bytes
+(epstopdf)             Output file: <./wrong_pos_10-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-22 03:23:11
+(epstopdf)                    size: 12068 bytes
+(epstopdf)             Command: <repstopdf --outfile=./wrong_pos_10-eps-convert
+ed-to.pdf ../Matlab//wrong_pos_10.eps>
+(epstopdf)             \includegraphics on input line 494.
+Package epstopdf Info: Output file is already uptodate.
+<./wrong_pos_10-eps-converted-to.pdf, id=459, 379.4175pt x 310.15875pt>
+File: ./wrong_pos_10-eps-converted-to.pdf Graphic file (type pdf)
+<use ./wrong_pos_10-eps-converted-to.pdf>
+Package pdftex.def Info: ./wrong_pos_10-eps-converted-to.pdf  used on input lin
+e 494.
+(pdftex.def)             Requested size: 204.85844pt x 167.4643pt.
+Package epstopdf Info: Source file: <../Matlab//wrong_pos_1.eps>
+(epstopdf)                    date: 2021-12-22 03:16:34
+(epstopdf)                    size: 33869 bytes
+(epstopdf)             Output file: <./wrong_pos_1-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-22 03:23:13
+(epstopdf)                    size: 11827 bytes
+(epstopdf)             Command: <repstopdf --outfile=./wrong_pos_1-eps-converte
+d-to.pdf ../Matlab//wrong_pos_1.eps>
+(epstopdf)             \includegraphics on input line 495.
+Package epstopdf Info: Output file is already uptodate.
+<./wrong_pos_1-eps-converted-to.pdf, id=460, 379.4175pt x 310.15875pt>
+File: ./wrong_pos_1-eps-converted-to.pdf Graphic file (type pdf)
+<use ./wrong_pos_1-eps-converted-to.pdf>
+Package pdftex.def Info: ./wrong_pos_1-eps-converted-to.pdf  used on input line
+ 495.
+(pdftex.def)             Requested size: 204.85844pt x 167.4643pt.
+Package epstopdf Info: Source file: <../Matlab//wrong_pos_01.eps>
+(epstopdf)                    date: 2021-12-22 03:16:34
+(epstopdf)                    size: 33857 bytes
+(epstopdf)             Output file: <./wrong_pos_01-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-22 03:23:14
+(epstopdf)                    size: 12370 bytes
+(epstopdf)             Command: <repstopdf --outfile=./wrong_pos_01-eps-convert
+ed-to.pdf ../Matlab//wrong_pos_01.eps>
+(epstopdf)             \includegraphics on input line 500.
+Package epstopdf Info: Output file is already uptodate.
+<./wrong_pos_01-eps-converted-to.pdf, id=461, 379.4175pt x 310.15875pt>
+File: ./wrong_pos_01-eps-converted-to.pdf Graphic file (type pdf)
+<use ./wrong_pos_01-eps-converted-to.pdf>
+Package pdftex.def Info: ./wrong_pos_01-eps-converted-to.pdf  used on input lin
+e 500.
+(pdftex.def)             Requested size: 204.85844pt x 167.4643pt.
+Package epstopdf Info: Source file: <../Matlab//wrong_pos_001.eps>
+(epstopdf)                    date: 2021-12-22 03:16:35
+(epstopdf)                    size: 33867 bytes
+(epstopdf)             Output file: <./wrong_pos_001-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-22 03:23:16
+(epstopdf)                    size: 12343 bytes
+(epstopdf)             Command: <repstopdf --outfile=./wrong_pos_001-eps-conver
+ted-to.pdf ../Matlab//wrong_pos_001.eps>
+(epstopdf)             \includegraphics on input line 501.
+Package epstopdf Info: Output file is already uptodate.
+<./wrong_pos_001-eps-converted-to.pdf, id=462, 379.4175pt x 310.15875pt>
+File: ./wrong_pos_001-eps-converted-to.pdf Graphic file (type pdf)
+<use ./wrong_pos_001-eps-converted-to.pdf>
+Package pdftex.def Info: ./wrong_pos_001-eps-converted-to.pdf  used on input li
+ne 501.
+(pdftex.def)             Requested size: 204.85844pt x 167.4643pt.
+Package epstopdf Info: Source file: <../Matlab//wrong_pos_0001.eps>
+(epstopdf)                    date: 2021-12-22 03:16:35
+(epstopdf)                    size: 33888 bytes
+(epstopdf)             Output file: <./wrong_pos_0001-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-22 03:23:18
+(epstopdf)                    size: 12408 bytes
+(epstopdf)             Command: <repstopdf --outfile=./wrong_pos_0001-eps-conve
+rted-to.pdf ../Matlab//wrong_pos_0001.eps>
+(epstopdf)             \includegraphics on input line 502.
+Package epstopdf Info: Output file is already uptodate.
+<./wrong_pos_0001-eps-converted-to.pdf, id=463, 379.4175pt x 310.15875pt>
+File: ./wrong_pos_0001-eps-converted-to.pdf Graphic file (type pdf)
+<use ./wrong_pos_0001-eps-converted-to.pdf>
+Package pdftex.def Info: ./wrong_pos_0001-eps-converted-to.pdf  used on input l
+ine 502.
+(pdftex.def)             Requested size: 204.85844pt x 167.4643pt.
+File: kuleuvenSedes.pdf Graphic file (type pdf)
+<use kuleuvenSedes.pdf>
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 507.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 Package fancyhdr Warning: \headheight is too small (42.67912pt): 
@@ -1411,16 +1657,85 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
 
-[12 <./rho10.png (PNG copy)>] (./Assignment3.aux)
+[13 <./wrong_pos_1000-eps-converted-to.pdf> <./wrong_pos_100-eps-converted-to.p
+df> <./wrong_pos_10-eps-converted-to.pdf> <./wrong_pos_1-eps-converted-to.pdf>]
+File: kuleuvenSedes.pdf Graphic file (type pdf)
+<use kuleuvenSedes.pdf>
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 507.
+(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+
+Package fancyhdr Warning: \headheight is too small (42.67912pt): 
+(fancyhdr)                Make it at least 46.27914pt, for example:
+(fancyhdr)                \setlength{\headheight}{46.27914pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
+
+[14 <./wrong_pos_01-eps-converted-to.pdf> <./wrong_pos_001-eps-converted-to.pdf
+> <./wrong_pos_0001-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../Matlab//pole_placement.eps>
+(epstopdf)                    date: 2021-12-22 04:25:54
+(epstopdf)                    size: 132827 bytes
+(epstopdf)             Output file: <./pole_placement-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-22 04:28:01
+(epstopdf)                    size: 41067 bytes
+(epstopdf)             Command: <repstopdf --outfile=./pole_placement-eps-conve
+rted-to.pdf ../Matlab//pole_placement.eps>
+(epstopdf)             \includegraphics on input line 530.
+Package epstopdf Info: Output file is already uptodate.
+<./pole_placement-eps-converted-to.pdf, id=542, 377.41pt x 311.1625pt>
+File: ./pole_placement-eps-converted-to.pdf Graphic file (type pdf)
+<use ./pole_placement-eps-converted-to.pdf>
+Package pdftex.def Info: ./pole_placement-eps-converted-to.pdf  used on input l
+ine 530.
+(pdftex.def)             Requested size: 273.14922pt x 225.20007pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 522--534
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 522--534
+
+ []
+
+File: kuleuvenSedes.pdf Graphic file (type pdf)
+<use kuleuvenSedes.pdf>
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 554.
+(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+
+Package fancyhdr Warning: \headheight is too small (42.67912pt): 
+(fancyhdr)                Make it at least 46.27914pt, for example:
+(fancyhdr)                \setlength{\headheight}{46.27914pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
+
+[15 <./pole_placement-eps-converted-to.pdf>] (./Assignment3.bbl)
+
+AED: lastpage setting LastPage
+File: kuleuvenSedes.pdf Graphic file (type pdf)
+<use kuleuvenSedes.pdf>
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 559.
+(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+
+Package fancyhdr Warning: \headheight is too small (42.67912pt): 
+(fancyhdr)                Make it at least 46.27914pt, for example:
+(fancyhdr)                \setlength{\headheight}{46.27914pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
+
+[16] (./Assignment3.aux)
 Package rerunfilecheck Info: File `Assignment3.out' has not changed.
-(rerunfilecheck)             Checksum: 296561D9C00A001984385FF986D98D31;2956.
+(rerunfilecheck)             Checksum: 6A7801B8FE69C48AB534E20B67041048;3553.
  ) 
 Here is how much of TeX's memory you used:
- 26826 strings out of 478353
- 531779 string characters out of 5852100
- 838584 words of memory out of 5000000
- 44361 multiletter control sequences out of 15000+600000
- 420651 words of font info for 68 fonts, out of 8000000 for 9000
+ 27135 strings out of 478353
+ 539523 string characters out of 5852100
+ 843062 words of memory out of 5000000
+ 44637 multiletter control sequences out of 15000+600000
+ 421277 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,20n,94p,911b,1102s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
@@ -1444,10 +1759,10 @@ t/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/ty
 pe1/public/cm-super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
 /cm-super/sftt0800.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/
 sftt1000.pfb>
-Output written on Assignment3.pdf (12 pages, 957636 bytes).
+Output written on Assignment3.pdf (16 pages, 1398172 bytes).
 PDF statistics:
- 508 PDF objects out of 1000 (max. 8388607)
- 377 compressed objects within 4 object streams
- 70 named destinations out of 1000 (max. 500000)
- 304 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 678 PDF objects out of 1000 (max. 8388607)
+ 470 compressed objects within 5 object streams
+ 81 named destinations out of 1000 (max. 500000)
+ 390 words of extra memory for PDF output out of 10000 (max. 10000000)
 

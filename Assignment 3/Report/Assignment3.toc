@@ -14,3 +14,5 @@
 \contentsline {subsection}{\numberline {3.2}Step Response for varying K}{9}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Step Response for varying Q and R}{10}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Evolution of NIS and SNIS}{11}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Wrong initial Estimation for the Position}{13}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Design of a State Estimator using Pole Placement}{15}{subsection.3.6}%

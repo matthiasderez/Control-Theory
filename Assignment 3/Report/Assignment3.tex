@@ -351,7 +351,7 @@ Firstly, the measurement noise covariance $R$ is directly calculated, based on t
 \\\\
 Secondly, the process noise covariance is calculated by multiplying $R$ with an arbitrary constant. $\frac{Q}{R} = 10$ seems fit for this system, which implies that one has slightly more trust in the measurements than in the model. This leads to $Q = 8.4588 e^{-5}$ m$^2$.
 \\\\
-Next, as discussed in Subsection \ref{subsec:tf}, the value of the state feedback gain $K$ is a trade-off between response time and control effort and is restricted to $0 < K < 100$ Hz for stability reasons. Furthermore, it is important that the pole of the state estimator is faster than the pole of the closed loop system. Subsequently, Figure \ref{fig:poles_LQE} shows that it is preferred that $K$ is chosen in a way that the pole of the closed loop system is bigger than $0.5$.
+Next, as discussed in Subsection \ref{subsec:tf}, the value of the state feedback gain $K$ is a trade-off between response time and control effort and is restricted to $0 < K < 100$ Hz for stability reasons. Furthermore, it is important that the pole of the state estimator is faster than the closed loop pole of the state feedback controller. Subsequently, Figure \ref{fig:poles_LQE} shows that it is preferred that $K$ is chosen in a way that the pole of the closed loop system is bigger than $0.5$.
 \\\\
 In order to determine the static feedback gain, experiments are conducted with different values of $K$. In these experiments, the cart starts at a position of $x = -0.3$ m, which is the maximum distance at which the distance sensor gives reliable results. The desired position of the cart is then set to $x = -0.05$ m, the minimum distance of the operating range of the sensor. This is done in order to judge whether or not the chosen $K$ leads to an input voltage of $> 12$ V when the cart has to bridge the biggest possible distance. An input voltage that exceeds this limit means that the DC motor saturates, thus $K$ would be too high. These experiments reveal that a static feedback gain of $2.4$ Hz does not cross this limit, while also ensuring a fast enough response time.
 \\\\
@@ -394,6 +394,7 @@ With all of this in mind, $K = 2.4$ Hz is chosen, which was also discussed in th
 
 
 \subsection{Step Response for varying Q and R}
+\label{subsec:33}
 Next, the same step signal is applied, but now with varying values of the process noise covariance $Q$ and measurement noise covariance $R$, while $K = 2.4$ Hz. The evolution of the state estimate covariance $\hat{P}_{k|k}$ and the corresponding Kalman gain $L_k$ is examined and depicted in Figure \ref{fig:variable_rho}. 
 \\\\
 Because $R$ is a measured quantity and $Q$ is chosen with respect to $R$, only $Q$ is varied. However, conceptually, $R$ could also be varied while $Q$ remains constant. This is why it is indicated on the figure that the ratio $\rho = \frac{Q}{R}$ changes.
@@ -453,19 +454,90 @@ where $S_k$ is the innovation covariance and the innovation (or measurement resi
 \end{equation}
 So the NIS becomes:
 \begin{equation}
-	NIS_k = 
+	NIS_k = (y_k - \hat{x}_{k|k-1})^2 S_k^{-1}
 \end{equation}
 The Summed Normalized Innovation Squared (SNIS) is then equal to:
 \begin{equation}
-	SNIS_k = \sum_{j = k-M+1}^{k} \nu_j^T S_j^{-1}\nu_j
+	SNIS_k = \sum_{j = k-M+1}^{k} \nu_j^T S_j^{-1}\nu_j = \sum_{j = k-M+1}^{k} (y_j - \hat{x}_{j|j-1})^2 S_j^{-1}
 \end{equation}
-which boils down to the sum of the latest M NIS-values. Both $NIS_k$ and $SNIS_k$ are $\chi^2$-distributed, with respectively $1$ and $M$ degrees of freedom.
+which boils down to the sum of the latest M NIS-values. This way, the expressions for $NIS_k$ and $SNIS_k$ only depend on variables that can be obtained from the experiments. Remember, $y_j$ and $\hat{x}_{j|j-1}$ are respectively the measured output and the a priori state estimate at time instance $j$. Further, both $NIS_k$ and $SNIS_k$ are $\chi^2$-distributed, with respectively $1$ and $M$ degrees of freedom.
+\\\\
+In Figure \ref{fig:SNIS}, the NIS and SNIS are plotted for the different experiments of Subsection \ref{subsec:33}. One can see that the highest values are reached for $Q = 8.4588\cdot10^{-8}$, or $\rho = 0.01$, thus yielding the most optimal ratio between the process noise covariance $Q$ and measurement noise covariance $R$. However, these values are not nearly high enough to conclude that the Kalman filter is consistent. For this, one would need NIS and SNIS to approach $95\%$. This overall inconsistency may be caused by modeling errors, which includes an incorrect system model (state and/or measurement equation), an incorrect noise model (Gaussian noise with zero mean and given covariance) or an incorrect initial state estimate and/or its covariance. 
 
 
-\begin{figure}
+\begin{figure}[htp!]
 	\centering
-	\includegraphics[width =0.48\linewidth]{rho10.png}
+	\includegraphics[width =0.45\linewidth]{SNIS_1000.eps}
+	\includegraphics[width =0.45\linewidth]{SNIS_100}
+	\includegraphics[width =0.45\linewidth]{SNIS_10.eps}
+	\includegraphics[width =0.45\linewidth]{SNIS_1}
+	\includegraphics[width =0.45\linewidth]{SNIS_01.eps}
+	\includegraphics[width =0.45\linewidth]{SNIS_001}
+	\includegraphics[width =0.45\linewidth]{SNIS_0001.eps}
+	\caption{NIS and SNIS for varying $Q$ and for $R = 8.4588\cdot10^{-6}$.}
+	\label{fig:SNIS}
 \end{figure}
+
+\newpage
+\subsection{Wrong initial Estimation for the Position}
+\label{subsec:35}
+Now, a step signal as position reference is again applied for different values of $\rho$ at $t = 0$, just as in Subsection \ref{subsec:33}. However, the initial estimation for the position $\hat{x}_{0|0}$ is chosen wrong on purpose. In reality, the cart starts from a position $x = -0.25$ m, but $\hat{x}_{0|0}$ is taken at $-0.05$ m. So when the position reference of $x = -0.1$ m is applied, the cart should theoretically move backwards before heading to the reference at $-0.1$ m.
+\\\\
+Figure \ref{fig:wrong_pos} depicts the measured and the estimated response for each $\rho$ that has been used in the assignment so far, while still $K = 2.4$ Hz. For $\rho = 0.001$, the estimate converges the slowest to the measurements. Also, it is not really visible that the cart first moves backwards, as this is only for a very short amount of time.
+\\\\
+From the other plots, it is obvious that the estimated distance converges faster to the measured distance for increasing $\rho = \frac{Q}{R}$. E.g. for $\rho = 1000$, the lines even seem to be coinciding. Only when zooming in, one can see the difference. This conclusion is logical, as a bigger $\rho$ implies that one has less confidence in the model, or equivalently, more confidence in the measurement. That leads in turn to the fact that the estimated distance follows the measured distance more meticulous. 
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width =0.45\linewidth]{wrong_pos_1000.eps} \quad
+	\includegraphics[width =0.45\linewidth]{wrong_pos_100}
+	\includegraphics[width =0.45\linewidth]{wrong_pos_10.eps}\quad
+	\includegraphics[width =0.45\linewidth]{wrong_pos_1}
+
+\end{figure}
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width =0.45\linewidth]{wrong_pos_01.eps}\quad
+	\includegraphics[width =0.45\linewidth]{wrong_pos_001}
+	\includegraphics[width =0.45\linewidth]{wrong_pos_0001.eps}
+	\caption{Measured and estimated response for varying $Q$ and for $R = 8.4588\cdot10^{-6}$ m$^2$.}
+	\label{fig:wrong_pos}
+\end{figure}
+
+\newpage
+\subsection{Design of a State Estimator using Pole Placement}
+Lastly, a state estimator is implemented using pole placement, such that the closed loop pole of the estimator is ten times slower than the closed loop pole of the state feedback controller that was used in this assignment. To this extent, the latter pole is first transformed back to the continuous space:
+\begin{equation}
+	\begin{split}
+		p_{d, \text{feedback}} &= 1 - T_s K = 0.9760 \\
+		\iff p_{c, \text{feedback}} &= \frac{\text{ln}(p_{d, \text{feedback}})}{T_s} = - 2.4293
+	\end{split}
+\end{equation}
+Next, the pole of the estimator is calculated and transformed back to the discrete space:
+\begin{equation}
+	\begin{split}
+		p_{c, \text{estimator}} &= \frac{p_{c, \text{feedback}}}{10} = - 0.24293 \\
+		\iff p_{d, \text{estimator}} &= \text{exp}( p_{c, \text{feedback}} T_s) = 0.9976
+	\end{split}
+\end{equation}
+Then, Ackermann's formula determines the estimator gain $L_{place}$, which is computed in \texttt{Matlab} using the command command \texttt{acker($A', C', p_{d, \text{estimator}}$)}. This yields $L_{place} = -0.0024$. Yet again, a step signal as position reference is applied at $t = 0$ with the same wrong initial position estimate $\hat{x}_{0|0} = -0.05$ m as in Subsection \ref{subsec:35}. However, the position reference is now taken at $-0.2$ m instead of $-0.1$ m.
+\\\\
+Finally, Figure \ref{fig:pole_placement} visualizes the measured and estimated distance with $K = 2.4$ Hz, $R = 8.4588\cdot10^{-6}$  m$^2$ and $Q = 8.4588\cdot10^{-5}$  m$^2$. The scaling of the x-axis clearly indicates the effect of the slow estimator pole: it takes a relatively long time before the measured distance reaches the reference. Also, there is a large difference between the estimated and the measured response. This shows that, in this case, $\rho$ is too small to have a satisfactory control performance. Furthermore, due to the slow estimator, the effect of the wrong position estimate is clearly visible: the cart goes the opposite direction for a significant amount of time, whereas this was almost not visible when using a Kalman filter.
+\\\\
+As mentioned in Subsection \ref{subsec:kqr}, it is important that the pole of the state estimator is faster than the pole of the state feedback estimator. Thus, in order for the pole placement to be beneficial, the discrete time closed loop pole of the estimator should be placed closer to the origin, instead of the unit circle. Though, one should take care that the required control effort is not too high, so that saturation of the motors is avoided. 
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width = 0.6\linewidth]{pole_placement.eps}
+	\caption{Measured and estimated response for the system with a state estimator designed using pole placement.}
+	\label{fig:pole_placement}
+\end{figure}
+
+
+
+
+
+
+
 
 
 

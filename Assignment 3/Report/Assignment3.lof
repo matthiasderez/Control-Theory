@@ -8,3 +8,6 @@
 \contentsline {figure}{\numberline {7}{\ignorespaces Response and corresponding control signals of the closed-loop system to a step signal as position reference for varying values of the state feedback gain K.\relax }}{9}{figure.caption.10}%
 \contentsline {figure}{\numberline {8}{\ignorespaces Evolution of the state estimate covariance $\hat {P}_{k|k}$ and the corresponding Kalman gain $L_k$ for different values of $\rho = \frac {Q}{R}$.\relax }}{10}{figure.caption.11}%
 \contentsline {figure}{\numberline {9}{\ignorespaces Relative errors between experimental gains and theoretical gains, calculated using \texttt {dlqr} and Equation \ref {eq:eq16}.\relax }}{11}{figure.caption.12}%
+\contentsline {figure}{\numberline {10}{\ignorespaces NIS and SNIS for varying $Q$ and for $R = 8.4588\cdot 10^{-6}$.\relax }}{12}{figure.caption.13}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Measured and estimated response for varying $Q$ and for $R = 8.4588\cdot 10^{-6}$ m$^2$.\relax }}{14}{figure.caption.15}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Measured and estimated response for the system with a state estimator designed using pole placement.\relax }}{15}{figure.caption.16}%
