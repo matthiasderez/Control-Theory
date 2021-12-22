@@ -63,7 +63,6 @@
 
 \tableofcontents
 \listoffigures
-\listoftables
 
 \tikzstyle{block} = [draw, rectangle, 
 minimum height=3em, minimum width=6em]
@@ -520,7 +519,7 @@ Next, the pole of the estimator is calculated and transformed back to the discre
 		\iff p_{d, \text{estimator}} &= \text{exp}( p_{c, \text{feedback}} T_s) = 0.9976
 	\end{split}
 \end{equation}
-Then, Ackermann's formula determines the estimator gain $L_{place}$, which is computed in \texttt{Matlab} using the command command \texttt{acker($A', C', p_{d, \text{estimator}}$)}. This yields $L_{place} = -0.0024$. Yet again, a step signal as position reference is applied at $t = 0$ with the same wrong initial position estimate $\hat{x}_{0|0} = -0.05$ m as in Subsection \ref{subsec:35}. However, the position reference is now taken at $-0.2$ m instead of $-0.1$ m.
+Then, Ackermann's formula determines the estimator gain $L_{place}$, which is computed in \texttt{Matlab} using the command \texttt{acker($A', C', p_{d, \text{estimator}}$)}. This yields $L_{place} = -0.0024$. Yet again, a step signal as position reference is applied at $t = 0$ with the same wrong initial position estimate $\hat{x}_{0|0} = -0.05$ m as in Subsection \ref{subsec:35}. However, the position reference is now taken at $-0.2$ m instead of $-0.1$ m.
 \\\\
 Finally, Figure \ref{fig:pole_placement} visualizes the measured and estimated distance with $K = 2.4$ Hz, $R = 8.4588\cdot10^{-6}$  m$^2$ and $Q = 8.4588\cdot10^{-5}$  m$^2$. The scaling of the x-axis clearly indicates the effect of the slow estimator pole: it takes a relatively long time before the measured distance reaches the reference. Also, there is a large difference between the estimated and the measured response. This shows that, in this case, $\rho$ is too small to have a satisfactory control performance. Furthermore, due to the slow estimator, the effect of the wrong position estimate is clearly visible: the cart goes the opposite direction for a significant amount of time, whereas this was almost not visible when using a Kalman filter.
 \\\\
