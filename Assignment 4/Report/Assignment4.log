@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  21 DEC 2021 15:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  22 DEC 2021 01:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -739,7 +739,9 @@ File: pgflibraryshapes.multipart.code.tex 2020/10/01 v3.1.6a (3.1.6a)
 \pgfnodepartsevenbox=\box125
 \pgfnodepartsixbox=\box126
 \pgfnodepartfivebox=\box127
-))) (c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsmath.sty
+))) (c:/texlive/2020/texmf-dist/tex/latex/calrsfs/calrsfs.sty
+\symrsfscript=\mathgroup4
+) (c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2020/09/23 v2.17i AMS math features
 \@mathmargin=\skip65
 
@@ -814,8 +816,8 @@ Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
 (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\symAMSa=\mathgroup4
-\symAMSb=\mathgroup5
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
@@ -849,23 +851,23 @@ File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 (./Assignment4.aux)
 \openout1 = `Assignment4.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-Package hyperref Info: Link coloring OFF on input line 60.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+Package hyperref Info: Link coloring OFF on input line 63.
  (c:/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -874,9 +876,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count313
 )
-LaTeX Info: Redefining \ref on input line 60.
-LaTeX Info: Redefining \pageref on input line 60.
-LaTeX Info: Redefining \nameref on input line 60.
+LaTeX Info: Redefining \ref on input line 63.
+LaTeX Info: Redefining \pageref on input line 63.
+LaTeX Info: Redefining \nameref on input line 63.
 
 (./Assignment4.out) (./Assignment4.out)
 \@outlinefile=\write4
@@ -899,49 +901,53 @@ LaTeX Info: Redefining \nameref on input line 60.
 )
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 60.
+(lastpage)             ! on input line 63.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \celsius on input line 60.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 60.
+LaTeX Info: Redefining \celsius on input line 63.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 63.
 
 
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 60.
-Package gensymb Info: Using \Omega for \ohm on input line 60.
+LaTeX Info: Redefining \ohm on input line 63.
+Package gensymb Info: Using \Omega for \ohm on input line 63.
 
 Package gensymb Warning: Not defining \micro.
 
-<kuleuvenLogo.pdf, id=55, 159.33528pt x 56.90259pt>
+<kuleuvenLogo.pdf, id=83, 159.33528pt x 56.90259pt>
 File: kuleuvenLogo.pdf Graphic file (type pdf)
 <use kuleuvenLogo.pdf>
-Package pdftex.def Info: kuleuvenLogo.pdf  used on input line 62.
+Package pdftex.def Info: kuleuvenLogo.pdf  used on input line 65.
 (pdftex.def)             Requested size: 119.50601pt x 42.67912pt.
-<kuleuvenSedes.pdf, id=56, 349.305pt x 596.2275pt>
+<kuleuvenSedes.pdf, id=84, 349.305pt x 596.2275pt>
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 62.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 65.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 62.
+LaTeX Font Info:    Trying to load font information for OMS+rsfs on input line 
+65.
+(c:/texlive/2020/texmf-dist/tex/latex/calrsfs/OMSrsfs.fd)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 65.
+
 
 (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 62.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 65.
 
 
 (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 6
-2.
+5.
 
 (c:/texlive/2020/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 62--63
+Underfull \hbox (badness 10000) in paragraph at lines 65--66
 
  []
 
@@ -962,19 +968,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--63
 {c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <c:/Users/matth/
 texmf/tex/latex/kulak/kuleuvenLogo.pdf> <c:/Users/matth/texmf/tex/latex/kulak/k
 uleuvenSedes.pdf>]
-<pendulumoncart.png, id=98, 199.947pt x 246.32025pt>
+<pendulumoncart.png, id=134, 199.947pt x 246.32025pt>
 File: pendulumoncart.png Graphic file (type png)
 <use pendulumoncart.png>
-Package pdftex.def Info: pendulumoncart.png  used on input line 92.
+Package pdftex.def Info: pendulumoncart.png  used on input line 95.
 (pdftex.def)             Requested size: 182.09831pt x 224.33969pt.
-<VLDpendulum.png, id=102, 295.70474pt x 349.305pt>
+<VLDpendulum.png, id=138, 295.70474pt x 349.305pt>
 File: VLDpendulum.png Graphic file (type png)
 <use VLDpendulum.png>
-Package pdftex.def Info: VLDpendulum.png  used on input line 98.
+Package pdftex.def Info: VLDpendulum.png  used on input line 101.
 (pdftex.def)             Requested size: 182.09831pt x 215.10645pt.
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 114.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 117.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 
@@ -986,20 +992,30 @@ This may cause the page layout to be inconsistent, however.
 [2 <./pendulumoncart.png> <./VLDpendulum.png>]
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 200.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 206.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
  [3]
-<logdecrement.png, id=150, 386.6445pt x 320.397pt>
+<logdecrement.png, id=187, 386.6445pt x 320.397pt>
 File: logdecrement.png Graphic file (type png)
 <use logdecrement.png>
-Package pdftex.def Info: logdecrement.png  used on input line 223.
+Package pdftex.def Info: logdecrement.png  used on input line 229.
 (pdftex.def)             Requested size: 273.14922pt x 226.35413pt.
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 243.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 249.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
  [4 <./logdecrement.png>]
-(./Assignment4.bbl
+File: kuleuvenSedes.pdf Graphic file (type pdf)
+<use kuleuvenSedes.pdf>
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 319.
+(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
+
+[5]
+LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
+333.
+ (c:/texlive/2020/texmf-dist/tex/latex/psnfss/omszplm.fd
+File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+) (./Assignment4.bbl
 Underfull \hbox (badness 4556) in paragraph at lines 4--10
 []\T1/cmr/m/n/10 Aurelio Are-nas.  The use of a nin-tendo wii re-mote con-trol 
 in physics ex-per-i-ments.
@@ -1015,18 +1031,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--10
 AED: lastpage setting LastPage
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 291.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 344.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-[5] (./Assignment4.aux)
+[6] (./Assignment4.aux)
 Package rerunfilecheck Info: File `Assignment4.out' has not changed.
-(rerunfilecheck)             Checksum: BCEDB4A3065DDD2E2B87096FDC83E209;472.
+(rerunfilecheck)             Checksum: 4EE3523E66F0F908B80272FC7843C2F0;1126.
  ) 
 Here is how much of TeX's memory you used:
- 23009 strings out of 479917
- 462152 string characters out of 5886666
- 792271 words of memory out of 5000000
- 39042 multiletter control sequences out of 15000+600000
- 547512 words of font info for 62 fonts, out of 8000000 for 9000
+ 23088 strings out of 479917
+ 463525 string characters out of 5886666
+ 792899 words of memory out of 5000000
+ 39089 multiletter control sequences out of 15000+600000
+ 550426 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,25n,99p,553b,1101s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
@@ -1048,10 +1064,10 @@ ive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2020/t
 exmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2020/texmf-dist/
 fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2020/texmf-dist/fonts/type
 1/public/cm-super/sftt1000.pfb>
-Output written on Assignment4.pdf (5 pages, 532199 bytes).
+Output written on Assignment4.pdf (6 pages, 547032 bytes).
 PDF statistics:
- 263 PDF objects out of 1000 (max. 8388607)
- 206 compressed objects within 3 object streams
- 46 named destinations out of 1000 (max. 500000)
- 182 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 317 PDF objects out of 1000 (max. 8388607)
+ 259 compressed objects within 3 object streams
+ 59 named destinations out of 1000 (max. 500000)
+ 238 words of extra memory for PDF output out of 10000 (max. 10000000)
 
