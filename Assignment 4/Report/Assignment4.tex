@@ -301,16 +301,21 @@ To discretize the non-linear model, the forward Euler method is used as well:
 	1&0&0\\0&1&0
 	\end{bmatrix}\xi[k] + 0 \cdot v_c[k]
 	\label{eq:measurementlineardiscrete}
-	\end{equation}
+\end{equation}
 	
-	\section{Design and implementation of a linear Kalman filter}
-	The linearized measurement equation is given by Equation \ref{eq:measurementlineardiscrete}.
-	\underline{GRAFIEKEN + UITLEG}
+\section{Design and implementation of a linear Kalman filter}
+The linearized measurement equation is given by Equation \ref{eq:measurementlineardiscrete}. For the matrices $Q$, $R$ and $\hat{P}_{0|0}$, the following numerical values are used:
+\begin{align}
+	\mathbf{R} &= \begin{bmatrix} 2.7878\cdot 10^{-9} & 0 \\ 0 & 9.4124\cdot 10^{-6}\end{bmatrix} \begin{bmatrix} \text{m}^2 \\ \text{rad}^2 \end{bmatrix}\\	
+	\mathbf{Q} &= \begin{bmatrix} 2.7878\cdot 10^{-8} & 0 & 0\\ 0 & 9.4124\cdot 10^{-8} & 0 \\ 0&0& 10^{-4}\end{bmatrix} \begin{bmatrix} \text{m}^2 \\ \text{rad}^2 \\ \left(\frac{\text{m}}{\text{s}}\right)^2\end{bmatrix} \\
+	\mathbf{\hat{P}_{0|0}} &= 0
+\end{align}
+
 	
-	\section{Design and implementation of an extended Kalman filter}
-	\subsection{Nonlinear measurement equation}
-	As is already written down in the nonlinear state-space model Equations \ref{eq:measurementnonlinear}, the measurement equation based on the nonlinear system equations is actually a linear equation. This is caused by the fact that the two outputs $x$ and $\theta$ are two states. The measurement equation based on the nonlinear system equations can be written as:
-	\begin{equation}
+\section{Design and implementation of an extended Kalman filter}
+\subsection{Nonlinear measurement equation}
+As is already written down in the nonlinear state-space model Equations \ref{eq:measurementnonlinear}, the measurement equation based on the nonlinear system equations is actually a linear equation. This is caused by the fact that the two outputs $x$ and $\theta$ are two states. The measurement equation based on the nonlinear system equations can be written as:
+\begin{equation}
 	\mathbf{y} = \begin{bmatrix}
 	x\\\theta
 	\end{bmatrix} = \mathbf{g}(\xi,v_c) = \begin{bmatrix}

@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  22 DEC 2021 20:52
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.20)  22 DEC 2021 20:47
->>>>>>> Stashed changes
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.20)  22 DEC 2021 21:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -923,17 +919,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--66
 
  [1
 
-<<<<<<< Updated upstream
-{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <c:/Users/matth/
-texmf/tex/latex/kulak/kuleuvenLogo.pdf> <c:/Users/matth/texmf/tex/latex/kulak/k
-uleuvenSedes.pdf>]
-<pendulumoncart.png, id=146, 199.947pt x 246.32025pt>
-=======
 {c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <c:/texlive/texm
 f-local/tex/latex/local/kulak/kuleuvenLogo.pdf> <c:/texlive/texmf-local/tex/lat
 ex/local/kulak/kuleuvenSedes.pdf>]
-<pendulumoncart.png, id=144, 199.947pt x 246.32025pt>
->>>>>>> Stashed changes
+<pendulumoncart.png, id=146, 199.947pt x 246.32025pt>
 File: pendulumoncart.png Graphic file (type png)
 <use pendulumoncart.png>
 Package pdftex.def Info: pendulumoncart.png  used on input line 105.
@@ -960,15 +949,11 @@ File: kuleuvenSedes.pdf Graphic file (type pdf)
 Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 216.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
  [3]
-<<<<<<< Updated upstream
-<logdecrement.png, id=199, 386.6445pt x 320.397pt>
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 223--227
 
  []
 
-<logdecrement.png, id=197, 386.6445pt x 320.397pt>
->>>>>>> Stashed changes
+<logdecrement.png, id=199, 386.6445pt x 320.397pt>
 File: logdecrement.png Graphic file (type png)
 <use logdecrement.png>
 Package pdftex.def Info: logdecrement.png  used on input line 239.
@@ -985,33 +970,30 @@ Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 259.
 [4 <./logdecrement.png>]
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 330.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 325.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
  [5]
-Overfull \hbox (23.73618pt too wide) in paragraph at lines 343--344
+Overfull \hbox (23.73618pt too wide) in paragraph at lines 348--349
 \T1/cmr/m/n/10 equal to those used in the lin-ear Kalman fil-ter (see Equa-tion
 s $[]$).
  []
 
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 353
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 358
 .
 (c:/texlive/2018/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
-<blockdiagram.png, id=239, 576.35326pt x 181.27725pt>
-File: blockdiagram.png Graphic file (type png)
-<use blockdiagram.png>
-Package pdftex.def Info: blockdiagram.png  used on input line 365.
-(pdftex.def)             Requested size: 318.66946pt x 100.22835pt.
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-<<<<<<< Updated upstream
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 372.
-=======
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 368.
->>>>>>> Stashed changes
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 362.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
- [6] (./Assignment4.bbl
+ [6]
+<blockdiagram.png, id=253, 576.35326pt x 181.27725pt>
+File: blockdiagram.png Graphic file (type png)
+<use blockdiagram.png>
+Package pdftex.def Info: blockdiagram.png  used on input line 371.
+(pdftex.def)             Requested size: 318.66946pt x 100.22835pt.
+ (./Assignment4.bbl
 Underfull \hbox (badness 4556) in paragraph at lines 4--10
 []\T1/cmr/m/n/10 Aurelio Are-nas.  The use of a nin-tendo wii re-mote con-trol 
 in physics ex-per-i-ments.
@@ -1027,64 +1009,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--10
 AED: lastpage setting LastPage
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-<<<<<<< Updated upstream
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 385.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 391.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-[7 <./blockdiagram.png>] (./Assignment4.aux)
-=======
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 374.
-(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-[7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 374.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 374.
+[7 <./blockdiagram.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 391.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 391.
  (./Assignment4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 374.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 374.
->>>>>>> Stashed changes
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 391.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 391.
 Package rerunfilecheck Info: File `Assignment4.out' has not changed.
 (rerunfilecheck)             Checksum: 3FDDC29B34CD99F3B404BAC1F8237D77;1284.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 374.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 391.
  ) 
 Here is how much of TeX's memory you used:
-<<<<<<< Updated upstream
- 23120 strings out of 479917
- 464131 string characters out of 5886666
- 793150 words of memory out of 5000000
- 39112 multiletter control sequences out of 15000+600000
- 550426 words of font info for 73 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 89i,25n,99p,643b,1101s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
-ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2020/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2020/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi5.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.
-pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/tex
-live/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2020/texmf-dist/fonts/typ
-e1/public/cm-super/sfbx1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/
-cm-super/sfbx1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/s
-fbx1440.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pf
-b><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texl
-ive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2020/t
-exmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2020/texmf-dist/
-fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2020/texmf-dist/fonts/type
-1/public/cm-super/sftt1000.pfb>
-Output written on Assignment4.pdf (7 pages, 578697 bytes).
-PDF statistics:
- 348 PDF objects out of 1000 (max. 8388607)
- 287 compressed objects within 3 object streams
- 67 named destinations out of 1000 (max. 500000)
- 259 words of extra memory for PDF output out of 10000 (max. 10000000)
-=======
- 21646 strings out of 492639
- 429349 string characters out of 6133087
- 542014 words of memory out of 5000000
- 25016 multiletter control sequences out of 15000+600000
- 18978 words of font info for 58 fonts, out of 8000000 for 9000
+ 21663 strings out of 492639
+ 429619 string characters out of 6133087
+ 542144 words of memory out of 5000000
+ 25024 multiletter control sequences out of 15000+600000
+ 20512 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,25n,80p,913b,1077s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
@@ -1100,17 +1042,17 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2018/texmf-dist/fonts/typ
 e1/public/cm-super/sfbx1000.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/
 cm-super/sfbx1200.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/s
-fbx1440.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pf
-b><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texl
-ive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2018/t
-exmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2018/texmf-dist/
-fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2018/texmf-dist/fonts/type
-1/public/cm-super/sftt1000.pfb>
-Output written on Assignment4.pdf (7 pages, 557013 bytes).
+fbx1440.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pf
+b><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texl
+ive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2018/t
+exmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2018/texmf-dist/
+fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2018/texmf-dist/fonts/type
+1/public/cm-super/sftt0800.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/c
+m-super/sftt1000.pfb>
+Output written on Assignment4.pdf (7 pages, 596713 bytes).
 PDF statistics:
- 341 PDF objects out of 1000 (max. 8388607)
- 282 compressed objects within 3 object streams
- 66 named destinations out of 1000 (max. 500000)
- 254 words of extra memory for PDF output out of 10000 (max. 10000000)
->>>>>>> Stashed changes
+ 357 PDF objects out of 1000 (max. 8388607)
+ 295 compressed objects within 3 object streams
+ 72 named destinations out of 1000 (max. 500000)
+ 259 words of extra memory for PDF output out of 10000 (max. 10000000)
 
