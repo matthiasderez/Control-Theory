@@ -37,11 +37,11 @@ void CorrectionUpdate(const Matrix<1> &y, Matrix<1> &xhat, Matrix<1,1> &Phat, Ma
    S = C * Phat * C.Transpose() + R;
   
    // Compute optimal Kalman filter gain
-//   Matrix<1,1> L = Phat * C.Transpose() * S.Inverse();
+   Matrix<1,1> L = Phat * C.Transpose() * S.Inverse();
 
   // Pole placement
-  Matrix<1,1> L ;
-  L(0) = -0.0024;
+//  Matrix<1,1> L ;
+//  L(0) = -0.0024;
    // Compute corrected system state estimate
    xhat += L * nu;
   

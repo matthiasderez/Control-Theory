@@ -130,7 +130,7 @@ void Robot::resetKalmanFilter() {
    _Phat(0,0) = 2.5e-5;     // Fill the initial covariance matrix, you can change this according to your experiments
   
    // Initialize state estimate
-   _xhat(0) = -0.05;     // Change this according to your experiments
+   _xhat(0) = -0.25;     // Change this according to your experiments
 }
 
 bool Robot::controlEnabled() {
