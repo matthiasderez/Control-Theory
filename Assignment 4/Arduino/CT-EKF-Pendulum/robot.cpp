@@ -26,6 +26,7 @@ bool Robot::init() {
     b3 = 1;
     b4 = 1;
     counter = 0.0;
+    ref = 0;
   return true;
   
 }
@@ -42,7 +43,7 @@ void Robot::control() {
 
   // Kalman filtering
   if(KalmanFilterEnabled()) { // only do this if Kalman Filter is enabled (triggered by pushing 'Button 1' in QRoboticsCenter)
-      Serial.print('Kalman enabled aan');
+      
      // UNCOMMENT AND MODIFY LINES BELOW TO IMPLEMENT THE KALMAN FILTER
      // Correction step
 
@@ -66,40 +67,41 @@ void Robot::control() {
   }
 
   if(controlEnabled()) {   // only do this if controller is enabled (triggered by pushing 'Button 0' in QRoboticsCenter)
-    // UNCOMMENT AND COMPLETE LINES BELOW TO IMPLEMENT THE FEEDFORWARD INPUTS (ASSIGNMENT 4.2, no state feedback here)
-    // COMMENT OR REMOVE LINES BELOW ONCE YOU IMPLEMENT THE POSITION STATE FEEDBACK CONTROLLER
-    // Compute the feedforward input of the cart
-    // The feedforward is here returned by the built-in trajectory: trajectory.v()
-    desiredVelocityCart(0) = trajectory.v();  //desired forward velocity of the cart (in m/s)
-    // The trajectory must be started by pushing 'Button 2' in QRoboticsCenter, otherwise will return zeros
-    // after any experiment the trajectory must be reset pushing 'Button 3' in QRoboticsCenter
-    //
-     // apply the static transformation between velocity of the cart and velocity of the motors
+//    // UNCOMMENT AND COMPLETE LINES BELOW TO IMPLEMENT THE FEEDFORWARD INPUTS (ASSIGNMENT 4.2, no state feedback here)
+//    // COMMENT OR REMOVE LINES BELOW ONCE YOU IMPLEMENT THE POSITION STATE FEEDBACK CONTROLLER
+//    // Compute the feedforward input of the cart
+//    // The feedforward is here returned by the built-in trajectory: trajectory.v()
+//    desiredVelocityCart(0) = trajectory.v();  //desired forward velocity of the cart (in m/s)
+//    // The trajectory must be started by pushing 'Button 2' in QRoboticsCenter, otherwise will return zeros
+//    // after any experiment the trajectory must be reset pushing 'Button 3' in QRoboticsCenter
+//    //
+//     // apply the static transformation between velocity of the cart and velocity of the motors
+//     desiredVelocityMotorA = desiredVelocityCart(0)/r;        // calculate the angular velocity of the motor A using desiredVelocityCart
+//     desiredVelocityMotorB = desiredVelocityCart(0)/r;        // calculate the angular velocity of the motor B using desiredVelocityCart
+
+
+     // UNCOMMENT AND COMPLETE LINES BELOW TO IMPLEMENT POSITION CONTROLLER (ASSIGNMENT 4.4)
+     // step reference in the desired pendulum mass position
+     ref(0)= readValue(0);         // r [m] - use channel 0 to provide the step reference
+    
+     // State feedback controller
+     float arrayKfb[1][3]{{3.0597,   -0.4433,    0.2208}};  // state feedback gain Kfb, to design
+     Matrix<1, 3> Kfb = arrayKfb;
+    
+     // Compute feedback signal ufb = -Kfb*x
+     Matrix<1> ufb = -Kfb * _xhat;
+    
+     // Feedforward controller
+     float arrayKff[1][1]{3.0597};  // feedforward gain Kff, to design
+     Matrix<1> Kff = arrayKff;
+    
+     Matrix<1> uff = Kff*ref;
+    
+     // Compute the control action u = uff + ufb
+     desiredVelocityCart(0) = uff(0) + ufb(0);  // desired forward velocity of the cart from the feedforward and state feedback controller
+//
      desiredVelocityMotorA = desiredVelocityCart(0)/r;        // calculate the angular velocity of the motor A using desiredVelocityCart
      desiredVelocityMotorB = desiredVelocityCart(0)/r;        // calculate the angular velocity of the motor B using desiredVelocityCart
-
-
-    // // UNCOMMENT AND COMPLETE LINES BELOW TO IMPLEMENT POSITION CONTROLLER (ASSIGNMENT 4.4)
-    // // step reference in the desired pendulum mass position
-    // ref(0)= readValue(0);         // r [m] - use channel 0 to provide the step reference
-    //
-    // // State feedback controller
-    // float arrayKfb[1][3]{{?, ?, ?}};  // state feedback gain Kfb, to design
-    // Matrix<1, 3> Kfb = arrayKfb;
-    //
-    // // Compute feedback signal ufb = -Kfb*x
-    // Matrix<1> ufb = -Kfb * _xhat;
-    //
-    // // Feedforward controller
-    // float arrayKff = ?;  // feedforward gain Kff, to design
-    // Matrix<1> Kff = arrayKff;
-    //
-    // Matrix<1> uff = Kff*ref;
-    //
-    // // Compute the control action u = uff + ufb
-    // desiredVelocityCart = uff(0) + ufb(0);  // desired forward velocity of the cart from the feedforward and state feedback controller
-
-
     float wA = getSpeedMotorA();
     float wB = getSpeedMotorB();        
     float eA = desiredVelocityMotorA-wA;      // Here wdes vervangen door desired_velocity(0)/R [rad/s]       //  calculate the position error of motor A (in radians)
@@ -121,6 +123,8 @@ void Robot::control() {
     // Send wheel speed command
     setVoltageMotorA(volt_A);
     setVoltageMotorB(volt_B);
+    writeValue(1, uA);
+    
   }
   else                      // do nothing since control is disables
   {
@@ -151,7 +155,8 @@ void Robot::control() {
      writeValue(7, _xhat(0));
      writeValue(8, _xhat(1));
      writeValue(9, _xhat(2));
-     writeValue(1, _Phat(0,0));
+     //writeValue(1, _Phat(0,0));
+     
      writeValue(2, _Phat(1,0));
      // writeValue(4, _Phat(1,0));
      writeValue(4, _Phat(1,1));
@@ -162,7 +167,7 @@ void Robot::control() {
      writeValue(11, measurements(1));
 
   //triggers the trajectory to return the next values during the next cycle
-  trajectory.update();
+    trajectory.update();
 }
 
 void Robot::resetController(){

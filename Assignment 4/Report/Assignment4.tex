@@ -275,6 +275,7 @@ Filling in Equation \ref{eq:FElinear} in Equation \ref{eq:deltaxidotlinear} yiel
 	1&0&0\\0&1&0
 	\end{bmatrix}\xi[k] + 0 \cdot v_c[k]
 	\end{split}
+	\label{eq:sslineardiscr}
 \end{equation}
 \subsubsection*{Non-linear model}
 To discretize the non-linear model, the forward Euler method is used as well:
@@ -350,6 +351,7 @@ Since the linearization of the model has no influence on the measurement noise c
 	
 	\section{Design and implementation of a state feedback controller based on the linearized model}
 	\subsection{Design of a linear quadratic regulator}
+	\label{sec:designLQR}
 	The objective of the LQR is to find the control input $v_c[k]$ that moves the system states $\xi \neq 0$ to \textbf{0}, in a way the performance criterion $\J$ is minimized. This means a tradeoff has to be made between performane $\J_p$, the speed with which the states go to zero (or a desired state), and the controll effort $\J_c$. The criterion is given in Equation \ref{eq:criterionLQR}. 
 	\begin{equation}
 	\J = \J_p + \J_c =  \sum_{k=0}^{\infty}\mathbf{\xi}[k]^T\mathbf{Q}\mathbf{\xi}[k] + v_c[k]Rv_c[k]
@@ -375,8 +377,16 @@ Since the linearization of the model has no influence on the measurement noise c
 	\begin{equation}
 	X_p(z) = (H_x(z) + LH_\theta(z))V_c(z)
 	\end{equation}
-	Following the reasoning on C9, slide 54 of the slides of the course Control Theory \cite{slidescontroltheory}, the expression for $N_p$ to 
-	
+	Following the reasoning on C9, slide 54 of the slides of the course Control Theory \cite{slidescontroltheory}, the expression for $N_p$ to  obtain a zero steady state error is: \underline{NOG HELEMAAL UITWERKEN OF GWN VERWIJZEN NAAR SLIDE?}
+	\begin{equation}
+	N_p = \frac{1}{(H_x(1) + LH_\theta(1))}
+	\end{equation}
+	To be able to use $H_x(z)$ and $H_\theta(z)$, \textbf{H}(z) has to be calculated. This can be done using Equation \ref{eq:HFB}. 
+	\begin{equation}
+	\mathbf{H}(z) = \mathbf{C}(z\mathbf{I}-\mathbf{A}+\mathbf{BK})^{-1}\mathbf{B}
+	\label{eq:HFB}
+	\end{equation}
+	The matrices $\mathbf{A}$,$\mathbf{B}$ and $\mathbf{C}$ can be found in Equation \ref{eq:sslineardiscr}. When the feedback gain $\mathbf{K}$ is calculated in Section \ref{sec:implFBcontr}, it will become possible to calculate $\mathbf{H}(z)$ thus also $N_p$. 
 	\subsection{Implementation of the controller}
 	\label{sec:implFBcontr}
 	

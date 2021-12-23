@@ -15,33 +15,33 @@ void PredictionUpdate(const Matrix<1> &u, Matrix<3> &xhat, Matrix<3,3> &Phat) {
    Matrix<3, 3> Q = arrayQ;
   
 
-//  // Linear Kalman filter
-//  float arrayF[3][3]{{1,0,0},
-//                      {0,1,0.01/L},
-//                      {0,-0.01*g,1}};
-//  Matrix <3,3> F = arrayF;
-//
-//  float arrayG [3][1]{{0.01},{-0.01/L},{0}};
-//  Matrix <3,1> G = arrayG;
-//  xhat = F * xhat + G*u;
-//  Phat = F*Phat*F.Transpose() + Q;
-//
+  // Linear Kalman filter
+  float arrayF[3][3]{{1,0,0},
+                      {0,1,0.01/L},
+                      {0,-0.01*g,1}};
+  Matrix <3,3> F = arrayF;
+
+  float arrayG [3][1]{{0.01},{-0.01/L},{0}};
+  Matrix <3,1> G = arrayG;
+  xhat = F * xhat + G*u;
+  Phat = F*Phat*F.Transpose() + Q;
+
 
   // Extended kalman filter
    // Compute Jacobian of system dynamics
-   float arrayJf[3][3]{{1, 0, 0},   //Provide here the element values of the Jacobian of system dynamics
-                       {0, 1+Ts*u(0)*sin(xhat(1))/L, Ts/L},
-                       {0,  Ts*(-g*cos(xhat(1)) - (xhat(2)-u(0)*cos(xhat(1)))/L*u(0)*cos(xhat(1))-pow(u(0)*sin(xhat(1)),2)/L), 1-Ts*u(0)*sin(xhat(1))/L}};
-   Matrix<3, 3> A = arrayJf;
-  
-   // Evaluate discrete-time nonlinear system dynamics
-   float arrayf[3][1]{{ Ts*u(0)+xhat(0) }, //Provide the nonlinear dynamics equation for each state
-                      { Ts*(xhat(2)-u(0)*cos(xhat(1)))/L + xhat(1) },
-                      { Ts*(-g*sin(xhat(1)) - u(0)*sin(xhat(1))*(xhat(2)-u(0)*cos(xhat(1)))/L)+xhat(2) }};
-   xhat = arrayf;    //state prediction is equal to the nonlinear dynamics calculated in arrayf
-  
-   // Update state covariance: P = APAt + Q, with A equal to the Jacobian of system dynamics
-   Phat = A * Phat * A.Transpose() + Q;
+//   float arrayJf[3][3]{{1, 0, 0},   //Provide here the element values of the Jacobian of system dynamics
+//                       {0, 1+Ts*u(0)*sin(xhat(1))/L, Ts/L},
+//                       {0,  Ts*(-g*cos(xhat(1)) - (xhat(2)-u(0)*cos(xhat(1)))/L*u(0)*cos(xhat(1))-pow(u(0)*sin(xhat(1)),2)/L), 1-Ts*u(0)*sin(xhat(1))/L}};
+//   Matrix<3, 3> A = arrayJf;
+//  
+//   // Evaluate discrete-time nonlinear system dynamics
+//   float arrayf[3][1]{{ Ts*u(0)+xhat(0) }, //Provide the nonlinear dynamics equation for each state
+//                      { Ts*(xhat(2)-u(0)*cos(xhat(1)))/L + xhat(1) },
+//                      { Ts*(-g*sin(xhat(1)) - u(0)*sin(xhat(1))*(xhat(2)-u(0)*cos(xhat(1)))/L)+xhat(2) }};
+//   xhat = arrayf;    //state prediction is equal to the nonlinear dynamics calculated in arrayf
+//  
+//   // Update state covariance: P = APAt + Q, with A equal to the Jacobian of system dynamics
+//   Phat = A * Phat * A.Transpose() + Q;
 }
 
 void CorrectionUpdate(const Matrix<2> &y, Matrix<3> &xhat, Matrix<3,3> &Phat, Matrix<2> &nu, Matrix<2,2> &S) {
