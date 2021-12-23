@@ -319,10 +319,16 @@ $\mathbf{R}_{22} = R_\theta$ is also determined using the resolution of the pend
 \\\\
 For the values of $Q_x$ and $Q_\theta$, experiments with varying $Q$ are conducted, of which the best ones yield the values given in (\ref{eq:eq28}). The best experiments are those that lead to the estimated states being the closest to reality. This way, $Q_x$ is set to $10\cdot R_x$, while $Q_\theta$ is set to $0.01 \cdot R_\theta$. Lastly, $Q_{v_{tan}}$ is taken in the order of the square root of $Q_x$ and $Q_\theta$, because $v_{tan}$ involves a derivative.
 \\\\
-Next, for $\hat{P}_{0|0, \theta}$, the following experiment is conducted: the pendulum is manually set so that one thinks that $\theta = 0$. Then, the measured angle $\theta$ shows how much one deviates from $\theta = 0$. This is repeated multiple times. The largest value of the measured angle over all the experiments is then taken as the maximum deviation when one wants to place the pendulum at $\theta = 0$. In this report, this value is taken to be $0.0046$ rad. Following the \textit{68-95-99.7 rule}\footnote{"In statistics, the 68–95–99.7 rule, also known as the empirical rule, is a shorthand used to remember the percentage of values that lie within an interval estimate in a normal distribution: 68\%, 95\%, and 99.7\% of the values lie within one, two, and three standard deviations of the mean, respectively." \cite{68rule}} then leads to $\hat{P}_{0|0, \theta} = \left(\frac{0.0046}{3}\right)^2 = 2.3511\cdot 10^{-6}$ rad$^2$.
-\\\\
-Lastly, $\hat{P}_{0|0, x}$ and $\hat{P}_{0|0, v_{tan}}$ are taken in the same order, leading to a value of $10^{-6}$.
+Next, for $\hat{P}_{0|0, \theta}$, the following experiment is conducted: the pendulum is manually set so that one thinks that $\theta = 0$. Then, the measured angle $\theta$ shows how much one deviates from $\theta = 0$. This is repeated multiple times. The largest value of the measured angle over all the experiments is then taken as the maximum deviation when one wants to place the pendulum at $\theta = 0$. In this report, this value is taken to be $0.0046$ rad. Following the \textit{68-95-99.7 rule}\footnote{"In statistics, the 68–95–99.7 rule, also known as the empirical rule, is a shorthand used to remember the percentage of values that lie within an interval estimate in a normal distribution: 68\%, 95\%, and 99.7\% of the values lie within one, two, and three standard deviations of the mean, respectively." \cite{68rule}} then leads to $\hat{P}_{0|0, \theta} = \left(\frac{0.0046}{3}\right)^2 = 2.3511\cdot 10^{-6}$ rad$^2$. Lastly, $\hat{P}_{0|0, x}$ and $\hat{P}_{0|0, v_{tan}}$ are taken in the same order, leading to a value of $10^{-6}$.
 
+\subsubsection*{With wheel and pendulum encoder}
+Now, a trapezoidal velocity profile is applied as input. Figure \ref{fig:confidence1} then depicts the evolution of every state in time together with its 95\% confidence interval. As the states $x$ and $\theta$ can be measured using respectively the wheel encoders and the pendulum encoder, these measurements are also plotted with their 95\% confidence interval. On the full-scale plots, it is hard to see these intervals for $x$ and $\theta$, so a close-up of these states are likewise shown. 
+\\\\
+For $x$, one can observe that the confidence interval of the estimate is larger than the interval of the measurement. Subsequently, the uncertainty of the estimated state is larger than the uncertainty of the measured state. This is not in accordance with the Kalman filter principles, as using it only is valuable whenever the obtained estimate is better than the measurement, which matches with the confidence interval of the model being lower than the interval of the measurement. Conclusion: using a Kalman filer for the state $x$ produces worse results.
+\\\\
+For $\theta$, both confidence intervals almost overlap. Again, this does not match the expectations of the Kalman filter. However now, using it produces roughly equally good results. 
+\\\\
+Lastly, for $v_{tan}$, Kalman filtering is per definition useful, as this state cannot be measured directly.
 
 \begin{figure*}[htp!]
 	\centering
@@ -334,21 +340,85 @@ Lastly, $\hat{P}_{0|0, x}$ and $\hat{P}_{0|0, v_{tan}}$ are taken in the same or
 	\hfill
 	\begin{subfigure}[b]{0.48\textwidth}  
 		\centering 
+		\includegraphics[width=\textwidth]{state1_closeup.eps}
+		\caption{$x$ (close up)}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
 		\includegraphics[width=\textwidth]{state2.eps}
 		\caption{$\theta$}
 	\end{subfigure}
+	\hfill
 	\begin{subfigure}[b]{0.48\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{state2_closeup.eps}
+		\caption{$\theta$ (close up)}
+	\end{subfigure}
+
+
+	\begin{subfigure}[b]{0.48\textwidth}
 		\centering 
 		\includegraphics[width=\textwidth]{state3.eps}
 		\caption{$v_{tan}$}
 	\end{subfigure}
 	\caption{Yeet} 
-	\label{fig:yeet}
+	\label{fig:confidence1}
 \end{figure*}
 
 
 
 
+\subsubsection*{Without wheel encoder}
+The experiments are repeated, but now without using the wheel encoder. I.e. the state $x$ is not measured anymore, solely $\theta$ is measured. Consequently, the measurement equation changes to:
+\begin{equation}
+		\theta[k] = \begin{bmatrix}
+		0&1&0
+	\end{bmatrix}\xi[k] + 0 \cdot v_c[k]
+\end{equation}
+Figure \ref{fig:confidence2} depicts again the evolution of every state in time together with its 95\% confidence interval. Now, the measured response can only be plotted for the state $\theta$, together with its 95\% confidence interval. It is obvious that the uncertainty for the estimation of $x$ has increased a lot. This is because normally, during the correction step of the Kalman filter, the estimated value is adjusted with a factor of the Kalman gain $L_k$:
+\begin{equation}
+	\hat{x}_{k+1|k+1} = \hat{x}_{k+1|k} + L_{k+1} \cdot \left(y[k+1] - \hat{y}[k+1]\right)
+\end{equation}
+Because there is no measurement for $x$, the correction step will never adjust the a priori state estimate. Consequently, the uncertainty of the state estimate is constantly increased, as can also be confirmed by the diverging confidence interval in Figure \ref{fig:x_w}. 
+
+
+
+
+\begin{figure*}[htp!]
+	\centering
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{state1_w.eps}
+		\caption{$x$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.48\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{state1_w_closeup.eps}
+		\caption{$x$ (close up)}
+		\label{fig:x_w}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{state2_w.eps}
+		\caption{$\theta$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.48\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{state2_w_closeup.eps}
+		\caption{$\theta$ (close up)}
+	\end{subfigure}
+	
+	
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering 
+		\includegraphics[width=\textwidth]{state3_w.eps}
+		\caption{$v_{tan}$}
+	\end{subfigure}
+	\caption{Yeet} 
+	\label{fig:confidence2}
+\end{figure*}
 	
 \section{Design and implementation of an extended Kalman filter}
 \subsection{Nonlinear measurement equation}
