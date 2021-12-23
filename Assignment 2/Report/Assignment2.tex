@@ -63,7 +63,7 @@
 
 \maketitle
 
-
+\tableofcontents
 \listoffigures
 \listoftables
 
@@ -73,7 +73,7 @@ In this report, two velocity controllers for a DC motor are designed, using freq
 \section{Design of the controller}
 \subsection{Type of controller}
 \label{sec: typecontroller}
-To satisfy the criterion of zero steady-state error, multiple controllers can be used. A PI, PID and feedforward controller can all yield a zero steady-state error. For the PI and PID controllers, this is caused by the integrator part. The feedforward controller can be especially usefull for tracking and can eliminate errors induced by a changing reference value. However, as the controller must yield a zero steady-state error on a constant velocity reference and deal with errors caused by disturbances, the feedforward controller will not be used. Since a large bandwidth yields a fast responding system, a high bandwidth seems advantageous. If the bandwidth is too high though, the high frequency noise has more influence. A trade-off between the two has to be made. Additionally, the overshoot $M_p$ must be kept sufficiently low. High peaks in the transient respons have to be avoided, as the Arduino can only deliver voltages in a range of $[-12V, 12V]$. If high peaks are present in the respons, it is possible the controller wants to send out voltages outside this range. This is ofcourse impossible, which makes the cart unable to follow the correct respons imposed by the controller. %Generally the sampling frequency has to be at least 10-20 times larger than bandwidth (\underline{REFERENTIE C8 S82}). In this report, the bandwidth will be approximated by the crossover frequency $\omega_c$.%
+To satisfy the criterion of zero steady-state error, multiple controllers can be used. A PI, PID and feedforward controller can all yield a zero steady-state error. For the PI and PID controllers, this is caused by the integration part. The feedforward controller can be especially usefull for tracking and can eliminate errors induced by a changing reference value. However, as the controller must yield a zero steady-state error on a constant velocity reference and deal with errors caused by disturbances, the feedforward controller will not be used. Since a large bandwidth yields a fast responding system, a high bandwidth seems advantageous. If the bandwidth is too high though, the high frequency noise has more influence. A trade-off between the two has to be made. Additionally, the overshoot $M_p$ must be kept sufficiently low. High peaks in the transient respons have to be avoided, as the Arduino can only deliver voltages in a range of $[-12V, 12V]$. If high peaks are present in the respons, it is possible the controller wants to send out voltages outside this range. This is ofcourse impossible, which makes the cart unable to follow the correct respons imposed by the controller. %Generally the sampling frequency has to be at least 10-20 times larger than bandwidth (\underline{REFERENTIE C8 S82}). In this report, the bandwidth will be approximated by the crossover frequency $\omega_c$.%
 Because of the aforementioned reasons and because of simplicity the PI controller is chosen.
 \subsection{Design parameters}
 To properly execute the design, some design parameters must be determined. The parameters that can be chosen free are the phase margin PM and the extra margin $d\phi$ to compensate for the phase lag of the PI controller. Using these, the new cross over frequency $\omega_c$, the integration time $T_i$, the gain K and the gain margin GM of the controller can be calculated. 
@@ -83,10 +83,10 @@ To properly execute the design, some design parameters must be determined. The p
 
 \subsubsection{Phase margin}
 The design value of the PM can vary from 40\degree to 50\degree. From chapter 7 of the course notes "Control Theory- Handouts" \cite{slidescontroltheory}, we know that by increasing the PM, the dampingratio $\zeta$ and $T_i$ will increase. The peak value in the closed loop step response $M_p$ and the new cross over frequency $\omega_c$ will decrease. The increase in $\zeta$ causes the respons of the signal to be slower, but have less oscillations. Since the value of $\zeta$ is still below the value of critical damping of $\zeta = 0.7$, the increase is in general advantageous for the transient respons. The decrease of $\omega_c$ %helps to keep the cross over frequency 10-20 times lower than the sampling frequency and%
- reduces the influence of high frequency noise. However, $\omega_c \gg \frac{1}{T_i}$ is necessary to lower the influence of the phase lag introduced by the PI controller. Luckily by increasing the PM, $\frac{1}{T_i}$ decreases (see Equation \ref{eq: Ti}) and thus the fact that $\omega_c$ reduces, is partly compensated by the decrease in $\frac{1}{T_i}$. The decrease in overshoot $M_p$ improves the transient respons. By processing the data in Matlab, it becomes clear that by increasing the PM, the GM increases and the transient error decreases. For these reasons, the PM is chosen to be equal to 50\degree. 
+ reduces the influence of high frequency noise. However, $\omega_c \gg \frac{1}{T_i}$ is necessary to lower the influence of the phase lag introduced by the PI controller. Luckily by increasing the PM, $\frac{1}{T_i}$ decreases (see Equation \ref{eq: Ti}) and thus the fact that $\omega_c$ reduces, is partly compensated by the decrease in $\frac{1}{T_i}$. The decrease in overshoot $M_p$ improves the transient respons. By processing the data in Matlab, it becomes clear that by increasing the PM, the GM increases and the transient errors decreases. For these reasons, the PM is chosen to be equal to 50\degree. 
 
 \subsubsection{Extra margin to compensate for the phase lag}
-	As the PI controller has a negative phase, an extra margin $d\phi$ on the PM has to be included to calculate the new cross over frequency $\omega_c$. The chosen margin can vary from 10\degree to 15\degree. By choosing a higher value, the GM increases and the gain decreases, which helps to reduce resonance. By using different values and calculating the stepresponse on the closed loop system in Matlab, it is clear the transient error decreases when the extra margin is increased. $d\phi = 15\degree$ is chosen. 
+	As the PI controller has a negative phase, an extra margin $d\phi$ on the PM has to be included to calculate the new cross over frequency $\omega_c$. The chosen margin can vary from 10\degree to 15\degree. By choosing a higher value, the GM increases and the gain decreases, which helps to reduce resonance. By using different values and calculating the stepresponse on the closed loop system in Matlab, it is clear the transient errors decreases when the extra margin is increased. $d\phi = 15\degree$ is chosen. 
 
 \subsubsection{General design procedure}
 \label{sec:designprocedure}
@@ -126,7 +126,7 @@ The gain margin is a measure for stability and reduces resonance. The design val
 	\label{tab:values}
 \end{table}
 %As can be seen in Table \ref{tab:values}, however the difference is quite small and the system shows no sign of instabilities, the value is acceptable. $\frac{1}{T_i}$ is not that much smaller than $\omega_c$, but the influence of the extra phase lag on the other parameters is acceptable. In Figure \ref{fig:bodeplotopenloop} the bodeplots of the different open loop systems are shown and in Figure \ref{fig:bodeplotcl} the bodeplot of the closed loop system is shown. %
-Next to the values in Table \ref{tab:values}, the open loop (= serial connection of controller and model) and closed loop bodediagrams are shown in Figure \ref{fig:bodeplotopenloopmethod1} and Figure \ref{fig:bodeplotclmethod1} respectively. The closed loop step responses are shown in Figure \ref{fig:stepresponseclmethod1}. Several factor show this controller is not optimal. First of all the GM does not meet the required value of 2. This means the system can be unstable or contain resonance. The latter is reflected in the resonance peak in the bodeplot of the closed loop system in Figure \ref{fig:bodeplotclmethod1}. In Figure \ref{fig:stepresponseclmethod1}, a high overshoot value $M_p$ can be observed. This can cause troubles, as discussed earlier in Section \ref{sec: typecontroller}. 
+Next to the values in Table \ref{tab:values}, the open loop (= serial connection of controller and model) and closed loop bodediagrams are shown in Figure \ref{fig:bodeplotopenloopmethod1} and Figure \ref{fig:bodeplotclmethod1} respectively. The closed loop step responses are shown in Figure \ref{fig:stepresponseclmethod1}. Several factor show this controller is not optimal. First of all the GM does not meet the required value of 2. This means the system can become unstable or contain resonance. The latter is reflected in the resonance peak in the bodeplot of the closed loop system in Figure \ref{fig:bodeplotclmethod1}. In Figure \ref{fig:stepresponseclmethod1}, a high overshoot value $M_p$ can be observed. This can cause troubles, as discussed earlier in Section \ref{sec: typecontroller}. 
 
 
 
@@ -188,8 +188,8 @@ Next to the values in Table \ref{tab:values}, the open loop (= serial connection
 In section \ref{sec:designprocedure}, it became clear the general design procedure does not provide an acceptable controller. To improve the controller, two methods were considered. First of all, the gain could be lowered to increase the GM and PM, while keeping the same $T_i$. Secondly the desired GM given in the design could be increased. Comparison of the two methods for several values in Matlab showed that the first method (decreasing gain K) produced the best system parameters, for example higher GM for the same PM, lower overshoot and a far better transient respons to a step input in general. By a method of trial and error, following values for the gain were selected: 
 \begin{equation}
 	\begin{split}
-	Motor A: K_a &= 0.8\\
-	Motor B: K_b &= 0.775
+	$Motor A$: K_a &= 0.8\\
+	$Motor B$: K_b &= 0.775
 	\end{split}
 \end{equation}
 These gains yield the values given in Table \ref{tab:valuesmethod2}. 

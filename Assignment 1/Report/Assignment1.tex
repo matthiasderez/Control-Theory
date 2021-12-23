@@ -176,7 +176,7 @@ More generally:
 \begin{equation}
 	H_{\text{simple}}(z) = \frac{b_0}{z + a_0}
 \end{equation}
-Again, the delay is taken into account, resulting in the final, simplified, discrete-time transfer function of the system:
+Again, the extra delay is taken into account, resulting in the final, simplified, discrete-time transfer function of the system:
 \begin{equation}
 \label{eq:TF_simple2}
 	H_{\text{simple}}(z) = \frac{b_0}{z^2 + a_0 z}
@@ -203,7 +203,7 @@ As previously mentioned, the input of the model is the voltage source $V(s)$ app
 \subsection{Excitation Signal}
 In order to identify the system 'DC motor + wheel', it is necessary to perform a dedicated experiment that actively excites the system, while the \textit{persistency of excitation} condition is satisfied. This means that the excitation must be rich enough, i.e. so that all frequency modes of the system are excited and observable in the output. To this extent, a square wave is chosen, as displayed in Figure \ref{fig:IO} on the left. Note that the input voltage also remains $0$ for some time, instead of jumping to $-6$ or $6$ instantaneously. 
 \\\\
-This step-up step-down pattern is repeated four times in order to assess the noise. In Figure \ref{fig:omega_deltaomega}, the top plots show the motor velocities averaged out to one period of the square wave excitation. The bottom plots show the deviation of the motor velocities with regard to the averaged out velocities, for each of the periods (each with a different colour). The left plots are for motor A and the right ones for motor B. One can see that the motor velocities fluctuate not more than $\pm 3.5\%$, which is acceptable to work with for the rest of the assignment. There is no noise on the input voltage, as it is controlled by the user.
+This step-up step-down pattern is repeated four times in order to assess the noise and to check wether modelling errors increase throughout repition of the periods. In Figure \ref{fig:omega_deltaomega}, the top plots show the motor velocities averaged out to one period of the square wave excitation. The bottom plots show the deviation of the motor velocities with regard to the averaged out velocities, for each of the periods (each with a different colour). The left plots are for motor A and the right ones for motor B. One can see that the motor velocities fluctuate not more than $\pm 3.5\%$, which is acceptable to work with for the rest of the assignment. There is no noise on the input voltage, as it is controlled by the user.
 
 \begin{figure*}[htp!]
 	\centering
@@ -287,7 +287,7 @@ This yields:
 \subsubsection{Results}
 \noindent The unknown coefficients are determined using \texttt{Matlab}. This allows to construct the transfer function for each of the motors, as well as the locations of the poles and the zeros. These values are summarized in Table \ref{tab:overview} and visualized in Figures \ref{fig:pz_complex_all} and \ref{fig:pz_simple_all}.
 \\\\
-As expected, the simple model has no zeros, because the numerator of the transfer function is of order 0. The NaN values in the table refer to the poles that are at the origin of the pole-zero map. Both models have such a pole, because of the multiplication by $z^{-1}$ to take the MicroOS delay into account. 
+As expected, the simple model has no zeros, because the numerator of the transfer function is of order 0. The NaN values (in rad/s) in the table refer to the poles that are at the origin of the pole-zero map. Both models have such a pole, because of the multiplication by $z^{-1}$ to take the MicroOS delay into account. 
 
 % Further, for the simple model, the transfer functions for motor A and B are approximately the same, which explains why the poles for motor A and B coincide in Figure \ref{fig:pz_simple}.
 
@@ -355,7 +355,7 @@ Table \ref{tab:overview_BW} summarizes the identification after applying the fil
 
 \subsubsection{Sanathanan Koerner Filter}
 
-As the results from \ref{subsub:BW} are not so fantastic, another filtering procedure is examined. It is an iterative weighted least-square approach, called the Sanathanan Koerner procedure. In this technique, the model without filter is used as starting point. In each iteration step i, the obtained model is filtered with a low-pass filter given by 1 / the denominator of the obtained model of step i-1. This goes on until the denominator of the obtained model of step i-1 comes arbitrarily close to the denominator of step i. This way, the high-frequency emphasis introduced in the obtained model will be completely compensated. In this report, convergence is assumed when the error between the denominators reaches machine precision.
+As the results from \ref{subsub:BW} are not that fantastic, another filtering procedure is examined. It is an iterative weighted least-square approach, called the Sanathanan Koerner procedure. In this technique, the model without filter is used as starting point. In each iteration step i, the obtained model is filtered with a low-pass filter given by 1 divided by the denominator of the obtained model of step i-1. This goes on until the denominator of the obtained model of step i-1 comes arbitrarily close to the denominator of step i. This way, the high-frequency emphasis introduced in the obtained model will be completely compensated. In this report, convergence is assumed when the error between the denominators reaches machine precision.
 \\\\
 The results of the identification are given in Table \ref{tab:overview_SK}. When compared to Table \ref{tab:overview}, one can observe that the poles for both motors are almost equally fast or even faster than without filter, and this for \textbf{both models}. Comparing to Table \ref{tab:overview_BW} shows that the poles are a bit slower for the simple model, but a lot faster for the complex model.
 \\\\
@@ -579,7 +579,7 @@ The superposition principle system states that, for linear systems, the total re
 \right\}
 \quad \Longrightarrow c_1 u_1[t] + c_2 u_2[t] \rightarrow c_1 y_1[t] + c_2 y_2[t]
 \end{equation}
-with $c_1, c_2$ arbitrary constants. To verify this, excitations of 4V, 6V and 10V are applied to the system. The excitation voltages of the 4V and the 6V measurement are summed and in Figure \ref{fig:superposition}, the sum of the individual wheel velocities is plotted. Next, the response of the system to the 10V excitation signal is plotted as well. If this would be a linear system, the superposition principle would be valid, so one would expect that these two graphs would more or less coincide. However, this is clearly not the case. The absolute error between these outputs is visualized as well. This error is too big to attribute to noise. Conclusion: this system is non-linear. This non-linearity can be due to Coulomb friction in the motors, backlash of the gears, etc.
+with $c_1, c_2$ arbitrary constants. To verify this, excitations of 4V, 6V and 10V are applied to the system. The excitation voltages of the 4V and the 6V measurement are summed and in Figure \ref{fig:superposition}, the sum of the individual wheel velocities is plotted. Next, the response of the system to the 10V excitation signal is plotted as well. If this would be a linear system, the superposition principle would be valid, so one would expect that these two graphs would more or less coincide. However, this is clearly not the case. The absolute error between these outputs is visualized as well. This error is too big to attribute to noise. Moreover, one would expect noise to have mean value equal to zero, which is clearly not the case. Conclusion: this system is non-linear. This non-linearity can be due to Coulomb friction in the motors, backlash of the gears, etc.
 
 
 \begin{figure*}[htp!]
