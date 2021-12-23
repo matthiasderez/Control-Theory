@@ -549,7 +549,7 @@ Using Equation \ref{eq:Cz}, the LQR criterion can be rewritten as in Equation \r
 The $\rho$ and thus the matrix \textbf{Q} are design parameters. These values determine which part of the tradeoff is most important in this particular design: performance or control effort. The tuning of the parameters and thus the design of the LQR itself is done in Section \ref{sec:implFBcontr}. 
 
 \subsection{Design of a feedforward gain}
-
+\label{sec:FF}
 The blockdiagram of the system with feedforward compensation can be found in Figure \ref{fig:blockdiagram}, where the kalman estimator is not shown. 
 
 \begin{figure*}[htp!]
@@ -574,9 +574,12 @@ To be able to use $H_x(z)$ and $H_\theta(z)$, \textbf{H}(z) has to be calculated
 The matrices $\mathbf{A}$,$\mathbf{B}$ and $\mathbf{C}$ can be found in the linear, discretized model in Equations \ref{eq:ABC} and \ref{eq:sslineardiscr}. When the feedback gain $\mathbf{K}$ is calculated in Section \ref{sec:implFBcontr}, it will become possible to calculate $\mathbf{H}(z)$ thus also $N_p$. 
 \subsection{Implementation of the controller}
 \label{sec:implFBcontr}
-In this section, the controller is implemented in arduino, making use of the Kalman estimator. By trial and error, the feedforward and feedback gain are determined. The higher $\rho$ the faster the measured pendulum position goes to the desired position.
+In this section, the controller is implemented in arduino, making use of the Kalman estimator. By trial and error, the feedforward and feedback gain are determined. The higher $\rho$ the faster the measured pendulum position goes to the desired position.  
+\underline{FIGUREN PLOTTEN VOOR VERSCHILLENDE WAARDEN VAN RHO EN ER IN DE TEXT BEETJE NAAR VERWIJZEN ENZO}
 
+In Figure \underline{VERWIJS NAAR EEN FIGUUR MET RESPONSES} it can be seen the steady state error is not exactly zero. This is caused by the fact that in steady state it is possible the angle $\theta$ is different from zero, e.g. due to damping. This causes an error that is not forseen by the feedforward controller, as $H_{\theta}(z)$ from Section \ref{sec:FF}, equals zero for $z = 1$. 
 
+To choose an appropriate value for $\rho$, a tradeoff is made by looking at the Figures containing the responses and the Figures containing the requested actuator signal. Next to that, saturation of the DC-motors must be avoided. $\rho = 5$ is chosen. 
 
 
 
