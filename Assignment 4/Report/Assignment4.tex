@@ -259,7 +259,12 @@ To discretize the linear model, the forward Euler method is used:
 \end{equation}
 Filling in Equation \ref{eq:FElinear} in Equation \ref{eq:deltaxidotlinear} yields the following equation:
 \begin{equation}
-	\delta\xi[k+1] = (\mathbf{I} + T_s\mathbf{F})\delta\xi[k] + T_s\mathbf{G}\delta v_c[k]
+\begin{split}
+	\delta\xi[k+1] &= (\mathbf{I} + T_s\mathbf{F})\delta\xi[k] + T_s\mathbf{G}\delta v_c[k]\\
+				&= \mathbf{A}\delta\xi[k]+ \mathbf{B}\delta v_c[k]\\
+					\mathbf{y} &= \mathbf{C}\xi[k] + 0 \cdot v_c[k]
+	\end{split}
+	\label{eq:ABC}
 	\end{equation}
 	Which can be translated into the following discretized, linear state-space model (where the damping is neglected, $c = 0$):
 	\begin{equation}
@@ -399,11 +404,36 @@ Since the linearization of the model has no influence on the measurement noise c
 	\J = \J_p + \J_c =  \sum_{k=0}^{\infty}\mathbf{\xi}[k]^T\mathbf{Q}\mathbf{\xi}[k] + v_c[k]Rv_c[k]
 	\label{eq:criterionLQR}
 	\end{equation}
-	The matrix \textbf{Q} and the value R are design parameters. These values determine which part of the tradeoff is most important in this particular design: performance or control effort. The tuning of the parameters and thus the design of the LQR itself is done in Section \ref{sec:implFBcontr}. 
+	The pendulum mass position can be written as:
+	\begin{equation}
+	x_p = x + L\cdot \sin(\theta) \approx x + L\cdot \theta
+	\label{eq:xp}
+	\end{equation}
+	The regulated output $x_p$ is thus a linear combination of the two outputs of the linear system and can be written as:
+	\begin{equation}
+		x_p[k] = \mathbf{C_z}\cdot\xi[k] = \begin{bmatrix}
+		1&L&0
+		\end{bmatrix}\cdot\begin{bmatrix}
+		x\\L\\v_{tan}
+		\end{bmatrix}
+		\label{eq:Cz}
+	\end{equation}
+	Using Equation \ref{eq:Cz}, the LQR criterion can be rewritten as in Equation \ref{eq:critrewritten}, with corresponding $\mathbf{Q}$ and $R$:
+	\begin{equation}
+	\begin{split}
+		\J &=  \sum_{k=0}^{\infty}\rho x_p^2[k] + v_c^2[k]\\
+		\mathbf{Q} &= \rho \mathbf{C_z^T}\mathbf{C_z^T}\\
+		R &= 1
+	\end{split}
+	\label{eq:critrewritten}
+	\end{equation}
+	
+	
+	The $\rho$ and thus the matrix \textbf{Q} are design parameters. These values determine which part of the tradeoff is most important in this particular design: performance or control effort. The tuning of the parameters and thus the design of the LQR itself is done in Section \ref{sec:implFBcontr}. 
 	
 	\subsection{Design of a feedforward gain}
 	
-	The blockdiagram of the system with feedforward compensation can be found in Figure \ref{fig:blockdiagram}. 
+	The blockdiagram of the system with feedforward compensation can be found in Figure \ref{fig:blockdiagram}, where the kalman estimator is not shown. 
 	
 	\begin{figure*}[htp!]
 		\centering
@@ -411,24 +441,20 @@ Since the linearization of the model has no influence on the measurement noise c
 		\caption{Blockdiagram of the system with feedforward compensation }
 		\label{fig:blockdiagram}
 	\end{figure*}
-	The feedforward gain $N_p$ is calculated such that the steady-state error equals zero for a step reference in desired position, which is denoted with $r[k]$. The pendulum mass position can be written as:
-	\begin{equation}
-	x_p = x + L\cdot \sin(\theta) = x + L\cdot \theta
-	\end{equation}
-	$x_p$ is thus a linear combination of the two outputs of the linear system. The total transfer function \textbf{H}(z) of the system is thus a vector containing 2 transfer functions: $H_x(z) = \frac{X(z)}{V_c(z)}$ and $\frac{\Theta(z)}{V_c(z)}$. The pendulum mass position can be calculated starting from a given $v_c$ as follows:
+	The feedforward gain $N_p$ is calculated such that the steady-state error equals zero for a step reference in desired position, which is denoted with $r[k]$. The pendulum mass position can be written as in Equation \ref{eq:xp}. The total transfer function \textbf{H}(z) of the system is thus a vector containing 2 transfer functions: $H_x(z) = \frac{X(z)}{V_c(z)}$ and $H_{\theta}(z) = \frac{\Theta(z)}{V_c(z)}$. The pendulum mass position can be calculated starting from a given $v_c$ as follows:
 	\begin{equation}
 	X_p(z) = (H_x(z) + LH_\theta(z))V_c(z)
 	\end{equation}
 	Following the reasoning on C9, slide 54 of the slides of the course Control Theory \cite{slidescontroltheory}, the expression for $N_p$ to  obtain a zero steady state error is: \underline{NOG HELEMAAL UITWERKEN OF GWN VERWIJZEN NAAR SLIDE?}
 	\begin{equation}
-	N_p = \frac{1}{(H_x(1) + LH_\theta(1))}
+	N_p = \frac{1}{H_x(1) + LH_\theta(1)}
 	\end{equation}
 	To be able to use $H_x(z)$ and $H_\theta(z)$, \textbf{H}(z) has to be calculated. This can be done using Equation \ref{eq:HFB}. 
 	\begin{equation}
 	\mathbf{H}(z) = \mathbf{C}(z\mathbf{I}-\mathbf{A}+\mathbf{BK})^{-1}\mathbf{B}
 	\label{eq:HFB}
 	\end{equation}
-	The matrices $\mathbf{A}$,$\mathbf{B}$ and $\mathbf{C}$ can be found in Equation \ref{eq:sslineardiscr}. When the feedback gain $\mathbf{K}$ is calculated in Section \ref{sec:implFBcontr}, it will become possible to calculate $\mathbf{H}(z)$ thus also $N_p$. 
+	The matrices $\mathbf{A}$,$\mathbf{B}$ and $\mathbf{C}$ can be found in the linear, discretized model in Equations \ref{eq:ABC} and \ref{eq:sslineardiscr}. When the feedback gain $\mathbf{K}$ is calculated in Section \ref{sec:implFBcontr}, it will become possible to calculate $\mathbf{H}(z)$ thus also $N_p$. 
 	\subsection{Implementation of the controller}
 	\label{sec:implFBcontr}
 	

@@ -85,16 +85,41 @@ void Robot::control() {
      ref(0)= readValue(0);         // r [m] - use channel 0 to provide the step reference
     
      // State feedback controller
-     float arrayKfb[1][3]{{3.0597,   -0.4433,    0.2208}};  // state feedback gain Kfb, to design
+
+//     // rho = 1
+//     float arrayKfb[1][3]{{0.9850,   -0.2549,    0.0279}};  // state feedback gain Kfb, to design
+//     
+//     // rho = 2
+//     float arrayKfb[1][3]{{1.3880,   -0.2946,    0.0539}};  // state feedback gain Kfb, to design
+////     
+//     // rho = 3
+//     float arrayKfb[1][3]{{1.6953,   -0.3251,    0.0782}};  // state feedback gain Kfb, to design
+//     
+//     // rho = 4
+//     float arrayKfb[1][3]{{1.9531,   -0.3500,    0.1011}};  // state feedback gain Kfb, to design
+//     
+     // rho = 5
+     float arrayKfb[1][3]{{2.1794,   -0.3710,    0.1230}};  // state feedback gain Kfb, to design
+     
+//     // rho = 6
+//     float arrayKfb[1][3]{{2.3832,   -0.3892,    0.1440}};  // state feedback gain Kfb, to design
+////     
+//     // rho = 7
+//     float arrayKfb[1][3]{{2.5701,  -0.4051 ,   0.1642}};  // state feedback gain Kfb, to design
+//     
+//     // rho = 8
+//     float arrayKfb[1][3]{{2.7436,   -0.4193,    0.1837}};  // state feedback gain Kfb, to design
+//     
+//     // rho = 10
+//     float arrayKfb[1][3]{{3.0597,   -0.4433,    0.2208}};  // state feedback gain Kfb, to design
      Matrix<1, 3> Kfb = arrayKfb;
     
      // Compute feedback signal ufb = -Kfb*x
      Matrix<1> ufb = -Kfb * _xhat;
     
      // Feedforward controller
-     float arrayKff[1][1]{3.0597};  // feedforward gain Kff, to design
+     float arrayKff[1][1]{Kfb(0)};  // feedforward gain Kff, to design
      Matrix<1> Kff = arrayKff;
-    
      Matrix<1> uff = Kff*ref;
     
      // Compute the control action u = uff + ufb
@@ -117,13 +142,20 @@ void Robot::control() {
     volt_A = uA;
     volt_B = uB;
     counter = counter +1;
-    
+    if(volt_A > 12) {
+      volt_A = 12;
+    }
+    if(volt_B>12){
+      volt_B = 12;
+    }
   
 
     // Send wheel speed command
     setVoltageMotorA(volt_A);
     setVoltageMotorB(volt_B);
-    writeValue(1, uA);
+    writeValue(0, desiredVelocityCart(0));
+    writeValue(1, volt_A);
+    writeValue(2, uA);
     
   }
   else                      // do nothing since control is disables
@@ -141,7 +173,7 @@ void Robot::control() {
 
   // Send useful outputs to QRC
   // to check functioning of trajectory and feedforward
-  writeValue(0, trajectory.v());
+  // writeValue(0, trajectory.v());
 //  writeValue(1, trajectory.X());
 //  writeValue(2, trajectory.hasMeasurements());
 //  writeValue(3, getSpeedMotorA());
@@ -157,7 +189,7 @@ void Robot::control() {
      writeValue(9, _xhat(2));
      //writeValue(1, _Phat(0,0));
      
-     writeValue(2, _Phat(1,0));
+     //writeValue(2, _Phat(1,0));
      // writeValue(4, _Phat(1,0));
      writeValue(4, _Phat(1,1));
      writeValue(3, _Phat(2,0));
@@ -185,8 +217,8 @@ void Robot::resetKalmanFilter() {
    // UNCOMMENT AND MODIFY LINES BELOW TO IMPLEMENT THE RESET OF THE KALMAN FILTER
    // Initialize state covariance matrix
    _Phat.Fill(0);       // Initialize the covariance matrix
-   _Phat(0,0) = 2.3511e-6;      // Fill the initial covariance matrix, you can change this according to your experiments
-   _Phat(1,1) = 1e-6;
+   _Phat(0,0) = 1e-6;      // Fill the initial covariance matrix, you can change this according to your experiments
+   _Phat(1,1) = 2.3511e-6;
    _Phat(2,2) = 1e-6;
   
    // Initialize state estimate
