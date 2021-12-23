@@ -121,7 +121,8 @@ obj = KalmanExperiment.createfromQRC45();
 %%% state 1
 figure()
 hold on 
-plotstates(obj, 1, 0.95)
+plotstates(obj, 2, 0.95)
+legend('state 1 (95% interval)')
 xlabel('time [s]')
 ylabel('x [m]')
 hold off
@@ -129,7 +130,8 @@ print -depsc state1_w.eps
 
 figure()
 hold on 
-plotstates(obj, 1, 0.95)
+plotstates(obj, 2, 0.95)
+legend('state 1 (95% interval)')
 xlabel('time [s]')
 ylabel('x [m]')
 xlim([131 138])
@@ -140,8 +142,9 @@ print -depsc state1_w_closeup.eps
 %%% state 2
 figure()
 hold on 
-plotstates(obj, 2, 0.95)
-plotmeasurements(obj, 2, 0.95)
+plotstates(obj, 1, 0.95)
+plotmeasurements(obj, 1, 0.95)
+legend('state 2 (95% interval)','measurement 2 (95% interval)')
 xlabel('time [s]')
 ylabel('\theta [rad]')
 ylim([-0.6 0.6])
@@ -150,8 +153,9 @@ print -depsc state2_w.eps
 
 figure()
 hold on 
-plotstates(obj, 2, 0.95)
-plotmeasurements(obj, 2, 0.95)
+plotstates(obj, 1, 0.95)
+plotmeasurements(obj, 1, 0.95)
+legend('state 2 (95% interval)','measurement 2 (95% interval)')
 xlabel('time [s]')
 ylabel('\theta [rad]')
 xlim([133.7 135.1])

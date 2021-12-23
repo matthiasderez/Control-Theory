@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.18)  23 DEC 2021 16:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.18)  23 DEC 2021 16:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1190,15 +1190,20 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 tate2-eps-converted-to.pdf> <./state2_closeup-eps-converted-to.pdf> <./state3-e
 ps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../Matlab//state1_w.eps>
-(epstopdf)                    date: 2021-12-23 16:29:49
-(epstopdf)                    size: 33914 bytes
+(epstopdf)                    date: 2021-12-23 16:56:15
+(epstopdf)                    size: 33901 bytes
 (epstopdf)             Output file: <./state1_w-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 16:30:26
-(epstopdf)                    size: 34821 bytes
+(epstopdf)                    date: 2021-12-23 16:54:08
+(epstopdf)                    size: 34933 bytes
 (epstopdf)             Command: <repstopdf --outfile=./state1_w-eps-converted-t
 o.pdf ../Matlab//state1_w.eps>
 (epstopdf)             \includegraphics on input line 391.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./state1_w-eps-converted-to.pdf ../Matlab//state1
+_w.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./state1_w-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-23 16:56:47
+(epstopdf)                    size: 34802 bytes.
 <./state1_w-eps-converted-to.pdf, id=298, 422.57875pt x 317.185pt>
 File: ./state1_w-eps-converted-to.pdf Graphic file (type pdf)
 <use ./state1_w-eps-converted-to.pdf>
@@ -1206,15 +1211,20 @@ Package pdftex.def Info: ./state1_w-eps-converted-to.pdf  used on input line 39
 1.
 (pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
 Package epstopdf Info: Source file: <../Matlab//state1_w_closeup.eps>
-(epstopdf)                    date: 2021-12-23 16:29:50
-(epstopdf)                    size: 34456 bytes
+(epstopdf)                    date: 2021-12-23 16:56:17
+(epstopdf)                    size: 34765 bytes
 (epstopdf)             Output file: <./state1_w_closeup-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 16:30:29
-(epstopdf)                    size: 31324 bytes
+(epstopdf)                    date: 2021-12-23 16:54:11
+(epstopdf)                    size: 31776 bytes
 (epstopdf)             Command: <repstopdf --outfile=./state1_w_closeup-eps-con
 verted-to.pdf ../Matlab//state1_w_closeup.eps>
 (epstopdf)             \includegraphics on input line 397.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./state1_w_closeup-eps-converted-to.pdf ../Matlab
+//state1_w_closeup.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./state1_w_closeup-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-23 16:56:50
+(epstopdf)                    size: 31646 bytes.
 <./state1_w_closeup-eps-converted-to.pdf, id=299, 422.57875pt x 317.185pt>
 File: ./state1_w_closeup-eps-converted-to.pdf Graphic file (type pdf)
 <use ./state1_w_closeup-eps-converted-to.pdf>
@@ -1222,11 +1232,11 @@ Package pdftex.def Info: ./state1_w_closeup-eps-converted-to.pdf  used on input
  line 397.
 (pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
 Package epstopdf Info: Source file: <../Matlab//state2_w.eps>
-(epstopdf)                    date: 2021-12-23 16:42:03
-(epstopdf)                    size: 46076 bytes
+(epstopdf)                    date: 2021-12-23 16:56:30
+(epstopdf)                    size: 46073 bytes
 (epstopdf)             Output file: <./state2_w-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 16:30:31
-(epstopdf)                    size: 47335 bytes
+(epstopdf)                    date: 2021-12-23 16:54:13
+(epstopdf)                    size: 46972 bytes
 (epstopdf)             Command: <repstopdf --outfile=./state2_w-eps-converted-t
 o.pdf ../Matlab//state2_w.eps>
 (epstopdf)             \includegraphics on input line 403.
@@ -1234,8 +1244,8 @@ runsystem(repstopdf --outfile=./state2_w-eps-converted-to.pdf ../Matlab//state2
 _w.eps)...executed safely (allowed).
 
 Package epstopdf Info: Result file: <./state2_w-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 16:43:49
-(epstopdf)                    size: 47335 bytes.
+(epstopdf)                    date: 2021-12-23 16:56:52
+(epstopdf)                    size: 47339 bytes.
 <./state2_w-eps-converted-to.pdf, id=300, 422.57875pt x 317.185pt>
 File: ./state2_w-eps-converted-to.pdf Graphic file (type pdf)
 <use ./state2_w-eps-converted-to.pdf>
@@ -1243,15 +1253,20 @@ Package pdftex.def Info: ./state2_w-eps-converted-to.pdf  used on input line 40
 3.
 (pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
 Package epstopdf Info: Source file: <../Matlab//state2_w_closeup.eps>
-(epstopdf)                    date: 2021-12-23 16:29:53
-(epstopdf)                    size: 49949 bytes
+(epstopdf)                    date: 2021-12-23 16:56:32
+(epstopdf)                    size: 49859 bytes
 (epstopdf)             Output file: <./state2_w_closeup-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 16:30:34
-(epstopdf)                    size: 49965 bytes
+(epstopdf)                    date: 2021-12-23 16:54:16
+(epstopdf)                    size: 49552 bytes
 (epstopdf)             Command: <repstopdf --outfile=./state2_w_closeup-eps-con
 verted-to.pdf ../Matlab//state2_w_closeup.eps>
 (epstopdf)             \includegraphics on input line 409.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=./state2_w_closeup-eps-converted-to.pdf ../Matlab
+//state2_w_closeup.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./state2_w_closeup-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-23 16:56:55
+(epstopdf)                    size: 49906 bytes.
 <./state2_w_closeup-eps-converted-to.pdf, id=301, 422.57875pt x 317.185pt>
 File: ./state2_w_closeup-eps-converted-to.pdf Graphic file (type pdf)
 <use ./state2_w_closeup-eps-converted-to.pdf>
@@ -1259,10 +1274,10 @@ Package pdftex.def Info: ./state2_w_closeup-eps-converted-to.pdf  used on input
  line 409.
 (pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
 Package epstopdf Info: Source file: <../Matlab//state3_w.eps>
-(epstopdf)                    date: 2021-12-23 16:29:54
+(epstopdf)                    date: 2021-12-23 16:53:38
 (epstopdf)                    size: 39163 bytes
 (epstopdf)             Output file: <./state3_w-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 16:30:37
+(epstopdf)                    date: 2021-12-23 16:54:19
 (epstopdf)                    size: 40078 bytes
 (epstopdf)             Command: <repstopdf --outfile=./state3_w-eps-converted-t
 o.pdf ../Matlab//state3_w.eps>
@@ -1400,7 +1415,7 @@ m-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sf
 rm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb
 ><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb><c:/texli
 ve/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on Assignment4.pdf (11 pages, 1081567 bytes).
+Output written on Assignment4.pdf (11 pages, 1081815 bytes).
 PDF statistics:
  505 PDF objects out of 1000 (max. 8388607)
  359 compressed objects within 4 object streams
