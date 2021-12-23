@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 \babel@toc {english}{}\relax 
 \contentsline {figure}{\numberline {1}{\ignorespaces Depiction of the pendulum placed on the cart \cite {Quanser} \relax }}{2}{figure.caption.4}%
 \contentsline {figure}{\numberline {2}{\ignorespaces Free body diagram of the pendulum \cite {Researchgate}\relax }}{2}{figure.caption.4}%
@@ -5,3 +6,12 @@
 \contentsline {figure}{\numberline {4}{\ignorespaces Yeet\relax }}{7}{figure.caption.9}%
 \contentsline {figure}{\numberline {5}{\ignorespaces Yeet\relax }}{9}{figure.caption.11}%
 \contentsline {figure}{\numberline {6}{\ignorespaces Blockdiagram of the system with feedforward compensation \relax }}{10}{figure.caption.12}%
+=======
+\babel@toc {english}{}
+\contentsline {figure}{\numberline {1}{\ignorespaces Depiction of the pendulum placed on the cart \cite {Quanser} \relax }}{3}{figure.caption.4}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Free body diagram of the pendulum \cite {Researchgate}\relax }}{3}{figure.caption.4}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Measured values for the experiment to determine $\zeta $\relax }}{5}{figure.caption.5}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Yeet\relax }}{8}{figure.caption.9}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Yeet\relax }}{10}{figure.caption.11}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Blockdiagram of the system with feedforward compensation \relax }}{11}{figure.caption.12}%
+>>>>>>> Stashed changes
