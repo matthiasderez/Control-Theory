@@ -63,6 +63,7 @@ hold on
 plotstates(obj, 1, 0.95)
 plotmeasurements(obj, 1, 0.95)
 hold off
+print -depsc state1.eps
 
 %%% state 2
 figure()
@@ -71,12 +72,14 @@ plotstates(obj, 2, 0.95)
 plotmeasurements(obj, 2, 0.95)
 ylim([-0.6 0.6])
 hold off
+print -depsc state2.eps
 
 %%% state 3
 figure()
 hold on 
 plotstates(obj, 3, 0.95)
 hold off
+print -depsc state3.eps
 
 
 
