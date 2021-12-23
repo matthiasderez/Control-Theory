@@ -527,6 +527,9 @@ Since the linearization of the model has no influence on the measurement noise c
 	The matrices $\mathbf{A}$,$\mathbf{B}$ and $\mathbf{C}$ can be found in the linear, discretized model in Equations \ref{eq:ABC} and \ref{eq:sslineardiscr}. When the feedback gain $\mathbf{K}$ is calculated in Section \ref{sec:implFBcontr}, it will become possible to calculate $\mathbf{H}(z)$ thus also $N_p$. 
 	\subsection{Implementation of the controller}
 	\label{sec:implFBcontr}
+	In this section, the controller is implemented in arduino, making use of the Kalman estimator. By trial and error, the feedforward and feedback gain are determined. The higher $\rho$ the faster the measured pendulum position goes to the desired position.
+	
+	
 	
 	\bibliographystyle{plain}
 	\bibliography{bibliography}
