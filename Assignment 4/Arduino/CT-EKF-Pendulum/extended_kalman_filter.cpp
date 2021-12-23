@@ -17,8 +17,8 @@ void PredictionUpdate(const Matrix<1> &u, Matrix<3> &xhat, Matrix<3,3> &Phat) {
 
   // Linear Kalman filter
   float arrayF[3][3]{{1,0,0},
-                      {0,1,0.01/L},
-                      {0,-0.01*g,1}};
+                      {0,1,Ts/L},
+                      {0,-Ts*g,1}};
   Matrix <3,3> F = arrayF;
 
   float arrayG [3][1]{{0.01},{-0.01/L},{0}};
