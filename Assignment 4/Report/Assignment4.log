@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.5)  23 DEC 2021 16:41
-=======
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.18)  23 DEC 2021 16:56
->>>>>>> master
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.18)  23 DEC 2021 17:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -978,20 +974,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--66
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <c:/Users/murcy/
 texmf/tex/latex/kulak/kuleuvenLogo.pdf> <c:/Users/murcy/texmf/tex/latex/kulak/k
 uleuvenSedes.pdf>]
-<<<<<<< HEAD
-<pendulumoncart.png, id=148, 199.947pt x 246.32025pt>
-=======
 <pendulumoncart.png, id=150, 199.947pt x 246.32025pt>
->>>>>>> master
 File: pendulumoncart.png Graphic file (type png)
 <use pendulumoncart.png>
 Package pdftex.def Info: pendulumoncart.png  used on input line 105.
 (pdftex.def)             Requested size: 182.09831pt x 224.33969pt.
-<<<<<<< HEAD
-<VLDpendulum.png, id=152, 295.70474pt x 349.305pt>
-=======
 <VLDpendulum.png, id=154, 295.70474pt x 349.305pt>
->>>>>>> master
 File: VLDpendulum.png Graphic file (type png)
 <use VLDpendulum.png>
 Package pdftex.def Info: VLDpendulum.png  used on input line 111.
@@ -1028,11 +1016,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 223--227
 
  []
 
-<<<<<<< HEAD
-<logdecrement.png, id=201, 386.6445pt x 320.397pt>
-=======
 <logdecrement.png, id=203, 386.6445pt x 320.397pt>
->>>>>>> master
 File: logdecrement.png Graphic file (type png)
 <use logdecrement.png>
 Package pdftex.def Info: logdecrement.png  used on input line 239.
@@ -1055,105 +1039,23 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
 
 [4 <./logdecrement.png>]
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 321--330
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 316--323
->>>>>>> master
+Underfull \hbox (badness 10000) in paragraph at lines 321--328
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 321--330
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 316--323
->>>>>>> master
+Underfull \hbox (badness 10000) in paragraph at lines 321--328
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 321--330
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 321--330
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 316--323
->>>>>>> master
+Underfull \hbox (badness 10000) in paragraph at lines 321--328
 
  []
 
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-<<<<<<< HEAD
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 330.
-(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-[5]
-Package epstopdf Info: Source file: <../Matlab//state1.eps>
-(epstopdf)                    date: 2021-12-23 02:19:11
-(epstopdf)                    size: 34446 bytes
-(epstopdf)             Output file: <./state1-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 02:19:11
-(epstopdf)                    size: 34740 bytes
-(epstopdf)             Command: <repstopdf --outfile=./state1-eps-converted-to.
-pdf ../Matlab//state1.eps>
-(epstopdf)             \includegraphics on input line 336.
-Package epstopdf Info: Output file is already uptodate.
-<./state1-eps-converted-to.pdf, id=241, 422.57875pt x 317.185pt>
-File: ./state1-eps-converted-to.pdf Graphic file (type pdf)
-<use ./state1-eps-converted-to.pdf>
-Package pdftex.def Info: ./state1-eps-converted-to.pdf  used on input line 336.
-
-(pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
-Package epstopdf Info: Source file: <../Matlab//state2.eps>
-(epstopdf)                    date: 2021-12-23 02:19:11
-(epstopdf)                    size: 47284 bytes
-(epstopdf)             Output file: <./state2-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 02:19:11
-(epstopdf)                    size: 47002 bytes
-(epstopdf)             Command: <repstopdf --outfile=./state2-eps-converted-to.
-pdf ../Matlab//state2.eps>
-(epstopdf)             \includegraphics on input line 342.
-Package epstopdf Info: Output file is already uptodate.
-<./state2-eps-converted-to.pdf, id=242, 422.57875pt x 317.185pt>
-File: ./state2-eps-converted-to.pdf Graphic file (type pdf)
-<use ./state2-eps-converted-to.pdf>
-Package pdftex.def Info: ./state2-eps-converted-to.pdf  used on input line 342.
-
-(pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
-Package epstopdf Info: Source file: <../Matlab//state3.eps>
-(epstopdf)                    date: 2021-12-23 02:19:11
-(epstopdf)                    size: 40671 bytes
-(epstopdf)             Output file: <./state3-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 02:19:11
-(epstopdf)                    size: 42079 bytes
-(epstopdf)             Command: <repstopdf --outfile=./state3-eps-converted-to.
-pdf ../Matlab//state3.eps>
-(epstopdf)             \includegraphics on input line 347.
-Package epstopdf Info: Output file is already uptodate.
-<./state3-eps-converted-to.pdf, id=243, 422.57875pt x 317.185pt>
-File: ./state3-eps-converted-to.pdf Graphic file (type pdf)
-<use ./state3-eps-converted-to.pdf>
-Package pdftex.def Info: ./state3-eps-converted-to.pdf  used on input line 347.
-
-(pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
-File: kuleuvenSedes.pdf Graphic file (type pdf)
-<use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 389.
-(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
- [6]
-File: kuleuvenSedes.pdf Graphic file (type pdf)
-<use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 389.
-(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
- [7 <./state1-eps-converted-to.pdf> <./state2-eps-converted-to.pdf> <./state3-e
-ps-converted-to.pdf>]
-Overfull \hbox (23.73618pt too wide) in paragraph at lines 391--392
-=======
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 323.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 328.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 Package fancyhdr Warning: \headheight is too small (42.67912pt): 
@@ -1164,17 +1066,17 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 325--332
+Underfull \hbox (badness 10000) in paragraph at lines 330--337
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 325--332
+Underfull \hbox (badness 10000) in paragraph at lines 330--337
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 325--332
+Underfull \hbox (badness 10000) in paragraph at lines 330--337
 
  []
 
@@ -1186,12 +1088,12 @@ Package epstopdf Info: Source file: <../Matlab//state1.eps>
 (epstopdf)                    size: 36461 bytes
 (epstopdf)             Command: <repstopdf --outfile=./state1-eps-converted-to.
 pdf ../Matlab//state1.eps>
-(epstopdf)             \includegraphics on input line 337.
+(epstopdf)             \includegraphics on input line 342.
 Package epstopdf Info: Output file is already uptodate.
 <./state1-eps-converted-to.pdf, id=244, 422.57875pt x 317.185pt>
 File: ./state1-eps-converted-to.pdf Graphic file (type pdf)
 <use ./state1-eps-converted-to.pdf>
-Package pdftex.def Info: ./state1-eps-converted-to.pdf  used on input line 337.
+Package pdftex.def Info: ./state1-eps-converted-to.pdf  used on input line 342.
 
 (pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
 Package epstopdf Info: Source file: <../Matlab//state1_closeup.eps>
@@ -1202,13 +1104,13 @@ Package epstopdf Info: Source file: <../Matlab//state1_closeup.eps>
 (epstopdf)                    size: 36355 bytes
 (epstopdf)             Command: <repstopdf --outfile=./state1_closeup-eps-conve
 rted-to.pdf ../Matlab//state1_closeup.eps>
-(epstopdf)             \includegraphics on input line 343.
+(epstopdf)             \includegraphics on input line 348.
 Package epstopdf Info: Output file is already uptodate.
 <./state1_closeup-eps-converted-to.pdf, id=245, 422.57875pt x 317.185pt>
 File: ./state1_closeup-eps-converted-to.pdf Graphic file (type pdf)
 <use ./state1_closeup-eps-converted-to.pdf>
 Package pdftex.def Info: ./state1_closeup-eps-converted-to.pdf  used on input l
-ine 343.
+ine 348.
 (pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
 Package epstopdf Info: Source file: <../Matlab//state2.eps>
 (epstopdf)                    date: 2021-12-23 15:52:56
@@ -1218,12 +1120,12 @@ Package epstopdf Info: Source file: <../Matlab//state2.eps>
 (epstopdf)                    size: 49957 bytes
 (epstopdf)             Command: <repstopdf --outfile=./state2-eps-converted-to.
 pdf ../Matlab//state2.eps>
-(epstopdf)             \includegraphics on input line 348.
+(epstopdf)             \includegraphics on input line 353.
 Package epstopdf Info: Output file is already uptodate.
 <./state2-eps-converted-to.pdf, id=246, 422.57875pt x 317.185pt>
 File: ./state2-eps-converted-to.pdf Graphic file (type pdf)
 <use ./state2-eps-converted-to.pdf>
-Package pdftex.def Info: ./state2-eps-converted-to.pdf  used on input line 348.
+Package pdftex.def Info: ./state2-eps-converted-to.pdf  used on input line 353.
 
 (pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
 Package epstopdf Info: Source file: <../Matlab//state2_closeup.eps>
@@ -1234,13 +1136,13 @@ Package epstopdf Info: Source file: <../Matlab//state2_closeup.eps>
 (epstopdf)                    size: 55103 bytes
 (epstopdf)             Command: <repstopdf --outfile=./state2_closeup-eps-conve
 rted-to.pdf ../Matlab//state2_closeup.eps>
-(epstopdf)             \includegraphics on input line 354.
+(epstopdf)             \includegraphics on input line 359.
 Package epstopdf Info: Output file is already uptodate.
 <./state2_closeup-eps-converted-to.pdf, id=247, 422.57875pt x 317.185pt>
 File: ./state2_closeup-eps-converted-to.pdf Graphic file (type pdf)
 <use ./state2_closeup-eps-converted-to.pdf>
 Package pdftex.def Info: ./state2_closeup-eps-converted-to.pdf  used on input l
-ine 354.
+ine 359.
 (pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
 Package epstopdf Info: Source file: <../Matlab//state3.eps>
 (epstopdf)                    date: 2021-12-23 15:52:58
@@ -1250,17 +1152,17 @@ Package epstopdf Info: Source file: <../Matlab//state3.eps>
 (epstopdf)                    size: 42919 bytes
 (epstopdf)             Command: <repstopdf --outfile=./state3-eps-converted-to.
 pdf ../Matlab//state3.eps>
-(epstopdf)             \includegraphics on input line 361.
+(epstopdf)             \includegraphics on input line 366.
 Package epstopdf Info: Output file is already uptodate.
 <./state3-eps-converted-to.pdf, id=248, 422.57875pt x 317.185pt>
 File: ./state3-eps-converted-to.pdf Graphic file (type pdf)
 <use ./state3-eps-converted-to.pdf>
-Package pdftex.def Info: ./state3-eps-converted-to.pdf  used on input line 361.
+Package pdftex.def Info: ./state3-eps-converted-to.pdf  used on input line 366.
 
 (pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 379.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 384.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 Package fancyhdr Warning: \headheight is too small (42.67912pt): 
@@ -1273,7 +1175,7 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 [6]
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 379.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 384.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 
@@ -1291,85 +1193,65 @@ Package epstopdf Info: Source file: <../Matlab//state1_w.eps>
 (epstopdf)                    date: 2021-12-23 16:56:15
 (epstopdf)                    size: 33901 bytes
 (epstopdf)             Output file: <./state1_w-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 16:54:08
-(epstopdf)                    size: 34933 bytes
+(epstopdf)                    date: 2021-12-23 16:56:47
+(epstopdf)                    size: 34802 bytes
 (epstopdf)             Command: <repstopdf --outfile=./state1_w-eps-converted-t
 o.pdf ../Matlab//state1_w.eps>
-(epstopdf)             \includegraphics on input line 391.
-runsystem(repstopdf --outfile=./state1_w-eps-converted-to.pdf ../Matlab//state1
-_w.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <./state1_w-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 16:56:47
-(epstopdf)                    size: 34802 bytes.
+(epstopdf)             \includegraphics on input line 396.
+Package epstopdf Info: Output file is already uptodate.
 <./state1_w-eps-converted-to.pdf, id=298, 422.57875pt x 317.185pt>
 File: ./state1_w-eps-converted-to.pdf Graphic file (type pdf)
 <use ./state1_w-eps-converted-to.pdf>
 Package pdftex.def Info: ./state1_w-eps-converted-to.pdf  used on input line 39
-1.
+6.
 (pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
 Package epstopdf Info: Source file: <../Matlab//state1_w_closeup.eps>
 (epstopdf)                    date: 2021-12-23 16:56:17
 (epstopdf)                    size: 34765 bytes
 (epstopdf)             Output file: <./state1_w_closeup-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 16:54:11
-(epstopdf)                    size: 31776 bytes
+(epstopdf)                    date: 2021-12-23 16:56:50
+(epstopdf)                    size: 31646 bytes
 (epstopdf)             Command: <repstopdf --outfile=./state1_w_closeup-eps-con
 verted-to.pdf ../Matlab//state1_w_closeup.eps>
-(epstopdf)             \includegraphics on input line 397.
-runsystem(repstopdf --outfile=./state1_w_closeup-eps-converted-to.pdf ../Matlab
-//state1_w_closeup.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <./state1_w_closeup-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 16:56:50
-(epstopdf)                    size: 31646 bytes.
+(epstopdf)             \includegraphics on input line 402.
+Package epstopdf Info: Output file is already uptodate.
 <./state1_w_closeup-eps-converted-to.pdf, id=299, 422.57875pt x 317.185pt>
 File: ./state1_w_closeup-eps-converted-to.pdf Graphic file (type pdf)
 <use ./state1_w_closeup-eps-converted-to.pdf>
 Package pdftex.def Info: ./state1_w_closeup-eps-converted-to.pdf  used on input
- line 397.
+ line 402.
 (pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
 Package epstopdf Info: Source file: <../Matlab//state2_w.eps>
 (epstopdf)                    date: 2021-12-23 16:56:30
 (epstopdf)                    size: 46073 bytes
 (epstopdf)             Output file: <./state2_w-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 16:54:13
-(epstopdf)                    size: 46972 bytes
+(epstopdf)                    date: 2021-12-23 16:56:52
+(epstopdf)                    size: 47339 bytes
 (epstopdf)             Command: <repstopdf --outfile=./state2_w-eps-converted-t
 o.pdf ../Matlab//state2_w.eps>
-(epstopdf)             \includegraphics on input line 403.
-runsystem(repstopdf --outfile=./state2_w-eps-converted-to.pdf ../Matlab//state2
-_w.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <./state2_w-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 16:56:52
-(epstopdf)                    size: 47339 bytes.
+(epstopdf)             \includegraphics on input line 408.
+Package epstopdf Info: Output file is already uptodate.
 <./state2_w-eps-converted-to.pdf, id=300, 422.57875pt x 317.185pt>
 File: ./state2_w-eps-converted-to.pdf Graphic file (type pdf)
 <use ./state2_w-eps-converted-to.pdf>
 Package pdftex.def Info: ./state2_w-eps-converted-to.pdf  used on input line 40
-3.
+8.
 (pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
 Package epstopdf Info: Source file: <../Matlab//state2_w_closeup.eps>
 (epstopdf)                    date: 2021-12-23 16:56:32
 (epstopdf)                    size: 49859 bytes
 (epstopdf)             Output file: <./state2_w_closeup-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 16:54:16
-(epstopdf)                    size: 49552 bytes
+(epstopdf)                    date: 2021-12-23 16:56:55
+(epstopdf)                    size: 49906 bytes
 (epstopdf)             Command: <repstopdf --outfile=./state2_w_closeup-eps-con
 verted-to.pdf ../Matlab//state2_w_closeup.eps>
-(epstopdf)             \includegraphics on input line 409.
-runsystem(repstopdf --outfile=./state2_w_closeup-eps-converted-to.pdf ../Matlab
-//state2_w_closeup.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <./state2_w_closeup-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-23 16:56:55
-(epstopdf)                    size: 49906 bytes.
+(epstopdf)             \includegraphics on input line 414.
+Package epstopdf Info: Output file is already uptodate.
 <./state2_w_closeup-eps-converted-to.pdf, id=301, 422.57875pt x 317.185pt>
 File: ./state2_w_closeup-eps-converted-to.pdf Graphic file (type pdf)
 <use ./state2_w_closeup-eps-converted-to.pdf>
 Package pdftex.def Info: ./state2_w_closeup-eps-converted-to.pdf  used on input
- line 409.
+ line 414.
 (pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
 Package epstopdf Info: Source file: <../Matlab//state3_w.eps>
 (epstopdf)                    date: 2021-12-23 16:53:38
@@ -1379,39 +1261,28 @@ Package epstopdf Info: Source file: <../Matlab//state3_w.eps>
 (epstopdf)                    size: 40078 bytes
 (epstopdf)             Command: <repstopdf --outfile=./state3_w-eps-converted-t
 o.pdf ../Matlab//state3_w.eps>
-(epstopdf)             \includegraphics on input line 416.
+(epstopdf)             \includegraphics on input line 421.
 Package epstopdf Info: Output file is already uptodate.
 <./state3_w-eps-converted-to.pdf, id=302, 422.57875pt x 317.185pt>
 File: ./state3_w-eps-converted-to.pdf Graphic file (type pdf)
 <use ./state3_w-eps-converted-to.pdf>
-Package pdftex.def Info: ./state3_w-eps-converted-to.pdf  used on input line 41
-6.
+Package pdftex.def Info: ./state3_w-eps-converted-to.pdf  used on input line 42
+1.
 (pdftex.def)             Requested size: 218.51521pt x 164.01756pt.
 
-Overfull \hbox (23.73618pt too wide) in paragraph at lines 456--457
->>>>>>> master
+Overfull \hbox (23.73618pt too wide) in paragraph at lines 461--462
 \T1/cmr/m/n/10 equal to those used in the lin-ear Kalman fil-ter (see Equa-tion
 s $[]$).
  []
 
 LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
-<<<<<<< HEAD
-402.
-(c:/texlive/2020/texmf-dist/tex/latex/psnfss/omszplm.fd
-File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
-)
-<blockdiagram.png, id=293, 510.708pt x 163.20975pt>
-File: blockdiagram.png Graphic file (type png)
-<use blockdiagram.png>
-Package pdftex.def Info: blockdiagram.png  used on input line 440.
-=======
-467.
+472.
 (c:/texlive/2021/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 468.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 473.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 
@@ -1425,7 +1296,7 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 [8]
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 468.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 473.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 
@@ -1439,33 +1310,20 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 [9 <./state1_w-eps-converted-to.pdf> <./state1_w_closeup-eps-converted-to.pdf> 
 <./state2_w-eps-converted-to.pdf> <./state2_w_closeup-eps-converted-to.pdf> <./
 state3_w-eps-converted-to.pdf>]
-<blockdiagram.png, id=352, 510.708pt x 163.20975pt>
+<blockdiagram.png, id=354, 510.708pt x 163.20975pt>
 File: blockdiagram.png Graphic file (type png)
 <use blockdiagram.png>
-Package pdftex.def Info: blockdiagram.png  used on input line 480.
->>>>>>> master
+Package pdftex.def Info: blockdiagram.png  used on input line 510.
 (pdftex.def)             Requested size: 318.66946pt x 101.84146pt.
 
-Overfull \hbox (36.99683pt too wide) in paragraph at lines 491--493
+Overfull \hbox (36.99683pt too wide) in paragraph at lines 517--519
 \T1/cmr/m/n/10 to ob-tain a zero steady state er-ror is: $[]$ 
  []
 
-(./Assignment4.bbl
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-<<<<<<< HEAD
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 443.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 521.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
- [8]
-Overfull \hbox (36.99683pt too wide) in paragraph at lines 447--449
-\T1/cmr/m/n/10 to ob-tain a zero steady state er-ror is: $[]$
- []
-
-(./Assignment4.bbl
-=======
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 8.
-(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-
 
 Package fancyhdr Warning: \headheight is too small (42.67912pt): 
 (fancyhdr)                Make it at least 46.27914pt, for example:
@@ -1474,8 +1332,7 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
 
-[10 <./blockdiagram.png>]
->>>>>>> master
+[10 <./blockdiagram.png>] (./Assignment4.bbl
 Underfull \hbox (badness 4556) in paragraph at lines 9--15
 []\T1/cmr/m/n/10 Aurelio Are-nas.  The use of a nin-tendo wii re-mote con-trol 
 in physics ex-per-i-ments.
@@ -1491,12 +1348,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--15
 AED: lastpage setting LastPage
 File: kuleuvenSedes.pdf Graphic file (type pdf)
 <use kuleuvenSedes.pdf>
-<<<<<<< HEAD
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 464.
-(pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
-[9 <./blockdiagram.png>] (./Assignment4.aux)
-=======
-Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 508.
+Package pdftex.def Info: kuleuvenSedes.pdf  used on input line 534.
 (pdftex.def)             Requested size: 25.00282pt x 42.67912pt.
 
 Package fancyhdr Warning: \headheight is too small (42.67912pt): 
@@ -1507,53 +1359,14 @@ Package fancyhdr Warning: \headheight is too small (42.67912pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.60002pt}.
 
 [11] (./Assignment4.aux)
->>>>>>> master
 Package rerunfilecheck Info: File `Assignment4.out' has not changed.
 (rerunfilecheck)             Checksum: 5ED374A3A977404F5081AB49DCC0D74A;4010.
  ) 
 Here is how much of TeX's memory you used:
-<<<<<<< HEAD
- 23196 strings out of 479917
- 465376 string characters out of 5886666
- 796702 words of memory out of 5000000
- 39158 multiletter control sequences out of 15000+600000
- 556130 words of font info for 87 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 89i,25n,99p,982b,1101s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
-ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2020/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2020/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi5.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmi6.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.
-pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/te
-xlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2020/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/s
-fbx1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pf
-b><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texl
-ive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><c:/texlive/2020/t
-exmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/texlive/2020/texmf-dist/
-fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2020/texmf-dist/fonts/type
-1/public/cm-super/sfrm0900.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/c
-m-super/sfrm1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sf
-rm1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb
-><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb><c:/texli
-ve/2020/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on Assignment4.pdf (9 pages, 764963 bytes).
-PDF statistics:
- 427 PDF objects out of 1000 (max. 8388607)
- 343 compressed objects within 4 object streams
- 81 named destinations out of 1000 (max. 500000)
- 274 words of extra memory for PDF output out of 10000 (max. 10000000)
-=======
- 26813 strings out of 478353
- 531590 string characters out of 5852100
- 842166 words of memory out of 5000000
- 44309 multiletter control sequences out of 15000+600000
+ 26819 strings out of 478353
+ 531656 string characters out of 5852100
+ 844407 words of memory out of 5000000
+ 44313 multiletter control sequences out of 15000+600000
  424472 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,25n,94p,1100b,1102s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1580,11 +1393,10 @@ m-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sf
 rm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb
 ><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb><c:/texli
 ve/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on Assignment4.pdf (11 pages, 1081815 bytes).
+Output written on Assignment4.pdf (11 pages, 1083741 bytes).
 PDF statistics:
- 505 PDF objects out of 1000 (max. 8388607)
- 359 compressed objects within 4 object streams
- 86 named destinations out of 1000 (max. 500000)
+ 511 PDF objects out of 1000 (max. 8388607)
+ 365 compressed objects within 4 object streams
+ 88 named destinations out of 1000 (max. 500000)
  309 words of extra memory for PDF output out of 10000 (max. 10000000)
->>>>>>> master
 

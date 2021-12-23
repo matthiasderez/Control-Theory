@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-\babel@toc {english}{}
-=======
 \babel@toc {english}{}\relax 
->>>>>>> master
 \contentsline {section}{\numberline {1}Modeling and Identification of the System}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Theoretical continuous Model}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}State-space Equation for the non-linear Model}{2}{subsection.1.2}%
@@ -10,16 +6,6 @@
 \contentsline {subsection}{\numberline {1.4}Determination of the Pendulum Length}{4}{subsection.1.4}%
 \contentsline {subsection}{\numberline {1.5}Discretization}{5}{subsection.1.5}%
 \contentsline {section}{\numberline {2}Design and implementation of a linear Kalman filter}{5}{section.2}%
-<<<<<<< HEAD
-\contentsline {section}{\numberline {3}Design and implementation of an extended Kalman filter}{6}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Nonlinear measurement equation}{6}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Jacobian of the state and measurement equation}{6}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Implementation of the extended Kalman filter}{8}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Design and implementation of a state feedback controller based on the linearized model}{8}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Design of a linear quadratic regulator}{8}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Design of a feedforward gain}{9}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Implementation of the controller}{9}{subsection.4.3}%
-=======
 \contentsline {section}{\numberline {3}Design and implementation of an extended Kalman filter}{8}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Nonlinear measurement equation}{8}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Jacobian of the state and measurement equation}{8}{subsection.3.2}%
@@ -28,4 +14,3 @@
 \contentsline {subsection}{\numberline {4.1}Design of a linear quadratic regulator}{10}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Design of a feedforward gain}{10}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Implementation of the controller}{11}{subsection.4.3}%
->>>>>>> master
