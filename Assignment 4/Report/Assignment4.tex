@@ -119,7 +119,7 @@ To derive a state-space equation for the non-linear model, following states are 
 \begin{equation}
 	\xi = [x, \theta, L\dot{\theta} +  \dot{x}\cos(\theta)]^{T}
 \end{equation}
-In this state vector, $x$ stands for the position of the cart and $\theta$ stands for the pendulum angle. In the third state $L\dot{\theta} +  \dot{x}\cos(\theta)$, the tangential velocity of the centre of gravity of the pendulum with relation to a standstill reference frame can be recognized. For this reason, we will call the third state $v_{tan}$ from now on. The state vector then becomes: 
+In this state vector, $x$ stands for the position of the cart and $\theta$ stands for the pendulum angle. In the third state $L\dot{\theta} +  \dot{x}\cos(\theta)$, the tangential velocity of the centre of gravity of the pendulum with relation to a standstill reference frame can be recognized. For this reason,the third state will be called $v_{tan}$ from now on. The state vector then becomes: 
 \begin{equation}
 \xi = [x, \theta, v_{tan}]^{T}
 \label{eq:xi}
@@ -149,7 +149,7 @@ Using Equation \ref{eq:newton} and the definition of $\xi$, the nonlinear state-
 
 \subsection{Linearization of the Model}
 \label{sec:linearization}
-The nonlinear model can be linearized around the equilibrium state $\mathbf{\xi_0}$ = $[0,0,0]^T$. Both $\theta$ and $v_{tan}$ have to be zero in the equilibrium state. The value of $x$ doesn't really matter, but is taken equal to zero for convenience. The equilibrium input $v_{c0}$ is also chosen to be equal to zero. Calculating the jacobian matrices \textbf{F} and \textbf{G}, we can rewrite the model as:
+The nonlinear model can be linearized around the equilibrium state $\mathbf{\xi_0}$ = $[0,0,0]^T$. Both $\theta$ and $v_{tan}$ have to be zero in the equilibrium state. The value of $x$ doesn't really matter, but is taken equal to zero for convenience. The equilibrium input $v_{c0}$ is also chosen to be equal to zero. Calculating the jacobian matrices \textbf{F} and \textbf{G}, the model can be rewritten as:
 \begin{equation}
 	\delta\mathbf{\dot{\xi}} = \mathbf{F}\delta\mathbf{\xi} + \mathbf{G}\delta v_c
 	\label{eq:deltaxidotlinear}
@@ -180,7 +180,7 @@ The nonlinear model can be linearized around the equilibrium state $\mathbf{\xi_
 	\end{bmatrix}
 	\end{split}
 	\end{equation}
-	As the measurement equation was already linear, we find the following linear state-space model:
+	As the measurement equation was already linear, the following linear state-space model can be found:
 	
 	\begin{equation}
 	\label{eq:sslinear}
@@ -220,9 +220,9 @@ The damping ratio $\zeta$ can be determined, using the logarithmic decrement. In
 	\begin{equation}
 	\zeta = \frac{\delta}{\sqrt{(2\pi)^2+\delta^2}}
 \end{equation}
-By measuring the period of the oscillations, the distance $L$ from the rotating point to the centre of gravity can be calculated. since the pendulum has two bolts detached at the end of it, the centre of gravity will be located close to the end, but the distributed mass of the pendulum will cause the calculated length $L$ to be smaller than the measured length from the rotating point to the end of the pendulum $L_m$.
+By measuring the period of the oscillations, the distance $L$ from the rotating point to the centre of gravity can be calculated. Since the pendulum has two bolts detached at the end of it, the centre of gravity will be located close to the end, but the distributed mass of the pendulum will cause the calculated length $L$ to be smaller than the measured length $L_m$ from the rotating point to the end of the pendulum.
 \\\\\
-From the measured period, we can derive the measured (damped) pulsation, which is an estimate for the real pulsation. 
+From the measured period, the measured (damped) pulsation can be derived, which is an estimate for the real pulsation. 
 \begin{equation}
 	\omega_d = \frac{2\pi}{T} = \omega_n\sqrt{1-\zeta^2}
 	\label{eq:wd}
@@ -324,7 +324,7 @@ $\mathbf{R}_{22} = R_\theta$ is also determined using the resolution of the pend
 \\\\
 For the values of $Q_x$ and $Q_\theta$, experiments with varying $Q$ are conducted, of which the best ones yield the values given in (\ref{eq:eq28}). The best experiments are those that lead to the estimated states being the closest to reality. This way, $Q_x$ is set to $10\cdot R_x$, while $Q_\theta$ is set to $0.01 \cdot R_\theta$. Lastly, $Q_{v_{tan}}$ is taken in the order of the square root of $Q_x$ and $Q_\theta$, because $v_{tan}$ involves a derivative.
 \\\\
-Next, for $\hat{P}_{0|0, \theta}$, the following experiment is conducted: the pendulum is manually set so that one thinks that $\theta = 0$. Then, the measured angle $\theta$ shows how much one deviates from $\theta = 0$. This is repeated multiple times. The largest value of the measured angle over all the experiments is then taken as the maximum deviation when one wants to place the pendulum at $\theta = 0$. In this report, this value is taken to be $0.0046$ rad. Following the \textit{68-95-99.7 rule}\footnote{"In statistics, the 68–95–99.7 rule, also known as the empirical rule, is a shorthand used to remember the percentage of values that lie within an interval estimate in a normal distribution: 68\%, 95\%, and 99.7\% of the values lie within one, two, and three standard deviations of the mean, respectively." \cite{68rule}} then leads to $\hat{P}_{0|0, \theta} = \left(\frac{0.0046}{3}\right)^2 = 2.3511\cdot 10^{-6}$ rad$^2$. Lastly, $\hat{P}_{0|0, x}$ and $\hat{P}_{0|0, v_{tan}}$ are taken in the same order, leading to a value of $10^{-6}$.
+Next, for $\hat{P}_{0|0, \theta}$, the following experiment is conducted: the pendulum is manually set as close as possible with the naked eye to $\theta = 0$. Then, the measured angle $\theta$ shows how much one deviates from $\theta = 0$. This is repeated multiple times. The largest value of the measured angle over all the experiments is then taken as the maximum deviation when one wants to place the pendulum at $\theta = 0$. In this report, this value is taken to be $0.0046$ rad. Following the \textit{68-95-99.7 rule}\footnote{"In statistics, the 68–95–99.7 rule, also known as the empirical rule, is a shorthand used to remember the percentage of values that lie within an interval estimate in a normal distribution: 68\%, 95\%, and 99.7\% of the values lie within one, two, and three standard deviations of the mean, respectively." \cite{68rule}} then leads to $\hat{P}_{0|0, \theta} = \left(\frac{0.0046}{3}\right)^2 = 2.3511\cdot 10^{-6}$ rad$^2$. Lastly, $\hat{P}_{0|0, x}$ and $\hat{P}_{0|0, v_{tan}}$ are taken in the same order, leading to a value of $10^{-6}$.
 
 \subsubsection*{With wheel and pendulum encoder}
 Now, a trapezoidal velocity profile is applied as input. Figure \ref{fig:confidence1} then depicts the evolution of every state in time together with its 95\% confidence interval. As the states $x$ and $\theta$ can be measured using respectively the wheel encoders and the pendulum encoder, these measurements are also plotted with their 95\% confidence interval. On the full-scale plots, it is hard to see these intervals for $x$ and $\theta$, so a close-up of these states are likewise shown. 
@@ -366,7 +366,7 @@ Lastly, for $v_{tan}$, Kalman filtering is per definition useful, as this state 
 		\includegraphics[width=\textwidth]{state3.eps}
 		\caption{$v_{tan}$}
 	\end{subfigure}
-	\caption[Linear Kalman filter with wheel and pendulum encoder.]{\textbf{Linear Kalman filter with wheel and pendulum encoder.} State estimations and measurements as a response to a trapezoidal velocity input, together with the 95 \% confidence intervals.} 
+	\caption{\textbf{Linear Kalman filter with wheel and pendulum encoder.} State estimations and measurements as a response to a trapezoidal velocity input, together with the 95 \% confidence intervals.} 
 	\label{fig:confidence1}
 \end{figure*}
 
@@ -421,7 +421,7 @@ Because there is no measurement for $x$, the correction step will never adjust t
 		\includegraphics[width=\textwidth]{state3_w.eps}
 		\caption{$v_{tan}$}
 	\end{subfigure}
-	\caption[Linear Kalman filter without wheel encoder.]{\textbf{Linear Kalman filter without wheel encoder.} State estimations and measurements as a response to a trapezoidal velocity input, together with the 95 \% confidence intervals.} 
+	\caption{\textbf{Linear Kalman filter without wheel encoder.} State estimations and measurements as a response to a trapezoidal velocity input, together with the 95 \% confidence intervals.} 
 	\label{fig:confidence2}
 \end{figure*}
 	
@@ -506,7 +506,7 @@ For $\theta$ and $v_{tan}$, the estimation confidence intervals have likewise sh
 		\includegraphics[width=\textwidth]{state3_ext.eps}
 		\caption{$v_{tan}$}
 	\end{subfigure}
-	\caption[Extended Kalman filter with wheel and pendulum encoder.]{\textbf{Extended Kalman filter with wheel and pendulum encoder.} State estimations and measurements as a response to a trapezoidal velocity input, together with the 95 \% confidence intervals.} 
+	\caption{\textbf{Extended Kalman filter with wheel and pendulum encoder.} State estimations and measurements as a response to a trapezoidal velocity input, together with the 95 \% confidence intervals.} 
 	\label{fig:confidence3}
 \end{figure*}
 
@@ -515,7 +515,7 @@ For $\theta$ and $v_{tan}$, the estimation confidence intervals have likewise sh
 \section{Design and Implementation of a State Feedback Controller based on the linearized Model}
 \subsection{Design of a linear quadratic regulator}
 \label{sec:designLQR}
-The objective of the LQR is to find the control input $v_c[k]$ that moves the system states $\xi \neq 0$ to \textbf{0}, in a way the performance criterion $\J$ is minimized. This means a tradeoff has to be made between performane $\J_p$, the speed with which the states go to zero (or a desired state), and the controll effort $\J_c$. The criterion is given in Equation \ref{eq:criterionLQR}. 
+The objective of the LQR is to find the control input $v_c[k]$ that moves the system states $\xi \neq \mathbf{0}$ to \textbf{0}, in a way the performance criterion $\J$ is minimized. This means a tradeoff has to be made between performane $\J_p$, the speed with which the states go to zero (or a desired state), and the controll effort $\J_c$. The criterion is given in Equation \ref{eq:criterionLQR}. 
 \begin{equation}
 \J = \J_p + \J_c =  \sum_{k=0}^{\infty}\mathbf{\xi}[k]^T\mathbf{Q}\mathbf{\xi}[k] + v_c[k]Rv_c[k]
 \label{eq:criterionLQR}
@@ -530,7 +530,7 @@ The regulated output $x_p$ is thus a linear combination of the two outputs of th
 	x_p[k] = \mathbf{C_z}\cdot\xi[k] = \begin{bmatrix}
 	1&L&0
 	\end{bmatrix}\cdot\begin{bmatrix}
-	x\\L\\v_{tan}
+	x\\\theta\\v_{tan}
 	\end{bmatrix}
 	\label{eq:Cz}
 \end{equation}
@@ -549,19 +549,19 @@ The $\rho$ and thus the matrix \textbf{Q} are design parameters. These values de
 
 \subsection{Design of a Feedforward Gain}
 \label{sec:FF}
-The blockdiagram of the system with feedforward compensation can be found in Figure \ref{fig:blockdiagram}, where the kalman estimator is not shown. 
-\\\\
+The blockdiagram of the system with feedforward compensation can be found in Figure \ref{fig:blockdiagram}, where the Kalman estimator is not shown. 
+
+\begin{figure*}[htp!]
+	\centering
+	\includegraphics[width=.7\linewidth]{blockdiagram.png}
+	\caption{Blockdiagram of the system with feedforward compensation }
+	\label{fig:blockdiagram}
+\end{figure*}
 The feedforward gain $N_p$ is calculated such that the steady-state error equals zero for a step reference in desired position, which is denoted with $r[k]$. The pendulum mass position can be written as in Equation \ref{eq:xp}. The total transfer function \textbf{H}(z) of the system is thus a vector containing 2 transfer functions: $H_x(z) = \frac{X(z)}{V_c(z)}$ and $H_{\theta}(z) = \frac{\Theta(z)}{V_c(z)}$. The pendulum mass position can be calculated starting from a given $v_c$ as follows:
 \begin{equation}
 X_p(z) = (H_x(z) + LH_\theta(z))V_c(z)
 \end{equation}
-\begin{figure*}[htp!]
-	\centering
-	\includegraphics[width=.8\linewidth]{blockdiagram.png}
-	\caption{Blockdiagram of the system with feedforward compensation }
-	\label{fig:blockdiagram}
-\end{figure*}
-Following the reasoning on C9, slide 54 of the slides of the course Control Theory \cite{slidescontroltheory}, the expression for $N_p$ to  obtain a zero steady state error is:
+Following the reasoning on slide 54, C9 of the slides of the course Control Theory \cite{slidescontroltheory}, the expression for $N_p$ to  obtain a zero steady state error is: 
 \begin{equation}
 N_p = \frac{1}{H_x(1) + LH_\theta(1)}
 \end{equation}
@@ -573,26 +573,16 @@ To be able to use $H_x(z)$ and $H_\theta(z)$, \textbf{H}(z) has to be calculated
 The matrices $\mathbf{A}$,$\mathbf{B}$ and $\mathbf{C}$ can be found in the linear, discretized model in Equations \ref{eq:ABC} and \ref{eq:sslineardiscr}. When the feedback gain $\mathbf{K}$ is calculated in Section \ref{sec:implFBcontr}, it will become possible to calculate $\mathbf{H}(z)$ thus also $N_p$. 
 \subsection{Implementation of the Controller}
 \label{sec:implFBcontr}
-In this section, the controller is implemented in arduino using the Kalman estimator. By trial and error, the feedforward and feedback gain are determined. The higher $\rho$, the faster the measured pendulum position goes to the desired position, which is confirmed by Figure \ref{fig:pendulum_mass}. This figure also shows that the steady state error is not always exactly zero. This is caused by the fact that, in steady state, it is possible the angle $\theta$ is different from zero, e.g. due to damping. This causes an error that is not foreseen by the feedforward controller, as $H_{\theta}(z)$ from Section \ref{sec:FF}, equals zero for $z = 1$. 
-\\\\
-To choose an appropriate value for $\rho$, a tradeoff is made by looking at Figure \ref{fig:pendulum_mass}, which contains the responses and Figure \ref{fig:actuator_signal}, which contains the requested actuator signal. Furthermore, saturation of the DC-motors must be avoided. This way, $\rho = 5$ is chosen. 
+In this section, the controller is implemented in arduino, making use of the Kalman estimator. By trial and error, the feedforward and feedback gain are determined. The higher $\rho$ the faster the measured pendulum position goes to the desired position.  
+\underline{FIGUREN PLOTTEN VOOR VERSCHILLENDE WAARDEN VAN RHO EN ER IN DE TEXT BEETJE NAAR VERWIJZEN ENZO}
 
-\begin{figure}[htp!]
-	\centering
-	\includegraphics[width=.55\linewidth]{pendulum_mass.eps}
-	\caption{Pendulum mass position in function of $\rho$.}
-	\label{fig:pendulum_mass}
-\end{figure}
+In Figure \underline{VERWIJS NAAR EEN FIGUUR MET RESPONSES} it can be seen the steady state error is not exactly zero. This is caused by the fact that in steady state it is possible the angle $\theta$ is different from zero, e.g. due to damping. This causes an error that is not forseen by the feedforward controller, as $H_{\theta}(z)$ from Section \ref{sec:FF}, equals zero for $z = 1$. 
 
-\begin{figure}[htp!]
-	\centering
-	\includegraphics[width=0.48\linewidth]{desired_vel_2.eps}
-	\includegraphics[width=0.48\linewidth]{desired_vel_1.eps}
-	\caption[Plots of the requested actuator signal]{Plots of the requested actuator signal, i.e. the desired velocity that is used as input of the velocity control loop.}
-	\label{fig:actuator_signal}
-\end{figure}
+To choose an appropriate value for $\rho$, a tradeoff is made by looking at the Figures containing the responses and the Figures containing the requested actuator signal. Next to that, saturation of the DC-motors must be avoided. $\rho = 5$ is chosen. 
 
-\newpage
+
+
+
 \bibliographystyle{plain}
 \bibliography{bibliography}
 	
