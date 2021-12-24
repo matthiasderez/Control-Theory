@@ -1,19 +1,19 @@
-\babel@toc {english}{}
-\contentsline {section}{\numberline {1}Model Structure}{2}{section.1}
-\contentsline {subsection}{\numberline {1.1}Discrete-time Model Structure}{2}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Simplified Model}{4}{subsection.1.2}
-\contentsline {subsection}{\numberline {1.3}Input and Output}{5}{subsection.1.3}
-\contentsline {section}{\numberline {2}Identification of each 'DC Motor + Wheel'}{5}{section.2}
-\contentsline {subsection}{\numberline {2.1}Excitation Signal}{5}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}System Parameters}{5}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}Estimation criterion}{5}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}Results}{6}{subsubsection.2.2.2}
-\contentsline {subsection}{\numberline {2.3}Filtering}{7}{subsection.2.3}
-\contentsline {subsubsection}{\numberline {2.3.1}Butterworth Filter}{7}{subsubsection.2.3.1}
-\contentsline {subsubsection}{\numberline {2.3.2}Sanathanan Koerner Filter}{7}{subsubsection.2.3.2}
-\contentsline {subsection}{\numberline {2.4}Experimental Model Validation}{9}{subsection.2.4}
-\contentsline {subsubsection}{\numberline {2.4.1}Estimated vs. empirical Results}{9}{subsubsection.2.4.1}
-\contentsline {subsubsection}{\numberline {2.4.2}Superposition Principle}{12}{subsubsection.2.4.2}
-\contentsline {section}{\numberline {3}Identification of the Cart on the Ground}{12}{section.3}
-\contentsline {subsection}{\numberline {3.1}Model Validation}{12}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Re-identification}{12}{subsection.3.2}
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Model Structure}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Discrete-time Model Structure}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Simplified Model}{4}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Input and Output}{5}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Identification of each 'DC Motor + Wheel'}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Excitation Signal}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}System Parameters}{6}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Estimation criterion}{6}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Results}{7}{subsubsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}Filtering}{7}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Butterworth Filter}{7}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Sanathanan Koerner Filter}{7}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.4}Experimental Model Validation}{9}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Estimated vs. empirical Results}{9}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Superposition Principle}{12}{subsubsection.2.4.2}%
+\contentsline {section}{\numberline {3}Identification of the Cart on the Ground}{12}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Model Validation}{12}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Re-identification}{12}{subsection.3.2}%

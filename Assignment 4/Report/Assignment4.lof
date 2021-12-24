@@ -1,17 +1,8 @@
-<<<<<<< Updated upstream
 \babel@toc {english}{}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces Depiction of the pendulum placed on the cart \cite {Quanser} \relax }}{2}{figure.caption.4}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Free body diagram of the pendulum \cite {Researchgate}\relax }}{2}{figure.caption.4}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Measured values for the experiment to determine $\zeta $\relax }}{4}{figure.caption.5}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Yeet\relax }}{7}{figure.caption.9}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Yeet\relax }}{9}{figure.caption.11}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Blockdiagram of the system with feedforward compensation \relax }}{10}{figure.caption.12}%
-=======
-\babel@toc {english}{}
-\contentsline {figure}{\numberline {1}{\ignorespaces Depiction of the pendulum placed on the cart \cite {Quanser} \relax }}{3}{figure.caption.4}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Free body diagram of the pendulum \cite {Researchgate}\relax }}{3}{figure.caption.4}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Measured values for the experiment to determine $\zeta $\relax }}{5}{figure.caption.5}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Yeet\relax }}{8}{figure.caption.9}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Yeet\relax }}{10}{figure.caption.11}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Blockdiagram of the system with feedforward compensation \relax }}{11}{figure.caption.12}%
->>>>>>> Stashed changes
+\contentsline {figure}{\numberline {1}{\ignorespaces Depiction of the pendulum placed on the cart \cite {Quanser} \relax }}{2}{figure.caption.3}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Free body diagram of the pendulum \cite {Researchgate}\relax }}{2}{figure.caption.3}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Measured values for the experiment to determine $\zeta $\relax }}{4}{figure.caption.4}%
+\contentsline {figure}{\numberline {4}{\ignorespaces \textbf {Linear Kalman filter with wheel and pendulum encoder.} State estimations and measurements as a response to a trapezoidal velocity input, together with the 95 \% confidence intervals.\relax }}{7}{figure.caption.8}%
+\contentsline {figure}{\numberline {5}{\ignorespaces \textbf {Linear Kalman filter without wheel encoder.} State estimations and measurements as a response to a trapezoidal velocity input, together with the 95 \% confidence intervals.\relax }}{9}{figure.caption.10}%
+\contentsline {figure}{\numberline {6}{\ignorespaces \textbf {Extended Kalman filter with wheel and pendulum encoder.} State estimations and measurements as a response to a trapezoidal velocity input, together with the 95 \% confidence intervals.\relax }}{11}{figure.caption.11}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Blockdiagram of the system with feedforward compensation \relax }}{12}{figure.caption.12}%

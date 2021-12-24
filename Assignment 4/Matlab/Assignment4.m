@@ -247,8 +247,6 @@ load FBFFrho7.mat
 load FBFFrho6.mat
 load FBFFrho5.mat
 load FBFFrho4.mat
-load FBFFrho3.mat
-load FBFFrho2.mat
 
 
 Cz = [1 L2 0];
@@ -321,18 +319,6 @@ v4= FBFFrho4(1:639,3);
 desiredVel4 = FBFFrho4(1:639,2);
 uA4 = FBFFrho4(1:639,4);
 
-x3 = FBFFrho3(1:639,12);
-theta3 = FBFFrho3(1:639,13);
-v3= FBFFrho3(1:639,3);
-desiredVel3 = FBFFrho3(1:639,2);
-uA3 = FBFFrho3(1:639,4);
-
-x2 = FBFFrho2(1:639,12);
-theta2 = FBFFrho2(1:639,13);
-v2= FBFFrho2(1:639,3);
-desiredVel2 = FBFFrho2(1:639,2);
-uA2 = FBFFrho2(1:639,4);
-
 
 
 
@@ -348,22 +334,6 @@ figure
 hold on
 plot(t, [x5+L2*theta5 x6+L2*theta6 x7+L2*theta7 x8+L2*theta8])
 legend('rho = 5','rho = 6','rho = 7','rho = 8', 'Location', 'SouthEast')
-ylabel('Pendulum mass position [m]')
-xlabel('Time [s]')
-hold off
-
-figure
-hold on
-plot(t, [x3+L2*theta3 x4+L2*theta4 x5+L2*theta5 x7+L2*theta7])
-legend('rho = 3','rho = 4','rho = 5','rho 7', 'Location', 'SouthEast')
-ylabel('Pendulum mass position [m]')
-xlabel('Time [s]')
-hold off
-
-figure
-hold on
-plot(t, [x1+L2*theta1 x2+L2*theta2 x3+L2*theta3 x7+L2*theta7])
-legend('rho = 1','rho = 2','rho = 3','rho 7', 'Location', 'SouthEast')
 ylabel('Pendulum mass position [m]')
 xlabel('Time [s]')
 hold off
@@ -396,37 +366,11 @@ ylabel('Voltage applied on motor A [V]')
 xlabel('Time [s]')
 hold off
 
-% Plots voltage controller wants to apply
-
-figure
-hold on
-plot(t, [uA5 uA6 uA7 uA8])
-legend('rho = 5','rho = 6', 'rho = 7', 'rho = 8', 'Location', 'NorthEast')
-ylabel('Voltage controller wants to apply on motor A [V]')
-xlabel('Time [s]')
-hold off
-
-figure
-hold on
-plot(t, [uA1 uA2 uA3 uA4])
-legend('rho = 1','rho = 2', 'rho = 3', 'rho = 4', 'Location', 'NorthEast')
-ylabel('Voltage controller wants to apply on motor A [V]')
-xlabel('Time [s]')
-hold off
-
 % Plots desiredvelocity
 figure
 hold on
 plot(t, [desiredVel5 desiredVel6 desiredVel7 desiredVel8])
 legend('rho = 5','rho = 6', 'rho = 7', 'rho = 8', 'Location', 'NorthEast')
-ylabel('Desired velocity [m/s]')
-xlabel('Time [s]')
-hold off
-
-figure
-hold on
-plot(t, [desiredVel1 desiredVel2 desiredVel3 desiredVel4])
-legend('rho = 1','rho = 2', 'rho = 3', 'rho = 4', 'Location', 'NorthEast')
 ylabel('Desired velocity [m/s]')
 xlabel('Time [s]')
 hold off
