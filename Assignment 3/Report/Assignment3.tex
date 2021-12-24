@@ -169,9 +169,9 @@ However, discrete time poles on the negative side of the real axis have no physi
 \newpage
 \noindent Furthermore, a pole that is close to the unit circle, e.g. for $K = 10$, leads to a slower responding system. Equivalently, a pole that is closer to the origin leads to a faster response. These conclusions are demonstrated by Figure \ref{fig:impulse_response}. 
 \\\\
-There are two limit cases. On the one hand, when the pole is located on the unit circle itself, the system is marginally stable. On the other hand, a pole which lies at the origin corresponds to an infinitely fast system, i.e. resulting in a pure time delay of one sample period. This would however mean that the control signal would be infinitely large, thus saturating the actuators. This limits the state feedback gain to $0 < K < 100$ Hz. So there is a trade-off between response time and cost in terms of required actuation signal. Both of these limit cases are depicted in Figure \ref{fig:impulse_response}. 
+There are two limit cases. On the one hand, when the pole is located on the unit circle itself, the system is marginally stable. On the other hand, a pole which lies at the origin corresponds to an infinitely fast system. This would however mean that the control signal would be infinitely large, thus saturating the actuators. This limits the state feedback gain to $0 < K < 100$ Hz. So there is a trade-off between response time and cost in terms of required actuation signal. Both of these limit cases are depicted in Figure \ref{fig:impulse_response}. 
 \\\\
-The previously made conclusions can also be verified by transforming the poles to continuous time and plotting them in the imaginary plane. For continuous time poles, the further the pole lies from the imaginary axis (in the left hand plane), the faster the response. This is confirmed by Figure \ref{fig:poles cont}. Note that the continuous time poles are not complex conjugates, which seems incorrect. This is however due to the previously discussed digital effects that have no physical meaning.
+The previously made conclusions can also be verified by transforming the poles to continuous time and plotting them in the imaginary plane. For continuous time poles, the further the pole lies from the imaginary axis (in the left hand plane), the faster the response. This is confirmed by Figure \ref{fig:poles cont}.
 
 
 
@@ -368,7 +368,7 @@ Summarized:
 
 
 \subsection{Step Response for varying K}
-Figure \ref{fig:variable_K} depicts the measured response of the system to a step signal as position reference at $t = 0$. This is done for different values of the static feedback gain $K$. This way, the explanation given in Subsection \ref{subsec:tf} is experimentally verified. Indeed, the bigger $K$, the closer the pole of the closed loop system lies to the origin, the faster the response. Inversely, a smaller $K$ corresponds to a slower responding system.
+Figure \ref{fig:variable_K} depicts the measured response of the system to a step signal as position reference at $t = 0$. The cart starts at a distance of $0.25m$ from the wall and the desired position is $0.05m$ from the wall. This is done for different values of the static feedback gain $K$. This way, the explanation given in Subsection \ref{subsec:tf} is experimentally verified. Indeed, the bigger $K$, the closer the pole of the closed loop system lies to the origin, the faster the response. Inversely, a smaller $K$ corresponds to a slower responding system.
 \\\\
 The consequence that a faster response time comes with a larger cost in terms of actuation signal is also visualized in Figure \ref{fig:variable_K}. Ditto for smaller values of $K$. On this figure, the low-level control signals are plotted for the same values as the previous figure, which clearly shows the trade-off as explained in Subsection \ref{subsec:tf} and \ref{subsec:kqr}.
 \\\\

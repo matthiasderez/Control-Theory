@@ -83,10 +83,10 @@ To properly execute the design, some design parameters must be determined. The p
 
 \subsubsection{Phase margin}
 The design value of the PM can vary from 40\degree to 50\degree. From chapter 7 of the course notes "Control Theory- Handouts" \cite{slidescontroltheory}, we know that by increasing the PM, the dampingratio $\zeta$ and $T_i$ will increase. The peak value in the closed loop step response $M_p$ and the new cross over frequency $\omega_c$ will decrease. The increase in $\zeta$ causes the respons of the signal to be slower, but have less oscillations. Since the value of $\zeta$ is still below the value of critical damping of $\zeta = 0.7$, the increase is in general advantageous for the transient respons. The decrease of $\omega_c$ %helps to keep the cross over frequency 10-20 times lower than the sampling frequency and%
- reduces the influence of high frequency noise. However, $\omega_c \gg \frac{1}{T_i}$ is necessary to lower the influence of the phase lag introduced by the PI controller. Luckily by increasing the PM, $\frac{1}{T_i}$ decreases (see Equation \ref{eq: Ti}) and thus the fact that $\omega_c$ reduces, is partly compensated by the decrease in $\frac{1}{T_i}$. The decrease in overshoot $M_p$ improves the transient respons. By processing the data in Matlab, it becomes clear that by increasing the PM, the GM increases and the transient errors decreases. For these reasons, the PM is chosen to be equal to 50\degree. 
+ reduces the influence of high frequency noise. However, $\omega_c \gg \frac{1}{T_i}$ is necessary to lower the influence of the phase lag introduced by the PI controller. Luckily by increasing the PM, $\frac{1}{T_i}$ decreases (see Equation \ref{eq: Ti}) and thus the fact that $\omega_c$ reduces, is partly compensated by the decrease in $\frac{1}{T_i}$. The decrease in overshoot $M_p$ improves the transient respons. By processing the data in \texttt{Matlab}, it becomes clear that by increasing the PM, the GM increases and the transient errors decreases. For these reasons, the PM is chosen to be equal to 50\degree. 
 
 \subsubsection{Extra margin to compensate for the phase lag}
-	As the PI controller has a negative phase, an extra margin $d\phi$ on the PM has to be included to calculate the new cross over frequency $\omega_c$. The chosen margin can vary from 10\degree to 15\degree. By choosing a higher value, the GM increases and the gain decreases, which helps to reduce resonance. By using different values and calculating the stepresponse on the closed loop system in Matlab, it is clear the transient errors decreases when the extra margin is increased. $d\phi = 15\degree$ is chosen. 
+	As the PI controller has a negative phase, an extra margin $d\phi$ on the PM has to be included to calculate the new cross over frequency $\omega_c$. The chosen margin can vary from 10\degree to 15\degree. By choosing a higher value, the GM increases and the gain decreases, which helps to reduce resonance. By using different values and calculating the stepresponse on the closed loop system in \texttt{Matlab}, it is clear the transient errors decreases when the extra margin is increased. $d\phi = 15\degree$ is chosen. 
 
 \subsubsection{General design procedure}
 \label{sec:designprocedure}
@@ -185,11 +185,11 @@ Next to the values in Table \ref{tab:values}, the open loop (= serial connection
 
 \newpage
 \subsubsection{Improvement of the controller}
-In section \ref{sec:designprocedure}, it became clear the general design procedure does not provide an acceptable controller. To improve the controller, two methods were considered. First of all, the gain could be lowered to increase the GM and PM, while keeping the same $T_i$. Secondly the desired GM given in the design could be increased. Comparison of the two methods for several values in Matlab showed that the first method (decreasing gain K) produced the best system parameters, for example higher GM for the same PM, lower overshoot and a far better transient respons to a step input in general. By a method of trial and error, following values for the gain were selected: 
+In section \ref{sec:designprocedure}, it became clear the general design procedure does not provide an acceptable controller. To improve the controller, two methods were considered. First of all, the gain could be lowered to increase the GM and PM, while keeping the same $T_i$. Secondly the desired GM given in the design could be increased. Comparison of the two methods for several values in \texttt{Matlab} showed that the first method (decreasing gain K) produced the best system parameters, for example higher GM for the same PM, lower overshoot and a far better transient respons to a step input in general. By a method of trial and error, following values for the gain were selected: 
 \begin{equation}
 	\begin{split}
-	$Motor A$: K_a &= 0.8\\
-	$Motor B$: K_b &= 0.775
+	Motor A: K_a &= 0.8\\
+	Motor B: K_b &= 0.775
 	\end{split}
 \end{equation}
 These gains yield the values given in Table \ref{tab:valuesmethod2}. 
@@ -355,7 +355,7 @@ In this section the controller designed in the previous sections is validated ex
 	\label{fig:trackingerrorstepresponsezoom}
 \end{figure*}
 
-Figure \ref{fig:voltagestepresponse} shows the measured and simulated voltages (control signals) for the step input reference. We know that as the time increases, the error of the simulated model response goes to zero. This can be seen in Figure \ref{fig:voltagestepresponse}, as the simulated voltage goes to a constant value. There are still variations in the measured voltages, these do not converge to a constant value due to the fact that the error on the measured response does not go to zero exactly.
+Figure \ref{fig:voltagestepresponse} shows the measured and simulated voltages (control signals) for the step input reference. We know that as the time increases, the error of the simulated model response goes to zero. This can be seen in Figure \ref{fig:voltagestepresponse}, as the simulated voltages reach a constant value. There are still variations in the measured voltages, these do not converge to a constant value due to the fact that the error on the measured response does not go to zero exactly.
 \begin{figure*}[htp!]
 	\centering
 	\begin{subfigure}[b]{0.49\textwidth}
@@ -377,7 +377,7 @@ Figure \ref{fig:voltagestepresponse} shows the measured and simulated voltages (
 To apply a constant force disturbance, the cart is placed on a slope instead of a horizontal surface. When the cart drives uphill, gravity creates a constant force opposite to the driving direction. The magnitude of the force is given by Equation \ref{eq:Fz}, where m is the mass of the cart and $\alpha$ is the slope angle (= $3.518\degree$ in our case). 
 \begin{equation}
 	\label{eq:Fz}
-	F = m*g*sin(\alpha)
+	F = m\cdot g\cdot \sin(\alpha)
 \end{equation}
 The disturbance enters the loop after the system, but is included within the feedback loop. This is shown in the block diagram in Figure \ref{fig: blockdiagram}.
 \begin{figure}[htp!]

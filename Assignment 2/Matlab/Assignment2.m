@@ -729,7 +729,7 @@ plot(t,[wdes-vb,wdes-sim_stepB])
 legend('measured', 'simulated', 'Location', 'NorthEast')
 set(gca, 'FontSize', 11)
 title({'Tracking error of the step reference of motor B',' with force disturbance'})
-ylabel('step reference - \omega_a[rad/s]')
+ylabel('step reference - \omega_b[rad/s]')
 xlabel('time [s]')
 print -depsc trackingerror_stepresponseB_FD.eps
 

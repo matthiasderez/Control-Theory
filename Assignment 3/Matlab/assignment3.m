@@ -40,19 +40,20 @@ xlabel('Real Axis')
 ylabel('Imaginary Axis')
 print -depsc poles.eps
 
+% Continuous time poles
 poles_c = log(poles)/Ts;
 poles_d2 = exp(poles_c*Ts);
 figure
 hold on
-for i = 1:length(poles)
+for i = 1:length(poles)/2+1
     scatter(real(poles_c(i)), imag(poles_c(i)), 50, color(i,:), 'x')
 end
-h = legend({'0','10','20','30','40','50','60','70','80','90','100','110','120','130','140','150','160','170','180','190','200'},'Location', 'East','AutoUpdate','off', 'Fontsize', 6.5);
+h = legend({'0','10','20','30','40','50','60','70','80','90','100'},'Location', 'SouthWest','AutoUpdate','off', 'Fontsize', 6.5);
 sgtitle('Poles of the closed loop system in continuous time', 'fontweight', 'bold')
 xlabel('Real Axis')
 ylabel('Imaginary Axis')
 xlim([-300 50])
-ylim([-50 350])
+ylim([-50 50])
 print -depsc poles_cont.eps
 hold off
 
