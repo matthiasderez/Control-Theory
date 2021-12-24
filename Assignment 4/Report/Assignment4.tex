@@ -308,7 +308,7 @@ To discretize the non-linear model, the forward Euler method is used as well:
 	\label{eq:measurementlineardiscrete}
 \end{equation}
 	
-\section{Design and implementation of a linear Kalman filter}
+\section{Design and Implementation of a linear Kalman Filter}
 \label{sec:2}
 The linearized measurement equation is given by Equation \ref{eq:measurementlineardiscrete}. For the matrices $Q$, $R$ and $\hat{P}_{0|0}$, the following numerical values are used:
 
@@ -425,8 +425,8 @@ Because there is no measurement for $x$, the correction step will never adjust t
 	\label{fig:confidence2}
 \end{figure*}
 	
-\section{Design and implementation of an extended Kalman filter}
-\subsection{Nonlinear measurement equation}
+\section{Design and Implementation of an extended Kalman Filter}
+\subsection{Nonlinear Measurement Equation}
 As is already written down in the nonlinear state-space model (Equation \ref{eq:measurementnonlinear}), the measurement equation based on the nonlinear system equations is actually a linear equation. This is caused by the fact that the two outputs $x$ and $\theta$ are two states. The measurement equation based on the nonlinear system equations can be written as:
 \begin{equation}
 	\mathbf{y} = \begin{bmatrix}
@@ -436,7 +436,7 @@ As is already written down in the nonlinear state-space model (Equation \ref{eq:
 	\end{bmatrix}\xi + 0 \cdot v_c
 	\label{eq:g}
 \end{equation}
-\subsection{Jacobian of the state and measurement equation}
+\subsection{Jacobian of the State and Measurement Equation}
 The Jacobian matrix of the state equation and the Jacobian matrix of the measurement equation can be found by taking the derivative of the functions \textbf{f} (Equation \ref{eq:ssnonlineardiscrete}) and \textbf{g} (Equation \ref{eq:g}) to the state vector $\xi$.
 
 \begin{equation}
@@ -457,7 +457,7 @@ Unlike the linear Kalman filter, the extended Kalman filter uses discretized jac
 \end{bmatrix}
 \end{split}
 \end{equation}
-\subsection{Implementation of the extended Kalman filter}
+\subsection{Implementation of the extended Kalman Filter}
 Since the linearization of the model has no influence on the measurement noise covariance or the covariance of the initial state estimation errors, the values for $\mathbf{R}$ and $\mathbf{\hat{P}}_{0|0}$ for the extended Kalman filter are taken equal to those used in the linear Kalman filter (Equations \ref{eq:R} and \ref{eq:phat00}).
 \\\\
 As the nonlinear model is used for the extended Kalman filter, the model should be more precise and thus the process noise should be lower. For this reason $\mathbf{Q}$ is taken one order of magnitude smaller than the $\mathbf{Q}$ used in the linear Kalman filter. 
@@ -512,7 +512,7 @@ For $\theta$ and $v_{tan}$, the estimation confidence intervals have likewise sh
 
 
 	
-\section{Design and implementation of a state feedback controller based on the linearized model}
+\section{Design and Implementation of a State Feedback Controller based on the linearized Model}
 \subsection{Design of a linear quadratic regulator}
 \label{sec:designLQR}
 The objective of the LQR is to find the control input $v_c[k]$ that moves the system states $\xi \neq 0$ to \textbf{0}, in a way the performance criterion $\J$ is minimized. This means a tradeoff has to be made between performane $\J_p$, the speed with which the states go to zero (or a desired state), and the controll effort $\J_c$. The criterion is given in Equation \ref{eq:criterionLQR}. 
@@ -547,7 +547,7 @@ Using Equation \ref{eq:Cz}, the LQR criterion can be rewritten as in Equation \r
 
 The $\rho$ and thus the matrix \textbf{Q} are design parameters. These values determine which part of the tradeoff is most important in this particular design: performance or control effort. The tuning of the parameters and thus the design of the LQR itself is done in Section \ref{sec:implFBcontr}. 
 
-\subsection{Design of a feedforward gain}
+\subsection{Design of a Feedforward Gain}
 \label{sec:FF}
 The blockdiagram of the system with feedforward compensation can be found in Figure \ref{fig:blockdiagram}, where the kalman estimator is not shown. 
 \\\\
@@ -571,7 +571,7 @@ To be able to use $H_x(z)$ and $H_\theta(z)$, \textbf{H}(z) has to be calculated
 \label{eq:HFB}
 \end{equation}
 The matrices $\mathbf{A}$,$\mathbf{B}$ and $\mathbf{C}$ can be found in the linear, discretized model in Equations \ref{eq:ABC} and \ref{eq:sslineardiscr}. When the feedback gain $\mathbf{K}$ is calculated in Section \ref{sec:implFBcontr}, it will become possible to calculate $\mathbf{H}(z)$ thus also $N_p$. 
-\subsection{Implementation of the controller}
+\subsection{Implementation of the Controller}
 \label{sec:implFBcontr}
 In this section, the controller is implemented in arduino using the Kalman estimator. By trial and error, the feedforward and feedback gain are determined. The higher $\rho$, the faster the measured pendulum position goes to the desired position, which is confirmed by Figure \ref{fig:pendulum_mass}. This figure also shows that the steady state error is not always exactly zero. This is caused by the fact that, in steady state, it is possible the angle $\theta$ is different from zero, e.g. due to damping. This causes an error that is not foreseen by the feedforward controller, as $H_{\theta}(z)$ from Section \ref{sec:FF}, equals zero for $z = 1$. 
 \\\\
