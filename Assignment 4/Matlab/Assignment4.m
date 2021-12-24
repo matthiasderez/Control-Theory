@@ -1,10 +1,5 @@
-%% Data
-% csvfile = '../Data/pendulumangle.csv';
-% labels = strsplit(fileread(csvfile), '\n'); % Split file in lines
-% labels = strsplit(labels{:, 2}, ', '); % Split and fetch the labels (they are in line 2 of every record)
-% pendulumangle = dlmread(csvfile, ',', 2, 0); % Data follows the labels
-%  
-% save pendulumangle.mat
+%% 1
+
 load pendulumangle.mat
 
 time = pendulumangle(:,5)-pendulumangle(1,5);
@@ -239,18 +234,19 @@ print -depsc state3_ext.eps
 
 % load data
 load pendulumangle.mat
-load FBFFrho100.mat
-load FBFFrho10.mat
+
 load FBFFrho1.mat
-load FBFFrho8.mat
-load FBFFrho7.mat
-load FBFFrho6.mat
-load FBFFrho5.mat
-load FBFFrho4.mat
-load FBFFrho3.mat
 load FBFFrho2.mat
+load FBFFrho3.mat
+load FBFFrho4.mat
+load FBFFrho5.mat
+load FBFFrho6.mat
+load FBFFrho7.mat
+load FBFFrho8.mat
+load FBFFrho10.mat
+load FBFFrho100.mat
 
-
+% calculate parameters of the LQR
 Cz = [1 L2 0];
 rho =[1 2 3 4 5 6 7 8 10];
 Kdlqr = zeros(length(rho),3);
@@ -271,13 +267,61 @@ for i = 1:length(rho)
     Np(i) = 1/(H(1)+L2*H(2));
 end
 
+% extract data
+% v = voltage applied on motor A
+% desiredVel = deisred velocity
+% uA voltage that the controller wants to apply on motor A
+% all variables with xxx3 pertain to rho = 3 and so forth
 
 t = 0:0.01:6.38;
+
 x1 = FBFFrho1(1:639,12);
 theta1 = FBFFrho1(1:639,13);
 v1 = FBFFrho1(1:639,3);
 desiredVel1 = FBFFrho1(1:639,2);
 uA1 = FBFFrho1(1:639,4);
+
+x2 = FBFFrho2(1:639,12);
+theta2 = FBFFrho2(1:639,13);
+v2= FBFFrho2(1:639,3);
+desiredVel2 = FBFFrho2(1:639,2);
+uA2 = FBFFrho2(1:639,4);
+
+x3 = FBFFrho3(1:639,12);
+theta3 = FBFFrho3(1:639,13);
+v3= FBFFrho3(1:639,3);
+desiredVel3 = FBFFrho3(1:639,2);
+uA3 = FBFFrho3(1:639,4);
+
+x4 = FBFFrho4(1:639,12);
+theta4 = FBFFrho4(1:639,13);
+v4= FBFFrho4(1:639,3);
+desiredVel4 = FBFFrho4(1:639,2);
+uA4 = FBFFrho4(1:639,4);
+
+x5 = FBFFrho5(1:639,12);
+theta5 = FBFFrho5(1:639,13);
+v5= FBFFrho5(1:639,3);
+desiredVel5 = FBFFrho5(1:639,2);
+uA5 = FBFFrho5(1:639,4);
+
+x6 = FBFFrho6(1:639,12);
+theta6 = FBFFrho6(1:639,13);
+v6= FBFFrho6(1:639,3);
+desiredVel6 = FBFFrho6(1:639,2);
+uA6 = FBFFrho6(1:639,4);
+
+x7 = FBFFrho7(1:639,12);
+theta7 = FBFFrho7(1:639,13);
+v7 = FBFFrho7(1:639,3);
+desiredVel7 = FBFFrho7(1:639,2);
+uA7 = FBFFrho7(1:639,4);
+
+x8 = FBFFrho8(1:639,12);
+theta8 = FBFFrho8(1:639,13);
+v8 = FBFFrho8(1:639,3);
+desiredVel8 = FBFFrho8(1:639,2);
+uA8 = FBFFrho8(1:639,4);
 
 x10 = FBFFrho10(1:639,12);
 theta10 = FBFFrho10(1:639,13);
@@ -291,50 +335,7 @@ v100 = FBFFrho100(1:639,3);
 desiredVel100 = FBFFrho100(1:639,2);
 uA100 = FBFFrho100(1:639,4);
 
-x8 = FBFFrho8(1:639,12);
-theta8 = FBFFrho8(1:639,13);
-v8 = FBFFrho8(1:639,3);
-desiredVel8 = FBFFrho8(1:639,2);
-uA8 = FBFFrho8(1:639,4);
-
-x7 = FBFFrho7(1:639,12);
-theta7 = FBFFrho7(1:639,13);
-v7 = FBFFrho7(1:639,3);
-desiredVel7 = FBFFrho7(1:639,2);
-uA7 = FBFFrho7(1:639,4);
-
-x6 = FBFFrho6(1:639,12);
-theta6 = FBFFrho6(1:639,13);
-v6= FBFFrho6(1:639,3);
-desiredVel6 = FBFFrho6(1:639,2);
-uA6 = FBFFrho6(1:639,4);
-
-x5 = FBFFrho5(1:639,12);
-theta5 = FBFFrho5(1:639,13);
-v5= FBFFrho5(1:639,3);
-desiredVel5 = FBFFrho5(1:639,2);
-uA5 = FBFFrho5(1:639,4);
-
-x4 = FBFFrho4(1:639,12);
-theta4 = FBFFrho4(1:639,13);
-v4= FBFFrho4(1:639,3);
-desiredVel4 = FBFFrho4(1:639,2);
-uA4 = FBFFrho4(1:639,4);
-
-x3 = FBFFrho3(1:639,12);
-theta3 = FBFFrho3(1:639,13);
-v3= FBFFrho3(1:639,3);
-desiredVel3 = FBFFrho3(1:639,2);
-uA3 = FBFFrho3(1:639,4);
-
-x2 = FBFFrho2(1:639,12);
-theta2 = FBFFrho2(1:639,13);
-v2= FBFFrho2(1:639,3);
-desiredVel2 = FBFFrho2(1:639,2);
-uA2 = FBFFrho2(1:639,4);
-
-
-
+% pendulum mass plot
 
 figure
 hold on
@@ -348,6 +349,8 @@ figure
 hold on
 plot(t, [x5+L2*theta5 x6+L2*theta6 x7+L2*theta7 x8+L2*theta8])
 legend('rho = 5','rho = 6','rho = 7','rho = 8', 'Location', 'SouthEast')
+set(gca,'fontsize',11)
+xlim([0.5 4])
 ylabel('Pendulum mass position [m]')
 xlabel('Time [s]')
 hold off
@@ -368,6 +371,16 @@ ylabel('Pendulum mass position [m]')
 xlabel('Time [s]')
 hold off
 
+figure
+hold on
+plot(t, [x1+L2*theta1 x2+L2*theta2 x3+L2*theta3 x4+L2*theta4,x5+L2*theta5 x6+L2*theta6 x7+L2*theta7 x8+L2*theta8])
+legend('rho = 1','rho = 2','rho = 3','rho = 4','rho = 5','rho = 6','rho = 7','rho = 8', 'Location', 'SouthEast')
+set(gca,'fontsize',11)
+xlim([0.5 6])
+ylabel('Pendulum mass position [m]')
+xlabel('Time [s]')
+hold off
+print -depsc pendulum_mass.eps
 
 % Voltage plots
 figure
@@ -377,8 +390,6 @@ legend('rho = 1','rho = 10','rho = 100', 'Location', 'NorthEast')
 ylabel('Voltage applied on motor A [V]')
 xlabel('Time [s]')
 hold off
-
-
 
 figure
 hold on
@@ -396,61 +407,30 @@ ylabel('Voltage applied on motor A [V]')
 xlabel('Time [s]')
 hold off
 
-% Plots voltage controller wants to apply
-
-figure
-hold on
-plot(t, [uA5 uA6 uA7 uA8])
-legend('rho = 5','rho = 6', 'rho = 7', 'rho = 8', 'Location', 'NorthEast')
-ylabel('Voltage controller wants to apply on motor A [V]')
-xlabel('Time [s]')
-hold off
-
-figure
-hold on
-plot(t, [uA1 uA2 uA3 uA4])
-legend('rho = 1','rho = 2', 'rho = 3', 'rho = 4', 'Location', 'NorthEast')
-ylabel('Voltage controller wants to apply on motor A [V]')
-xlabel('Time [s]')
-hold off
-
-% Plots desiredvelocity
+% Plots desired velocity
 figure
 hold on
 plot(t, [desiredVel5 desiredVel6 desiredVel7 desiredVel8])
+set(gca,'fontsize',11)
 legend('rho = 5','rho = 6', 'rho = 7', 'rho = 8', 'Location', 'NorthEast')
+xlim([0.5 3])
+ylim([-0.1 0.85])
 ylabel('Desired velocity [m/s]')
 xlabel('Time [s]')
 hold off
+print -depsc desired_vel_1.eps
 
 figure
 hold on
 plot(t, [desiredVel1 desiredVel2 desiredVel3 desiredVel4])
+set(gca,'fontsize',11)
 legend('rho = 1','rho = 2', 'rho = 3', 'rho = 4', 'Location', 'NorthEast')
+xlim([0.5 3])
+ylim([-0.1 0.85])
 ylabel('Desired velocity [m/s]')
 xlabel('Time [s]')
 hold off
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print -depsc desired_vel_2.eps
 
 
     

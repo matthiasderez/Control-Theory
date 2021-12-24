@@ -66,7 +66,6 @@
 
 \tableofcontents
 \listoffigures
-\listoftables
 \tikzstyle{block} = [draw, rectangle, 
 minimum height=3em, minimum width=6em]
 \tikzstyle{blocksmall} = [draw, rectangle, 
@@ -367,7 +366,7 @@ Lastly, for $v_{tan}$, Kalman filtering is per definition useful, as this state 
 		\includegraphics[width=\textwidth]{state3.eps}
 		\caption{$v_{tan}$}
 	\end{subfigure}
-	\caption{\textbf{Linear Kalman filter with wheel and pendulum encoder.} State estimations and measurements as a response to a trapezoidal velocity input, together with the 95 \% confidence intervals.} 
+	\caption[Linear Kalman filter with wheel and pendulum encoder.]{\textbf{Linear Kalman filter with wheel and pendulum encoder.} State estimations and measurements as a response to a trapezoidal velocity input, together with the 95 \% confidence intervals.} 
 	\label{fig:confidence1}
 \end{figure*}
 
@@ -422,7 +421,7 @@ Because there is no measurement for $x$, the correction step will never adjust t
 		\includegraphics[width=\textwidth]{state3_w.eps}
 		\caption{$v_{tan}$}
 	\end{subfigure}
-	\caption{\textbf{Linear Kalman filter without wheel encoder.} State estimations and measurements as a response to a trapezoidal velocity input, together with the 95 \% confidence intervals.} 
+	\caption[Linear Kalman filter without wheel encoder.]{\textbf{Linear Kalman filter without wheel encoder.} State estimations and measurements as a response to a trapezoidal velocity input, together with the 95 \% confidence intervals.} 
 	\label{fig:confidence2}
 \end{figure*}
 	
@@ -507,7 +506,7 @@ For $\theta$ and $v_{tan}$, the estimation confidence intervals have likewise sh
 		\includegraphics[width=\textwidth]{state3_ext.eps}
 		\caption{$v_{tan}$}
 	\end{subfigure}
-	\caption{\textbf{Extended Kalman filter with wheel and pendulum encoder.} State estimations and measurements as a response to a trapezoidal velocity input, together with the 95 \% confidence intervals.} 
+	\caption[Extended Kalman filter with wheel and pendulum encoder.]{\textbf{Extended Kalman filter with wheel and pendulum encoder.} State estimations and measurements as a response to a trapezoidal velocity input, together with the 95 \% confidence intervals.} 
 	\label{fig:confidence3}
 \end{figure*}
 
@@ -551,18 +550,18 @@ The $\rho$ and thus the matrix \textbf{Q} are design parameters. These values de
 \subsection{Design of a feedforward gain}
 \label{sec:FF}
 The blockdiagram of the system with feedforward compensation can be found in Figure \ref{fig:blockdiagram}, where the kalman estimator is not shown. 
-
-\begin{figure*}[htp!]
-	\centering
-	\includegraphics[width=.7\linewidth]{blockdiagram.png}
-	\caption{Blockdiagram of the system with feedforward compensation }
-	\label{fig:blockdiagram}
-\end{figure*}
+\\\\
 The feedforward gain $N_p$ is calculated such that the steady-state error equals zero for a step reference in desired position, which is denoted with $r[k]$. The pendulum mass position can be written as in Equation \ref{eq:xp}. The total transfer function \textbf{H}(z) of the system is thus a vector containing 2 transfer functions: $H_x(z) = \frac{X(z)}{V_c(z)}$ and $H_{\theta}(z) = \frac{\Theta(z)}{V_c(z)}$. The pendulum mass position can be calculated starting from a given $v_c$ as follows:
 \begin{equation}
 X_p(z) = (H_x(z) + LH_\theta(z))V_c(z)
 \end{equation}
-Following the reasoning on C9, slide 54 of the slides of the course Control Theory \cite{slidescontroltheory}, the expression for $N_p$ to  obtain a zero steady state error is: \underline{NOG HELEMAAL UITWERKEN OF GWN VERWIJZEN NAAR SLIDE?}
+\begin{figure*}[htp!]
+	\centering
+	\includegraphics[width=.8\linewidth]{blockdiagram.png}
+	\caption{Blockdiagram of the system with feedforward compensation }
+	\label{fig:blockdiagram}
+\end{figure*}
+Following the reasoning on C9, slide 54 of the slides of the course Control Theory \cite{slidescontroltheory}, the expression for $N_p$ to  obtain a zero steady state error is:
 \begin{equation}
 N_p = \frac{1}{H_x(1) + LH_\theta(1)}
 \end{equation}
@@ -574,16 +573,26 @@ To be able to use $H_x(z)$ and $H_\theta(z)$, \textbf{H}(z) has to be calculated
 The matrices $\mathbf{A}$,$\mathbf{B}$ and $\mathbf{C}$ can be found in the linear, discretized model in Equations \ref{eq:ABC} and \ref{eq:sslineardiscr}. When the feedback gain $\mathbf{K}$ is calculated in Section \ref{sec:implFBcontr}, it will become possible to calculate $\mathbf{H}(z)$ thus also $N_p$. 
 \subsection{Implementation of the controller}
 \label{sec:implFBcontr}
-In this section, the controller is implemented in arduino, making use of the Kalman estimator. By trial and error, the feedforward and feedback gain are determined. The higher $\rho$ the faster the measured pendulum position goes to the desired position.  
-\underline{FIGUREN PLOTTEN VOOR VERSCHILLENDE WAARDEN VAN RHO EN ER IN DE TEXT BEETJE NAAR VERWIJZEN ENZO}
+In this section, the controller is implemented in arduino using the Kalman estimator. By trial and error, the feedforward and feedback gain are determined. The higher $\rho$, the faster the measured pendulum position goes to the desired position, which is confirmed by Figure \ref{fig:pendulum_mass}. This figure also shows that the steady state error is not always exactly zero. This is caused by the fact that, in steady state, it is possible the angle $\theta$ is different from zero, e.g. due to damping. This causes an error that is not foreseen by the feedforward controller, as $H_{\theta}(z)$ from Section \ref{sec:FF}, equals zero for $z = 1$. 
+\\\\
+To choose an appropriate value for $\rho$, a tradeoff is made by looking at Figure \ref{fig:pendulum_mass}, which contains the responses and Figure \ref{fig:actuator_signal}, which contains the requested actuator signal. Furthermore, saturation of the DC-motors must be avoided. This way, $\rho = 5$ is chosen. 
 
-In Figure \underline{VERWIJS NAAR EEN FIGUUR MET RESPONSES} it can be seen the steady state error is not exactly zero. This is caused by the fact that in steady state it is possible the angle $\theta$ is different from zero, e.g. due to damping. This causes an error that is not forseen by the feedforward controller, as $H_{\theta}(z)$ from Section \ref{sec:FF}, equals zero for $z = 1$. 
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=.55\linewidth]{pendulum_mass.eps}
+	\caption{Pendulum mass position in function of $\rho$.}
+	\label{fig:pendulum_mass}
+\end{figure}
 
-To choose an appropriate value for $\rho$, a tradeoff is made by looking at the Figures containing the responses and the Figures containing the requested actuator signal. Next to that, saturation of the DC-motors must be avoided. $\rho = 5$ is chosen. 
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.48\linewidth]{desired_vel_2.eps}
+	\includegraphics[width=0.48\linewidth]{desired_vel_1.eps}
+	\caption[Plots of the requested actuator signal]{Plots of the requested actuator signal, i.e. the desired velocity that is used as input of the velocity control loop.}
+	\label{fig:actuator_signal}
+\end{figure}
 
-
-
-
+\newpage
 \bibliographystyle{plain}
 \bibliography{bibliography}
 	
